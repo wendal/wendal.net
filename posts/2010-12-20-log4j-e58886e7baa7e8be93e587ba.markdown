@@ -23,7 +23,6 @@ tags:
 先上一份普通的log4j.properties
 
     
-    
     log4j.rootLogger=INFO, Console, File
     
     ###### Console appender definition #######
@@ -40,11 +39,8 @@ tags:
     log4j.appender.File.layout.ConversionPattern=%d{ABSOLUTE} %-5p [%c] %m%n
     
 
-
 现在需要定义一个名为File2的appender ,仅记录INFO和ERROR,哈哈,有请Log4j的Filter
 
-    
-    
     log4j.appender.File2=org.apache.log4j.DailyRollingFileAppender
     log4j.appender.File2.File=alfresco2.log
     log4j.appender.File2.Append=true
@@ -63,8 +59,6 @@ tags:
     log4j.appender.File2.filter.F2.acceptOnMatch=false
     #可以继续定义你需要的拦截器F3/F4.....
     
-
-
 通过定义不同组合的LevelRangeFilter/LevelMatchFilter,让特定的appender只记录你需要的log等级,非常方便的!
 
 详细参考,请查阅Log4j的[JavaDoc](http://logging.apache.org/log4j/1.2/apidocs/) [Filter](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/spi/Filter.html) [PropertyConfigurator](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PropertyConfigurator.html)

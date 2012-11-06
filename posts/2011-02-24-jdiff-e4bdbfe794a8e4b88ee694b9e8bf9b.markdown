@@ -53,7 +53,7 @@ JDiff报告,就是描述不同版本的代码之间的API差异, 如某某public
 
     
     
-        parser = org.xml.sax.helpers.XMLReaderFactory.createXMLReader();
+    parser = org.xml.sax.helpers.XMLReaderFactory.createXMLReader();
     
 
 
@@ -62,7 +62,7 @@ JDiff报告,就是描述不同版本的代码之间的API差异, 如某某public
     
     
     //在jd.perform();前面添加
-        		if(proj.getEncoding() != null) {
+    if(proj.getEncoding() != null) {
     			jd.setEncoding(proj.getEncoding());
     			jd.setDocencoding(proj.getEncoding());
     			jd.setCharset(proj.getEncoding());
@@ -75,7 +75,7 @@ JDiff报告,就是描述不同版本的代码之间的API差异, 如某某public
     
     
     //添加一样的内容
-        		if(proj.getEncoding() != null) {
+    if(proj.getEncoding() != null) {
     			jd.setEncoding(proj.getEncoding());
     			jd.setDocencoding(proj.getEncoding());
     			jd.setCharset(proj.getEncoding());

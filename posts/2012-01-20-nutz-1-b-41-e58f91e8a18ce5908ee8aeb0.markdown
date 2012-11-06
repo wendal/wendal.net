@@ -27,12 +27,12 @@ tags:
 
     
     
-            /*获取当前HttpServletRequest对象*/
+        /*获取当前HttpServletRequest对象*/
     	public static final HttpServletRequest getReq() {
     		return REQ.get();
     	}
     
-            /*获取当前HttpServletResponse对象*/
+        /*获取当前HttpServletResponse对象*/
     	public static final HttpServletResponse getResp() {
     		return RESP.get();
     	}
@@ -41,12 +41,12 @@ tags:
     		return NAME.get();
     	}
            
-            /*获取当前Action上下文*/
+        /*获取当前Action上下文*/
     	public static final ActionContext getActionContext() {
     		return ACTION_CONTEXT.get();
     	}
     
-            /*获取ServletContext*/
+        /*获取ServletContext*/
     	public static ServletContext getServletContext() {
     		return servletContext;
     	}

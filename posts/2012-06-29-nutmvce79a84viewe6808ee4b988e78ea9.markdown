@@ -21,40 +21,19 @@ tags:
 
 **撒手不管 VoidView:**
 
-
-
-    
-    
     @Ok("void") //不做任何操作,不理会任何返回值,不碰resp对象!!
     
     //适合控制欲极强的童鞋,或有特别需要的
     
 
-
-
-
-
-
 **ajax好基友 UTF8JsonView:**
 
-
-
-    
-    
     @Ok("json") // 将任何返回值转换为json字符串,后面可以加jsonFormat参数
     //注意,使用这个视图,你就不要自己拼json字符串了!! 返回map/list/pojo吧!!
     
 
-
-
-
-
 示例页面js调用:
 
-
-
-    
-    
     $.ajax({
       url: "${base}/login",
       dataType : "json",
@@ -74,40 +53,18 @@ tags:
     });
     
 
-
-
-
-
-
 **纯情 RawView:**
 
-
-
-    
-    
     @Ok("raw") //非常单纯地把返回值写入resp
     
     //虽然很外表单纯,但很有内涵哦
     // 如果返回值是File的话,会让浏览器弹出下载框哦 -- 传说中的文件下载
     // 这个视图可以接受具体ContentType哦: @Ok("raw:application/vnd.ms-excel")
     
-
-
-
-
-
-
 **一意孤行 HttpStatusView:**
 
-
-
-    
-    
     @Ok("http:403") //管你返回什么,一概sendError(403) !!
     
-
-
-
 **幕后英雄 AbstractPathView:**
 
 
@@ -116,9 +73,6 @@ tags:
 
 Nutz视图中的路径转换,就是这个类做的,我这里再描述一下这个规则:
 
-
-
-    
     
     //首先,不考虑后缀的情况下:
     // 1. 将路径中的.全部转换为/
@@ -136,8 +90,6 @@ Nutz视图中的路径转换,就是这个类做的,我这里再描述一下这�
     //JspView只是带后缀的ForwardView而已!!
     
 
-
-
 **自给自足 自定义View:**
 
 
@@ -151,31 +103,17 @@ Nutz视图中的路径转换,就是这个类做的,我这里再描述一下这�
 继承AbstractPathView的类,均支持EL表达式 
 
 
-
-    
-    
     @Ok("jsp:${obj == null ? '/index' : '/home'}") 
     // obj即方法的返回值, 事实上有需要可用的变量,例如req_attr,p,u等等非公开变量,快去看看源码吧!!
     
 
-
-
-
-
 **情况2 按需使用不同的视图:**
 
 
-
-    
-    
     return HttpStatusView(403); //当方法的返回值是View实例时,将无视@Ok的设置
     // 很多时候,你需要携带一些信息, 故,你会这样写:
     return new ViewWrapper(new JspView("fuck.gfw"), msg); //这里的msg,在JspView看来,就是方法的返回值obj
     
-
-
-
-
 
 **情况3 符合固定行为的视图:**
 
@@ -183,9 +121,6 @@ Nutz视图中的路径转换,就是这个类做的,我这里再描述一下这�
 这个就完成是自定义视图了,实现你自己的ViewMaker及View类,例如最简单的jsonext视图:
 
 
-
-    
-    
     public SuperViewMaker implements ViewMaker {
       public View make(Ioc ioc, String type, String value) {
         if ("jsonext".equals(type))

@@ -33,15 +33,15 @@ tags:
 
 由于关闭的时间点在11:37AM,故,追查nginx的access.log  , 翻翻翻, 在一堆502(Jboss已经关闭,nginx无法proxy_pass,报502)前面,有一些不寻常的请求,节选如下:
 
-/acunetix-wvs-test-for-some-inexistent-file-second-try
+	/acunetix-wvs-test-for-some-inexistent-file-second-try
 
-/console/j_security_check
+	/console/j_security_check
 
-/_vti_pvt/authors.pwd
+	/_vti_pvt/authors.pwd
 
-/phpmyadmin/main.php
+	/phpmyadmin/main.php
 
-/jmx-console/HtmlAdaptor?action=inspectMBean&name=jboss.system:type%3DServerInfo
+	/jmx-console/HtmlAdaptor?action=inspectMBean&name=jboss.system:type%3DServerInfo
 
 
 看来是被攻击了!!

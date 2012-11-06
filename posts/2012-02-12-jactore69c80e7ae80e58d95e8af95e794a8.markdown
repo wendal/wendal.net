@@ -26,10 +26,6 @@ tags:
     // 我觉得就是一个消息对象, 传递给Greeter类里面的synchronousProcessRequest方法,可以携带任意信息啦
     
 
-
-
-
-    
     
     //忽略import
     public class Greeter extends Component {
@@ -50,10 +46,6 @@ tags:
     }
     
 
-
-
-
-    
     
     //忽略全部import
     public class Main {

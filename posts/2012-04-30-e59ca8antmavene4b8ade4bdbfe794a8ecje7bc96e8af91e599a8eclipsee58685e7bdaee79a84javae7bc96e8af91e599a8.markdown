@@ -34,7 +34,9 @@ Ant换用ecj
 
 2. 下载独立的ecj.jar
 [ECJ 3.7.2](http://mirrors.ustc.edu.cn/eclipse/eclipse/downloads/drops/R-3.7.2-201202080800/ecj-3.7.2.jar)
+
 3. 将ecj-3.7.2.jar放入ant的lib文件夹中
+
 4. 如果是eclipse中跑ant,那么,需要设置一下,     Run As -- Ant Build ... -- ClassPath ,加入ecj.jar
 
 Maven换用ecj

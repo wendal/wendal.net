@@ -16,8 +16,6 @@ tags:
 Google一下,发现2种方法
 1. [直接在服务器端禁用](http://hi.baidu.com/abunchofgrape/blog/item/7211bd510a83485b1138c22c.html)
 
-    
-    
     [mysql]
     no-beep
     #.... other configure
@@ -26,7 +24,5 @@ Google一下,发现2种方法
 
 2. 或者仅仅在本地使用mysql客户端时禁用,执行命令时多加一个参数 -b
 
-    
-    
     mysql -p -u root -b
     

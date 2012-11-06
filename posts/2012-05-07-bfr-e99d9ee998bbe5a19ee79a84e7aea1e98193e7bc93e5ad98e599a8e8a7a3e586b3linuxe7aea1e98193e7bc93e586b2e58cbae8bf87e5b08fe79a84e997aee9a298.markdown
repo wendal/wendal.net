@@ -16,3 +16,46 @@ tags:
 - io
 ---
 
+官网地址: <a href="http://glines.org/software/bfr" target="_blank">http://glines.org/software/bfr</a>
+
+Google上,"Linux Pipe Buffer size","Linux管道缓冲区是否可调整""增大pipe缓冲区大小"之类的查询,能出30万条记录...
+Linux上的管道, 要不就是4k,要不就是64k, 很多时候根本不够用 -- 我遇到需求的比较夸张,每秒传输200mb的数据通过一个管道,悲催..., 问题如果从几秒钟的跨度看, 输入输出是均衡的,但细看一下, 一秒之内的输入输出非常不均衡, 导致输入输出都耗费大量时间在阻塞式读写中
+
+前一段时间,已经打算自己写一个类似的缓冲器, 桥接管道两段,做个大缓存,可惜,由于C水平有限,且找到替代方案,就不了了之
+
+终于,问题还是回来了, 而且,很巧的,我找到了bfr,一个古老的管道缓冲器(2004年之后就没有更新了...),So, 为其建立一个github的库 <a href="https://github.com/wendal/bfr" target="_blank">https://github.com/wendal/bfr</a>
+
+使用说明,简单翻译:
+
+	bfr v1.6 (c) 1999-2003 Mark Glines <mark@glines.org>
+	Usage follows:
+
+	bfr [-v|--verbose] [-t0|--threshold=0] [-T0|--timeout=0]
+        [-b100|--bufsize=100] [-p<arg>|--progress=<arg>] [-m0|--minimum=0]
+        [-T90|--throttle=90] [-C0|--speedcap=0] [<input file or -> ...]
+
+	short --long       default desc
+    -h    --help       -       display this (hopefully) helpful message.(帮助信息)
+    -v    --verbose            enable verbosity (use twice for pedantic verbosity) (详尽信息,除非你遇到bug!!)
+    -p    --progress   k1k     Enables "progress mode" (see manpage) (进度显示, 强烈建议无视这个选项)
+    -m    --minimum    600k    set the amount of buffer to reach before output
+                           begins (to ensure a full stream even at start).(低于多少缓冲,就先不输出)
+    -i    --initial    minimum Special case of --minimum to preload at the start
+                           of operation.  If unset, --mimumum value is used.(真正输出前,先接收多少数据)
+    -t    --timeout    0       time, in seconds, to wait before aborting if both
+                           input and output are locked.  0 = wait forever.(输入输出被阻塞的超时设置,基本上是用不上的)
+    -T    --throttle   90      after filling the buffer, the percentage to let the
+                           amount of onhand data to go down to before accepting
+                           more input. (缓冲区接近满的时候,停止接收数据,直至缓冲区的占有率下降)
+    -C    --speedcap   0       If set to a non-zero value, bfr will allow only
+                           this many bytes to be output per second. (限制流出的速率,基本上没用)
+
+    -b    --buffersize 1M      full size of memory buffer.(总的缓冲区大小,非常重要!!)
+
+    -f    --fork               forks off the read half, to work around buggy
+                           kernels which block even in nonblocking mode, such
+                           as when reading from a cdrom or nfs volume hangs
+
+    -o    --output     -       selects the output device(输出到哪里,默认是stdout)
+
+关于编译,虽然它提供了configure等标准的构建脚本,但实际上,仅bfr.c和bfr.h是必须的, 简单修改bfr.h,定义VERSION,移除config.h,即可直接编译bfr!!

@@ -43,7 +43,9 @@ apt-get install liblua5.1-0-dev g++
 下载lua-nginx-module 0.1.6rc2
 
 执行以下编译参数:
-./configure --add-module=simpl-ngx_devel_kit --add-module=lua-nginx-module
+
+	./configure --add-module=simpl-ngx_devel_kit --add-module=lua-nginx-module
+
 可以成功配置,make也很顺利
 
 然后试试:

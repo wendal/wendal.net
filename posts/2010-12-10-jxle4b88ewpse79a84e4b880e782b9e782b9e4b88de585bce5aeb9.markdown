@@ -19,16 +19,12 @@ tags:
 
 今天与同事探讨了一个诡异的问题,用Jxl处理一个空的excel文件,**第二次**运行就报错,代码如下:
 
-    
-    
     Workbook workbook = Workbook.getWorkbook(new File("Book1.xls"));
     WritableWorkbook w = Workbook.createWorkbook(new File("Book1.xls"),workbook);
     w.write();
     w.close();
     workbook.close();
     
-
-
 很平常的代码而已,第一次运行,Pass,第二次,FAIL! 然后把旧的空xls文件覆盖回去,第一依然PASS,再跑就FAIL
 折腾来折腾去,终于发现是因为这个xls文件是右键新建出来的. 如果打开WPS,然后新建一个,然后保存,就完全没有问题!!
 够诡异了吧... WPS的版本是: 6.6.0.2461

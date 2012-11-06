@@ -58,24 +58,13 @@ ioc的js配置文件(ioc.js,名字是随意的)
     
 
 
-
-
-
-
-
-
-
-
-
 **Ioc第一步,读取bean的配置信息** : 任何bean,都有其对应的配置信息,都必须通过一个IocLoader来读取
 
-    
-    
     IocLoader loader = new JsonLoader("ioc.js");
     
 
-
 1.从ioc.js中读取配置信息
+
 2. ioc.js中,有个前缀"var ioc ="字符串,这是为了方便Eclipse进行语法提示而已, 写不写都可以,但只能写这个字符串,这是JsonLoader所约定的
 
 
@@ -83,12 +72,6 @@ ioc的js配置文件(ioc.js,名字是随意的)
 
 
 4. 这个bean的信息,会保存在IocObject中, 注意,这是配置信息, 真正的对象并未生成
-
-
-
-
-
-
 
 
 **第二步,生成Ioc容器**

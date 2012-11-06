@@ -28,12 +28,8 @@ tags:
 
 找到以下代码:
 
-    
-    
     String str2 = this.jdField_session_of_type_JavaxMailSession.getProperty("mail." + this.name + ".auth");
     
-
-
 另外找到一个比较详细的[JavaMail参数表](http://hi.baidu.com/jlhh/blog/item/823341434fdca71b9313c620.html),但是缺少了一个调试用的参数 -- mail.debug = true , 默认是false, 调试时加上,很多信息哦,O(∩_∩)O哈哈~
 
 后续报道: [官方API](http://java.sun.com/products/javamail/javadocs/index.html)中已经有mail.debug , 看来有点多此一举了

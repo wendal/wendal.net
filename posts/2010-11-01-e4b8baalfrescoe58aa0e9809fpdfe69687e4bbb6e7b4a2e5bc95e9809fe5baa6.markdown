@@ -24,16 +24,16 @@ tags:
 
     
     
-    < ?xml version="1.0" encoding="UTF-8"?>
-    < !DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+    <?xml version="1.0" encoding="UTF-8"?>
+    <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
     <beans>
             
-            <bean id="transformer.PdfBox" class="java.lang.String"></bean>
+      <bean id="transformer.PdfBox" class="java.lang.String"></bean>
             
-            <bean id="transformer.complex.OpenOffice.PdfBox" class="java.lang.String"></bean>
+      <bean id="transformer.complex.OpenOffice.PdfBox" class="java.lang.String"></bean>
     
             
-            <bean id="transformer.PdfToTextTool" class="org.alfresco.repo.content.transform.RuntimeExecutableContentTransformerWorker">
+      <bean id="transformer.PdfToTextTool" class="org.alfresco.repo.content.transform.RuntimeExecutableContentTransformerWorker">
                     <property name="mimetypeService">
              		<ref bean="mimetypeService"></ref>
           		</property>
@@ -81,7 +81,7 @@ tags:
     </bean>
     
        
-       <bean id="transformer.complex.OpenOffice.PdfToTextTool" parent="baseContentTransformer" class="org.alfresco.repo.content.transform.ComplexContentTransformer">
+    <bean id="transformer.complex.OpenOffice.PdfToTextTool" parent="baseContentTransformer" class="org.alfresco.repo.content.transform.ComplexContentTransformer">
           <property name="transformers">
              <list>
                 <ref bean="transformer.OpenOffice"></ref>

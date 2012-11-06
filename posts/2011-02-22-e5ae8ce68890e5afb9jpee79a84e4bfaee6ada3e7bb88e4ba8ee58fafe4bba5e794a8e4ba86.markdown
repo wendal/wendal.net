@@ -33,21 +33,21 @@ Fix:
 when save method whit "invokeinterface" , app fail.
 
 File change:
-//---------------------------------------------------------------
-JAsmParser.java line 169~170:
-int arg1 = getMethodConstRef(instrElems, cpg, labels);
-int arg2 = Utility.methodSignatureArgumentTypes(getDescrFromFullMethod(instrElems[1])).length;
 
-//---------------------------------------------------------------
-ConstantInterfaceMethodrefInfo.java Override getVerbose() :
+	JAsmParser.java line 169~170:
+	int arg1 = getMethodConstRef(instrElems, cpg, labels);
+	int arg2 = Utility.methodSignatureArgumentTypes(getDescrFromFullMethod(instrElems[1])).length;
 
-public String getVerbose() throws InvalidByteCodeException {
-    ConstantNameAndTypeInfo nameAndType = getNameAndTypeInfo();
+	//---------------------------------------------------------------
+	ConstantInterfaceMethodrefInfo.java Override getVerbose() :
 
-    return classFile.getConstantPoolEntryName(classIndex) + "/" +
+	public String getVerbose() throws InvalidByteCodeException {
+    	ConstantNameAndTypeInfo nameAndType = getNameAndTypeInfo();
+
+    	return classFile.getConstantPoolEntryName(classIndex) + "/" +
                classFile.getConstantPoolEntryName(nameAndType.getNameIndex())
                +classFile.getConstantPoolEntryName(nameAndType.getDescriptorIndex());
-}
+	}
 
 I check my class file, it work. I hope it work for you too.
 

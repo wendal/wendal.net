@@ -21,9 +21,7 @@ tags:
 我想,为啥不直接让Dom对象边转换,边写入流呢? 这样效率应该最高哦,内存占用也会低.
 故马上Google,查到[一篇文章相关的文章(Writing Out a DOM as an XML File)](http://download.oracle.com/javaee/1.4/tutorial/doc/JAXPXSLT4.html),感觉上是能够解决这个问题的.
 原文是英文,而且一大堆解释,我精简如下:
-
-    
-    
+ 
     //先创建一个Dom
     DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
     DocumentBuilder builder = factory.newDocumentBuilder();
@@ -35,7 +33,4 @@ tags:
     StreamResult result = new StreamResult(os);//这里的os就是OutputStream对象.
     transformer.transform(source, result);
     
-
-
-
 手头没有更大的XML文件,故只拿了一个200k的XML,Dom-->Stream的时间,约60ms. 算是可以接受了.

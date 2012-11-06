@@ -23,25 +23,15 @@ tags:
 然后发现锚点总是失效,无法跳转, 最后才发现,锚点的目标地anchor, 使用 Anchor anchor = new Anchor(); 生成, 页面上无显示!!
 
 实例:
-
-    
     
     Anchor anchorDest = new Anchor(); anchorDest.setName("dest");
     Anchor anchorSrc = new Anchor("From"); anchorDest.setReference("#dest");
-    
-
 
 无法跳转! 即使写成 
 
-    
-    
     Anchor anchorDest = new Anchor(" ");
-    
 
-
-,一样无法跳转, 必须写成:
-
-    
+一样无法跳转, 必须写成:
     
     Anchor anchorDest = new Anchor("To here");
     

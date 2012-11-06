@@ -49,6 +49,7 @@ tags:
 附上访问Google Docs简单方法:
 修改Host文件     C:\WINDOWS\system32\drivers\etc\hosts
 添加:
-209.85.225.101 docs.google.com
-74.125.127.100 writely.google.com
-72.14.203.100 spreadsheets.google.com
+
+	209.85.225.101 docs.google.com
+	74.125.127.100 writely.google.com
+	72.14.203.100 spreadsheets.google.com

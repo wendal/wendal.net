@@ -53,6 +53,7 @@ JAVA获取类的方法的参数名 -- 老话题,新方法!!
 2. DataInputStream.readUnsignedShort()的返回值是int,而readShort的返回值是short,以前一直以为short是无符号的呢!! 好吧,还有readUnsignedByte方法
 
 3. 常量池中的CONSTANT_Long和CONSTANT_Double是8byte数据,其之后的一个常量池位置,是不可使用的,必须跳过. 贴一下JVM标准的中的描述:
+
 All 8-byte constants take up two entries in the constant_pool table of the class ﬁle. If a
 CONSTANT_Long_info or CONSTANT_Double_info structure is the item in the
 constant_pool table at index n, then the next usable item in the pool is located at index

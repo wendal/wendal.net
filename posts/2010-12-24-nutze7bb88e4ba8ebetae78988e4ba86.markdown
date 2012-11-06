@@ -21,7 +21,5 @@ tags:
 另外, 提交到Maven现在正在进行中,缓慢地上传... 我可是1M的小水管.
 顺便Mask一下生产asc签名的方法,copy自[GPG快速入门](http://www.madboa.com/geek/gpg-quickstart/):
 
-    
-    
     gpg --armor --detach-sign your-file.zip
     

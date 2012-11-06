@@ -20,7 +20,7 @@ tags:
 
 启动代码是这样的:
 
-java -cp . -Djava.ext.dirs=. xxx.yyy.Main deploy.properties
+	java -cp . -Djava.ext.dirs=. xxx.yyy.Main deploy.properties
 
 在当前目录有 XXX.jar deploy.properties a.zip 还有就是一堆类文件在 org文件夹下, 整个文件夹的文件,就是a.zip的解压出来的.
 
@@ -30,7 +30,7 @@ deploy.properties就是我修改的配置文件,结果无论怎么改,程序都�
 
 奇怪,为啥呢??!! 竟然zip文件都当成jar文件处理?? 找来一个有Main类的jar文件,并改名为XXXX.zip,执行:
 
-java -cp XXXX.zip xxx.yyy.Main     结果正常启动了!!
+	java -cp XXXX.zip xxx.yyy.Main     结果正常启动了!!
 
 再狠一点,改为后缀改为rar, 执行 java -cp XXXX.rar xxx.yyy.Main , 结果一样,照样运行!!
 
