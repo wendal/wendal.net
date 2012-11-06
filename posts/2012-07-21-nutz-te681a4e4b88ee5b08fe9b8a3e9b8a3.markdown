@@ -13,4 +13,4 @@ tags:
 - 鸣鸣
 ---
 
-[![](http://wendal.net/wp-content/uploads/2012/07/DSCF06572.jpg)](http://wendal.net/wp-content/uploads/2012/07/DSCF06572.jpg)
+<img src="{{urls.media}}/2012/07/DSCF06572.jpg"></img>

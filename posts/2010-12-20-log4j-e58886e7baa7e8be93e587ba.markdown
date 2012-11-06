@@ -59,4 +59,8 @@ tags:
     
 通过定义不同组合的LevelRangeFilter/LevelMatchFilter,让特定的appender只记录你需要的log等级,非常方便的!
 
-详细参考,请查阅Log4j的[JavaDoc](http://logging.apache.org/log4j/1.2/apidocs/) [Filter](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/spi/Filter.html) [PropertyConfigurator](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PropertyConfigurator.html)
+详细参考,请查阅Log4j:
+
+[JavaDoc](http://logging.apache.org/log4j/1.2/apidocs/) 
+[Filter](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/spi/Filter.html) 
+[PropertyConfigurator](http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PropertyConfigurator.html)

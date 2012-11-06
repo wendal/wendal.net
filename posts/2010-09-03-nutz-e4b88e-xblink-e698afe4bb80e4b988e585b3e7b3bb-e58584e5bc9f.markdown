@@ -28,15 +28,15 @@ tags:
 
 而 Nutz与XBlink的关系
 
-	1. 严格来说只是兄弟项目,两种并未依赖关系. 不过, XBlink的主要提交者 E-hunter, 同时也是Nutz的commiter之一.
+1. 严格来说只是兄弟项目,两种并未依赖关系. 不过, XBlink的主要提交者 E-hunter, 同时也是Nutz的commiter之一.
 
-	2. Nutz.Plugin与XBlink的Driver机制,异曲同工.  还有就是Nutz.Resource与XBlink的ClassScaner.
+2. Nutz.Plugin与XBlink的Driver机制,异曲同工.  还有就是Nutz.Resource与XBlink的ClassScaner.
 
-	3. 而XBlink,现有的Log几乎没有,难以跟踪.Nutz已经做了不少功课
+3. 而XBlink,现有的Log几乎没有,难以跟踪.Nutz已经做了不少功课
 
-	4. XBlink 非常早就关注性能,应该与其定位有关.Nutz的性能测试,依旧非常简陋,几乎没有
+4. XBlink 非常早就关注性能,应该与其定位有关.Nutz的性能测试,依旧非常简陋,几乎没有
 
-	5. Nutz已经有比较完善的文档Wiki/构建方法, XBlink还比较缺
+5. Nutz已经有比较完善的文档Wiki/构建方法, XBlink还比较缺
 
 当然, 3/5,Nutz都能帮上忙. XBlink一发布就是0.5版,感觉上作者信心很足哦, 现在已经发布了0.6 , ^_^,  不过,貌似还没有一个比较明确的发布计划.
 

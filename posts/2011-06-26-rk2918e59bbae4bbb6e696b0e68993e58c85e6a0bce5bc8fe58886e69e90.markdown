@@ -30,7 +30,7 @@ loader信息 0x19~0x20 共8个字节,前4个字节是偏移量,后4个字节是�
 update.img信息0x22~0x29 共8个字节,与loader信息含义一致
 
 附图片:
-[![](http://wendal.net/wp-content/uploads/2011/06/RK2918_IMG_Format.jpg)](http://wendal.net/wp-content/uploads/2011/06/RK2918_IMG_Format.jpg)
+[RK2918_IMG_Format.jpg]({{urls.media}}/2011/06/RK2918_IMG_Format.jpg)
 
 我已经实现的版本:
 [https://github.com/wendal/teclast_tools](https://github.com/wendal/teclast_tools) 源码

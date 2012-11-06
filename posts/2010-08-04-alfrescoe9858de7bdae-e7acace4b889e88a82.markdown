@@ -49,10 +49,10 @@ UI, 属于web-client-config.xml的自定义版本 web-client-config-custom.xml,�
 
 有用的链接:
 
-[http://wiki.alfresco.com/wiki/WorkflowAdministration
+[alfresco WorkflowAdministration](http://wiki.alfresco.com/wiki/WorkflowAdministration)
 
-[http://wiki.alfresco.com/wiki/Workflow_Console](http://wiki.alfresco.com/wiki/Workflow_Console)
+[alfresco Workflow_Console](http://wiki.alfresco.com/wiki/Workflow_Console)
 
-[http://docs.jboss.com/jbpm/v3/userguide/](http://docs.jboss.com/jbpm/v3/userguide/)
+[jbpm userguide/](http://docs.jboss.com/jbpm/v3/userguide/)
 
-[http://wiki.alfresco.com/wiki/Data_Dictionary_Guide](http://wiki.alfresco.com/wiki/Data_Dictionary_Guide)
+[alfresco Data_Dictionary_Guide](http://wiki.alfresco.com/wiki/Data_Dictionary_Guide)

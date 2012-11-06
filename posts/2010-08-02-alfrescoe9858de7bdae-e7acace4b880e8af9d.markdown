@@ -24,7 +24,7 @@ tags:
 
 **1. 有用的信息**
 
-Alfresco下载地址 社区版 [_http://wiki.alfresco.com/wiki/Download_Community_Edition_](http://wiki.alfresco.com/wiki/Download_Community_Edition) 企业版可以试用30天,区别不大.
+Alfresco下载地址 [社区版](http://wiki.alfresco.com/wiki/Download_Community_Edition) 企业版可以试用30天,区别不大.
 
 **2. 安装**
 

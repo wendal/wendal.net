@@ -28,11 +28,15 @@ tags:
     }
     
 2. Nutz.Aop与Spring.Aop相比,无法拦截构造方法,静态方法
+
 3. Nutz.Dao与Hibernate相比,没有缓存层,无自动update表结构,没有复杂的映射关系管理,没有XML< -->POJO转换工具
+
 4. Nutz.MVC 没有校验功能,没有配置方式的URL映射
+
 5. Nutz.MVC 与Struts2相比, 没有标签库
+
 6. Nutz.Lang 与Apache Common 系列相比, 很多功能都没有
-... ... ...
+
 
 问题是,我们需要这些功能吗??
 

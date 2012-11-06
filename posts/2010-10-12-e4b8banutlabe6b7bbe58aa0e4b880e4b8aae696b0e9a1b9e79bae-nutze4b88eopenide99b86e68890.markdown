@@ -22,7 +22,7 @@ tags:
 
 使用即将发布的Nutz 1.a.32 ,加 JOpenID 1.0.7
 
-地址: [](http://code.google.com/p/nutzlab/source/browse/#svn/trunk/NutOpenID)
+地址: [http://code.google.com/p/nutzlab/source/browse/#svn/trunk/NutOpenID](http://code.google.com/p/nutzlab/source/browse/#svn/trunk/NutOpenID)
 
 同时,发现JOpenID 1.0.7的一个Bug.
 JOpenID 默认使用UTF-8来对参数进行getBytes. 当参数中还有非英文字符,且没有配置URIEncoding时,获取的byte[]是错误的.
@@ -60,5 +60,3 @@ JOpenID 默认使用UTF-8来对参数进行getBytes. 当参数中还有非英文
     
     //.....
     }
-    
-项目地址: [http://code.google.com/p/nutzlab/source/browse/#svn/trunk/NutOpenID](http://code.google.com/p/nutzlab/source/browse/#svn/trunk/NutOpenID)

@@ -38,7 +38,7 @@ JAVA获取类的方法的参数名 -- 老话题,新方法!!
 3. 实现方法到descriptor的转换函数,因为字节码中的方法签名,是descriptor格式的
 
 代码中含义泛型,直接贴这里的话,页面显示比较麻烦,就上个截图吧.
-[caption id="attachment_395" align="aligncenter" width="531" caption="获取方法形参名称(Java)"][![获取方法形参名称(Java)](http://wendal.net/wp-content/uploads/2012/03/获取方法形参.jpg)](http://wendal.net/wp-content/uploads/2012/03/获取方法形参.jpg)[/caption]
+<img src="{{urls.media}}/2012/03/method_param.jpg"></img>
 
 代码已经提交到nutz,并添加了一个[gist](https://gist.github.com/2011728),欢迎使用,如果有任何解析失败的类,非常欢迎发送给我进行检测.
 

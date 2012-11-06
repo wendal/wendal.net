@@ -57,9 +57,9 @@ apt-get install liblua5.1-0-dev g++
 
 神奇啊... 难道真的是bug?
 如果直接在auto/cc/gcc将:
-NGX_GCC_OPT="-O"
+	NGX_GCC_OPT="-O"
 改为
-NGX_GCC_OPT="-O2 -lprofile" 是能够pass的. --> 写错了!! 应该是-lprofiler
+	NGX_GCC_OPT="-O2 -lprofile" 是能够pass的. --> 写错了!! 应该是-lprofiler
 
 好吧,困了,睡觉,明天报个issue.
 

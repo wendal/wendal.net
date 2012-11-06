@@ -10,4 +10,4 @@ categories:
 - 未分类
 ---
 
-[![](http://wendal.net/wp-content/uploads/2012/03/p_large_7rdv_2c51000037bc1263.jpg)](http://wendal.net/wp-content/uploads/2012/03/p_large_7rdv_2c51000037bc1263.jpg)
+<img src="{{urls.media}}/2012/03/p_large_7rdv_2c51000037bc1263.jpg"></img>

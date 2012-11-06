@@ -16,4 +16,4 @@ tags:
 
 上一张鸣鸣的小照片, 2个月的时候
 
-[![鸣鸣2个月的小照片](http://wendal.net/wp-content/uploads/2012/02/20110329564-225x300.jpg)](http://wendal.net/wp-content/uploads/2012/02/20110329564.jpg)
+[鸣鸣2个月的小照片]({{urls.media}}/2012/02/20110329564-768x1024.jpg)

@@ -13,4 +13,4 @@ tags:
 - Nutz
 ---
 
-[caption id="attachment_430" align="aligncenter" width="440" caption="Nutz的代码就是这么来滴~~~~"][![Nutz的代码就是这么来滴~~~~](http://wendal.net/wp-content/uploads/2012/06/6f91c323jw1dtdb6o9986j.jpg)](http://wendal.net/wp-content/uploads/2012/06/6f91c323jw1dtdb6o9986j.jpg)[/caption]
+<img src="{{urls.media}}/2012/06/6f91c323jw1dtdb6o9986j.jpg">Nutz的代码就是这么来滴~~~~</img>

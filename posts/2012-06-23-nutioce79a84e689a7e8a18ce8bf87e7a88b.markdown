@@ -47,8 +47,8 @@ ioc的js配置文件(ioc.js,名字是随意的)
 **Ioc第一步,读取bean的配置信息** : 任何bean,都有其对应的配置信息,都必须通过一个IocLoader来读取
 
     IocLoader loader = new JsonLoader("ioc.js");
-    
-1.从ioc.js中读取配置信息
+ 
+1. 从ioc.js中读取配置信息
 
 2. ioc.js中,有个前缀"var ioc ="字符串,这是为了方便Eclipse进行语法提示而已, 写不写都可以,但只能写这个字符串,这是JsonLoader所约定的
 
@@ -77,11 +77,11 @@ ioc的js配置文件(ioc.js,名字是随意的)
 
 5. 收尾的一步, 看看这个bean,是否为单例,是否需要保存到app作用域--大部分的bean都是单例的
 
-// 每一作用域(IocContext),都管理着符合其生命周期的bean -- 默认情况下,bean都是app作用域的,单例的
+    // 每一作用域(IocContext),都管理着符合其生命周期的bean -- 默认情况下,bean都是app作用域的,单例的
 
-// 如果bean还定义了create/fetch等IocEvent的话,那么,这时候也会触发
+    // 如果bean还定义了create/fetch等IocEvent的话,那么,这时候也会触发
 
-6.将bean作为返回值,交给用户
+6. 将bean作为返回值,交给用户
 
 ==补充一句,整个流程,等价于:
 
@@ -89,6 +89,7 @@ ioc的js配置文件(ioc.js,名字是随意的)
     pet.setName("wendal");
     
 **延伸一下:**
+
 **1. 注解式Ioc**
 
     IocLoader loader = AnnotationIocLoader("net.wendal.test");

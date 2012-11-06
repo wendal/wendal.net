@@ -14,6 +14,7 @@ tags:
 
 有时候需要用MySQL客户端导入sql文件,一不小心就容易出错,然后就是一段刺耳的报警声,很是烦人!
 Google一下,发现2种方法
+
 1. [直接在服务器端禁用](http://hi.baidu.com/abunchofgrape/blog/item/7211bd510a83485b1138c22c.html)
 
     [mysql]

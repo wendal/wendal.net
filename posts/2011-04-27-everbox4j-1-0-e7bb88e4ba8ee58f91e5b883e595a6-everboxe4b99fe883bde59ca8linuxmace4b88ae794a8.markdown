@@ -42,4 +42,4 @@ http://code.google.com/p/everbox4j/downloads/list](http://code.google.com/p/ever
 
 这是一款开源的,免费的,非盈利的Java程序,不得用于任何非法行为!!!
 
-[![](http://wendal.net/wp-content/uploads/2011/04/Everbox4j-1.0.jpg)](http://wendal.net/wp-content/uploads/2011/04/Everbox4j-1.0.jpg)
+[Everbox4j-1.0.jpg]({urls.media}}/2011/04/Everbox4j-1.0.jpg)

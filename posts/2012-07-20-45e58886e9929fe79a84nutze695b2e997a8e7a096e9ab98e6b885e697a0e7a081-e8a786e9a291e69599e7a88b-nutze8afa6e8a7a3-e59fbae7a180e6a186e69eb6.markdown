@@ -23,6 +23,6 @@ Nutz入门教程, 高清无码哦
 
 长达45分钟,让你一次性体会Nutz的3大块: Mvc Ioc Dao
 
-[![45分钟的Nutz敲门砖1](http://wendal.net/wp-content/uploads/2012/07/未命名.jpg)](http://wendal.net/wp-content/uploads/2012/07/未命名.jpg)
+<img src="{{urls.media}}/2012/07/A.jpg"></img>
 
-[![45分钟的Nutz敲门砖2](http://wendal.net/wp-content/uploads/2012/07/未命名2.jpg)](http://wendal.net/wp-content/uploads/2012/07/未命名2.jpg)
+<img src="{{urls.media}}/2012/07/B.jpg"></img>

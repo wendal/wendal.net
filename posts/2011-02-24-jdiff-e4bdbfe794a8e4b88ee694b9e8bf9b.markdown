@@ -35,6 +35,7 @@ JDiff报告,就是描述不同版本的代码之间的API差异, 如某某public
 地址: [jdiff-1.1.1-Modify-by-Wendal.zip](https://docs.google.com/leaf?id=0B8hUXYDeoy_hMjViMjBlMGEtMDlkMi00NjllLWE0MjctNmUxNWI3N2QzZjE2&hl=zh_CN)
 
 附上对原版的修改:
+
 1. 移除对xerces.jar的依赖,
 将XML2API中的代码:
 
@@ -65,5 +66,5 @@ JDiff报告,就是描述不同版本的代码之间的API差异, 如某某public
     			jd.setEncoding(proj.getEncoding());
     			jd.setDocencoding(proj.getEncoding());
     			jd.setCharset(proj.getEncoding());
-    		}
+    }
     

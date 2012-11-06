@@ -65,7 +65,7 @@ tags:
     make
     #一起顺利的话,恭喜你,成功了!!
     
-6 编译具体的模块,以cifs.ko为例
+6. 编译具体的模块,以cifs.ko为例
 
     #打开配置选项界面
     make menuconfig

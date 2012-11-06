@@ -15,11 +15,11 @@ tags:
 
 广州市花都区梯面镇,一小片的樱花树
 
-[caption id="attachment_380" align="aligncenter" width="300" caption="鸣鸣与樱花合影"][![鸣鸣与樱花合影](http://wendal.net/wp-content/uploads/2012/02/C-300x225.jpg)](http://wendal.net/wp-content/uploads/2012/02/C.jpg)[/caption]
+<img src="{{urls.media}}/2012/02/C-300x225.jpg">鸣鸣与樱花合影</img>
 
-[caption id="attachment_382" align="aligncenter" width="300" caption="小樱花特写2"][![小樱花特写2](http://wendal.net/wp-content/uploads/2012/02/DSCF0983-300x225.jpg)](http://wendal.net/wp-content/uploads/2012/02/DSCF0983.jpg)[/caption]
+<img src="{{urls.media}}/2012/02/DSCF0983-300x225.jpg">小樱花特写2</img>
 
-[caption id="attachment_381" align="aligncenter" width="300" caption="小樱花特写1"][![小樱花特写1](http://wendal.net/wp-content/uploads/2012/02/DSCF0986-300x225.jpg)](http://wendal.net/wp-content/uploads/2012/02/DSCF0986.jpg)[/caption]
+<img src="{{urls.media}}2012/02/DSCF0986-300x225.jpg">小樱花特写1</img>
 
 相机: 富士, 非单反, 纯傻瓜机
 未PS,但用Windows自带的画图工具缩小的尺寸.

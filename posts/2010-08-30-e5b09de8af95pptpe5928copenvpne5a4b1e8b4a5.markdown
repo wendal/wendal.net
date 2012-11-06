@@ -19,4 +19,4 @@ tags:
 
 昨天去了一趟华南植物园,附图:
 
-[![](http://myblog.sunfarms.net/wp-content/uploads/2010/08/DSCF0189-300x225.jpg)](http://myblog.sunfarms.net/wp-content/uploads/2010/08/DSCF0189.jpg)
+<img src="{{urls.media}}/uploads/2010/08/DSCF0189-1024x768.jpg"></img>

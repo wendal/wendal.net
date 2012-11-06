@@ -26,4 +26,4 @@ tags:
 工作耽误了一些,明后两天加班,呵呵
 
 附回执,嘻嘻,关键信息都已经涂黑:
-[![](http://wendal.net/wp-content/uploads/2011/05/MM_SF-300x225.jpg)](http://wendal.net/wp-content/uploads/2011/05/MM_SF.jpg)
+[MM_SF-300x225.jpg]({{urls.media}}/2011/05/MM_SF.jpg)

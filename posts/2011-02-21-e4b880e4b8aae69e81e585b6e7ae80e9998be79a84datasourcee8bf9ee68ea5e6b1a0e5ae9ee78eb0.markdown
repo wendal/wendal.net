@@ -153,6 +153,7 @@ tags:
 4. XXX都没法配置
 
 调用方法:
+
 1. 直接创建:
 
     DataSource dataSource = new SimpleDataSource("jdbc:h2:mem:~","org.h2.Driver","sa","sa");

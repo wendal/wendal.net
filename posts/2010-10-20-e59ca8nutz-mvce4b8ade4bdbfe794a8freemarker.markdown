@@ -24,7 +24,8 @@ tags:
 前几天,我使用另外一种更简单的方法来实现(基于Nutz 1.a.33版新增的内部重定向视图),我使用的是Freemarker 2.3.16
 首先, 在web.xml添加Freemarker官方文档描述的FreemarkerServlet, <a href="http://freemarker.sourceforge.net/docs/pgui_misc_servlet.html">查看原文描述</a>.
 
-  <servlet>
+
+    <servlet>
     <servlet-name>freemarker</servlet-name>
     <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
     <init-param>
@@ -54,12 +55,12 @@ tags:
     </init-param>
 
     <load-on-startup>1</load-on-startup>
-  </servlet>
+    </servlet>
 
-  <servlet-mapping>
+    <servlet-mapping>
     <servlet-name>freemarker</servlet-name>
     <url-pattern>*.ftl</url-pattern>
-  </servlet-mapping>
+    </servlet-mapping>
 
 然后在需要Freemarker渲染的方法上,添加:
 

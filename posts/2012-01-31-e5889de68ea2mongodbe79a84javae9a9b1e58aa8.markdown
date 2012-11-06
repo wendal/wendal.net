@@ -25,7 +25,7 @@ tags:
 
 **1. 数据格式传递**
 上个自己画的图
-[![](http://wendal.net/wp-content/uploads/2012/01/Mongodb-Java驱动基本流程-300x94.png)](http://wendal.net/wp-content/uploads/2012/01/Mongodb-Java驱动基本流程.png)
+[Mongodb-Java驱动基本流程]({{urls.media}}/2012/01/Mongodb-Java.png)
 
 驱动里面操作的,是DBObject(用户提供的和已经转为Command格式的DBObject),OutMessage(可以转为byte[]写入Socket),Response,WriteResult(用户真正拿到的返回值)
 

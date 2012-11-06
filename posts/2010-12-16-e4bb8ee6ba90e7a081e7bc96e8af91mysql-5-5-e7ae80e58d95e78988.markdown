@@ -19,6 +19,7 @@ tags:
 [MySQL 5.5](http://dev.mysql.com/downloads/mysql/)分支,今天[终于发布 5.5.8 GA](http://www.oschina.net/news/13830/mysql-5-5-final)了.
 
 一贯风格,尝鲜,马上编译之. 折腾了一段时间,发现需要用[cmake](http://www.cmake.org/)进行配置了
+
 1. 先安装cmake和ccmake
 
     sudo apt-get install cmake cmake-curses-gui libncurses5-dev

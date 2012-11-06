@@ -27,7 +27,7 @@ tags:
 
 这次,我还是打算用Alfresco集成的jBpm,因为它提供了预设的UI,无需另外编写.
 
-参考地址: http://wiki.alfresco.com/wiki/WorkflowAdministration
+参考地址: [WorkflowAdministration](http://wiki.alfresco.com/wiki/WorkflowAdministration)
 
 需要建立Model和Define,Resource
 
