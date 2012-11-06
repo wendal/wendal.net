@@ -1,6 +1,6 @@
 ---
 title : About Me
-description:
+description: Wendal是谁啊?!
 ---
 
-Hello, how are you?
+纯种Coder,现供职于XX公司
