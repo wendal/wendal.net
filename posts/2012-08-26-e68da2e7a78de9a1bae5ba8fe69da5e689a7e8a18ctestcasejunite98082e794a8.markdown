@@ -16,16 +16,8 @@ tags:
 
 Junit的TestCase,总是按固定的顺序执行的. 正如你在Eclipse中跑Run As Junit Test, 无论你跑多少次, TestCase的执行顺序都是一致的,可重复的. 这就导致一个问题, TestCase之间的独立性无法保证.
 
-
-
-
-
 例如下面一个Test类中的2个TestCase:
 
-
-
-    
-    
     public class DaoTest {
     
         @Test
@@ -43,23 +35,14 @@ Junit的TestCase,总是按固定的顺序执行的. 正如你在Eclipse中跑Run
     
     }
     
-
-
 如果先执行test_count()然后执行test_insert(),两个TestCase都能通过.
 
-
 但如果先执行test_insert(),然后执行test_count(),则test_count()会失败.
-
-
-
-
 
 所以,有必要去打乱TestCase的默认执行顺序,以暴露出TestCase本身的问题. TestCase更可靠,才能让主代码更可靠.
 
 我实现了一个简单的方式,使用的是Junit的公开API, 测试过4.3和4.8.2,均可使用:
 
-    
-    
             //得到所有带@Test的方法,这里用的是Nutz的资源扫描,反正你能得到全部Test类就行
             List<Class> list = Scans.me().scanPackage("org.nutz");
             List<request> reqs = new ArrayList<request>();
@@ -149,13 +132,6 @@ Junit的TestCase,总是按固定的顺序执行的. 正如你在Eclipse中跑Run
                 }
             }
     
-
-
-
-
-
 来, 考验一下你的TestCase吧!! 让它在乱序中多次执行. Nutz按这种思路,已经爆出几个Bug(当然,我已经迅速fix了)
-
-
 
 [https://github.com/nutzam/nutz/blob/master/test/org/nutz/AdvancedTestAll.java](https://github.com/nutzam/nutz/blob/master/test/org/nutz/AdvancedTestAll.java)

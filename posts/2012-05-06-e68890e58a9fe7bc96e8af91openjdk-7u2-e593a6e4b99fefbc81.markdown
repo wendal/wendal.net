@@ -30,31 +30,19 @@ mysql5.5       使用cmake
 
 **准备工作**
 
-    
-    
     apt-get build-dep openjdk-6
     apt-get install openjdk-6-jdk
     apt-get install libasound-dev build-essential
     
-
-
-
 **下载OpenJDK 7 update 2 的源码**
 
-    
-    
     cd /opt
     wget http://www.java.net/download/openjdk/jdk7u2/promoted/b13/openjdk-7u2-fcs-src-b13-17_nov_2011.zip
     unzip openjdk-7u2-fcs-src-b13-17_nov_2011.zip
     cd /opt/openjdk
     
-
-
-
 **开始编译，会经历多个错误zzZZ**
 
-    
-    
     export ALT_BOOTDIR=/usr/lib/jvm/java-1.6.0-openjdk-amd64
     export LANG=c
     jdk/make/jdk_generic_profile.sh
@@ -85,7 +73,6 @@ mysql5.5       使用cmake
     #好了，你最后一次跑make了，这次应该能够成功了！！
     make ALLOW_DOWNLOADS=true
     
-    
     #漫长编译后，你终于能看到编译成功的提示：
     ########################################################################
     ##### Leaving jdk for target(s) sanity all docs images             #####
@@ -107,13 +94,8 @@ mysql5.5       使用cmake
     -------------------------
     make[1]: Leaving directory `/opt/openjdk'
     
-
-
-
 **大功告成，来玩玩吧！**
 
-    
-    
     #现在，跑一下你的OpenJDK 7u2吧！！
     /opt/openjdk/build/linux-amd64/bin/java -version
     openjdk version "1.7.0-internal"

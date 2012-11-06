@@ -27,8 +27,6 @@ tags:
 
 **演示,实时proxy_pass,每读取1k就往浏览器写1k数据:**
 
-    
-    
     local url = 'http://'
     if ngx.var.http_host then
        url = url .. ngx.var.http_host 
@@ -50,13 +48,8 @@ tags:
         ngx.eof()
     end
     
-
-
-
 核心扩展点,这是http.lua中的代码,我在这里附上中文注释:
 
-    
-    
     -- proxy_pass方法支持3种回调哦
     -- 提醒一句,回调里面,你可以调用任意ngx_lua的代码哦,就是说,你连ngx.exit(404)之类的中断请求的操作,也是完全可以的
     function proxy_pass(self, reqt)
@@ -91,9 +84,6 @@ tags:
         return request(self, nreqt)
     end
     
-
-
-
 安装:
 先编译[openresty](http://openresty.org/)
 将lib/resty/url.lua和lib/resty/http.lua拷贝进openresty的lualib中

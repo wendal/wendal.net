@@ -54,7 +54,6 @@ tags:
 	2011-09-26 23:12:37,470 MongoSessionManager:save:org.eclipse.jetty.nosql.NoSqlSession:wendal-mongodb-worker426chatn2460pobw6a4a6m14@1179468258
 	2011-09-26 23:12:37,473 MongoSessionManager:save:db.sessions.update({ "id" : "wendal-mongodb-worker426chatn2460pobw6a4a6m14" , "valid" : true},{ "$inc" : { "context.::*.__metadata__.version" : 1} , "$set" : { "accessed" : 1317049954912 , "context.::*.org%2Enutz%2Equickstart%2Eauth%2Ebean%2EUser" : <Binary Data>}},true)
 
-
 可以看到,默认情况下,使用的是标准的Java序列化,效率当然是不太高的了,呵呵
 
 打开mongodb控制台,敲入下面的命令,也能看到登录后的session信息

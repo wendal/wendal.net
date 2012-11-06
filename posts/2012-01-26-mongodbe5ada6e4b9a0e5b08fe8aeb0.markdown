@@ -21,8 +21,6 @@ tags:
 
 实现自增(跟oralce的序列是一个概念):
 
-    
-    
     public static Integer getAutoIncreaseID(String idName) {
     	BasicDBObject query = new BasicDBObject("name", idName);
     	BasicDBObject update = new BasicDBObject("$inc", new BasicDBObject("id", 1));
@@ -32,25 +30,14 @@ tags:
     			.get("id");
     }
     
-
-
-
-
 把元素添加到数组,仅当数组中没有这个值
 
-    
-    
     BasicDBObject query = new BasicDBObject("_id", new ObjectId("XXXXXXXXXXXXXXX"));
     BasicDBObject update = new BasicDBObject("$addToSet", new BasicDBObject("tags", tag));
     db.getCollection().update(query, update);
     
-
-
-
 OpenId的登录信息,放入Mongodb中存放,使用JopenId
 
-    
-    
     package org.nutz.viv.module;
     
     @IocBean
@@ -99,9 +86,6 @@ OpenId的登录信息,放入Mongodb中存放,使用JopenId
         }
     }
     
-
-
-
 findAndModify是个好东西,呵呵
 
 最后,mark一下Mongodb手册的下载地址: [http://dl.mongodb.org/dl/docs/](http://dl.mongodb.org/dl/docs/)

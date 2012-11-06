@@ -18,8 +18,6 @@ tags:
 
 需求:传入一个str类型的变量,其值是一个完整的合法的Python函数定义,然后为一个对象添加这个函数:
 
-    
-    
     method_str = u'''
     def say(self, name)
         print 'My name is', name
@@ -36,33 +34,21 @@ tags:
     obj.extends('say', method_str)
     obj.say('wendal') #打印出My name is wendal
     
-
-
-
 想了不少路子,在Python的QQ群里面也得到不少灵感,最后顺利实现:
 
-    
-    
         def extends(sefl, method_name, method_str) :
             #_method = None
             exec method_str + '''\n_method = %s''' % method_name
             self.__dict__[method_name] = new.instancemethod(_method, self, None)
     
-
-
-
 简单解释一下:
 method_str在exec前,改变为:
 
-    
-    
     method_str = u'''
     def say(self, name)
         print 'My name is', name
     _method = abc
     
-
-
 然后, exec执行后,_method变量就赋值为say函数
 接下来,就是Python的自省机制了,通过new模块,生成特定对象(本例中是self)的实例方法
 最后,为特定对象添加say这个函数

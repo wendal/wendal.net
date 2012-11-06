@@ -32,17 +32,13 @@ Alfresco下载地址 社区版 [_http://wiki.alfresco.com/wiki/Download_Communit
 
 启动之前,我建议你看看   安装文件夹/tomcat/shared/classes/alfresco-global.properties      ,你会看到不少有用的信息:
 
-
 	dir.root=./alf_data 非常非常核心的参数,务必使用绝对路径,能减少不必要的麻烦(例如移动文件夹后,启动报错)
-
 
 db.开头的都是数据库配置, 其中db.url就是把部分参数合成jdbc url. 关于数据库,我的建议是使用数据源,Alfresco会默认查找jndi名为jdbc/dataSource的资源作为数据源.
 
 如果你安装的时候使用默认密码admin,就会看到一个
 
-
 	alfresco_user_store.adminpassword=209c6174da490caeb422f3fa5a7ae634
-
 
 提前说一个问题--忘记管理员密码咋办? 看看这篇文章
 
@@ -67,6 +63,5 @@ Hibernate dialect Must set ,数据库连接出错啦!! 检查一下数据库是�
 **4. 启动成功**
 
 哦也,你终于启动成功了! (如果按默认安装的话,不能启动的概率=0)
-
 
 访问 [http://localhost:8080/alfresco](http://localhost:8080/alfresco) 填入你的帐号密码(例如admin/admin) 就能看到强大的Alfresco了!

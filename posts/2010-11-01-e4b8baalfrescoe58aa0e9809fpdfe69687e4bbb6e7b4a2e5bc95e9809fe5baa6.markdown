@@ -22,8 +22,6 @@ tags:
 
 新的代码:
 
-    
-    
     <?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
     <beans>
@@ -32,7 +30,6 @@ tags:
             
       <bean id="transformer.complex.OpenOffice.PdfBox" class="java.lang.String"></bean>
     
-            
       <bean id="transformer.PdfToTextTool" class="org.alfresco.repo.content.transform.RuntimeExecutableContentTransformerWorker">
                     <property name="mimetypeService">
              		<ref bean="mimetypeService"></ref>
@@ -80,7 +77,6 @@ tags:
           </property>
     </bean>
     
-       
     <bean id="transformer.complex.OpenOffice.PdfToTextTool" parent="baseContentTransformer" class="org.alfresco.repo.content.transform.ComplexContentTransformer">
           <property name="transformers">
              <list>

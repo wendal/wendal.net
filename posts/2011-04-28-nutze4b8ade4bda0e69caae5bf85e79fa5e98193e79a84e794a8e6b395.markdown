@@ -25,8 +25,6 @@ tags:
 ========================================================================
 **1. 使用properties文件**
 
-    
-    
     var ioc = {
     	config : {
     		type : "org.nutz.ioc.impl.PropertiesProxy", /*1.b.37内置的一个代理类*/
@@ -56,16 +54,12 @@ tags:
     		}
     }
     
-
-
 结合Ioc的Java调用与PropertiesProxy,无需修改Ioc内部逻辑
 这个方法依赖于1.b.37新内置的PropertiesProxy,旧版本的用户可以直接拷贝其代码来使用.
 PropertiesProxy其实就是一个对Properties类的简单封装,以便于在Ioc中使用.
 
 **2. 使用JNDI获取指定资源**
 
-    
-    
     var ioc = {
     	dao : {
     		type :"org.nutz.dao.impl.NutDao",
@@ -73,36 +67,24 @@ PropertiesProxy其实就是一个对Properties类的简单封装,以便于在Ioc
     	}
     }
     
-
-
 以上方法,仅需要在容器中配置好数据源,注入到NutDao即可.
 其他类型的JNDI资源也同样可以注入.
-
 
 ========================================================================
 **MVC篇**
 ========================================================================
 **1. 在@Ok和@Fail中使用EL表达式**
 
-    
-    
     @Ok("jsp:${obj == null ? 'index' : 'user.home'}") 
     //当返回值为null,相当于
     @Ok("jsp:index")
     //否则
     @Ok("jsp:user.index")
     
-
-
 @Ok和@Fail都支持完整的NutEL语法,功能强大而且灵活,不必为跳转到Fail视图而故意抛出异常了
 
 2. 在@Ok和@Fail中获取Request的属性值
 
-    
-    
     @Ok("jsp:${a.preURL'}") 
     
-
-
-
 待续

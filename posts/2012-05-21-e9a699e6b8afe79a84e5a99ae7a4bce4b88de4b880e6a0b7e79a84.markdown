@@ -12,16 +12,9 @@ categories:
 
 先上个google地图:
 
-
-  
 [View Larger Map](http://ditu.google.com/maps?f=d&source=embed&saddr=%E5%B9%BF%E5%B7%9E%E5%B8%82%E8%8A%B1%E9%83%BD%E5%8C%BA%E6%96%B0%E5%8D%8E%E8%A1%97%E9%94%A6%E5%B0%9A%E5%90%8D%E8%8B%91&daddr=%E9%A6%99%E6%B8%AF%E6%9F%B4%E6%B9%BE%E9%81%93%E9%B2%A4%E9%B1%BC%E9%97%A8%E5%85%AC%E5%9B%AD%E5%8F%8A%E6%B8%A1%E5%81%87%E6%9D%91&hl=en&geocode=FQAZZQEdcti_BiHOsyv7oLhdCg%3BFfPtUwEdcxHPBiG9kDx6EHJRAynv0E63eAEENDHYfuKNakENzw&aq=2&oq=%E9%A6%99%E6%B8%AF+%E9%B2%A4%E9%B1%BC%E9%97%A8%E5%85%AC%E5%9B%AD+&sll=22.840186,113.734884&sspn=1.354174,2.705383&t=w&brcurrent=3,0x3402f895a35c2bc7:0xe59e075adeae415,0%3B5,0,0&dirflg=r&ttype=now&noexp=0&noal=0&sort=def&mra=ltm&ie=UTF8&ll=22.83893,113.733585&spn=1.12796,0.99499&start=0)
 
-
-
 整个婚礼的流程如下:
-
-
-
 
 1. 律师兼主持人,宣布仪式开始,全场肃静,婚礼进行曲响起
 
@@ -46,7 +39,6 @@ categories:
 11. 律师摆好结婚证,家长上台,见证双方签字确认
 
 12. 律师宣布2人成为合法夫妻
-
 
 得强调一下,我参加的是"婚礼",而非喝喜酒
 

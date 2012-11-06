@@ -22,10 +22,6 @@ tags:
 
 附上第一个视频的lsp文件
 
-
-    
-    
-    
     ;;视频原地址: http://www.neglook.com/
     ;;lsp文件由wendal创建 http://wendal.net
     
@@ -40,7 +36,6 @@ tags:
     (generator) 
     (generator)
     (generator)   ;;连续调用几次后,现在的值应该是acc应当等于4
-    
     
     ;;费波那西数列（Fibonacci Sequence）
     
@@ -59,7 +54,4 @@ tags:
     
     (exit) ;; 执行完毕,环境关闭
     
-
-
-
 同时,我也发现一个bug,就是中文注释后的一行代码,会被无视...汗 ------- 已经提交bug report

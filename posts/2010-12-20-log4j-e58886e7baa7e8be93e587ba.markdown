@@ -22,7 +22,6 @@ tags:
 一直以来,我都以为Log4j仅能配置输出日志的最低等级,不能限定只输出某一/某些特定等级,今天,无意中发现了其实是可以的.
 先上一份普通的log4j.properties
 
-    
     log4j.rootLogger=INFO, Console, File
     
     ###### Console appender definition #######
@@ -38,7 +37,6 @@ tags:
     log4j.appender.File.layout=org.apache.log4j.PatternLayout
     log4j.appender.File.layout.ConversionPattern=%d{ABSOLUTE} %-5p [%c] %m%n
     
-
 现在需要定义一个名为File2的appender ,仅记录INFO和ERROR,哈哈,有请Log4j的Filter
 
     log4j.appender.File2=org.apache.log4j.DailyRollingFileAppender

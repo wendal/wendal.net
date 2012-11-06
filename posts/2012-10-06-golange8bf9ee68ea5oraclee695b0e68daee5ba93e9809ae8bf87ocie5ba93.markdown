@@ -19,14 +19,7 @@ tags:
 
 这是我对mattn/go-oci8的一个fork [https://github.com/wendal/go-oci8](https://github.com/wendal/go-oci8)
 
-
-
-
-
-
-
 在Linux下的安装,应该是没啥难度的了,唯独蛋疼的Windows需要介绍一下:
-
 
 `
 //假设的GOPATH指向C:\gohome
@@ -43,14 +36,6 @@ tags:
    #提醒一句, oracle.go里面的写的密码是system/123456, 实例名XE  
 `
 
-
-
-
-
-
 [视频演示](http://www.tudou.com/programs/view/yet9OngrV_4/)
-
-
-
 
 [下载视频及编译环境](https://github.com/wendal/go-oci8/downloads)

@@ -29,17 +29,10 @@ tags:
 
 由于newLISP的对外API仅2个(其中一个还不能用...),且自带的h文件比较混乱,**干脆自己写了一个h文件**[newlisp.h](https://github.com/wendal/lua-newlisp/blob/master/newLISP.h),就一行:
 
-    
-    
     char * newlispEvalStr(char * cmd); //把传入的cmd当成newlisp脚本执行,并返回char*
     
-
-
-
 然后,当然是主体c文件[newLISP.c](https://github.com/wendal/lua-newlisp/blob/master/newLISP.c)啦
 
-    
-    
     //载入lua的头文件
     #include "lua.h"
     #include "lualib.h"
@@ -71,22 +64,12 @@ tags:
        return 1;
     }
     
-
-
-
 **编译:**
 
-    
-    
     gcc -O3 -Wall -shared -o newLISP.so -lnewlisp -llua newLISP.c
     
-
-
-
 **测试:**
 
-    
-    
     $> lua
     Lua 5.1.5  Copyright (C) 1994-2012 Lua.org, PUC-Rio
     > lisp = require "newLISP"
@@ -102,14 +85,9 @@ tags:
     
     > 
     
-
-
-
-
 <del>**可以看到, 这个方法有2个很明显的问题:**
 1. 总是多一个换行
 2. 会把执行过程中的所有output都作为返回值 .. 汗...</del>
-
 
 恩, 起码能用上了
 

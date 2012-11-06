@@ -15,31 +15,10 @@ tags:
 
 纯属自己mark一下,其实就是编译为Windows GUI程序, 默认是Windows Console程序
 
-
-
-
-
-
-    
-    
     go build -ldflags -Hwindowsgui XXX.go
     
-
-
-
-
-
-
-
 参考文档 [https://golang.org/cmd/ld/](https://golang.org/cmd/ld/)
 
-
-
-
-
 续: 那怎么关掉这个程序呢?
-
-
-
 
 可选方法: 在go代码中监听一个管理端口,用浏览器或telnet访问这个端口,就执行exit操作

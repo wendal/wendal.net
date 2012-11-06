@@ -18,8 +18,6 @@ tags:
 
 上代码
 
-    
-    
     --载入ffi
     ffi = require("ffi")
     --载入newlisp
@@ -37,7 +35,6 @@ tags:
     --执行
     newlisp.newlispEvalStr(tmp)
     
-    
     ---------------------------------------------
     --------------封装一下,做个库------------------
     ---------------------------------------------
@@ -53,7 +50,4 @@ tags:
         newlisp.newlispEvalStr(tmp)
     end
     
-
-
-
 TODO: 改为[lua-newlisp](https://github.com/wendal/lua-newlisp)形式的调用

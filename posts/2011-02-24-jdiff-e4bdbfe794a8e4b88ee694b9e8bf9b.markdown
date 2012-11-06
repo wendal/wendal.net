@@ -38,8 +38,6 @@ JDiff报告,就是描述不同版本的代码之间的API差异, 如某某public
 1. 移除对xerces.jar的依赖,
 将XML2API中的代码:
 
-    
-    
     String parserName = System.getProperty("org.xml.sax.driver");
     if (parserName == null) {
         parser = org.xml.sax.helpers.XMLReaderFactory.createXMLReader("org.apache.xerces.parsers.SAXParser");
@@ -47,20 +45,12 @@ JDiff报告,就是描述不同版本的代码之间的API差异, 如某某public
         parser = org.xml.sax.helpers.XMLReaderFactory.createXMLReader();
     }
     
-
-
 改为:
 
-    
-    
     parser = org.xml.sax.helpers.XMLReaderFactory.createXMLReader();
     
-
-
 2. 中文支持,为ProjectInfo类添加属性encoding,然后修改JDiff的generateJavadoc方法:
 
-    
-    
     //在jd.perform();前面添加
     if(proj.getEncoding() != null) {
     			jd.setEncoding(proj.getEncoding());
@@ -68,12 +58,8 @@ JDiff报告,就是描述不同版本的代码之间的API差异, 如某某public
     			jd.setCharset(proj.getEncoding());
     		}
     
-
-
 生成XML的时候也设置一下,generateXML方法:
 
-    
-    
     //添加一样的内容
     if(proj.getEncoding() != null) {
     			jd.setEncoding(proj.getEncoding());

@@ -25,8 +25,6 @@ tags:
 共找到4个, 分别是:
 先上重头戏 java.nio.Charset类:
 
-    
-    
         public static Charset defaultCharset() {
             if (defaultCharset == null) {
     	    synchronized (Charset.class) {
@@ -43,13 +41,8 @@ tags:
     	return defaultCharset;
         }
     
-
-
-
 java.net.URLEncoder的静态构造方法,影响到的方法 java.net.URLEncoder.encode(String) 
 
-    
-    
         static {
     
     	dontNeedEncoding = new BitSet(256);
@@ -75,12 +68,8 @@ java.net.URLEncoder的静态构造方法,影响到的方法 java.net.URLEncoder.
         	);
         }
     
-
-
 com.sun.org.apache.xml.internal.serializer.Encoding的getMimeEncoding方法(209行起)
 
-    
-    
         static String getMimeEncoding(String encoding)
         {
     
@@ -126,21 +115,14 @@ com.sun.org.apache.xml.internal.serializer.Encoding的getMimeEncoding方法(209�
                 }
             }
     
-
-
 最后一个javax.print.DocFlavor类的静态构造方法:
 
-    
-    
         static {
     	hostEncoding = 
     	    (String)java.security.AccessController.doPrivileged(
                       new sun.security.action.GetPropertyAction("file.encoding"));
         }
     
-
-
-
 可以看到,系统变量file.encoding影响到
 1. Charset.defaultCharset() Java环境中最关键的编码设置
 2. URLEncoder.encode(String) Web环境中最常遇到的编码使用

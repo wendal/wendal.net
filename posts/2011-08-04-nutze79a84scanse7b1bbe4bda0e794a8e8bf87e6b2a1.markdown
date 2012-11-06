@@ -38,7 +38,6 @@ org.nutz.resource.Scans
 	//第一个参数是需要扫描的文件夹,第二个是文件名需要匹配正则表达式,可以为null
 	List<class <?>> list = Scans.me().scanPackage("net.wendal.mvc");
 
-
 注意,你应该已经发现, 返回的是NutResource,而不是File之类的对象,why?
 其实,这正是我当时做resource包的初衷 -- File对象无法表达jar里面的文件,而InputStream又不包含文件名之类的信息
 

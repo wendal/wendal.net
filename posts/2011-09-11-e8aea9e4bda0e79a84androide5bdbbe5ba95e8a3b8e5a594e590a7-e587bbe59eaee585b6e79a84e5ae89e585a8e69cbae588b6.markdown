@@ -43,7 +43,6 @@ tags:
 ..    6. 在verifySignaturesLP方法体中,找到:goto_0,在后面加一行 const/4 v0, 0x1        ,含义是赋值为true,以Java来表达,就是return true,这是verifySignaturesLP方法的最终return语句之前的一句,故任何调用本方法的语句,都能拿到true,即签名验证永远为真. 注意,这里的0x1中的x是小写字母X,貌似很多人直接拷贝的话,会变成全角的X.如果你没有找到goto_0,那就找return v0之类的语句.一般都只有一个return语句!!
 ..    7. 保存,重新打包: apktool.bat b services services.jar ,然后拷贝回机器,重启就可以了
 
-
 完成以上步骤,你的Android设备就彻底裸奔了 -- 
 1. System可写 -- 为任意改系统文件创造条件
 2. 无限制的su -- 任何程序都能悄无声息地获取root权限,加上上一条的System可写,即任何程序都能修改/system

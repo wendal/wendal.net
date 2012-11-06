@@ -19,26 +19,10 @@ tags:
 
 最近习惯性访问N个Linux机器,在不同机器间跳来跳去,很是麻烦,最终,找到了sshfs,可以把远程目录直接映射到本地,无需修改远程机器的设置,仅要求有ssh连接的权限(ssh都没有的话,还能干啥?!~!)
 
-
-
-
-
-
 官网地址: [http://fuse.sourceforge.net/sshfs.html](http://fuse.sourceforge.net/sshfs.html)
-
-
-
-
-
-
-
 
 安装:
 
-
-
-    
-    
     #如果是ubuntu
     apt-get install sshfs
     #如果是Fedore
@@ -51,19 +35,8 @@ tags:
     #如果缺glib2什么的,就自行装上
     make install
     
-
-
-
-
-
-
-
 先看看选项:
 
-
-
-    
-    
     general options:
         -o opt,[opt...]        mount options
         -h   --help            print help
@@ -113,20 +86,8 @@ tags:
         -o from_code=CHARSET   original encoding of file names (default: UTF-8)
         -o to_code=CHARSET	    new encoding of the file names (default: UTF-8)
     
-    
-
-
-
-
-
-
-
 实际使用:
 
-
-
-    
-    
     挂载(如果配上ssh key就可以完全自动化了):
     sshfs root@192.168.9.109:/opt /opt/s109
     卸载:

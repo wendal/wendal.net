@@ -34,8 +34,6 @@ Spring中也有类似的基础设施,但复杂很多,例如classpath与classpath
 
 **解决复杂路径的jar文件读取问题**:
 
-    
-    
     	public static ZipInputStream makeZipInputStream(String jarPath)
     			throws MalformedURLException, IOException {
     		ZipInputStream zis = null;
@@ -47,8 +45,6 @@ Spring中也有类似的基础设施,但复杂很多,例如classpath与classpath
     		return zis;
     	}
     
-
-
 之前的实现,使用JarFile jar = new JarFile(jarPath)形式,未能正确识别嵌套jar(jarinjar)的读取.
 
 **解决Files.findFile导致的问题,则需要完全重写Scans.**

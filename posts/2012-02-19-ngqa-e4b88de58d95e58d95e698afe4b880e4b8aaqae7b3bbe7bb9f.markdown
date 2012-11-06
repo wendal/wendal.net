@@ -35,8 +35,6 @@ tags:
 
 其中一个核心就是SmartView,根据访问地址的后缀来判断需要执行的视图,而非固定的配置为一种视图,示例代码:
 
-    
-    
     	public void render(HttpServletRequest req, HttpServletResponse resp,
     			Object obj) throws Throwable {
     		String uri = req.getRequestURI();
@@ -48,7 +46,4 @@ tags:
     			new JspView(viewValue).render(req, resp, obj); //这里默认跑jsp
     	}
     
-
-
-
 同时,这个项目也使用了即将发布的Nutz-Mongo, 是nutz与nosql数据库的首个结合,很多非常酷的功能哦

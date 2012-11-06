@@ -41,8 +41,6 @@ tags:
 
 整个实现,最难抉择的是"**懒加载状态管理**",如果引入Hibernate形式的Session机制,必然导致大幅膨胀.而且,Session机制也是Hibernate中非常容易导致错误的机制之一. 最后简化为简单的2步式控制:
 
-    
-    
     public void filter(InterceptorChain chain) throws Throwable {
       if (status == LazyStatus.CAN_FETCH) {
         if (chain.getCallingMethod() != setter) {
@@ -54,7 +52,4 @@ tags:
       chain.doChain();
     }
     
-
-
-
 **200行的代价,实现NutDao的懒加载,应该算不上膨胀吧? 呵呵**

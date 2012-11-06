@@ -21,18 +21,12 @@ tags:
 需要修改的文件:
 geshi.php 解决乱码:
 
-    
-    
     var $overall_style = 'font-family:monospace;';
     //改为
     var $overall_style = '';
     
-
-
 codebox.css 解决行号换行问题(仅解决了100行以内):
 
-    
-    
     .line_numbers pre {
             padding: 0px;
             margin: 0px;

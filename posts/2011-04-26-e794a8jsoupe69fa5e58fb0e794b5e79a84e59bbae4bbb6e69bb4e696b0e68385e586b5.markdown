@@ -22,8 +22,6 @@ T720用的是 Android 2.1 , 比较旧, 但官方已经说了很久会出2.2的�
 
 每次都上台电查,烦,决定用Jsoup写一个检查的,上代码:
 
-    
-    
     import org.jsoup.Jsoup;
     import org.jsoup.nodes.Document;
     import org.jsoup.nodes.Element;
@@ -45,15 +43,9 @@ T720用的是 Android 2.1 , 比较旧, 但官方已经说了很久会出2.2的�
     	}
     }
     
-
-
 打印出:
 
-    
-    
     T720 WIFI平板电脑固件下载 2011/04/12
     T720 3GE平板电脑固件下载 2011/04/12
     
-
-
 最后一次更新依旧是 4月12号,郁闷, 继续等吧,不时运行一下,呜呜

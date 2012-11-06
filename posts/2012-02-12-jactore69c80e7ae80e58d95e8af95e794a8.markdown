@@ -19,13 +19,9 @@ tags:
 
 共需要3个类
 
-    
-    
     import org.agilewiki.jactor.bind.SynchronousRequest;
     public class Hi extends SynchronousRequest<string> {}
     // 我觉得就是一个消息对象, 传递给Greeter类里面的synchronousProcessRequest方法,可以携带任意信息啦
-    
-
     
     //忽略import
     public class Greeter extends Component {
@@ -44,8 +40,6 @@ tags:
     
         }
     }
-    
-
     
     //忽略全部import
     public class Main {
@@ -67,8 +61,4 @@ tags:
     	}
     }
     
-    
-
-
-
 官方教程地址: [JActor Synchronous-Programming](https://github.com/laforge49/JActor/wiki/Synchronous-Programming)

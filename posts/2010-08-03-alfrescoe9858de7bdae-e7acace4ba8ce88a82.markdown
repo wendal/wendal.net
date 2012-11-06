@@ -26,7 +26,6 @@ tags:
 
 如何关闭/调整部分功能(通过添加选项到alfresco-global.properties):
 
-
 **1. 关闭OpenOffice连接 ooo.enabled=false**
 
 Alfresco默认安装OpenOffice进行文件转换,不过,大部分时间是无需的,这部分功能会占用超过100M的内存,而且是JVM之外的内容
@@ -57,14 +56,9 @@ Alfresco允许你配置每个用户的空间占用,一般使用都是无需的,�
 
 在Tomcat的server.xml添加一个全局的数据源,然后在content.xml引用它,并确保名字为jdbc/dataSource
 
-
 某些故障排除
 
-
-
-
 1. 曾经遇到一个情况,Alfresco启动时,读取完配置后就停住,cpu为0,假死, 后来发现是数据库服务器的内存耗尽,导致HibernateSessionFastory创建时一直等待.
-
 
 2.**务必修改/etc/hosts文件,使其与当前ip匹配**
 
@@ -76,9 +70,7 @@ Alfresco允许你配置每个用户的空间占用,一般使用都是无需的,�
 
 这个问题表现为页面上提示无法添加,后台提示无法创建XX资源. 原因是磁盘已满,用df看看磁盘占用情况,清理不需要的文件.
 
-
 有个小小技巧
-
 
 删除了重要文件,而且提交了修改,咋办??
 

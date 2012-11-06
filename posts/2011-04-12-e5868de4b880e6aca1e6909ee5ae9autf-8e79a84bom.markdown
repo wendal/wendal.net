@@ -21,8 +21,6 @@ tags:
 今天,我狠狠地为 Nutz的Streams类添加了一个方法,用于自动过滤掉BOM头!!
 代码如下:
 
-    
-    
     private static final byte[] UTF_BOM = new byte[]{(byte) 0xEF,(byte) 0xBB,(byte) 0xBF};
     	
     /**
@@ -42,8 +40,6 @@ tags:
     	}
     }
     
-
-
 希望以后能少遇到些
 
 原本是打算改NutzDoc的代码的,因为我写的一些文档包含了BOM头,读取的时候,NutzDoc无视第一行(标题行),直接认为是文本,导致没有标题!!!!

@@ -20,8 +20,6 @@ tags:
 接着,当然是俺的总结发言了(已经附在翻译稿后面):
 **1. hook列表**:
 
-    
-    
     ------------------------------------------------------
     |钩子名字          |触发命令    |参数|非0导致取消|备注|
     |applypatch-msg    |git am      |1   |Yes||
@@ -46,9 +44,6 @@ tags:
     ------------------------------------------------------
     注: 最后4个才是远程资源库执行的hook,其他都是本地资源库的hook
     
-
-
-
 **2. hook的示例**
 虽然示例中,hook都是perl脚本,但绝对不表示只能用perl.只要是可执行的东西,都可以作为钩子
 
@@ -57,8 +52,6 @@ tags:
 主执行入口: run_hook(const char *index_file, const char *name, ...) 定义于run-command.h,实现于run-command.c
 官方说明:
 
-    
-    
     `run_hook`::
     
     	Run a hook.(执行一个hook)
@@ -74,8 +67,5 @@ tags:
     	On execution, .stdout_to_stderr and .no_stdin will be set.
     	(See below.)
     
-
-
-
 **最后说一句**:
 所谓远程,其实就是你push的目标, 也就是说,仅当push操作时,远程资源库才会有hook触发!!

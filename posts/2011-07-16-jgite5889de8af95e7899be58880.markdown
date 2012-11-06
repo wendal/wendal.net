@@ -20,8 +20,6 @@ tags:
 
 好吧废话少说,直接上代码先:
 
-    
-    
     package net.wendal.jgit;
     
     import java.io.File;
@@ -66,20 +64,12 @@ tags:
     
     }
     
-
-
-
 输出的内容:
 
-    
-    
     commit 5fb38fa714f42f5be72cea9221f9264a5944a14e 1310829994 ----sp
     Try jgit!
     wendal wendal1985@gmail.com
     
-
-
-
 如果你重复运行,会看到好几条哦,呵呵
 
 就现在看来,JGit的API设计得还不错,链式操作,而且比较直观

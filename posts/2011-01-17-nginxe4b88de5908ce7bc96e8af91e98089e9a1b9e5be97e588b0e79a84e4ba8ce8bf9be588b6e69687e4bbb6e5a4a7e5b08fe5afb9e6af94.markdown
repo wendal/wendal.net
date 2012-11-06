@@ -23,8 +23,6 @@ Nginx信息:
 对原版的修改, 将auto/cc/gcc的-g去掉,将-O改为-O2
 附上原始数据,比较长:
 
-    
-    
     #默认编译
     ./configure
     make
@@ -118,10 +116,6 @@ Nginx信息:
     #--with-cc-opt=-g 1467019
     #--with-cc-opt=-g --with-debug 1521963
     
-
-
-  
-
 附上图表(使用Google Chart).
 ![](https://chart.googleapis.com/chart?cht=bvg&chs=700x250&chd=t:642031,525556,357657,343543|4557807,2444312,1556885,1467019|4689478,2513996,1616309,1521963&chco=4d89f9,c6d9fd,0000FF&chxt=y&chds=0,5000000&chxr=0,0,5000000&chdl=Normal|--with-cc-opt=-g|--with-cc-opt=-g%20--with-debug&chg=0,10)
 解释:
@@ -130,15 +124,11 @@ Nginx信息:
 3. 第三组, 移除大部分可移除的模块, 使用 --without-http_XXXX
 4. 第四组, 在第三组基础上,再移除Http-Cache
   
-
 图表中的Y轴的单位为字节.
   
-
 PS: 本blog使用的Nginx大小为450k,哈哈!
 编译参数:
 
-    
-    
     root@ubuntu:~# /usr/local/nginx/sbin/nginx -V
     nginx: nginx version: nginx/0.9.3
     nginx: built by gcc 4.4.3 (Ubuntu 4.4.3-4ubuntu5)

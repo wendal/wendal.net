@@ -28,13 +28,10 @@ tags:
 JOpenID 默认使用UTF-8来对参数进行getBytes. 当参数中还有非英文字符,且没有配置URIEncoding时,获取的byte[]是错误的.
 具体代码:
 
-    
-    
     package org.expressme.openid;
     //......
     public class OpenIdManager {
     //......
-    
     
         String getHmacSha1(String data, byte[] key) {
             SecretKeySpec signingKey = new SecretKeySpec(key, HMAC_SHA1_ALGORITHM);
@@ -64,6 +61,4 @@ JOpenID 默认使用UTF-8来对参数进行getBytes. 当参数中还有非英文
     //.....
     }
     
-
-
 项目地址: [http://code.google.com/p/nutzlab/source/browse/#svn/trunk/NutOpenID](http://code.google.com/p/nutzlab/source/browse/#svn/trunk/NutOpenID)

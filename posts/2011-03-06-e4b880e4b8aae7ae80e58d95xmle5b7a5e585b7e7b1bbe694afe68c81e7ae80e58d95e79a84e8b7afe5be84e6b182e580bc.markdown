@@ -32,8 +32,6 @@ tags:
 
 最后,整个XmlMap类,加上注释,150行, 这里展示的是无注释的版本:
 
-    
-    
     package org.nutz.xml;
     
     import java.io.InputStream;
@@ -76,7 +74,6 @@ tags:
     		return null;
     	}
     
-    	
     	static DocumentBuilder db;
     	
     	static {
@@ -125,14 +122,10 @@ tags:
     	}
     }
     
-
-
 [点击查看完整版](http://code.google.com/p/nutzlab/source/browse/trunk/NutXML/src/org/nutz/xml/XmlMap.java) -- 在[Nutz Lab](http://code.google.com/p/nutzlab/)项目中
 
 使用示例:
 
-    
-    
      XmlMap map = XmlMap.read(new FileInputStream("demo.xml"));获取XmlMap对象
      map.get("authBy");                       //返回值为xxxUserSeriver
      XmlMap.parse(map, "#authBy");            //返回值为xxxUserSeriver
@@ -143,7 +136,4 @@ tags:
      XmlMap.parse(map, "levelA.levelB[1]");   //返回值为第2个levelB节点的XmlMap
      XmlMap.parse(map, "levelA.levelB#myKey");//返回值为nutz
     
-
-
-
 其实,我是打算做一个基于URL的权限控制, 考虑叫NutzSecurity 设想中,YY中

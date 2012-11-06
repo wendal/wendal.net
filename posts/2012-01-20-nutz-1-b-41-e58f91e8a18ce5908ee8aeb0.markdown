@@ -25,8 +25,6 @@ tags:
 
 我个人要提一下Mvc的一个新功能, Mvcs.getReq()等方法:
 
-    
-    
         /*获取当前HttpServletRequest对象*/
     	public static final HttpServletRequest getReq() {
     		return REQ.get();
@@ -55,8 +53,6 @@ tags:
     		return IOC_CONTEXT.get();
     	}
     
-
-
 以上新增的API,既是对用户需求的响应,也代表一种妥协.
 用户可以在任意代码中直接获取当前Req和Resp,而不再需要自行写Filter.但是,从代码的美观程度说,是一大让步,我自己看着都感觉有点不爽.
 这个修改,顺带了另外一个功能,就是声明多个NutFilter并使用不同的配置. 之前的实现,最后一个Filter的设置,会覆盖之前所有配置.
@@ -65,16 +61,11 @@ tags:
 
 Nutz的发布,少不了打包,签名,上传,release等繁琐的操作, 貌似我每次都忘记咋签名,所以呢,写了个小脚本
 
-    
-    
     export VER="nutz-1.b.41"
     gpg --armor --detach-sign $VER"-javadoc.jar"
     gpg --armor --detach-sign $VER".jar"
     gpg --armor --detach-sign $VER"-sources.jar"
     gpg --armor --detach-sign $VER".pom"
     
-
-
-
 还有一个小事情,就是svn,为了尝试1.7.2版的svn,在Ubuntu上编译了新版,却无法使用,十分纠结!!
 然而,本地安装乌龟,然后checkout,竟然飞快!!难以置信啊,2分钟完成!! 新版的svn,的确已经改进为单个.svn文件夹,清爽了很多,但我想说一句: 晚了,svn,你改进的速度太慢了!!

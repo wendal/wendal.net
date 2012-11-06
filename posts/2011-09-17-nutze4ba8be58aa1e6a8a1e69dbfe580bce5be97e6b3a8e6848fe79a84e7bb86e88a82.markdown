@@ -28,8 +28,6 @@ Nutz.Dao事务模板的官方文档: [http://code.google.com/p/nutz/wiki/dao_tra
 **3. 子线程的事务**
 考虑下面的代码:
 
-    
-    
     Trans.exec(new Atom(){
        public void run() {
            dao.insert(pet);
@@ -38,15 +36,11 @@ Nutz.Dao事务模板的官方文档: [http://code.google.com/p/nutz/wiki/dao_tra
        }
     });
     
-
-
 那么MySuperPowerThread的代码并不是在事务模板中执行的,因为这里的事务不会被子线程继承
 
 **4. 返回值问题(更新了)**
 使用Molecule
 
-    
-    
     Molecule<object> mc = new Molecule<object>() {
         public void run() {
             dao.insert(pet);

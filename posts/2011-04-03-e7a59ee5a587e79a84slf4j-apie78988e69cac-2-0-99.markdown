@@ -19,12 +19,8 @@ tags:
 
 今天,一位群友"我思",在组合使用slf4j和logback时报一下错误:
 
-    
-    
     Exception in thread "main" java.lang.NoSuchMethodError: org.slf4j.helpers.MessageFormatter.arrayFormat(Ljava/lang/String;[Ljava/lang/Object;)Lorg/slf4j/helpers/FormattingTuple;
     
-
-
 最后发现是slf4j的版本不对, 他使用的是slf4j-api-2.0.99.jar 
 
 但是,但是,官方正式版只有1.6.1,而且至今我都没发现有2.0.x系列的计划呢!!
@@ -33,20 +29,12 @@ tags:
 神奇啊,为啥呢?? 找不到其源码jar,好吧,上JD-GUI,看看报错的类MessageFormatter.arrayFormat
 2.0.99版的方法声明:
 
-    
-    
     public static final String arrayFormat(String messagePattern, Object[] argArray)
     
-
-
 1.6.1版的方法声明:
 
-    
-    
     public static final FormattingTuple arrayFormat(String messagePattern, Object[] argArray)
     
-
-
 看到区别了吧,返回值的类型不同了!!! 同样的,还有一个1.6.99版的API,内容与2.0.99版一致
 
 继续追查, 看Slf4j源码仓库的一个提交:

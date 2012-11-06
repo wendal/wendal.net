@@ -23,26 +23,18 @@ tags:
 1. 测试方法使用NutzDao操作数据库,希望在测试方法执行完成后进行回滚
 2. Ioc支持,方便获取与实际生产环境类似的Ioc注入功能,方便进行功能测试
 
-
 这个测试Runner, 很好地平衡了侵入性与灵活性, 让用户以很低的成本与耦合度测试Nutz代码
 
 所以,我新建org.nutz.test包, 核心类NutzJUnit4ClassRunner,这个类本身非常简单
 
-    
-    
     public class NutzJUnit4ClassRunner extends TestClassRunner {
         public NutzJUnit4ClassRunner(final Class klass) throws InitializationError {
             super(klass, new NutTestClassMethodsRunner(klass));
         }
     }
     
-
-
-
 核心代码位于NutTestClassMethodsRunner
 
-    
-    
     public class NutTestClassMethodsRunner extends TestClassMethodsRunner {
     	
         //其他辅助方法,属性
@@ -75,18 +67,12 @@ tags:
         }
     }
     
-
-
-
 整个实现,共用到4个注解 @NutTest @IocBy @IocBean @Inject
 这里的@IocBy的具体行为,与Mvc中的@IocBy有轻微不同,因为没有web上下文
 @Aop,声明式Aop均可生效,效果与MVC中的效果一致
 
 使用示例
 
-    
-    
-    
     @RunWith(value=NutzJUnit4ClassRunner.class)
     @IocBy(type=ComboIocProvider.class,args={"*org.nutz.ioc.loader.json.JsonLoader","ioc/",
     	  "*org.nutz.ioc.loader.annotation.AnnotationIocLoader","net.wendal"})
@@ -105,13 +91,8 @@ tags:
        }
     }
     
-    
-
-
-
 局限性:
 1. 不应该用于测试Action层
 2. 自动回滚,必须注意隐式事务提交和多线程事务问题
-
 
 Enjoy it!!

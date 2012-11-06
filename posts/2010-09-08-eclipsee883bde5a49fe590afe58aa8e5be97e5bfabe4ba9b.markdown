@@ -18,8 +18,6 @@ tags:
 
 自己调整了一下,得到以下参数:
 
-    
-    
     -Xms40m
     -Xmx256m
     -XX:MaxPermSize=128m
@@ -32,6 +30,4 @@ tags:
     -XX:+UseBiasedLocking
     -XX:+UseFastAccessorMethods
     
-
-
 感觉上快了不少哦

@@ -20,7 +20,6 @@ fql is a tool that use SQL like query to manipulate files
 
 1. 添加readline支持, 原本是极其简单的fgets读取输入,那叫一个简陋啊
 
-
 	//添加headers
 	#if defined(HAVE_LIBREADLINE) && HAVE_LIBREADLINE==1
 	# include <readline/readline.h>
@@ -82,11 +81,9 @@ fql is a tool that use SQL like query to manipulate files
           row.push_back(new String(""));
     }
 
-
 再fix掉clang编译时的一个小warning,搞定!
 
 	CXX=clang CC=clang LDFLAGS="-Wall -lstdc++" ./configure
 	make
-
 
 最大的收获,就是知道原来平时命令行中,向上向下,查询历史命令,都是readline做的,一直以为是系统级的功能...

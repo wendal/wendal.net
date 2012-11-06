@@ -19,7 +19,6 @@ tags:
 
 我觉得这是Java核心API其中一个极度容易被人误用的地方,哈哈
     
-    
     int read();
     void write(int data);
     

@@ -22,8 +22,6 @@ tags:
 
 先看看标准的单数据源配置方法:
 
-    
-    
     var ioc = {
     	dataSource : {
                     type : "org.apache.commons.dbcp.BasicDataSource",
@@ -46,15 +44,8 @@ tags:
             }
     }
     
-
-
-
-
-
 然后,扩展成多个数据源:
 
-    
-    
     var ioc = {
     /*定义第一个数据源*/
     	dataSource : {
@@ -98,9 +89,6 @@ tags:
             }
     }
     
-
-
-
 明白了吗? 所谓多数据源的配置,其实就是几份单数据源的配置文件放在一起. 一个NutDao实例,对于一个数据源. 由于ioc里面的bean是不能重名的,所以,你需要做的,仅仅是为不同的数据源设定不同的名字,仅此而已.
 
 关于多数据源的事务管理问题,请看另外一篇博客: "[Nutz事务模板值得注意的细节](http://wendal.net/324.html)"

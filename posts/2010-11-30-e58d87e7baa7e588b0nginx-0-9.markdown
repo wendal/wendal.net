@@ -24,8 +24,6 @@ tags:
 对于我这种喜欢尝鲜的人,怎么错过!!
 马上下载编译:
 
-    
-    
     wget http://nginx.org/download/nginx-0.9.0.tar.gz
     tar xvf nginx-0.9.0.tar.gz
     cd nginx-0.9.0
@@ -36,8 +34,6 @@ tags:
     cp objs/nginx /usr/local/nginx/sbin/
     /usr/local/nginx/sbin/nginx #启动新版本
     
-
-
 这里没有用热切换.
 顺便更新了[Nginx中文Wiki](http://wiki.nginx.org/NginxChs)主页上的版本信息.
 

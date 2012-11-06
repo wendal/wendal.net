@@ -26,12 +26,8 @@ tags:
 Ant换用ecj
 1. 在build.xml中加入:
 
-    
-    
     <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"></property>
     
-
-
 2. 下载独立的ecj.jar
 [ECJ 3.7.2](http://mirrors.ustc.edu.cn/eclipse/eclipse/downloads/drops/R-3.7.2-201202080800/ecj-3.7.2.jar)
 

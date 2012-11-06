@@ -35,22 +35,15 @@ tags:
 **现在,我把两个小demo列一下**:
 **1. 小小的静态文件http服务器,无需写代码,一条命令就能启动,最起码做个能用的http服务**
 
-    
-    
     newlisp -L log.txt -http -w E:/htmls
     #-L 日志,可省略
     #-w 工作目录,可省略
     
-
-
-
 **2. 访问mysql 能访问数据库,不激动吗?!**
 首先,你需要下载libmysql([windows](http://mysql.oss.eznetsols.org/Downloads/Connector-C/mysql-connector-c-noinstall-6.0.2-win32.zip)),或者安装mysql客户端(一般都包含libmysql)
 然后,到newLisp的安装文件夹里面的modules文件夹,找到mysql.lsp,打开编辑:
 找以下语句(跳过开头的注释,就看到了),对应你所在的操作系统,确定libmysql已经放好
 
-    
-    
     (set 'files '(
     	"/usr/local/lib/libmysqlclient.so.20.0" ; OpenBSD 4.9
     	"/usr/lib/libmysqlclient.so" ; Linux, UNIX
@@ -61,12 +54,8 @@ tags:
     	"E:\\newlisp\\modules\\libmysql.dll" ; 这是我自己加的,windows用户需要到mysql网站下载32位的libmysql,并填上绝对路径
     ))
     
-
-
 在结尾往前找,第一个方法, (define (test-mysql) , 设置mysql用户名密码
 
-    
-    
     (define (test-mysql)
       (MySQL:init)
       (unless (MySQL:connect 0 "root" "root" "test") ;第一个参数是host,如果为0,则代表localhost,第二三个分别是用户名和密码,第四个的测试数据库名
@@ -74,12 +63,8 @@ tags:
     	(exit))
     ))
     
-
-
 好了,可以执行了
 
-    
-    
     #首先,进入命令行,敲入newlisp,进入newLisp的交换模式
     newLISP v.10.4.0 on Win32 IPv4/6 UTF-8, execute 'newlisp -h' for more info.
     
@@ -88,7 +73,4 @@ tags:
     >   (test-mysql)                         ; 执行test-mysql,如果之前的步骤都正确,那么,就开始打印创建表,查询,删除等操作
     >   (exit)                               ; (exit)的含义是退出newlisp,另外说一句,";"是注释的开始
     
-
-
-
 如果上述2个demo都顺利pass,那么,你以后可以大胆地说: lisp很简单嘛,我都跑通2个demo了!!

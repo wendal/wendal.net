@@ -21,19 +21,14 @@ tags:
 
 上代码:
 
-    
-    
-    
     /*
      * Copyright (C) Igor Sysoev
      * Modify by Wendal Chen
      */
     
-    
     #include <ngx_config.h>
     #include <ngx_core.h>
     #include <ngx_http.h>
-    
     
     static char *ngx_http_set_status(ngx_conf_t *cf, ngx_command_t *cmd,
                                      void *conf);
@@ -50,8 +45,6 @@ tags:
           ngx_null_command
     };
     
-    
-    
     static ngx_http_module_t  ngx_http_stub_status_module_ctx = {
         NULL,                                  /* preconfiguration */
         NULL,                                  /* postconfiguration */
@@ -65,7 +58,6 @@ tags:
         NULL,                                  /* create location configuration */
         NULL                                   /* merge location configuration */
     };
-    
     
     ngx_module_t  ngx_http_stub_status_module = {
         NGX_MODULE_V1,
@@ -81,7 +73,6 @@ tags:
         NULL,                                  /* exit master */
         NGX_MODULE_V1_PADDING
     };
-    
     
     static ngx_int_t ngx_http_status_handler(ngx_http_request_t *r)
     {
@@ -147,7 +138,6 @@ tags:
         return ngx_http_output_filter(r, &out;);
     }
     
-    
     static char *ngx_http_set_status(ngx_conf_t *cf, ngx_command_t *cmd, void *conf)
     {
         ngx_http_core_loc_conf_t  *clcf;
@@ -158,18 +148,12 @@ tags:
         return NGX_CONF_OK;
     }
     
-
-
 使用方法
 1. 直接替换原本的文件
 2. 修改一下ngx_string("stub_status")为ngx_string("json_stub_status"),配合一下config文件一起作为额外模块进行编译:
 
-    
-    
     ngx_addon_name=ngx_http_json_stub_status_module
     HTTP_AUX_FILTER_MODULES="$HTTP_AUX_FILTER_MODULES ngx_http_json_stub_status_module"
     NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ngx_http_json_stub_status_module.c"
     
-
-
 [下载Zip包](https://docs.google.com/leaf?id=0B8hUXYDeoy_hMDJjYmUzNTktMTQyNi00MzdjLTk0YzYtMDcxYzY1NWU2MDA2)

@@ -17,10 +17,6 @@ tags:
 
 从一个[外国博客](http://parand.com/say/index.php/2009/09/01/finding-and-fixing-slow-mysql-queries/)引用过来的
 
-
-
-    
-    
     SELECT t.TABLE_SCHEMA AS `db`,
     t.TABLE_NAME AS `table`,
     s.INDEX_NAME AS `index name`,

@@ -24,8 +24,6 @@ Lua-nginx-module 0.16rc2 + Nginx 0.8.54
 
 原本一直以为是自己代码的原因,因为实在很诡异,附上我的原文:
 
-    
-    
     我得到的最小集合就是:
     1. nginx.conf
     location /test {
@@ -43,7 +41,6 @@ Lua-nginx-module 0.16rc2 + Nginx 0.8.54
     
     3. 1.html文件里面仅有几个字母,我已经试过不同的文件大小,结果一样
     
-    
     我遇到的情况是这样的:
     1. 通过wget/curl/Firefox来访问 localhost/test 都能正常显示1.html中的内容
     2. 使用ab访问 localhost/1.html是正常的,能够pass
@@ -54,7 +51,6 @@ Lua-nginx-module 0.16rc2 + Nginx 0.8.54
     Host: localhost
     User-Agent: ApacheBench/2.3
     Accept: */*
-    
     
     ---
     LOG: header received:
@@ -69,7 +65,6 @@ Lua-nginx-module 0.16rc2 + Nginx 0.8.54
     Accept-Ranges: bytes
     
     ABC
-    
     
     LOG: Response code = 200
     apr_poll: The timeout specified has expired (70007)
@@ -89,12 +84,8 @@ Lua-nginx-module 0.16rc2 + Nginx 0.8.54
     Thanks,
     Wendal Chen
     
-
-
 agentzh的回应是:
 
-    
-    
     I've reproduced it on my side. This is indeed a bug. When ngx.exec()
     is used after ngx.location.capture() or ngx.location.capture_multi(),
     nginx 0.8.11+ will not close the client connection due to leaked
@@ -112,8 +103,6 @@ agentzh的回应是:
     Cheers,
     -agentzh
     
-
-
 大概的意思是: 
 0.8.11+才会有这个问题,0.7.68以下的版本,因为没有使用相关特性而没有问题.
 解决方法: 关闭nginx的keeplive 且 客户端主动关闭连接.

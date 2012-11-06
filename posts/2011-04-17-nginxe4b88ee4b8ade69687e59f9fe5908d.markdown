@@ -29,12 +29,8 @@ Google了一轮,发现其实很简单
 那Punycode编码是什么呢? 先看看Python如何调用:
 尝试编码  www.坚果.com
 
-    
-    
     '坚果'.decode('gbk').encode('punycode')
     
-
-
 得到jfs419a,然后合成真正的URL www.xn--jfs419a.com -- 这个域名还没启用的.
 
 这个Punycode还是一个标准呢 [http://rfc-ref.org/RFC-TEXTS/3492/](http://rfc-ref.org/RFC-TEXTS/3492/)

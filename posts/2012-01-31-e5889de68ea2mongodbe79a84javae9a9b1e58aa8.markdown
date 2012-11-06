@@ -61,8 +61,6 @@ MaxKey --- {$maxKey : 1} 同样是1
 
 而,真正进行DBObject转换为byte[]的类,是org.bson.BasicBSONEncoder,摘录一段关键代码:
 
-    
-    
             if ( name.equals( "_transientFields" ) )    //不会被序列化的东西,终于有藏身之所
                 return;
             
@@ -137,9 +135,6 @@ MaxKey --- {$maxKey : 1} 同样是1
                 throw new IllegalArgumentException( "can't serialize " + val.getClass() ); 
             }
     
-
-
- 
 没有特别针对Timestamp进行优化,只会按其父类java.util.Date进行处理咯,且BSONTimestamp是仅限内部使用的
 
 **5. 连接池的实现**
@@ -148,8 +143,6 @@ SimplePool,一个对象池, 同时也是DBPortPool的基础 -- 即Mongodb的内�
 **6. 内置的Java对象 -- DBObject映射支持**
 没看驱动源码之前,一直以为没这方面的支持,实际上还是有一个的,那就是ReflectionDBObject, 用法简介:
 
-    
-    
     public class TestReflectionDBObject {
     	
     	public static void main(String[] args) throws Throwable {
@@ -175,7 +168,4 @@ SimplePool,一个对象池, 同时也是DBPortPool的基础 -- 即Mongodb的内�
     	}
     }
     
-
-
-
 恩,这次就分享这么多吧.

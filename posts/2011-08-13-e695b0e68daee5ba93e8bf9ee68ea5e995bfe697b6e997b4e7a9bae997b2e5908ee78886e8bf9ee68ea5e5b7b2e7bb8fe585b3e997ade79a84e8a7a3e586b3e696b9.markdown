@@ -23,33 +23,18 @@ tags:
 
 [Apache DBCP](http://commons.apache.org/dbcp/api-1.4/org/apache/commons/dbcp/BasicDataSource.html):
 
-    
-    
     dataSource.setValidationQuery('select 1');
     
-
-
-
 [C3po](http://sourceforge.net/projects/c3p0/):
 
-    
-    
     dataSource.setTestConnectionOnCheckout(true);
     dataSource.setPreferredTestQuery('select 1')
     
-
-
-
 [Proxool](http://proxool.sourceforge.net/api-dev/org/logicalcobwebs/proxool/ProxoolDataSource.html):
 
-    
-    
     dataSource.setTestBeforeUse(true);
     dataSource.setHouseKeepingTestSql('select 1')
     
-
-
-
 Bonecp:
 找不到对应的属性,不过可以配置连接的最大空闲时间
 

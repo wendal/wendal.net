@@ -17,17 +17,11 @@ tags:
 
 首先,安装golang-mysql库, 我这里选用是google上的[go-mysql-driver](http://code.google.com/p/go-mysql-driver/)
 
-    
-     
     go get code.google.com/p/go-mysql-driver/mysql
     #如果访问失败,请翻墙吧!! 需要mysql 4.1以上哦
     
-
-
 然后,当然是我的最爱 -- 代码
 
-    
-    
     package main
     
     // 导入sql包, 跟java.sql类似的
@@ -80,19 +74,8 @@ tags:
         }
     }
     
-
-
-
-
-
-
-
-
-
 编译后, 体积高达2.5mb, 实在惊人. 运行速度也很不错, 0.012秒完成:
 
-    
-    
     linux-9rhn:/home/go # time ./test_mysql
     DB OK
     {"user":"root","password":"*6BB4837EB74329105EE4568DDA7DC67ED2CA2AD9","host":"localhost"}
@@ -106,13 +89,4 @@ tags:
     user 0m0.008s
     sys  0m0.000s
     
-
-
-
-
-
-
-
-
-
 附上一句, 不用猜密码了,是123456, 写着呢

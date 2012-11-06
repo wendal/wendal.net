@@ -30,8 +30,6 @@ tags:
 
 原本打算写点代码分析的,但源码上的注解太详细,算了,不写了,把方法列一下:
 
-    
-    
     /* 全局设置 */
     TCBDB *httpsqs_db_tcbdb; /* 数据表 */
     int httpsqs_settings_syncinterval; /* 同步更新内容到磁盘的间隔时间 */
@@ -72,7 +70,5 @@ tags:
     /* 入口方法 */
     int main(int argc, char **argv);
     
-
-
 功能就和一个Memcached服务器差不多.
 恩,考虑做个Nginx的模块,哈哈.

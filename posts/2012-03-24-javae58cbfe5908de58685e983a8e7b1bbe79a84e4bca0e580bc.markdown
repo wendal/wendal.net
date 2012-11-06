@@ -20,8 +20,6 @@ tags:
 
 **传入:**
 
-    
-    
     //匿名内部类,只能访问final的本地变量及方法参数
     public void addUser(final String name, String passwd, final String userType) {
         User user = null;
@@ -39,17 +37,11 @@ tags:
         });
     }
     
-
-
-
-
 **传出(获取方法返回值等等):**
 
 **方法1 -- 对象数组法**
 通过一个final的Object对象数组,存放需要的值
 
-    
-    
     public long countUser(final String userType) {
         final Object[] objs = new Object[1];
         Trans.run(new Atom(){
@@ -60,14 +52,9 @@ tags:
         return ((Number)objs[0]).longValue();
     }
     
-
-
-
 **方法2 -- ThreadLocal法**
 通过一个ThreadLocal来存放结果,这个ThreadLocal可以是静态的,供全app使用的
 
-    
-    
     private static final ThreadLocal re = new ThreadLocal(); //自行补上泛型Object
     public long countUser(final String userType) {
         Trans.run(new Atom(){
@@ -78,14 +65,9 @@ tags:
         return ((Number)re.get()).longValue(); //严谨一点的话,应该将ThreadLocal置空
     }
     
-
-
-
 **方法3 -- Molecule法**
 Molecule类是Nutz内置的抽象类类,实现Runnable和Atom接口,添加了两个获取/设置值的方法.
 
-    
-    
     public long countUser(final String userType) {
         Molecule mole = new Molecule() { //需要自行补齐泛型
             public void run() {
@@ -96,6 +78,3 @@ Molecule类是Nutz内置的抽象类类,实现Runnable和Atom接口,添加了两
         return ((Number)mole.getObj()).longValue(); 
     }
     
-
-
-

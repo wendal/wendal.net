@@ -46,8 +46,6 @@ tags:
 
 现在已经可以直接将Nutz加入你项目的dependency:
 
-    
-    
     	<dependency>
     		<groupid>org.nutz</groupid>
     		<artifactid>nutz</artifactid>

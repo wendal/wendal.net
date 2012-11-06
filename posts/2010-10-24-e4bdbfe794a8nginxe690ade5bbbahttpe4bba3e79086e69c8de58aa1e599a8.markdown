@@ -19,8 +19,6 @@ tags:
 昨天, 折腾了一个下午,终于配好了.
 配置如下:
 
-    
-    
         server {
             listen       8888;
                     client_body_timeout 60000;
@@ -40,8 +38,6 @@ tags:
             }
         }
     
-
-
 resolver 8.8.8.8; 代表使用Google DNS来解析域名
 client_body_timeout , large_client_header_buffers 等设置,确保大的请求不会返回400错误.
 

@@ -16,8 +16,6 @@ tags:
 
 定义两个方法,分别使用while循环
 
-    
-    
     def w() :
       while 1 :
         pass
@@ -26,13 +24,8 @@ tags:
       while True:
         pass
     
-
-
-
 单从功能上说,两种无任何区别,那么,来看看字节码上的区别:
 
-    
-    
     import dis  #载入反编译模块,Python内置的
     
     dis.dis(w) #对应的是while 1,下面是输出
@@ -52,9 +45,6 @@ tags:
             >>   13 LOAD_CONST               0 (None)
                  16 RETURN_VALUE
     
-
-
-
 很明显, while 1的字节码只有while True的一半.
 为什么呢? 因为Python2.x中True不是关键字,只是一个全局变量而已
 

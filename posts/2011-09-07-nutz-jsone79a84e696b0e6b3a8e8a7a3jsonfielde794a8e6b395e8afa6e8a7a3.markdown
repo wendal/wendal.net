@@ -14,7 +14,6 @@ tags:
 - Nutz
 ---
 
-
 长期以来Nutz的Json包,仅有一个注解@toJson,用于指定当前对象的通过什么方法进行Pojo-->String的转换
 
 1.b.38版新增了@JsonField,在即将发布的1.b.40版将这个注解再次增强
@@ -22,40 +21,26 @@ tags:
 
 首先是字段命名,看代码
 
-    
-    
     @JsonField("z-index")
     private String zIndex;
     
-
-
 对应的Json将会是:
 
-    
-    
     {
         'z-index' : '10px'
     }
     
-
-
 可以看到,无需再强求 json的key的名字与类属性名一致了
 
 然后是"忽略",看代码
 
-    
-    
     @JsonField(ignore=true)
     private String password;
     
-
-
 很清楚,就是不序列化这个字段
 
 最后,是刚刚加入的by(生成器),这次用一个完整的例子:
 
-    
-    
     public class User {
     
         @JsonField(by="toString")
@@ -79,8 +64,6 @@ tags:
     
     }
     
-
-
 上面演示了by的两种写法,规则非常简单:
 如果不包含#号,则代表调用自身的无参数方法,例子中的by="toString" 将调用objectId.toString()
 如果包含#号,则代表调用指定类的指定静态方法,这个方法必须以Object作为参数,但可以返回任意类型的参数

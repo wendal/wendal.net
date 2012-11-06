@@ -24,8 +24,6 @@ tags:
 
 直接上代码:
 
-    
-    
     package org.nutz.dao.impl;
     
     import java.io.PrintWriter;
@@ -147,8 +145,6 @@ tags:
     	}
     }
 
-
-
 用来跑Nutz的TestCase, 在我的机器耗时5.2秒,与DBCP相当(5.3秒).
 缺点:
 1. 高并发时,可能建立过多的连接
@@ -159,20 +155,14 @@ tags:
 调用方法:
 1. 直接创建:
 
-    
-    
     DataSource dataSource = new SimpleDataSource("jdbc:h2:mem:~","org.h2.Driver","sa","sa");
     //代码.....
     
     //最后记得关闭一下,或者等GC的时候自行关闭.
     ((SimpleDataSource)dataSource).close();
     
-
-
 2. NutIoc的json方式
 
-    
-    
     	dataSource : {
     		type :"org.nutz.dao.impl.SimpleDataSource",
     		events : {
@@ -181,7 +171,4 @@ tags:
     		args : ["jdbc:h2:mem:~","org.h2.Driver","sa","sa"]
     	}
     
-
-
-
 哈哈,没啥技术含量,来拍我吧!!

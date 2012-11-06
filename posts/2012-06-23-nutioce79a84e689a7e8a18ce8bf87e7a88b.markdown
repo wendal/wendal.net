@@ -22,18 +22,10 @@ tags:
 
 越来越多人阅读Nutz的源码,很是欣慰.
 
-
-
 首先,什么是Ioc呢? Ioc本质上就是一个有状态的Map<String,Object>, 其中bean就是用户通过各种形式的配置信息所定义的对象
-
-
 
 先上一段代码,通过一个js配置一个Ioc容器,并获取一个bean
 
-
-
-    
-    
     public static void main(String[] args) {
         IocLoader loader = new JsonLoader("ioc.js");
         Ioc ioc = new NutIoc(loader);
@@ -41,12 +33,8 @@ tags:
         System.out.println(pet.getName());
     }
     
-
-
 ioc的js配置文件(ioc.js,名字是随意的)
 
-    
-    
     var ioc = {
         pet : {
             type : "net.wendal.test.Pet",
@@ -56,95 +44,53 @@ ioc的js配置文件(ioc.js,名字是随意的)
         }
     }
     
-
-
 **Ioc第一步,读取bean的配置信息** : 任何bean,都有其对应的配置信息,都必须通过一个IocLoader来读取
 
     IocLoader loader = new JsonLoader("ioc.js");
     
-
 1.从ioc.js中读取配置信息
 
 2. ioc.js中,有个前缀"var ioc ="字符串,这是为了方便Eclipse进行语法提示而已, 写不写都可以,但只能写这个字符串,这是JsonLoader所约定的
 
-
 3. ioc.js仅定义了一个bean,名叫pet,任何bean都必须有唯一的名字, 因为Ioc实质上就是一个Map<String,Object>,其中的key就是bean的名字
-
 
 4. 这个bean的信息,会保存在IocObject中, 注意,这是配置信息, 真正的对象并未生成
 
-
 **第二步,生成Ioc容器**
 
-    
-    
     Ioc ioc = new NutIoc(loader);
     //只是进行一些必要的初始化,并完成与Aop的连接点
     
-
-
-
 **第三步,获取对象**
 
-    
-    
     Pet pet = ioc.get(Pet.class, "pet");
     
-
-
 这时候, 具体的Pet实例要准备生成了
-
 
 1. 首先,需要生成IocLoading --> createLoading()
 
-
 2. 然后通过 iocloader的load方法,拿到IocObject, 即bean的配置信息
-
 
 3. 接着IocMaker实例,通过IocObject和IocMaking实例, 新建实际的bean对象
 
-
 4. 下一步,就是为刚刚生成的bean注入字段, 因为当前的bean对象,仅仅是new之后的全新状态
-
 
 5. 收尾的一步, 看看这个bean,是否为单例,是否需要保存到app作用域--大部分的bean都是单例的
 
-
 // 每一作用域(IocContext),都管理着符合其生命周期的bean -- 默认情况下,bean都是app作用域的,单例的
-
 
 // 如果bean还定义了create/fetch等IocEvent的话,那么,这时候也会触发
 
-
-
 6.将bean作为返回值,交给用户
-
-
 
 ==补充一句,整个流程,等价于:
 
-
-
-    
-    
     Pet pet = new Pet();
     pet.setName("wendal");
     
-
-
-
-
-
-
-
-
 **延伸一下:**
 **1. 注解式Ioc**
 
-
-
-    
-    
     IocLoader loader = AnnotationIocLoader("net.wendal.test");
     
     //而bean需要定义为
@@ -154,17 +100,11 @@ ioc的js配置文件(ioc.js,名字是随意的)
         private String name;
     }
     
-
-
 就是注解-->IocObject这一步
-
-
 
 **2. MVC中的Ioc**
 是通过IocProvider提供的. 不妨看看JsonIocProvider的代码:
 
-    
-    
     public class JsonIocProvider implements IocProvider {
     
         public Ioc create(NutConfig config, String[] args) {
@@ -173,15 +113,8 @@ ioc的js配置文件(ioc.js,名字是随意的)
         }
     }
     
-
-
-
-
-
 然后,是谁调用了ioc.get(XXX.class, "xxx")呢? 是ModuleProcessor,摘取一部分源码看看:
 
-    
-    
     Object obj;
     /*
     * 如果 Ioc 容器实现了高级接口，那么会为当前请求设置上下文对象
@@ -200,8 +133,4 @@ ioc的js配置文件(ioc.js,名字是随意的)
     else
         obj = ioc.get(moduleType, injectName); 
     
-
-
-
-
 延展阅读: [Mirror](http://code.google.com/p/nutz/wiki/lang_mirror)类,封装了Nutz中大部分的反射操作

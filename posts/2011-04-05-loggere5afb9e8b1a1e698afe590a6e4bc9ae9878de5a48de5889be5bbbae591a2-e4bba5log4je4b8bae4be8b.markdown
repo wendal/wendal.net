@@ -24,8 +24,6 @@ tags:
 
 故,先是设计这样的代码:
 
-    
-    
     import org.apache.log4j.Logger;
     public class LogTest {
     
@@ -36,28 +34,19 @@ tags:
     	}
     }
     
-
-
 log4j.properties文件的内容:
 
-    
-    
     log4j.rootLogger=DEBUG,Console
     log4j.appender.Console=org.apache.log4j.ConsoleAppender
     log4j.appender.Console.layout=org.apache.log4j.PatternLayout
     log4j.appender.Console.layout.ConversionPattern=log4j: %d [%t] %-5p %c - %m%n
     
-    
-
-
 打印的结果是true,即同一个Log对象
 
 恩,为什么呢?? 好,下载源码.
 
 经过简单探寻,找到关键代码,位于org.apache.log4j.Hierarchy类:
 
-    
-    
       public
       Logger getLogger(String name, LoggerFactory factory) {
         //System.out.println("getInstance("+name+") called.");
@@ -93,8 +82,6 @@ log4j.properties文件的内容:
         }
       }
     
-
-
 以上代码简单含义为,构建一个查询的key,然后获取特定的Logger对象,如果没有就创建它
 
 问题又来啦,按照上述代码,获取Logger对象的过程,是一个同步过程,因为写着synchronized(ht) 呢!

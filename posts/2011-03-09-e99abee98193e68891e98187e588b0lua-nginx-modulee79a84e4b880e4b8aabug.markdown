@@ -27,8 +27,6 @@ tags:
 apt-get install liblua5.1-0-dev g++
 然后下载google-perftools:
 
-    
-    
     wget http://google-perftools.googlecode.com/files/google-perftools-1.6.tar.gz
     tar xvf google-perftools-1.6.tar.gz
     cd google-perftools-1.6
@@ -36,8 +34,6 @@ apt-get install liblua5.1-0-dev g++
     make
     make install
     
-
-
 然后到nginx编译:
 下载ngx_devel_kit 0.2.17
 下载lua-nginx-module 0.1.6rc2
@@ -50,20 +46,13 @@ apt-get install liblua5.1-0-dev g++
 
 然后试试:
 
-    
-    
     ./configure --add-module=simpl-ngx_devel_kit --add-module=lua-nginx-module --with-cc-opt=-lprofile #这里写错了,应该是profiler
     
-
-
 报错,难道加上--with-cc-opt就报错?
 试试mysql的lib
 
-    
     ./configure --add-module=simpl-ngx_devel_kit --add-module=lua-nginx-module --with-cc-opt=-lmysql
     
-
-
 通过.
 
 神奇啊... 难道真的是bug?

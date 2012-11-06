@@ -21,16 +21,12 @@ tags:
 
 1. Nutz.Ioc与Spring.ioc相比,无法实现工厂类生成具体类的实例
 
-    
-    
     public class A {}
     
     public class B {
         public static A makeA(){return new A();}
     }
     
-
-
 2. Nutz.Aop与Spring.Aop相比,无法拦截构造方法,静态方法
 3. Nutz.Dao与Hibernate相比,没有缓存层,无自动update表结构,没有复杂的映射关系管理,没有XML< -->POJO转换工具
 4. Nutz.MVC 没有校验功能,没有配置方式的URL映射

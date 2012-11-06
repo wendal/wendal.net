@@ -26,8 +26,6 @@ tags:
 1. 类名: org.apache.jasper.compiler.JspConfig
 2. 代码:
 
-    
-    
     if (webApp == null
          || !"2.4".equals(webApp.findAttribute("version"))) {//直接字符串判断,晕!
          defaultIsELIgnored = "true";
@@ -39,18 +37,11 @@ tags:
          return;
     }
     
-
-
-
 解决方法: :
 第一种,在JSP页面头部加入指令:
 
-    
-    
     < %@ page isELIgnored="false" %>
     
-
-
 第二种,在web.xml中设置version为2.4 :
 第三种,在web.xml中添加一个设置(这解决方法依赖于第二种!!故基本上无效!!!),配置el-ignored为false!
 

@@ -17,27 +17,18 @@ tags:
 
 敲入:
 
-    
-    
     ./configure -qt-sql-sqlite
     gmake
     gmake install
     
-
-
 原本以为半个小时就万事,结果花了2个多小时!! 我吐血啊...
 
 难道就不能快点吗? demo examples docs 能不能编译啊!!
 
 好吧,谷哥告诉我,能这样:
 
-    
-    
     ./configure -qt-sql-sqlite -opensource -fast -no-qt3support -nomake demos -nomake docs -nomake examples -optimized-qmake -nomake tools
     gmake -j4
     gmake install
     
-
-
-
 呵呵,半个小时搞定!!!

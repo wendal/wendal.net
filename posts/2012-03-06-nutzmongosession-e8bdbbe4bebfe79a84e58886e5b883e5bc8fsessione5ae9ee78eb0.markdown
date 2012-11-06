@@ -23,8 +23,6 @@ tags:
 **1. 用法**
 基本配置(web.xml),接管全部请求,并替换其获取会话的req.getSession方法:
 
-    
-    
         <filter>
             <filter-name>mongoSession</filter-name>
             <filter-class>org.nutz.mongo.session.MongoSessionFilter</filter-class>
@@ -37,25 +35,15 @@ tags:
     		<dispatcher>INCLUDE</dispatcher>
         </filter-mapping>
     
-
-
-
 在项目启动的代码中,加入下面的语句:
 
-    
-    
     new MongoSessionManager(dao).register(servletContext, null);
     //其中,dao是MongoDao的实例
     
-
-
-
 **2. 与标准HttpSession的差异**
 可存放的对象类型: 普通数据类型,MongoDao所管理的Pojo,一切可以顺利json序列化/反序列化的对象
 由于是分布式的Session,必须考虑对象的状态托管问题,上代码:
 
-    
-    
     User user = new User();
     user.setName("wendal");
     session.setAttribute("me", user);
@@ -77,23 +65,15 @@ tags:
     String myName = ((User)session.getAttribute("me")).getName();
     //这里所得到的值,将是"ABC"
     
-    
-
-
-
 **3. 获取全部Session**
 一直以来,我都以为无法通过标准的ServletAPI简单获取当前应用的全部Session,直至我完成了NutzMongoSession,才发现HttpSession接口有一个已经废弃的方法可以做到
 好吧,我承认,我误导了很多很多童鞋....
 
-    
-    
     req.getSession().getSessionContext().getIds();
     //这样就能拿到全部Session的Id,然后通过Id,获取
     req.getSession().getSessionContext().getSession(id);
     //来获取具体的Session
     
-
-
 为了与标准的HttpSession最大兼容,所以,NutzMongoSession也实现了这个方法.
 
 **4. 不足之处**

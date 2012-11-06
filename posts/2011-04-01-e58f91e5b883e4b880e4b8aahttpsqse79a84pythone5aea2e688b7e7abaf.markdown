@@ -30,8 +30,6 @@ Httpsqs是张宴的一款开源队列服务器,项目首页 [http://code.google.
 
 代码:
 
-    
-    
     #Verion 1.0
     #Author wendal(wendal1985@gmail.com)
     #If you find a bug, pls mail me
@@ -141,8 +139,6 @@ Httpsqs是张宴的一款开源队列服务器,项目首页 [http://code.google.
             return False
         return True
     
-
-
 测试代码就不贴,需要的话就下载zip包吧.
 
 因为Httpsqs本身就是基于Http协议的,故各种客户端实现都只是封装一下,本python客户端也不例外.

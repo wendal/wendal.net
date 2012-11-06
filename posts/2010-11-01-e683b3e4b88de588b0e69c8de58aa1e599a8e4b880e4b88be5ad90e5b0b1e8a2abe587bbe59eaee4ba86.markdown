@@ -43,9 +43,7 @@ tags:
 
 	/jmx-console/HtmlAdaptor?action=inspectMBean&name=jboss.system:type%3DServerInfo
 
-
 看来是被攻击了!!
-
 
 冷静冷静,然而,攻击开始后不到5秒,Jboss就被关闭了.
 
