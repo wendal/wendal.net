@@ -1,0 +1,24 @@
+---
+comments: true
+date: 2012-03-03 14:56:47
+layout: post
+slug: win8%e6%b6%88%e8%b4%b9%e8%80%85%e9%a2%84%e8%a7%88%e7%89%88%e6%97%a0%e6%b3%95%e6%8b%a8%e9%80%9avpn%e7%9a%84%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95
+title: Win8消费者预览版无法拨通VPN的解决方法
+wordpress_id: 387
+categories:
+- 其他
+tags:
+- VPN
+---
+
+用上Win8已经2天了,其中就纠结的莫过于VPN拨号失败...
+[![](http://wendal.net/wp-content/uploads/2012/03/Win8_VPN_FAIL.jpg)](http://wendal.net/wp-content/uploads/2012/03/Win8_VPN_FAIL.jpg)
+
+失败的原因是, VPN拨号是,会自动把计算机名做为域,并附加到验证信息中!! 非常非常纠结的一个行为,而且无法自行输入(^&$&#%&$^%&)
+
+几经探索,终于找到一个方法,就是设置VPN的选项,让其先拨ADSL:
+<a href="http://wendal.net/wp-content/uploads/2012/03/Win8_VPN_1.jpg"><img src="http://wendal.net/wp-content/uploads/2012/03/Win8_VPN_1.jpg" alt="" title="Win8_VPN_1" width="559" height="685" class="aligncenter size-full wp-image-388" /></a>
+
+拨号时,就会出现对话框了.. 鸡冻啊!!:
+
+<a href="http://wendal.net/wp-content/uploads/2012/03/Win8_VPN_2.jpg"><img src="http://wendal.net/wp-content/uploads/2012/03/Win8_VPN_2.jpg" alt="" title="Win8_VPN_2" width="535" height="589" class="aligncenter size-full wp-image-389" /></a>

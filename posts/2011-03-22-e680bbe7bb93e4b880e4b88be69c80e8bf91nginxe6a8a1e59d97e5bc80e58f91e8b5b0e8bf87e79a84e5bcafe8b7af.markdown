@@ -1,0 +1,84 @@
+---
+comments: true
+date: 2011-03-22 20:42:00
+layout: post
+slug: '%e6%80%bb%e7%bb%93%e4%b8%80%e4%b8%8b%e6%9c%80%e8%bf%91nginx%e6%a8%a1%e5%9d%97%e5%bc%80%e5%8f%91%e8%b5%b0%e8%bf%87%e7%9a%84%e5%bc%af%e8%b7%af'
+title: 总结一下最近Nginx模块开发走过的弯路
+wordpress_id: 257
+categories:
+- Nginx
+- 工作
+tags:
+- bug
+- Java
+- js
+- lua
+- MySQL
+- nginx
+- 总结
+---
+
+整了快一个月了,是时候总结一下:
+
+教训:
+1. 在虚拟机下编译Nginx
+算是犯的第一个错误, 环境如下: Window + 虚拟机中的Ubuntu, nginx等文件放在windows的一个文件夹中, Ubuntu使用vbox的数据空间进行访问. 
+	
+* 一开始并未察觉,因为觉得编译个东西, 几分钟,很正常吧.
+
+
+	
+* 后来,做出一部分功能,开始测试. 用ab压, 总是几百req/s ,非常不爽,不应该是这种性能!!
+
+
+	
+* 无意中,改为单worker进程, 竟然效果更好, 而且ab占用的cpu比nginx还高!!
+
+
+	
+* 开始怀疑虚拟机的性能,决定用wubi安装一个
+
+
+	
+* 安装好,例行编译,靠!! 咋一会就搞定了?! 用ab压,晕死,直接上10k req/s了,而且依旧ab的cpu比nginx高!!
+
+
+
+2. 在Lua中习惯性写分号,习惯性忘记写end
+	
+* 开头,基本上每行都不自觉地敲上分号
+
+
+	
+* 每每写if语句,总是忘记写then和end
+
+
+	
+* 好久之后才发现连接字符串,其实用..就可以了,之前一直用string.format
+
+
+
+3. 以Java的想法写C
+ 	
+* 一开始看到echo/lua模块每几行就判断一下是否为NULL/NGX_ERROR,觉得很多余,分配内存都要check一下,结果,杯具开始了
+
+
+	
+* 指针满天飞,至今还没适应过来
+
+
+其他一些零碎的问题:
+1. lua-nginx-module 0.1.6rc2有个bug,折腾了2天,最后知道是bug
+2. 用google-pretools工具分析性能,结果发现根本还不需要到这一步,因为ab的cpu比nginx还高!!
+
+经验:
+最大的经验就是 如果无需对请求体进行复杂处理(例如upload),以下组合可以说无敌了:
+nginx + lua-nginx-module + drizzle-nginx-module + rds-json-nginx-module
+
+使用标准nginx处理静态文件,不是一般的快和强大
+drizzle + rds-json负责访问mysql数据, 速度非常快
+使用lua处理逻辑,灵活而且非常快
+
+一般的增删改查,都可以用上面的组合完成,无需Java/PHP的参与
+
+暂时想到这么多, 另外,我在翻译lua-nginx-module的手册.虽说lua-nginx-module是国人写的,但一直没有找到中文手册,其英文文档虽然能看懂,但查找非常不便. 嘻嘻,值得期待哦

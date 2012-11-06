@@ -1,0 +1,55 @@
+---
+comments: true
+date: 2010-11-10 22:07:12
+layout: post
+slug: '%e6%8a%98%e8%85%be%e4%ba%862%e5%a4%a9%e7%bb%88%e4%ba%8e%e6%8a%8anutz%e6%8f%90%e4%ba%a4%e7%bb%99maven%e5%ba%93'
+title: 折腾了2天,终于把Nutz提交给Maven库
+wordpress_id: 124
+categories:
+- Java
+tags:
+- el
+- gpg
+- Java
+- Maven
+- Nutz
+---
+
+昨天在 https://oss.sonatype.org 申请将Nutz加入资源库, 相关Issue:
+
+[https://issues.sonatype.org/browse/OSSRH-983](https://issues.sonatype.org/browse/OSSRH-983)
+
+原本以为要2天,想不到一天就通过了申请.
+
+下午折腾了一下,搞到傍晚才成功上传一版,期间遇到的问题有:
+
+1. 要求asc文件,开头无头绪,后来发现是gpg工具生存的.
+
+2. 提交后提示public key未登记,又折腾了一下,提交到公共服务器
+
+3. 签名无效, 神奇之极, 没办法,重新签名, 并打包为bundle,一次性提交!
+
+哦也,成功,release! 哈哈,发布成功:
+
+[https://oss.sonatype.org/content/groups/staging/org/nutz/nutz/1.a.32/](https://oss.sonatype.org/content/groups/staging/org/nutz/nutz/1.a.32/)
+
+不过,很奇怪,并没要在Maven中央库找到nutz,难道是同步间隔的问题??
+
+追查! 发现pom文件少了一个packaging的属性,我晕!!
+
+刚才把1.a.31也放上去了,应该满足同步到中央库的全部条件了. 看看明天能否在中央库找到. 期待中!!
+
+后续报道:
+
+**已经同步到中央库**了, 地址 [http://repo1.maven.org/maven2/org/nutz/](http://repo1.maven.org/maven2/org/nutz/)
+
+现在已经可以直接将Nutz加入你项目的dependency:
+
+    
+    
+    	<dependency>
+    		<groupid>org.nutz</groupid>
+    		<artifactid>nutz</artifactid>
+    		<version>1.a.33</version>
+    	</dependency>
+    

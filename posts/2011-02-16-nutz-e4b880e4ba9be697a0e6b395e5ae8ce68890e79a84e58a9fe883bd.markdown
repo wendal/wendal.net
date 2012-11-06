@@ -1,0 +1,44 @@
+---
+comments: true
+date: 2011-02-16 20:58:49
+layout: post
+slug: nutz-%e4%b8%80%e4%ba%9b%e6%97%a0%e6%b3%95%e5%ae%8c%e6%88%90%e7%9a%84%e5%8a%9f%e8%83%bd
+title: Nutz 一些无法完成的功能
+wordpress_id: 242
+categories:
+- Java
+tags:
+- Hibernate
+- io
+- MVC
+- Nutz
+- XML
+- 配置
+---
+
+这篇文章针对的是1.b.35
+
+1. Nutz.Ioc与Spring.ioc相比,无法实现工厂类生成具体类的实例
+
+    
+    
+    public class A {}
+    
+    public class B {
+        public static A makeA(){return new A();}
+    }
+    
+
+
+2. Nutz.Aop与Spring.Aop相比,无法拦截构造方法,静态方法
+3. Nutz.Dao与Hibernate相比,没有缓存层,无自动update表结构,没有复杂的映射关系管理,没有XML< -->POJO转换工具
+4. Nutz.MVC 没有校验功能,没有配置方式的URL映射
+5. Nutz.MVC 与Struts2相比, 没有标签库
+6. Nutz.Lang 与Apache Common 系列相比, 很多功能都没有
+... ... ...
+
+问题是,我们需要这些功能吗??
+
+Nutz 面向大型应用吗? 面向复杂应用吗?
+
+我的观点 够用就好!

@@ -1,0 +1,204 @@
+---
+comments: true
+date: 2010-12-09 21:07:10
+layout: post
+slug: '%e4%b8%80%e6%ac%a1%e5%86%85%e5%ad%98%e6%b3%84%e6%bc%8f%e7%9a%84%e6%8e%92%e6%9f%a5'
+title: 一次内存泄漏的排查
+wordpress_id: 208
+categories:
+- Java
+tags:
+- Dom
+- Eclipse
+- el
+- io
+- Java
+- memleak
+- Sunfarm
+- 优化
+- 内存泄漏
+- 助手
+- 视图
+- 阳光牧场
+---
+
+昨天,又有一位用户抱怨[阳光牧场助手](http://code.google.com/p/sunfarm)的内存占用过高
+问用户拿到20来个帐号后,用助手加载,启动,得到一些GC的数据:
+
+    
+    
+    409.879: [Full GC 409.879: [Tenured: 349567K->349567K(349568K), 1.5796790 secs] 506815K->382998K(506816K), [Perm : 15879K->15879K(65536K)], 1.5797868 secs] [Times: user=1.55 sys=0.00, real=1.58 secs] 
+    417.784: [Full GC 417.784: [Tenured: 349567K->349568K(349568K), 1.6968523 secs] 506815K->382777K(506816K), [Perm : 15880K->15878K(65536K)], 1.6969534 secs] [Times: user=1.68 sys=0.00, real=1.69 secs] 
+    422.242: [Full GC 422.242: [Tenured: 349568K->349568K(349568K), 1.5697638 secs] 506815K->382844K(506816K), [Perm : 15879K->15879K(65536K)], 1.5698652 secs] [Times: user=1.56 sys=0.00, real=1.56 secs] 
+    Heap
+     def new generation   total 157248K, used 156479K [0x029e0000, 0x0d480000, 0x0d480000)
+      eden space 139776K, 100% used [0x029e0000, 0x0b260000, 0x0b260000)
+      from space 17472K,  95% used [0x0b260000, 0x0c2afda8, 0x0c370000)
+      to   space 17472K,   0% used [0x0c370000, 0x0c370000, 0x0d480000)
+     tenured generation   total 349568K, used 349568K [0x0d480000, 0x229e0000, 0x229e0000)
+       the space 349568K, 100% used [0x0d480000, 0x229e0000, 0x229e0000, 0x229e0000)
+     compacting perm gen  total 65536K, used 16259K [0x229e0000, 0x269e0000, 0x2a9e0000)
+       the space 65536K,  24% used [0x229e0000, 0x239c0e98, 0x239c1000, 0x269e0000)
+    No shared spaces configured.
+    
+
+
+由于新生代应该会很快回收,故关注另外一块已经用完的空间tenured generation
+
+    
+    
+     tenured generation   total 349568K, used 349568K [0x0d480000, 0x229e0000, 0x229e0000)
+       the space 349568K, 100% used [0x0d480000, 0x229e0000, 0x229e0000, 0x229e0000)
+    
+
+
+足足用掉了340M,怎么会这样呢? 最后几次都是FULL GC,故肯定是有对象一直被引用,而且用了很多内存.
+用jmap把内存镜像抓下来
+
+    
+    
+    jmap -dump:format=b,file=heap.bin 1936
+    #1936是进程号pid
+    
+
+
+然后使用 [Eclipse Memory Analyzer](http://www.eclipse.org/mat/) 打开heap.bin , 经过漫长的等待后
+不跑任何分析,直接在Overview视图,点开Dominator Tree, 哇!!! 严重震惊了,数据如下:
+
+    
+    
+    Class Name                                                         | Shallow Heap | Retained Heap | Percentage 
+    --------------------------------------------------------------------------------------------------------------
+                                                                       |              |               |            
+    com.goojia.xiaonei.sunfarm.Config @ 0x144f8ea8                     |          136 |    15,856,928 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x135aa160                     |          136 |    15,856,880 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x1080dba8                     |          136 |    15,856,872 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x13382830                     |          136 |    15,856,872 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x1359cf10                     |          136 |    15,856,872 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x107e8a28                     |          136 |    15,856,864 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x117244d0                     |          136 |    15,856,856 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x12413010                     |          136 |    15,856,840 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x133913b0                     |          136 |    15,856,840 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x140dc1c8                     |          136 |    15,856,840 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x140d6c10                     |          136 |    15,856,824 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x10152860                     |          136 |    15,856,768 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x107ecc68                     |          136 |    15,856,768 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x144f7050                     |          136 |    15,856,736 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x1300c4d8                     |          136 |    15,856,720 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x117267b8                     |          136 |    15,856,712 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x107e8f20                     |          136 |    15,856,696 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0xf8796a0                      |          136 |    15,856,648 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0xf882128                      |          136 |    15,856,576 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0xf87ea38                      |          136 |    15,856,416 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0xf8bd308                      |          136 |    15,856,416 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0xf87fb40                      |          136 |    15,856,408 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0x140d7aa0                     |          136 |    15,856,280 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Config @ 0xf8ac2a8                      |          136 |    15,856,080 |      4.04% 
+    com.goojia.xiaonei.sunfarm.Context @ 0x140d8970                    |          120 |     1,105,208 |      0.28% 
+    class com.goojia.sunfarm.TextAreaAppender @ 0x25095de8 System Class|           16 |       501,512 |      0.13% 
+    class java.lang.Integer$IntegerCache @ 0x24e2cdb8 System Class     |            8 |       401,032 |      0.10% 
+    com.goojia.xiaonei.sunfarm.Context @ 0x140dc330                    |          120 |       339,344 |      0.09% 
+    com.goojia.xiaonei.sunfarm.Context @ 0x13391438                    |          120 |       338,536 |      0.09% 
+    com.goojia.xiaonei.sunfarm.Context @ 0x117245a0                    |          120 |       337,376 |      0.09% 
+    Total: 30 of 8,160 entries                                         |              |               |            
+    --------------------------------------------------------------------------------------------------------------
+    
+
+
+Config对象竟然占用了300多M,而且很准确的与帐号数一样,因为那是一一对应的.但,不对啊,怎么这么多呢? 打开一个Config看看
+
+    
+    
+    Class Name                                           | Shallow Heap | Retained Heap | Percentage 
+    ------------------------------------------------------------------------------------------------
+    com.goojia.xiaonei.sunfarm.Config @ 0x144f8ea8       |          136 |    15,856,928 |      4.04% 
+    |- com.goojia.xiaonei.sunfarm.DataMap @ 0x144f8fa8   |           56 |    15,854,760 |      4.04% 
+    |- java.util.HashSet @ 0x17d01f50                    |           16 |           560 |      0.00% 
+    |- java.util.HashSet @ 0x17d01da8                    |           16 |           424 |      0.00% 
+    |- java.util.HashSet @ 0x17d02208                    |           16 |           232 |      0.00% 
+    |- java.lang.String[4] @ 0x17d02530                  |           32 |           224 |      0.00% 
+    |- java.util.HashSet @ 0x17d02180                    |           16 |           136 |      0.00% 
+    |- java.lang.String @ 0x179f3478  guanghuiyuan@qq.com|           24 |            80 |      0.00% 
+    |- java.lang.String[1] @ 0x17d01d28                  |           16 |            64 |      0.00% 
+    |- java.lang.String[1] @ 0x17d01d68                  |           16 |            64 |      0.00% 
+    |- java.lang.String @ 0x179f34c8  qs828000           |           24 |            56 |      0.00% 
+    |- java.lang.String[10] @ 0x17d02330                 |           56 |            56 |      0.00% 
+    |- java.lang.String @ 0x17d01d00  xn                 |           24 |            40 |      0.00% 
+    |- java.lang.String @ 0x17d022e0  3                  |           24 |            40 |      0.00% 
+    |- java.lang.String @ 0x17d02308  30                 |           24 |            40 |      0.00% 
+    |- java.lang.String[1] @ 0x17d02610                  |           16 |            16 |      0.00% 
+    '- Total: 15 entries                                 |              |               |            
+    ------------------------------------------------------------------------------------------------
+    
+
+
+哦? 是DataMap类的实例? 进行展开
+
+    
+    
+    Class Name                                              | Shallow Heap | Retained Heap | Percentage 
+    ---------------------------------------------------------------------------------------------------
+    com.goojia.xiaonei.sunfarm.DataMap @ 0x144f8fa8         |           56 |    15,854,760 |      4.04% 
+    |- net.sf.ezmorph.bean.MorphDynaBean @ 0x20b6f3f0       |           24 |    15,734,664 |      4.01% 
+    |- java.util.HashMap @ 0x144f9108                       |           40 |        31,912 |      0.01% 
+    |- java.util.HashMap @ 0x144f9130                       |           40 |        16,504 |      0.00% 
+    |- java.util.HashMap @ 0x144f9068                       |           40 |        10,464 |      0.00% 
+    |- java.util.HashMap @ 0x144f90b8                       |           40 |         6,432 |      0.00% 
+    |- java.util.HashMap @ 0x144f9090                       |           40 |         4,216 |      0.00% 
+    |- java.util.HashMap @ 0x144f90e0                       |           40 |         4,024 |      0.00% 
+    |- java.text.DecimalFormat @ 0x144f8fe0                 |          136 |           672 |      0.00% 
+    |- java.lang.String @ 0x20d78370  shenqichinesecrabapple|           24 |            80 |      0.00% 
+    |- java.lang.String @ 0x20d7cdd0  shenqiparadiseflower  |           24 |            80 |      0.00% 
+    |- java.lang.String @ 0x20d85b78  caomeilianrubaobing   |           24 |            80 |      0.00% 
+    |- java.lang.String @ 0x20d8c560  shenqiPutianBlackPig  |           24 |            80 |      0.00% 
+    |- java.lang.String @ 0x20d957d8  shengzhuanghuanxiong  |           24 |            80 |      0.00% 
+    |- java.lang.String @ 0x20d97370  shenqishuangfengluotuo|           24 |            80 |      0.00% 
+    |- java.lang.String @ 0x20d75070  hongtouzhuomuniao     |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d78470  shenqinigerseed       |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d78568  wanshengjienangua     |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d78950  gaojishengdanhong     |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d7a518  tianshanxuelian       |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d7b780  hongbailanmeigui      |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d7d410  munaiyinan_farm       |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d7d898  shenqima_ti_lian      |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d80770  ziyezuojiangcao       |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d822e8  shenqisweetviolet     |           24 |            72 |      0.00% 
+    |- java.lang.String @ 0x20d82790  chinesecrabapple      |           24 |            72 |      0.00% 
+    '- Total: 25 of 934 entries                             |              |               |            
+    ---------------------------------------------------------------------------------------------------
+    
+
+
+哦!!!!!!!! 原来是一个MorphDynaBean 的实例!! 但是DataMap不应该持有这个类的实例的啊,仅仅是初始化的时候,作为过程量传进入而已
+稍微读了一下代码,发现这个DataMap类,发现对于这个实例变量有2个用途
+1. 仅仅只是把bean赋值为一个实例变量:
+
+    
+    
+    this.bean = bean;
+    
+
+
+2. 加载文件,转换为对象,赋值给实例变量,然后再另外一个方法中获取
+
+    
+    
+            public boolean initFromLocal() {
+                    loadDataFromLocal(); #这个方法仅仅在这里被调用,目的就是为this.bean赋值
+                    if (null != this.bean) {
+                            initSeeds(bean);
+                            initBabies(bean);
+                            writeSeedReferenceFile();
+                            return true;
+                    } else {
+                            return false;
+                    }
+            }
+    
+
+
+显然,我轻微改动一下代码,这对象就不会被持有了! [具体改动](http://code.google.com/p/sunfarm/source/diff?spec=svn887&r=887&format=side&path=/trunk/sunfarm/src/com/goojia/xiaonei/sunfarm/DataMap.java),就是去掉实例变量,改为过程量!
+
+就这样,内存就直接减下来了!! 哦也,搞定!Config对象占用的内存,从15M减到200K ,即减少98.7%! 
+仅仅几行代码的更改,使助手在相同内存占用的情况下,每100M内存,多运行20倍以上的帐号!!
+故马上发布了助手的3.51版,哈哈!!

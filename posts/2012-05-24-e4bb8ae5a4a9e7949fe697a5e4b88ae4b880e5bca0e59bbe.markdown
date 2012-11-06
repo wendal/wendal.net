@@ -1,0 +1,17 @@
+---
+comments: true
+date: 2012-05-24 21:58:24
+layout: post
+slug: 'birthday-as-one-picture'
+title: 今天生日,上一张图!
+wordpress_id: 427
+categories:
+- 生活
+tags:
+- io
+- 鸣鸣
+---
+
+[caption id="attachment_428" align="aligncenter" width="400" caption="鸣鸣玩电脑"][![鸣鸣玩电脑](http://wendal.net/wp-content/uploads/2012/05/psb.jpg)](http://wendal.net/wp-content/uploads/2012/05/psb.jpg)[/caption]
+
+明天去帝都: 机票OK,酒店OK,保险OK

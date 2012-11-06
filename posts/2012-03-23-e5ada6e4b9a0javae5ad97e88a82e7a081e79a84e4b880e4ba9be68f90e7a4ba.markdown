@@ -1,0 +1,25 @@
+---
+comments: true
+date: 2012-03-23 20:49:14
+layout: post
+slug: 'tips-for-learning-java-arm-code'
+title: 学习Java字节码的一些提示
+wordpress_id: 403
+categories:
+- Java
+tags:
+- Java
+- Oracle
+---
+
+Java Class Format : [http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html](http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html)
+Class文件格式定义,永远是最权威的
+
+jclasslib : [http://www.ej-technologies.com/products/jclasslib/overview.html](http://www.ej-technologies.com/products/jclasslib/overview.html)
+可视化查看/修改Class文件的工具,以树形结构显示Class文件,并列出具体方法的字节码数据
+
+asm : [http://asm.ow2.org/](http://asm.ow2.org/)
+性能最强悍的读写class格式的类库,因为大部分写法都接近于直接写字节码
+其中的ASMifierClassVisitor类,能打印出构造一个完整class文件所需要的全部Java代码,非常方便
+
+Java字节码,跟汇编差不多,喜欢深入Java语法的童鞋不妨学学. 看清实际生成的字节码,你能更清晰的知道,哪些语法仅仅是编译器语法糖果.

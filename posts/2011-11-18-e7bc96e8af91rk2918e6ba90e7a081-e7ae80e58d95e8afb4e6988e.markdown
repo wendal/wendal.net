@@ -1,0 +1,119 @@
+---
+comments: true
+date: 2011-11-18 13:23:23
+layout: post
+slug: '%e7%bc%96%e8%af%91rk2918%e6%ba%90%e7%a0%81-%e7%ae%80%e5%8d%95%e8%af%b4%e6%98%8e'
+title: 编译RK2918源码 -- 简单说明
+wordpress_id: 350
+categories:
+- VPS/Linux
+tags:
+- Android
+- bug
+- el
+- rk2918
+- 下载
+- 配置
+---
+
+自从公布RK29的源码地址,各种模块都成为可能
+
+我也说说如何编译吧, 环境 Ubuntu 10.10 server x86版
+
+
+1. 第一步当然是下载源码并解压啦, 以andy pad的源码为例
+
+    
+    
+    cd ~/
+    mkdir android
+    cd ~/android
+    wget https://bitbucket.org/paulobrien/android_kernel_andypad/get/4c6b4f4c48d1.zip
+    unzip 4c6b4f4c48d1.zip
+    mv paulobrien-android_kernel_andypad-4c6b4f4c48d1/ rk29
+    
+
+
+
+2. 安装依赖包
+
+    
+    
+    sudo apt-get install lzop sharutils libncurses5-dev vim
+    
+
+
+
+3. 下载交叉编译器(我个人认为是错误翻译,应该叫跨平台编译器) arm 4.4.0
+
+    
+    
+    cd ~/android
+    wget http://dl.google.com/android/ndk/android-ndk-r4b-linux-x86.zip
+    unzip android-ndk-r4b-linux-x86.zip
+    mkdir toolchain
+    cp -r android-ndk-r4b/build/prebuilt/linux-x86/* toolchain/
+    
+
+
+
+4. 拷贝编译设置
+
+    
+    
+    cd ~/android
+    cd rk29
+    cp arch/arm/configs/rk29_ddr3sdk_defconfig .config
+    #提醒: configs文件夹下面有多个配置文件,具体差异不清楚
+    
+    #尝试编译一下内核
+    make kernel
+    #如无意外,你应该看到几个关于配置的提示,要求你进行选择,直接回车选默认值即可,然后编译完成
+    
+
+
+
+5. 完整编译一次
+
+    
+    
+    cd ~/android/rk29
+    #我本地解压出来的源码包,其中的drivers/usb/storage/debug.h会出错,所以需要自行下载一个
+    cd drivers/usb/storage
+    rm debug.h
+    wget https://bitbucket.org/paulobrien/android_kernel_andypad/raw/4c6b4f4c48d1/drivers/usb/storage/debug.h
+    
+    cd ~/android/rk29
+    make
+    #一起顺利的话,恭喜你,成功了!!
+    
+
+
+
+6 编译具体的模块,以cifs.ko为例
+
+    
+    
+    #打开配置选项界面
+    make menuconfig
+    
+    #File system --> Network File system (按空格,让其启用) --> CIFS support (按空格,直至变成M,即模块)
+    按Esc无数次,然后提示是否保存,选保存
+    
+    #编译cifs模块
+    make M=fs/cifs
+    
+    #应该会打印出 cifs.ko字样,查看一下
+    find -name "cifs.ko"
+    #你就应该看到编译好的cifs.ko模块
+    
+    #提醒一句, CIFS模块,还需要slow-work.ko和nls_utf8.ko,都可以用类似的方法进行编译得到
+    
+
+
+
+-----------------------------------------
+反馈1 :
+编译slow-work.ko,需要修改slow-work.c哦, 请查看 [http://forum.xda-developers.com/showthread.php?t=1113191](http://forum.xda-developers.com/showthread.php?t=1113191)
+
+如果你遇到什么编译问题,欢迎留言交流哦

@@ -1,0 +1,52 @@
+---
+comments: true
+date: 2011-04-30 20:38:53
+layout: post
+slug: '%e8%af%84%e4%bb%b7%e4%b8%80%e4%b8%8beverbox%e5%92%8c%e5%be%ae%e7%9b%98'
+title: 评价一下Everbox和微盘
+wordpress_id: 282
+categories:
+- Java
+- 其他
+tags:
+- everbox
+- everbox4j
+- io
+- Java
+- nginx
+- OpenID
+- SSI
+- vdisk4j
+- 总结
+---
+
+**两者的官方:**
+Everbox [http://everbox.com](http://everbox.com)
+微盘 [http://vdisk.me](http://vdisk.me)
+
+**容量:**
+Everbox 上限15G,单一文件大小仅受限于空间大小
+微盘      上限10G,单一文件大小未知(API也没说,页面也没提及...)
+
+**运行平台:**
+两者的前端都是nginx,我喜欢!! 而且盛大的版本比较新,嘻嘻
+微盘肯定是php应用,跑在SAE上,估计是特权应用,因为SAE默认每个应用只允许存放10G数据
+Everbox猜不出来, session_id的名字也隐藏了,不知道什么语言写的
+
+**两者API的优缺点:**
+1. Everbox,请求一个文件的信息,响应体没有文件的指纹!!单单给edit time,受不了!! 微盘好歹也给个MD5啊!!
+2. 微盘有公开的API;Everbox暂时没有(官方答复是很快就会公开,呵呵)
+3. Everbox的上传机制比微盘好,起码能分段能续传;微盘对于大文件的上传还没给出API,乏力啊
+4. 微盘有个dolog机制, Everbox有ver标志,估计都能做些东西,但ver标志的含义至今没搞明白,纠结!!!
+
+**最后发发牢骚:**
+1. 微盘用HmacSHA256,天啊,啥玩意?! 貌似是OpenID的用到的,整了我一个晚上才搞明白,期间还动用了我微乎其微的php知识!!
+2. Everbox API快点出啊!! /list /query都不知道应该咋用!!
+
+**总结:**
+学到了不少文件同步的知识,呵呵
+两者的Java SDK项目:
+Everbox4j [http://code.google.com/p/everbox4j/](http://code.google.com/p/everbox4j/)
+VDisk4j     [http://code.google.com/p/vdisk4j/](http://code.google.com/p/vdisk4j/)
+
+暂时都是用Everbox,先入为主吧,嘻嘻,大部分代码也在Everbox4j项目中

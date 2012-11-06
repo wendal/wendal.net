@@ -1,0 +1,48 @@
+---
+comments: true
+date: 2011-08-21 11:39:55
+layout: post
+slug: nutzmole-nutz%e7%9a%84%e4%bb%a3%e7%a0%81%e7%94%9f%e6%88%90%e5%99%a8
+title: NutzMole -- Nutz的代码生成器
+wordpress_id: 314
+categories:
+- Java
+tags:
+- Nutz
+- XML
+- 下载
+- 路径
+- 配置
+---
+
+惯例,先上下载地址:
+[NutzMole 1.1 for rapid](http://nutz.googlecode.com/files/rapid-generator-for-nutzmole-1.1.zip)
+
+这个项目的原始地址,原本是nutzlab的一个实验项目:
+[http://code.google.com/p/nutzlab/source/browse/#svn%2Ftrunk%2FzMole](http://code.google.com/p/nutzlab/source/browse/#svn%2Ftrunk%2FzMole)
+
+**历史:**
+最初的代码,是在2010年11月提交的,之后一直处于冻结状态 -- 为什么? 因为我的Html页面做不出来,前端我可不在行. 当时,模板基本上就已经定下来,代码结构也基本确定
+直到几天前,我重启这个项目,并作了少量修正后,发布了NutzMole 1.0版,可独立运行,说白了,就是把旧代码清理一下,打包成一个独立运行包
+
+1.0发布后,意见/建议/批评纷纷袭来,很大的原因是这个版本并未严格测试,模板本身使用的一些代码在Nutz 1.b.39已经无法使用
+
+很快的, 1.1版发布了,更新了模板,并采用了rapid的代码生成器平台
+
+**对比一下最初的NutzMole和rapid代码生成器平台**:
+    NutzMole使用多个配置文件,rapid仅一个配置文件
+    NutzMole使用传统的接口/实现类来配置,rapid提供的文件模板-->文件的机制
+
+  NutzMole以专用工具的思想设计, rapid是按平台的理念设计,我对其代码生成器的印象是:
+    1. 单一配置文件,对用户非常友好
+    2. 平等的文件模板机制 --> 路径本身也可以使用表达式,全部模板都是使用相同的context
+
+**NutzMole 1.1的使用指南**:
+    修改generator.xml以符合你的数据库配置,如果lib文件夹未包含你需要的数据库驱动,请自行添加,然后执行rapid-gen.bat
+
+非常简单的使用方法,另外我正考虑做一个简单的GUI供用户填写信息
+
+另外,值得注意的是,我在nutzmole的模板中使用了lombok,一个非常非常好用的工具包,最大的用处就是免去写Getter/Setter
+下载地址:
+[http://projectlombok.org/](http://projectlombok.org/)
+我已经多次思考是否把lombok加入模板中,最近决定:这东西实在太好,非常值得推广!!强推吧!!

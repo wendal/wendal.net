@@ -1,0 +1,23 @@
+---
+comments: true
+date: 2011-03-22 18:56:44
+layout: post
+slug: '%e6%83%b3%e4%b8%8d%e5%88%b0%e8%bf%98%e6%9c%89%e8%bf%99%e7%a7%8dssh%e5%ae%a2%e6%88%b7%e7%ab%af-firessh'
+title: 想不到还有这种SSH客户端- FireSSH
+wordpress_id: 256
+categories:
+- 其他
+---
+
+在oschina中无意中看到的, 在Firefox里面使用ssh!!
+
+简单使用:
+1. 访问[FireSSH主页](http://firessh.mozdev.org/)
+2. 安装,并重启Firefox
+3. 在菜单中选择FireSSH,启动,输入ip/帐户/密码,登陆!!
+
+马上就是 SSH的经典黑屏了,哈哈
+
+只有想不到,没有做不到啊...
+
+回想以前,曾尝试在手机上安装一个ssh客户端, 就为了随时随地访问 客户的服务器排除问题,哈哈

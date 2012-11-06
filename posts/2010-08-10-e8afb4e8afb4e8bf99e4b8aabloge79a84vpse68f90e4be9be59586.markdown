@@ -1,0 +1,34 @@
+---
+comments: true
+date: 2010-08-10 18:50:12
+layout: post
+slug: '%e8%af%b4%e8%af%b4%e8%bf%99%e4%b8%aablog%e7%9a%84vps%e6%8f%90%e4%be%9b%e5%95%86'
+title: 说说这个blog的VPS提供商
+wordpress_id: 52
+categories:
+- VPS/Linux
+tags:
+- el
+- vpeee
+- VPS
+- 工作
+- 提供商
+- 迁移
+---
+
+用了大半个月,感觉非常不错,地址: [http://www.vpsee.com/vps-plans/ ](http://www.vpsee.com/vps-plans/)重申一下,我不是托!![
+](http://www.vpsee.com/vps-plans/)
+
+准备续费了,说说感受,打算继续月付
+
+1. 速度, 不错, 你简单ping一下本网站就知道,而且访问这个blog应该也是很快的
+
+2. 价格,我买了的是256m方案,70元一个月, 算是比较实惠的,是Xen虚拟的!!!
+
+3. 波折,曾经试过机房断电,凤凰城机房,vpsee的主页有提及,现在免费迁移到另外一个机房,O(∩_∩)O哈哈~
+
+4. 性能,感觉不错, CPU : Intel(R) Xeon(R) CPU           X3220  @ 2.40GHz
+
+5. 操作系统, 我最初选的是openSUSE,后来改回Ubuntu 10.04.1 Server 初始化内存占用仅20M
+
+与vpsee的工作人员交流过,感觉上应该是几个人一起在经营,而且老板还在上班呢(有一次去开会了),没有提供7*24的服务,但是我觉得没所谓,感觉上那只会是幌子.

@@ -1,0 +1,67 @@
+---
+comments: true
+date: 2010-11-01 12:11:04
+layout: post
+slug: '%e6%83%b3%e4%b8%8d%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%b8%80%e4%b8%8b%e5%ad%90%e5%b0%b1%e8%a2%ab%e5%87%bb%e5%9e%ae%e4%ba%86'
+title: 想不到服务器一下子就被击垮了
+wordpress_id: 110
+categories:
+- Java
+- VPS/Linux
+tags:
+- '360'
+- io
+- JBoss
+- nginx
+- Web服务
+- 下载
+- 安全
+- 恶意URL
+- 黑客
+---
+
+上周末, 从同事口中得知我休假期间,Jboss服务器曾**无故自己关闭**了一次.
+
+顿时非常惊讶,咋就会自己关闭自己呢?
+
+第一反应是OOM了,一问,没啊,内存还剩好多,而且log没提示OOM.
+
+难道是程序里面写了System.exit(X)之类? 扫描了一遍代码,没有啊!! 我们还不至于写这么的代码
+
+奇怪的是, JBoss是按照标准的流程顺序关闭各个应用后,再shutdown完成的,并无直接被kill掉或者异常退出,也没有找到JVM报错的log.
+
+由于关闭的时间点在11:37AM,故,追查nginx的access.log  , 翻翻翻, 在一堆502(Jboss已经关闭,nginx无法proxy_pass,报502)前面,有一些不寻常的请求,节选如下:
+
+/acunetix-wvs-test-for-some-inexistent-file-second-try
+
+/console/j_security_check
+
+/_vti_pvt/authors.pwd
+
+/phpmyadmin/main.php
+
+/jmx-console/HtmlAdaptor?action=inspectMBean&name=jboss.system:type%3DServerInfo
+
+
+看来是被攻击了!!
+
+
+冷静冷静,然而,攻击开始后不到5秒,Jboss就被关闭了.
+
+马上访问/jmx-console/, 天啊!! 竟然能够访问,Jboss的信息一览无余!! 这个默认应用竟然直接暴露给外网了!!
+
+还真有相关的JBoss漏洞 [http://websec360.com/NewsInfo/124/6455.Html](http://websec360.com/NewsInfo/124/6455.Html)
+
+但,如何才能关闭JBoss呢? [http://www.shuq.org/read.asp?id=109](http://www.shuq.org/read.asp?id=109) 通过JMX,严重无语了!!
+
+看来就是这个原因了, 哎. 实在没想到啊!!!
+
+刚刚翻查access.log,我晕,原来还有好多针对php/phpadmin/.net漏洞的log. 看来攻击者是使用某种攻击攻击完成的,难道是他的命令集? 不知道哪里能够下载.
+
+解决方法:
+
+1. 移除JBoss的JMX,invoker应用,因为我根本就没用到.
+
+2. 在nginx添加对php文件/asp文件/cgi文件的拦截,直接返回404.
+
+看来网站的安全还得狠狠地加强!!

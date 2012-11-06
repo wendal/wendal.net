@@ -1,0 +1,53 @@
+---
+comments: true
+date: 2012-02-19 13:34:02
+layout: post
+slug: ngqa-%e4%b8%8d%e5%8d%95%e5%8d%95%e6%98%af%e4%b8%80%e4%b8%aaqa%e7%b3%bb%e7%bb%9f
+title: Ngqa -- 不单单是一个QA系统
+wordpress_id: 372
+categories:
+- Java
+- mongodb
+tags:
+- Demo
+- el
+- git
+- js
+- Nutz
+- OpenID
+- 视图
+- 配置
+---
+
+项目地址: [https://github.com/howe/ngqa](https://github.com/howe/ngqa)
+
+使用了 Nutz, Nutz-mongo, Nutz-web, Nutz-socialauth ...
+
+这项目的最初目的是为Nutz搭建一个完整好玩的QA系统,现在的作用远大于此:
+
+1. Nutz-socialauth, 是本项目的其中一个亮点 -- 支持30种以上的社会化登录(OpenId), 号称国内第一, 率先github这个专业程序员必备网站
+2. 完整可用的Demo -- Nutz长期被投诉的重点,没一个完整可运行的,持续更新并提供支持的demo. 这个项目就突破这个问题,将包含足够丰富的注释及使用范例
+3. 作为一个QA系统,将有效积累Nutz的FAQ库
+4. 激活Nutz社区 -- 作为一个公开的项目,在开发的过程中,Nutzer们参与进来,动手把项目运行起来
+
+项目设计, 采用OpenAPI的思想, 网站页面,只是其中一个表现方式,开发完成后,将配备SDK,方便客户端扩展
+
+其中一个核心就是SmartView,根据访问地址的后缀来判断需要执行的视图,而非固定的配置为一种视图,示例代码:
+
+    
+    
+    	public void render(HttpServletRequest req, HttpServletResponse resp,
+    			Object obj) throws Throwable {
+    		String uri = req.getRequestURI();
+    		if (uri.endsWith(".json"))
+    			new AjaxView().render(req, resp, obj);
+    		else if (uri.endsWith(".rss"))
+    			new RssView().render(req, resp, obj);
+    		else
+    			new JspView(viewValue).render(req, resp, obj); //这里默认跑jsp
+    	}
+    
+
+
+
+同时,这个项目也使用了即将发布的Nutz-Mongo, 是nutz与nosql数据库的首个结合,很多非常酷的功能哦

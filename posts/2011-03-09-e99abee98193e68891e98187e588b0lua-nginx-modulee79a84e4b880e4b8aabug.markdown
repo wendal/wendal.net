@@ -1,0 +1,74 @@
+---
+comments: true
+date: 2011-03-09 22:30:07
+layout: post
+slug: '%e9%9a%be%e9%81%93%e6%88%91%e9%81%87%e5%88%b0lua-nginx-module%e7%9a%84%e4%b8%80%e4%b8%aabug'
+title: '[误报]难道我遇到lua-nginx-module的一个bug?'
+wordpress_id: 251
+categories:
+- Nginx
+tags:
+- bug
+- el
+- lua
+- MySQL
+- nginx
+- 下载
+- 配置
+---
+
+已经确定是我自己的原因
+实在不是很肯定,如果加入特定的--with-cc-opt参数就报错.
+
+环境: Ubuntu 10.04.2 LTS Server
+
+先安装好依赖的包:
+apt-get install liblua5.1-0-dev g++
+然后下载google-perftools:
+
+    
+    
+    wget http://google-perftools.googlecode.com/files/google-perftools-1.6.tar.gz
+    tar xvf google-perftools-1.6.tar.gz
+    cd google-perftools-1.6
+    ./configure
+    make
+    make install
+    
+
+
+然后到nginx编译:
+下载ngx_devel_kit 0.2.17
+下载lua-nginx-module 0.1.6rc2
+
+执行以下编译参数:
+./configure --add-module=simpl-ngx_devel_kit --add-module=lua-nginx-module
+可以成功配置,make也很顺利
+
+然后试试:
+
+    
+    
+    ./configure --add-module=simpl-ngx_devel_kit --add-module=lua-nginx-module --with-cc-opt=-lprofile #这里写错了,应该是profiler
+    
+
+
+报错,难道加上--with-cc-opt就报错?
+试试mysql的lib
+
+    
+    ./configure --add-module=simpl-ngx_devel_kit --add-module=lua-nginx-module --with-cc-opt=-lmysql
+    
+
+
+通过.
+
+神奇啊... 难道真的是bug?
+如果直接在auto/cc/gcc将:
+NGX_GCC_OPT="-O"
+改为
+NGX_GCC_OPT="-O2 -lprofile" 是能够pass的. --> 写错了!! 应该是-lprofiler
+
+好吧,困了,睡觉,明天报个issue.
+
+哈哈,本文是误报, 不算是个bug.

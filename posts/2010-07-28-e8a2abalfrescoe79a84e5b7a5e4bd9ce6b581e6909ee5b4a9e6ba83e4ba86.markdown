@@ -1,0 +1,26 @@
+---
+comments: true
+date: 2010-07-28 20:15:00
+layout: post
+slug: 'fuck-alfresco-workflow'
+title: 被Alfresco的工作流搞崩溃了
+wordpress_id: 11
+categories:
+- Alfresco
+- Java
+- 工作
+tags:
+- alfresco
+- 工作
+- 工作流
+---
+
+我实在不行了,投降了!!
+
+想了一天,还是没找到什么方法来满足以下需求:
+
+在启动一个工作流的时候,列出当前用户尚未完成的工作流,并供其选择,而且是在WCM模块内
+
+难点: 1. 无法获取myTask 2. 即使获取了,无法以列表方式展示给用户以选择
+
+崩溃了,我交不了差了,哎.........

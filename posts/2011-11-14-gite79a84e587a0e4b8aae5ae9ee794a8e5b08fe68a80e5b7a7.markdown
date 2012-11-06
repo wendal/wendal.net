@@ -1,0 +1,87 @@
+---
+comments: true
+date: 2011-11-14 10:51:50
+layout: post
+slug: git%e7%9a%84%e5%87%a0%e4%b8%aa%e5%ae%9e%e7%94%a8%e5%b0%8f%e6%8a%80%e5%b7%a7
+title: Git的几个实用小技巧
+wordpress_id: 344
+categories:
+- VPS/Linux
+tags:
+- el
+- git
+- io
+- Nutz
+- SSI
+- 下载
+---
+
+1. 不止一次听到抱怨说, Git库好大啊,把整个历史都拉下来,慢死了
+我情何以堪呢?!! 你可以单单取最后几个,甚至最后一个版本的啊?
+
+    
+    
+    #仅获取最新版和一个历史版本,即最后2个版本
+    git clone git@github.com:nutzam/nutz --depth=1
+    
+    #看看下载了多少数据:
+    Cloning into nutz...
+    remote: Counting objects: 2928, done.
+    remote: Compressing objects: 100% (1956/1956), done.
+    remote: Total 2928 (delta 1212), reused 2179 (delta 831)
+    Receiving objects: 100% (2928/2928), 3.20 MiB | 1.06 MiB/s, done.
+    Resolving deltas: 100% (1212/1212), done.
+    
+    #仅3.2mb哦, 小很多了吧?
+    
+
+
+
+上面的git clone,仅获取了最后2个版本,我是如何知道的呢?
+
+    
+    
+    cd nutz
+    git rev-list master
+    
+    #只有2个显示哦:
+    eeb43e7984e7376f09896a201f82ec9fb5936e21
+    e905483933c0f16c1c0820c8b1834dbcb5e0c06a
+    
+    #你也许也已经发现,最新版是最先显示的,rev比较多的时候有点不方便,那么:
+    git rev-list master --max-count=10
+    #上面的命令,一眼你就明白了
+    
+
+
+
+还是不信?好吧,看具体的log信息:
+
+    
+    
+    git log --pretty=format:'%h : %s' --topo-order --graph
+    
+    #打印:
+    * eeb43e7 : fix issue #107
+    * e905483 : add log when load iocObject in ComboIocLoader
+    
+    #如果你做了一些tag,只希望获取某两个tag直接的log
+    git log --pretty=format:'%h : %s' --topo-order --graph Tag1..Tag2
+    
+
+
+
+默认情况下, git执行N次操作后,才会压缩空间,我一般心情好的时间就敲一下:
+
+    
+    
+    #这个命令耗时是比较长的哦
+    git gc --aggressive
+    
+    #快速指令
+    git gc
+    
+
+
+
+好吧,我承认,很多内容都是从"[Git Community Book 中文版](http://gitbook.liuhui998.com)"学来的 -- 你会很神奇地发现,我竟然是翻译协作者之一,呵呵

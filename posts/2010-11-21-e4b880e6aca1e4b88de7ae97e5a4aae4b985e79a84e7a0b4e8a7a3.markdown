@@ -1,0 +1,27 @@
+---
+comments: true
+date: 2010-11-21 15:47:46
+layout: post
+slug: '%e4%b8%80%e6%ac%a1%e4%b8%8d%e7%ae%97%e5%a4%aa%e4%b9%85%e7%9a%84%e7%a0%b4%e8%a7%a3'
+title: 一次不算太久的破解
+wordpress_id: 135
+categories:
+- Java
+tags:
+- Java
+- XMind
+- 反编译
+- 技术
+- 破解
+---
+
+经友人推荐,发现XMind的确很好用. 不过部分功能需要收费,忽然就感觉有点不爽,毕竟这号称开源软件啊!
+故今早动手破解,下午2点成功!
+但无意放出破解版,毕竟是优秀的商业软件,会阻碍其发展. **仅本人使用!!**
+这里仅简单说说我用到的工具软件:
+1. XMind 3.1.1破解版 -- 这是国外破解的版本,给了我很大的启发!
+2. [JD-GUI](http://java.decompiler.free.fr/) -- 反编译出源码,软件逻辑一目了然!
+3. [Java Bytecode Editor](http://www.cs.ioc.ee/~ando/jbe/) -- 这软件堪称神器,直接改字节码!
+
+其实,我只是刚刚开始用XMind,还没使用其Pro的功能.但将近300元/year,实在是高!!
+我已经捐款给不少免费/开源项目,分别是我心目中的价位. 希望经过一段时间的使用,会发现XMind真正的价值!!

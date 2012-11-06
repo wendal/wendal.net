@@ -1,0 +1,46 @@
+---
+comments: true
+date: 2010-09-08 21:27:32
+layout: post
+slug: itext%e9%94%9a%e7%82%b9%e7%9a%84%e4%b8%80%e4%b8%aa%e5%b0%8f%e9%99%b7%e9%98%b1-%e7%9b%ae%e6%a0%87%e5%9c%b0%e9%94%9a%e7%82%b9%e5%bf%85%e9%a1%bb%e6%9c%89%e5%ad%97%e7%ac%a6%e4%b8%b2
+title: iText锚点的一个小陷阱 目标地锚点必须有字符串
+wordpress_id: 70
+categories:
+- Java
+tags:
+- iText
+- Nutz
+- PDF
+- zDoc
+- 陷阱
+---
+
+昨晚折腾了一下zDoc的PDF生成功能, 不过,一听闻锚点功能失效,顿时不爽,马上研究!!
+
+首先发现 锚点无法对应起来,  触发锚点的编号,与锚点目的地无法对应起来! 这个通过查找实际对应的文件的绝对地址的hashcode生成
+
+然后发现锚点总是失效,无法跳转, 最后才发现,锚点的目标地anchor, 使用 Anchor anchor = new Anchor(); 生成, 页面上无显示!!
+
+实例:
+
+    
+    
+    Anchor anchorDest = new Anchor(); anchorDest.setName("dest");
+    Anchor anchorSrc = new Anchor("From"); anchorDest.setReference("#dest");
+    
+
+
+无法跳转! 即使写成 
+
+    
+    
+    Anchor anchorDest = new Anchor(" ");
+    
+
+
+,一样无法跳转, 必须写成:
+
+    
+    
+    Anchor anchorDest = new Anchor("To here");
+    

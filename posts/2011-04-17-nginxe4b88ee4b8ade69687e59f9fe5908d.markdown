@@ -1,0 +1,49 @@
+---
+comments: true
+date: 2011-04-17 18:36:30
+layout: post
+slug: nginx%e4%b8%8e%e4%b8%ad%e6%96%87%e5%9f%9f%e5%90%8d
+title: Nginx与中文域名
+wordpress_id: 272
+categories:
+- Java
+- Nginx
+tags:
+- Java
+- nginx
+- python
+- 编码
+- 配置
+---
+
+这个问题来自Nginx群
+
+Google了一轮,发现其实很简单
+
+直接写中文域名是无法解析到正确的Server的
+中文域名其实就是一个英文域名!!
+中文域名 ---(Punycode编码) --> 英文域名
+而且,这是在浏览器实现的,你敲入 www.中文.com , 浏览器就转为 www.xn--fiq228c.com 进行访问,仅此而已!!
+
+那Punycode编码是什么呢? 先看看Python如何调用:
+尝试编码  www.坚果.com
+
+    
+    
+    '坚果'.decode('gbk').encode('punycode')
+    
+
+
+得到jfs419a,然后合成真正的URL www.xn--jfs419a.com -- 这个域名还没启用的.
+
+这个Punycode还是一个标准呢 [http://rfc-ref.org/RFC-TEXTS/3492/](http://rfc-ref.org/RFC-TEXTS/3492/)
+
+当然还得说说中文实现, 在Apache的HttpClient 4.x系列中就有,[看源码](http://www.docjar.com/html/api/org/apache/http/client/utils/Rfc3492Idn.java.html)
+
+**最新发现: JDK6中已经有相应的实现 java.net.IDN**
+
+另外贴一下 在线转换的地址 [http://www.cnnic.net.cn/html/Dir/2003/10/29/1112.htm](http://www.cnnic.net.cn/html/Dir/2003/10/29/1112.htm)
+
+所有,把中文域名转一下,按普通英文域名来配置就OK了!!
+
+奉劝一句, 离中文域名越远越好!!!

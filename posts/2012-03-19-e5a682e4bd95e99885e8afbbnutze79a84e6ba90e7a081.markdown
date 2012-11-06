@@ -1,0 +1,109 @@
+---
+comments: true
+date: 2012-03-19 22:50:37
+layout: post
+slug: 'howto-read-source-of-nutz'
+title: 如何阅读Nutz的源码
+wordpress_id: 400
+categories:
+- Java
+tags:
+- bug
+- Eclipse
+- el
+- io
+- Java
+- js
+- log4j
+- MVC
+- Nutz
+- plugin
+- 下载
+- 视图
+- 路径
+- 配置
+---
+
+一直以来都有很多人问,我一直以来就有一个简单直接的回答:
+"看你喜欢看的模块"
+
+今天,我决定用长一点的篇幅及内容来解释一下
+
+**Nutz的基础设施 -- Lang/Castor/Json/Log/Plugin**
+所有模块都是无约束地使用这个几个package所提供的方法
+--Lang,提供的是帮助方法,各种各样的,其名字来源于对java.lang包的补充. 注意,其中的Mirror类封装了大量的反射,但请不要再以JDK1.2的思维去想象反射的性能!!
+--Castor,负责类型转换, 例如String-->List
+--Json,一个基本完整(不解析科学计数),Json字符串与Java对象的互转实现
+--Log,日志接口,Nutz的代码,在运行时并不强制依赖具体的日志实现,这个package就是做了封装
+--Plugin,插件模块,最初的设计是为了一套简单的插件机制,现在仅Log模块在使用,意义已经不大
+建议重点关注的类/接口:
+Mirror Castors Json Lang Files Streams Log Log4jLogAdapter SimplePluginManager MultiLineProperties
+
+**反向注入/依赖注入 -- Ioc**
+由于Spring的横行,许多童鞋连Ioc的基本原理都已经忘掉了
+IocLoader负责加载配置信息(如js,注解)
+Ioc(NutIoc)按配置信息生成具体对象(bean)
+IocContext按配置信息管理bean的生命周期(create/fetch/depose)
+
+建议重点关注的类/接口:
+Ioc Ioc2 NutIoc IocLoader AnnotationIocLoader JsonLoader MapLoader
+
+**Nutz的ORM -- Dao**
+ORM的基本概念,就是POJO持久化. 请留意,这个package与Ioc无任何直接联系.NutIoc并不会特殊照顾NutDao,两者可以说是互不相识的.
+EntityMaker(AnnotationEntityMaker)将Pojo所对应的类转换为Entity(配置信息)
+Dao(NutDao)按Entity所提供的信息,将操作(insert/update/fetch等),转换为DaoStatement(抽象的Dao语句)
+DaoExecutor(NutDaoExecutor)将DaoStatement转换为JDBC语句
+DaoRunner(NutDaoRunner)负责执行具体的JDBC语句,并管理连接获取/释放/事务控制
+建议重点关注的类/接口:
+上面提到了各个类,并加上Sqls类
+
+**Http服务 -- MVC**
+主线: Loading(NutLoading)加载配置信息,UrlMapping(UrlMappingImpl)保存路径映射信息,ActionChain(NutActionChain)按链式处理具体请求
+建议重点关注的类/接口:
+NutFilter ActionHandler ActionContext DefaultViewMaker Mvcs ComboIocProvider
+org.nutz.mvc.impl.processor下的处理器实现类
+
+**切面编程 -- Aop**
+这部分的代码,除具体的asm代码外,还是比较好懂的. org.nutz.aop.asm包里面的代码,由于操作的是Java字节码,必须苦涩难懂.
+Aop的具体模型,请参阅手册.
+建议重点关注的类/接口:
+AbstractClassAgent InterceptorChain LoggingMethodInterceptor
+
+**表达式 -- EL**
+这玩意我自己也没仔细看完,主要是jukai和zozoh实现的,我就不多嘴了.
+
+**资源扫描 -- resource**
+找jar里面的文件,通过package获取里面的全部类,都靠这个package的实现
+建议重点关注的类/接口:
+Scans WebResourceScan LocalResourceScan
+
+**其他一些零碎的package:**
+conf -- jukai设计,被zozoh否决,现在仅el包还有引用,只有一个类,与EL一起看看吧
+filepool -- 文件池,放临时文件的,NutDao操作Clob/Blob数据,MVC的upload会用到
+http -- 简单的http客户端,功能简单够用(够我们自己用...)
+img -- 图像操作
+mock -- 最初的计划是完成一个Mock框架,后来缩减为mock servlet的,用来模拟servlet容器
+org.nutz.repo.org.objectweb.asm -- 被我精简过的asm 3.3,全是字节码操作,枯燥乏味.
+service -- NutDao的小封装,看完Dao不妨看这个
+trans -- NutDao的事物封装,跟service一样,看完Dao再看看呗
+
+**读源码的方法:**
+大大前提,把nutz的源码全下载下来,按手册的说明,把test跑通.
+1. 堆栈
+例如Ioc,你肯定想知道一个bean是如何被创建的. 那么,在你的类的构造方法中,加入一句: new Throwable().printStackTrace();
+跟着堆栈一层层了解
+
+2. debug
+这个更狠一些,顺着代码的执行,想深入的地方就进入,不感兴趣的地方就next,形成一个流程的概念.
+
+3. 看testcase
+由于testcase是使用场景抽象出来的代码,所以很有参考价值.
+
+附上几个Eclipse快捷键:
+ctrl+shift+T 查找某个类
+ctrl+L 跳到具体的行数
+alt+shift+b 打开源码视图上方的导航条,方便跳转到某个方法
+
+
+看Nutz代码时,我非常非常建议你记录下任何错误,并报告给我们.即使是错别字,我们也很开心得收到你的指正哦
+

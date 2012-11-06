@@ -1,0 +1,33 @@
+---
+comments: true
+date: 2010-07-30 22:49:01
+layout: post
+slug: 'weekend-but-still-working'
+title: 本应该是周末,但是明天要加班
+wordpress_id: 16
+categories:
+- 工作
+tags:
+- alfresco
+- Hibernate
+- io
+- Oracle
+- SSI
+- Tomcat
+- 加班
+- 工作
+- 工作流
+- 部署
+---
+
+没办法,明天加班咯.
+
+还是工作流的问题,N多问题未解决.继续奋斗咯
+
+今天把部分Alfresco实例从SP搬到SC,以便加速访问,提高开发速度.
+
+今天发现并解决一个问题, 当Oracle数据库因为内存不足,cpu占用接近100%是, hibernate会停留在init sessionfactory, 而且没有任何错误提示.
+
+另外一个问题是RMI, 因为搬迁办公室,ip变更, alfresco启动时需要查找RMI,因为/etc/hosts文件里面的ip没改,结果停留在find RMI port一段时间后死掉.
+
+再说一个发现, 使用Alfresco vtomcat 3.3 去连接 Alfresco 3.2 时, 总是连不上. 但是3.3的部署接收器却能接收3.2的Alfresco发过来的数据.

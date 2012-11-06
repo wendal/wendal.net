@@ -1,0 +1,51 @@
+---
+comments: true
+date: 2011-09-11 08:51:23
+layout: post
+slug: '%e8%ae%a9%e4%bd%a0%e7%9a%84android%e5%bd%bb%e5%ba%95%e8%a3%b8%e5%a5%94%e5%90%a7-%e5%87%bb%e5%9e%ae%e5%85%b6%e7%9a%84%e5%ae%89%e5%85%a8%e6%9c%ba%e5%88%b6'
+title: 让你的Android彻底裸奔吧!! -- 瘫痪Android的安全机制
+wordpress_id: 321
+categories:
+- Java
+- 其他
+tags:
+- Android
+- Java
+- 下载
+- 安全
+- 破解
+- 硬盘
+---
+
+本文并非教你写病毒来破解Android系统,所提及的操作,均要求用户主动参与
+
+本文主要针对是平板.Andoird手机由于涉及你的帐号/资金的安全,非常不建议你使用下面的方法!!
+
+先感谢一下硬件小二,rk28小组的协助
+
+**第一步,/system可写**
+..  [Rk2918现在可使用我不久前发明的方法,将/system映射在/data/sysrw](http://wendal.net/320.html)
+..  Rk2818的话,自然是使用aufs这种xda发明的方法,但使用rk2918的方法会快些
+**第二步,获取root权限**
+..   因为是完全击垮,故需要使用完全自由的su程序,改造自Superuser的su源码-- [无限制无管理功能的su](https://github.com/wendal/android_su)
+..   这里提供的su,去掉了GUI确认等繁琐操作,任何程序都可以无提示获取root权限
+..   自行添加的话,请确保所在分区支持suid,并设置su的权限为6777
+**第三步,移除apk的签名验证机制**
+..  在此之前,尝试美化系统界面的童鞋都知道,系统apk千万千万不要签名,否则肯定用不了
+..  对此我就不信邪,偏偏要破解掉这个限制,实现任意签名的apk,都能安装,完全跳过签名验证机制!!
+..  方法如下:
+..    1. 下载apktool,并安装好JRE或JDK,把apktool解压到D:\apktool
+..    2. 在机器上拷贝/system/framework/services.jar到硬盘的D:\apktool\services.apk
+..    3. 进入命令行,进入D:\apktool,执行 apktool.bat d services.apk ,稍等片刻,就能能看到新建的services文件夹
+..    4. 用UE或notepad++打开D:\apktool\services\smali\com\android\server\PackageManagerService.smali
+..    5. 查找private verifySignaturesLP,这就是校验签名的方法
+..    6. 在verifySignaturesLP方法体中,找到:goto_0,在后面加一行 const/4 v0, 0x1        ,含义是赋值为true,以Java来表达,就是return true,这是verifySignaturesLP方法的最终return语句之前的一句,故任何调用本方法的语句,都能拿到true,即签名验证永远为真. 注意,这里的0x1中的x是小写字母X,貌似很多人直接拷贝的话,会变成全角的X.如果你没有找到goto_0,那就找return v0之类的语句.一般都只有一个return语句!!
+..    7. 保存,重新打包: apktool.bat b services services.jar ,然后拷贝回机器,重启就可以了
+
+
+完成以上步骤,你的Android设备就彻底裸奔了 -- 
+1. System可写 -- 为任意改系统文件创造条件
+2. 无限制的su -- 任何程序都能悄无声息地获取root权限,加上上一条的System可写,即任何程序都能修改/system
+3. 不再有签名验证 -- 任何apk程序都可以声明自己是系统程序,甚至可以动态生成apk程序进行安装(随便签名就行!!)
+
+**从此,你的Android设备完全不设防了!!**

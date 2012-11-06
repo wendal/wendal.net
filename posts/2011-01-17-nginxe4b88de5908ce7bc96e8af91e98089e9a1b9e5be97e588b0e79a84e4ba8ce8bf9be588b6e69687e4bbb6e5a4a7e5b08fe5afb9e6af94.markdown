@@ -1,0 +1,151 @@
+---
+comments: true
+date: 2011-01-17 19:45:47
+layout: post
+slug: nginx%e4%b8%8d%e5%90%8c%e7%bc%96%e8%af%91%e9%80%89%e9%a1%b9%e5%be%97%e5%88%b0%e7%9a%84%e4%ba%8c%e8%bf%9b%e5%88%b6%e6%96%87%e4%bb%b6%e5%a4%a7%e5%b0%8f%e5%af%b9%e6%af%94
+title: Nginx不同编译选项得到的二进制文件大小对比
+wordpress_id: 228
+categories:
+- Nginx
+tags:
+- bug
+- Dom
+- io
+- js
+- nginx
+- SSI
+- 配置
+---
+
+Nginx信息:
+版本: 0.9.3
+对原版的修改, 将auto/cc/gcc的-g去掉,将-O改为-O2
+附上原始数据,比较长:
+
+    
+    
+    #默认编译
+    ./configure
+    make
+    ll objs/nginx
+    make clean
+    #File size 525556
+    #--with-cc-opt=-g 2444312
+    #--with-cc-opt=-g --with-debug 2513996
+    
+    #加载大部分可选模块
+    ./configure --with-http_ssl_module \
+            --with-http_realip_module \
+            --with-http_addition_module \
+            --with-http_xslt_module \
+            --with-http_sub_module \
+            --with-http_dav_module \
+            --with-http_flv_module \
+            --with-http_gzip_static_module \
+            --with-http_random_index_module \
+            --with-http_secure_link_module \
+            --with-http_degradation_module \
+            --with-http_stub_status_module \
+            --with-http_perl_module
+    make > /dev/null
+    ll objs/nginx
+    make clean
+    #File size 642031
+    #--with-cc-opt=-g 4557807
+    #--with-cc-opt=-g --with-debug 4689478
+    
+    #移除大部分可以移除的模块
+    ./configure         --without-http_charset_module \
+            --without-http_gzip_module \
+            --without-http_ssi_module \
+            --without-http_userid_module \
+            --without-http_access_module \
+            --without-http_auth_basic_module \
+            --without-http_autoindex_module \
+            --without-http_status_module \
+            --without-http_geo_module \
+            --without-http_map_module \
+            --without-http_split_clients_module \
+            --without-http_referer_module \
+            --without-http_rewrite_module \
+            --without-http_proxy_module \
+            --without-http_fastcgi_module \
+            --without-http_uwsgi_module \
+            --without-http_scgi_module \
+            --without-http_memcached_module \
+            --without-http_limit_zone_module \
+            --without-http_limit_req_module \
+            --without-http_empty_gif_module \
+            --without-http_browser_module \
+            --without-http_upstream_ip_hash_module
+    make
+    ll objs/nginx
+    make clean
+    #File size 357657
+    #--with-cc-opt=-g 1556885
+    #--with-cc-opt=-g --with-debug 1616309
+    
+    #进一步移除Http-Cache
+    ./configure         --without-http_charset_module \
+            --without-http_gzip_module \
+            --without-http_ssi_module \
+            --without-http_userid_module \
+            --without-http_access_module \
+            --without-http_auth_basic_module \
+            --without-http_autoindex_module \
+            --without-http_status_module \
+            --without-http_geo_module \
+            --without-http_map_module \
+            --without-http_split_clients_module \
+            --without-http_referer_module \
+            --without-http_rewrite_module \
+            --without-http_proxy_module \
+            --without-http_fastcgi_module \
+            --without-http_uwsgi_module \
+            --without-http_scgi_module \
+            --without-http_memcached_module \
+            --without-http_limit_zone_module \
+            --without-http_limit_req_module \
+            --without-http_empty_gif_module \
+            --without-http_browser_module \
+            --without-http_upstream_ip_hash_module \
+            --without-http-cache
+    make
+    ll objs/nginx
+    make clean
+    #File size 343543
+    #--with-cc-opt=-g 1467019
+    #--with-cc-opt=-g --with-debug 1521963
+    
+
+
+  
+
+附上图表(使用Google Chart).
+![](https://chart.googleapis.com/chart?cht=bvg&chs=700x250&chd=t:642031,525556,357657,343543|4557807,2444312,1556885,1467019|4689478,2513996,1616309,1521963&chco=4d89f9,c6d9fd,0000FF&chxt=y&chds=0,5000000&chxr=0,0,5000000&chdl=Normal|--with-cc-opt=-g|--with-cc-opt=-g%20--with-debug&chg=0,10)
+解释:
+1. 第一组, 添加大部分可选模块 如gzip_static SSL等
+2. 第二组, 默认配置
+3. 第三组, 移除大部分可移除的模块, 使用 --without-http_XXXX
+4. 第四组, 在第三组基础上,再移除Http-Cache
+  
+
+图表中的Y轴的单位为字节.
+  
+
+PS: 本blog使用的Nginx大小为450k,哈哈!
+编译参数:
+
+    
+    
+    root@ubuntu:~# /usr/local/nginx/sbin/nginx -V
+    nginx: nginx version: nginx/0.9.3
+    nginx: built by gcc 4.4.3 (Ubuntu 4.4.3-4ubuntu5)
+    nginx: configure arguments: --user=www --group=www 
+    --prefix=/usr/local/nginx --with-http_stub_status_module 
+    --with-http_gzip_static_module --with-cc-opt=-ltcmalloc 
+    --without-http_empty_gif_module --without-http_split_clients_module 
+    --without-http_geo_module --without-http_auth_basic_module 
+    --without-http_memcached_module --with-cpu-opt=pentium4 
+    --without-http_uwsgi_module --without-http_scgi_module
+    

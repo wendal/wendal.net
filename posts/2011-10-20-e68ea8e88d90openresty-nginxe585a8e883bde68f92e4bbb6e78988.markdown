@@ -1,0 +1,70 @@
+---
+comments: true
+date: 2011-10-20 22:39:40
+layout: post
+slug: '%e6%8e%a8%e8%8d%90openresty-nginx%e5%85%a8%e8%83%bd%e6%8f%92%e4%bb%b6%e7%89%88'
+title: 推荐OpenResty -- Nginx全能插件版
+wordpress_id: 338
+categories:
+- Nginx
+tags:
+- el
+- io
+- Java
+- js
+- lua
+- MySQL
+- nginx
+- SSI
+- 编码
+- 配置
+- 集成
+---
+
+实在吐血,这是第二次写这个文章,刚才准备保存的时候操作失误,全没了....
+
+官网: [http://openresty.org/](http://openresty.org/)
+虽然是中国人做的,但没几个汉字.....
+
+我用Nginx,是这样一个过程:
+1. 系统rpm中的nginx,能让其跑起来
+2. 玩配置文件
+3. 玩编译选项
+4. 写插件,集成第三方插件
+
+OpenResty , 是淘宝一位大牛(agentzh)集成的包含N多好插件的Nginx捆绑源码包,这位仁兄自称Nginx最活跃的第三方模块开发人员哦
+
+下面,当然要列一下到底集成了什么模块(已经根据agentzh的微博提醒进行修正):
+
+LuaJIT -- 极速版Lua实现
+ArrayVarNginxModule -- 数组类型的Nginx变量
+AuthRequestNginxModule -- 鉴权,想象一下以C代码的速度判断一个请求是否合法,是不是很有快感呢?!
+DrizzleNginxModule -- Nginx-MySQL桥,非阻塞的哦,我又爱又恨的一个模块,值得注意的是,其响应是RDS流
+EchoNginxModule -- 以非常直观的方式在Nginx配置文件中编写简单的处理逻辑,源码包含大量注释,绝对是入门好例子!!
+EncryptedSessionNginxModule -- 加密会话
+FormInputNginxModule -- 解析post请求中的参数,这下子,简单请求根本不需要PHP/Java来处理啦
+HeadersMoreNginxModule -- Nginx默认的header模块只能添加或忽略,这个给你CRUD全套的!!
+IconvNginxModule -- 编码转换,不多说,也不懂
+StandardLuaInterpreter -- 与Lua官方实现所匹配,一般用不上,因为我们用LuaJIT!!
+MemcNginxModule -- 与Memcached的绝配,谁用谁知道!! 与upstram_keepalive一起用,你能更High!!
+Nginx
+NginxDevelKit -- N多第三方插件都依赖的东西,<del>不知道为啥</del> 提供一些方便使用的基础API封装
+LuaCjsonLibrary -- Lua版的Json处理库实在太慢,这个才叫速度!!
+LuaNginxModule -- 我的最爱,一般逻辑,完全没必要用Java/PHP啦
+LuaRdsParserLibrary -- 在Lua中直接处理RDS流,速度杠杠的!
+LuaRedisParserLibrary -- 在Lua中处理Redia模块的响应,暂时我还没用上
+PostgresNginxModule -- Nginx-Postgres桥,输出的也是RDS流
+RdsCsvNginxModule -- RDS流转CVS格式,不知道能干啥,报表?
+RdsJsonNginxModule -- RDS流转JSON字符串,之前经常用这个
+Redis2NginxModule -- Nginx-Redis2桥
+SetMiscNginxModule -- 提供很多很实用的方法,例如base64编解码,URL编解码,SQL防注入等等
+SrcacheNginxModule -- 缓存模块,据说跟Memc模块一起用比较爽
+UpstreamKeepaliveNginxModule -- 与Memc模块的标配,号称性能提升几倍呢
+XssNginxModule -- <del>防跨站攻击的</del> 通过Jsonp进行跨站ajax编程
+
+OpenResty的最大的好处是帮你弄清楚各个模块的编译顺序,别小看,学问大大的呢
+
+当初没有这东西,单单弄清楚模块间的编译顺序就耗费不少时间
+
+
+来吧,试试这个国产的精品!!

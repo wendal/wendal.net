@@ -1,0 +1,214 @@
+---
+comments: true
+date: 2012-06-29 23:24:44
+layout: post
+slug: 'howto-play-nutz-view'
+title: NutMVC的View怎么玩?
+wordpress_id: 436
+categories:
+- Java
+tags:
+- el
+- io
+- js
+- MVC
+- Nutz
+- 下载
+- 视图
+- 路径
+---
+
+**撒手不管 VoidView:**
+
+
+
+    
+    
+    @Ok("void") //不做任何操作,不理会任何返回值,不碰resp对象!!
+    
+    //适合控制欲极强的童鞋,或有特别需要的
+    
+
+
+
+
+
+
+**ajax好基友 UTF8JsonView:**
+
+
+
+    
+    
+    @Ok("json") // 将任何返回值转换为json字符串,后面可以加jsonFormat参数
+    //注意,使用这个视图,你就不要自己拼json字符串了!! 返回map/list/pojo吧!!
+    
+
+
+
+
+
+示例页面js调用:
+
+
+
+    
+    
+    $.ajax({
+      url: "${base}/login",
+      dataType : "json",
+      data : {"user" : "wendal", "passwd" : "123456"}, //或者 表单数据
+      //如果是复杂的对象,建议使用$.toJSON(obj) 然后后台使用@Adpter(JsonAdpter.class)
+      success : function(re) {
+        if (re.ok) {
+          alert('登陆成功');
+          windows.location = "${base}/home"; //跳转到某个URL去, 多嘴一句,ajax是不能自动识别302的!!
+        } else {
+          alert('登陆失败,请检查用户名及密码!!');
+        };
+      },
+      fail : function(err) {
+        alert("服务器错误: "+ err);
+      }
+    });
+    
+
+
+
+
+
+
+**纯情 RawView:**
+
+
+
+    
+    
+    @Ok("raw") //非常单纯地把返回值写入resp
+    
+    //虽然很外表单纯,但很有内涵哦
+    // 如果返回值是File的话,会让浏览器弹出下载框哦 -- 传说中的文件下载
+    // 这个视图可以接受具体ContentType哦: @Ok("raw:application/vnd.ms-excel")
+    
+
+
+
+
+
+
+**一意孤行 HttpStatusView:**
+
+
+
+    
+    
+    @Ok("http:403") //管你返回什么,一概sendError(403) !!
+    
+
+
+
+**幕后英雄 AbstractPathView:**
+
+
+这可是ForwardView和ServerRedirectView,JspView的超类,虽然没啥人直接用它
+
+
+Nutz视图中的路径转换,就是这个类做的,我这里再描述一下这个规则:
+
+
+
+    
+    
+    //首先,不考虑后缀的情况下:
+    // 1. 将路径中的.全部转换为/
+    // 2. 如果路径不是/开头,则添加/WEB-INF/
+    
+    //然后是带后缀了, 简单来说就是直接添加后缀
+    
+    
+    // 来个小测试, 假设后缀为jsp
+    abc.efg.QQ       --> /WEB-INF/abc/efg/QQ.jsp 不以/开头,故,添加/WEB-INF/
+    /abc.efg.QQ      --> /abc/efg/QQ.jsp         以/开头,全部.转为/后,添加后缀.jsp
+    abc.jsp          --> /WEB-INF/abc/jsp.jsp    记住,是先全部替换.为/,然后添加后缀哦!!
+    /abc/jsp/ZZ      --> /abc/jsp/ZZ.jsp
+    
+    //JspView只是带后缀的ForwardView而已!!
+    
+
+
+
+**自给自足 自定义View:**
+
+
+国情就是这么复杂,需求就是这么纠结,Nutz的内置View就是说没法满足你的要求?
+
+
+
+**情况1: 需要根据不同情况跳转(或forward)到不同的URL**
+
+
+继承AbstractPathView的类,均支持EL表达式 
+
+
+
+    
+    
+    @Ok("jsp:${obj == null ? '/index' : '/home'}") 
+    // obj即方法的返回值, 事实上有需要可用的变量,例如req_attr,p,u等等非公开变量,快去看看源码吧!!
+    
+
+
+
+
+
+**情况2 按需使用不同的视图:**
+
+
+
+    
+    
+    return HttpStatusView(403); //当方法的返回值是View实例时,将无视@Ok的设置
+    // 很多时候,你需要携带一些信息, 故,你会这样写:
+    return new ViewWrapper(new JspView("fuck.gfw"), msg); //这里的msg,在JspView看来,就是方法的返回值obj
+    
+
+
+
+
+
+**情况3 符合固定行为的视图:**
+
+
+这个就完成是自定义视图了,实现你自己的ViewMaker及View类,例如最简单的jsonext视图:
+
+
+
+    
+    
+    public SuperViewMaker implements ViewMaker {
+      public View make(Ioc ioc, String type, String value) {
+        if ("jsonext".equals(type))
+          return new JsonExtView(value);
+        return null; //这个很重要,你不认识的视图类型,就应该返回null哦!
+      }
+    }
+    
+    public JsonExtView extend UTF8JsonView {
+      public JsonExtView() {
+        super(JsonFormat.nice());
+      }
+      public void render(HttpServletRequest req, HttpServletResponse resp, Object obj)
+                throws IOException {
+        resp.setHeader("Cache-Control", "no-cache");
+        resp.setContentType("application/json"); //这是跟UTF8JsonView唯一不一样的逻辑
+        Json.toJson(resp.getWriter(), obj, format);
+        resp.flushBuffer();
+      }
+    }
+    
+    //当然,你还需要在主模块声明一下这个ViewMaker
+    @Views({SuperViewMaker.class})
+    
+
+
+另外,你可以通过IocView的方式变通一下,免得自己写ViewMaker

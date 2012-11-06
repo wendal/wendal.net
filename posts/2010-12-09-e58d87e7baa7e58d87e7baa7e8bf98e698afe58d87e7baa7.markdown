@@ -1,0 +1,31 @@
+---
+comments: true
+date: 2010-12-09 12:56:44
+layout: post
+slug: '%e5%8d%87%e7%ba%a7%e5%8d%87%e7%ba%a7%e8%bf%98%e6%98%af%e5%8d%87%e7%ba%a7'
+title: 升级,升级,还是升级
+wordpress_id: 206
+categories:
+- Alfresco
+- Java
+- Nginx
+- VPS/Linux
+- 工作
+tags:
+- alfresco
+- bug
+- nginx
+- wordpress
+- 优化
+- 助手
+- 升级
+- 安全
+- 阳光牧场
+---
+
+今天,升级了好几样东西
+
+[Nginx](http://nginx.org/en/download.html) 0.9.1       --->  0.9.2           新增一个功能.修复几个bug
+[Wordpress](http://cn.wordpress.org/) 3.0.2        --->  3.0.3           修复一个安全问题,号称之前所有版本都存在
+[Alfresco](http://www.alfresco.com) 3.3.3.7  --->  3.3.4           修复几个严重的bug,其中一个是无法容忍的
+[阳光牧场助手](http://code.google.com/p/sunfarm/) 3.50          --->  3.51             大幅优化内存占用,锐减90%以上

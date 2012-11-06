@@ -1,0 +1,33 @@
+---
+comments: true
+date: 2010-07-27 00:37:29
+layout: post
+slug: 'try-jbpm'
+title: 开始尝试jBpm
+wordpress_id: 7
+categories:
+- Alfresco
+- Java
+- 工作
+tags:
+- alfresco
+- Eclipse
+- el
+- io
+- jbpm
+- Wiki
+- 下载
+- 集成
+---
+
+非常无语,本周五要完成一个jBpm流程的开发,悲剧的是我才刚刚接触!!
+
+下载了Eclipse 3.4.2 和jBpm installer 3.2.7 开工啦
+
+这次,我还是打算用Alfresco集成的jBpm,因为它提供了预设的UI,无需另外编写.
+
+参考地址: http://wiki.alfresco.com/wiki/WorkflowAdministration
+
+需要建立Model和Define,Resource
+
+难点在于Define的识别,和Model的设计. 按照分工, Define由PM完成,我负责UI(打算用Alfresco原本的Model来构建UI)

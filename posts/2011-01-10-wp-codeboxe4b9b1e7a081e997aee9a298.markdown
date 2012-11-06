@@ -1,0 +1,41 @@
+---
+comments: true
+date: 2011-01-10 22:05:52
+layout: post
+slug: wp-codebox%e4%b9%b1%e7%a0%81%e9%97%ae%e9%a2%98
+title: WP-Codebox乱码问题
+wordpress_id: 227
+categories:
+- VPS/Linux
+- 其他
+tags:
+- css
+- wordpress
+- 代码高亮
+---
+
+以前就发现代码高亮插件WP-Codebox在IE下乱码,且行号会分行,可惜CSS水平一直有限,一直未能修正.
+
+今天人品爆发,加上最近CSS修炼(从无知到极度菜鸟),终于修改成功!!
+需要修改的文件:
+geshi.php 解决乱码:
+
+    
+    
+    var $overall_style = 'font-family:monospace;';
+    //改为
+    var $overall_style = '';
+    
+
+
+codebox.css 解决行号换行问题(仅解决了100行以内):
+
+    
+    
+    .line_numbers pre {
+            padding: 0px;
+            margin: 0px;
+            text-align: right;
+            width: 14px; //新加一句
+    }
+    

@@ -1,0 +1,133 @@
+---
+comments: true
+date: 2012-02-26 22:15:59
+layout: post
+slug: ssh%e9%9a%a7%e9%81%93polipopac%e6%96%87%e4%bb%b6-%e6%89%93%e9%80%a0%e7%bf%bbg%e5%8a%9ff%e5%a4%abw%e5%a2%99%e7%9a%84%e5%85%b1%e7%94%a8%e5%b9%b3%e5%8f%b0
+title: SSH隧道+Polipo+Pac文件--打造翻G功F夫W墙的共用平台
+wordpress_id: 383
+categories:
+- VPS/Linux
+tags:
+- autoproxy
+- el
+- git
+- lua
+- nginx
+- Nutz
+- PPS
+- python
+- SSI
+- VPS
+- 下载
+- 代理
+- 安全
+- 技术
+- 视频
+- 配置
+---
+
+自认翻X墙高手,却与同事交流的时候败下阵来,我最初还口口声声说 几条命令 就能搞定,绝对米问题.
+结果,俺发现,这玩意还是有点技术含量的... 不过,经过我不断提炼,最后是十几条命令搞定(关键语句仅3条,即启动3个进程),哦也!!
+
+需求基本上是这样:
+客户端只需要配置一下代理服务器,就能做到需要翻墙就翻墙,不需要就走普通渠道.
+
+最初,我的想法
+1. 直接ssh隧道 -- 只有部分程序支持sockt5代理
+2. squid+ssh隧道 -- squid压根不支持sockt5的后端代理,我靠
+3. squid+Polipo+ssh隧道 -- 有点靠谱了,我差点就狠心学一下squid恶心的配置文件
+4. nginx+Polipo+ssh隧道 -- 代理https有点问题,我一直没解决
+
+1. 在本地一台Linux服务器,创建用proxy,创建sshkey并上传到国外的vps:
+
+    
+    
+    #添加用户
+    adduser proxy
+    #切换到proxy用户
+    su proxy
+    #创建ssh密钥,一路回车
+    ssh-keygen
+    #将刚刚生成的key,上传到国外vps,以便进行无密码登录
+    ssh-copy-id -i ~/.ssh/id_rsa.pub root@nutz.cn
+    
+
+
+
+2. 创建SSH隧道:
+
+    
+    
+    ssh -D 127.0.0.1:7070 -N -c blowfish -C -4 -2 root@nutz.cn &
+    #解释:
+    # -D 127.0.0.1:7070 监听本地7070端口,转发到远程服务器
+    # -N 不启动shell
+    # -c blowfish 采用blowfish加密,更快更安全
+    # -C 压缩数据
+    # -4 强制ipv4
+    # -2 强制使用SSH2协议
+    
+
+
+
+3. 编译并启动Polipo
+
+    
+    
+    #如果有git客户端
+    git clone git://git.wifi.pps.jussieu.fr/polipo --depth=0
+    #如果木有,则下载压缩包
+    wget -O polipo.zip --no-check-certificate https://github.com/jech/polipo/zipball/master
+    unzip polipo.zip
+    
+    cd polipo #或者是unzip出来的文件夹
+    
+    #编译
+    make
+    
+    #启动Polipo
+    ./polipo socksParentProxy=localhost:7070 daemonise=true proxyAddress=192.168.9.100  proxyPort=8080
+    #这里的7070,就是SSH隧道所监听的地址
+    
+
+
+
+4. 下载并对外提供pac文件
+
+    
+    
+    wget -O proxy.pac http://autoproxy2pac-charlie.appspot.com/proxy/192.168.9.100/8080?download
+    #这里的ip及端口,需要对应Polipo的设置哦
+    
+    #用Python来启动一个简单的http服务器,用于对外提供pac
+    python -m SimpleHTTPServer 8000
+    
+
+
+
+这样,就大功告成了,只需要在IE中设置一下自动代理脚本的URL,就能自动判断是否走代理了:
+
+    
+    
+    http://192.168.2.100:8000/proxy.pac
+    
+
+
+
+扩展设置:
+
+    
+    
+    #防ssh短线,在服务器端的/etc/ssh/sshd_config
+    ClientAliveInterval 60
+    ClientAliveCountMax 10000000
+    
+
+
+
+还需要解决的问题:
+1. Polipo崩溃后自动重启 -- 一个监护进程
+2. SSH隧道短线自动重连  -- 同上
+3. 流量控制            -- 加个nginx?squid来控制?
+4. 限制视频,下载       -- 同上
+5. 用户过滤            -- 同上, 我想到了伟大的nginx-lua模块

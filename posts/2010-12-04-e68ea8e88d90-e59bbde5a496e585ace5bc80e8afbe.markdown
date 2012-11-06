@@ -1,0 +1,17 @@
+---
+comments: true
+date: 2010-12-04 17:32:04
+layout: post
+slug: '%e6%8e%a8%e8%8d%90-%e5%9b%bd%e5%a4%96%e5%85%ac%e5%bc%80%e8%af%be'
+title: '推荐: 国外公开课'
+wordpress_id: 201
+categories:
+- 其他
+tags:
+- 公开课
+- 视频
+---
+
+[网易视频-国外公开课](http://v.163.com/open/)
+[人人影视-国外公开课](http://yyets.net/?mod=2&ac=list_resource&class=juji&type=29)
+**开眼看世界,国外优秀的公开课! 思维比知识更重要!! 思想进步,才能升华人生. 扔掉马哲,扔掉政治经济学,扔掉学校给你灌的垃圾!!**

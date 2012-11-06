@@ -1,0 +1,73 @@
+---
+comments: true
+date: 2011-12-03 20:24:42
+layout: post
+slug: python-%e4%b8%ba%e5%af%b9%e8%b1%a1%e5%8a%a8%e6%80%81%e6%b7%bb%e5%8a%a0%e5%87%bd%e6%95%b0%e4%b8%94%e5%87%bd%e6%95%b0%e5%ae%9a%e4%b9%89%e6%9d%a5%e8%87%aa%e4%b8%80%e4%b8%aastr
+title: 'Python: 为对象动态添加函数,且函数定义来自一个str'
+wordpress_id: 351
+categories:
+- Python
+- 工作
+tags:
+- el
+- python
+---
+
+在Python中,通常情况下,你只能为对象添加一个已经写好的方法
+
+需求:传入一个str类型的变量,其值是一个完整的合法的Python函数定义,然后为一个对象添加这个函数:
+
+    
+    
+    method_str = u'''
+    def say(self, name)
+        print 'My name is', name
+    '''
+    class MyClass :
+    
+        def __init__(self) :
+            pass
+    
+        def extends(self, method_name, method_str) :
+            #完成这个方法...
+    
+    obj = MyClass();
+    obj.extends('say', method_str)
+    obj.say('wendal') #打印出My name is wendal
+    
+
+
+
+想了不少路子,在Python的QQ群里面也得到不少灵感,最后顺利实现:
+
+    
+    
+        def extends(sefl, method_name, method_str) :
+            #_method = None
+            exec method_str + '''\n_method = %s''' % method_name
+            self.__dict__[method_name] = new.instancemethod(_method, self, None)
+    
+
+
+
+简单解释一下:
+method_str在exec前,改变为:
+
+    
+    
+    method_str = u'''
+    def say(self, name)
+        print 'My name is', name
+    _method = abc
+    
+
+
+然后, exec执行后,_method变量就赋值为say函数
+接下来,就是Python的自省机制了,通过new模块,生成特定对象(本例中是self)的实例方法
+最后,为特定对象添加say这个函数
+
+恩,这例子,就足以体现出Python在这方面的扩展性
+1. method_str是一个字符串,可以动态创建,例如用户输出,模板生成
+2. 方法的名字可以通过字符串分割等方法获取到
+
+昨晚完成这个实现之后,足足兴奋了一个小时,哈哈 -- 2行代码就搞定!!

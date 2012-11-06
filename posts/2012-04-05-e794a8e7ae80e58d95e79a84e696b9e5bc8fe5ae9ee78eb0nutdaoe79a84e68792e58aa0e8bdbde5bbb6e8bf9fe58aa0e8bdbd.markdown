@@ -1,0 +1,56 @@
+---
+comments: true
+date: 2012-04-05 22:45:56
+layout: post
+slug: 'implements-nutz-dao-lazy-load-simple-way'
+title: 用简单的方式,实现NutDao的懒加载(延迟加载, Lazy Load)
+wordpress_id: 409
+categories:
+- Java
+tags:
+- el
+- Hibernate
+- io
+- Nutz
+- SSI
+- 安全
+---
+
+一直以来, NutDao的懒加载问题,都无数次被提起,我也曾经在另外一篇博客中提及其可行性: [NutDao实现Lazy加载的可行性](http://wendal.net/317.html)
+
+为了回应广大Nutzer的呼声,我花了点时间完成了一个[LazyNutDao](https://github.com/nutzam/nutz/commit/a6e1d49f6e883aa75edc2938f36a475ab314d3ac),如果你需要这个功能,那么只需要把NutDao简单换成LazyNutDao
+
+整个实现,算上空行及注释,大概200行,并修改了另外3个类(就是把部分属性改成protected)
+
+1. POJO的属性,必须带setter/getter,否则无法进行懒加载注入
+2. setter/getter应当是无逻辑的,不应加入业务逻辑.
+
+需要注意的问题:
+1. 无Session控制,自行处理事务问题 -- 对象在事务模板包裹下取出,但在事务模板外调用getter以获取属性值,那么,这部分的调用是在事务之外的
+2. 多线程问题,LazyMethodInterceptor并非线程安全的,因为其中的代码并未锁定当前对象
+
+**实现思路:**
+1. POJO的实例化,是由NutEntity完成的,由于懒加载是通过AOP实现的,所以需要接管其实例化过程
+2. NutEntity是由AnnotationEntityMaker创建,有NutDao持有,所以,通过覆写setDataSource方法,接管EntityHolder实例
+3. LazyNutEntity继承于NutEntity,通过生成Aop拦截链,生成Aoped类,以便拦截@One/@Many字段的setter/getter
+4. 懒加载状态管理: 当setter被调用,那么懒加载机制结束使命,回退为普通机制.
+
+整个实现,最难抉择的是"**懒加载状态管理**",如果引入Hibernate形式的Session机制,必然导致大幅膨胀.而且,Session机制也是Hibernate中非常容易导致错误的机制之一. 最后简化为简单的2步式控制:
+
+    
+    
+    public void filter(InterceptorChain chain) throws Throwable {
+      if (status == LazyStatus.CAN_FETCH) {
+        if (chain.getCallingMethod() != setter) {
+          dao.fetchLinks(chain.getCallingObj(), fieldName);// 这里会触发setter被调用
+          status = LazyStatus.FETCHED;
+        } else
+          status = LazyStatus.NO_NEED; // 如果setter被调用,那么也就不再需要懒加载了
+      }
+      chain.doChain();
+    }
+    
+
+
+
+**200行的代价,实现NutDao的懒加载,应该算不上膨胀吧? 呵呵**

@@ -1,0 +1,31 @@
+---
+comments: true
+date: 2012-07-20 09:47:17
+layout: post
+slug: '45-minute-video-for-nutz-quick-start'
+title: 45分钟的Nutz敲门砖,高清无码 -- [视频教程] Nutz详解-基础框架的搭建
+wordpress_id: 438
+categories:
+- Java
+tags:
+- io
+- MVC
+- Nutz
+- 下载
+- 视频
+---
+
+Nutz入门教程, 高清无码哦
+
+下载地址:
+[http://code.google.com/p/nutz/downloads/list](http://code.google.com/p/nutz/downloads/list)
+
+长达45分钟,让你一次性体会Nutz的3大块: Mvc Ioc Dao
+
+[![45分钟的Nutz敲门砖1](http://wendal.net/wp-content/uploads/2012/07/未命名.jpg)](http://wendal.net/wp-content/uploads/2012/07/未命名.jpg)
+
+
+
+
+
+[![45分钟的Nutz敲门砖2](http://wendal.net/wp-content/uploads/2012/07/未命名2.jpg)](http://wendal.net/wp-content/uploads/2012/07/未命名2.jpg)

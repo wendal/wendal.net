@@ -1,0 +1,81 @@
+---
+comments: true
+date: 2012-02-12 23:59:41
+layout: post
+slug: jactor%e6%9c%80%e7%ae%80%e5%8d%95%e8%af%95%e7%94%a8
+title: JActor最简单试用
+wordpress_id: 371
+categories:
+- Java
+tags:
+- el
+- io
+- Wiki
+- 安全
+---
+
+发现网上连一篇简单的入门都没有,我晕啊... 折腾了一下,终于变菜鸟了,把官方例子注释一下给大家了解一下
+
+共需要3个类
+
+    
+    
+    import org.agilewiki.jactor.bind.SynchronousRequest;
+    public class Hi extends SynchronousRequest<string> {}
+    // 我觉得就是一个消息对象, 传递给Greeter类里面的synchronousProcessRequest方法,可以携带任意信息啦
+    
+
+
+
+
+    
+    
+    //忽略import
+    public class Greeter extends Component {
+        
+        public void bindery() throws Exception {
+    
+            //这里绑定Hi对象的处理逻辑
+            thisActor.bind(Hi.class.getName(), new SynchronousMethodBinding<Hi, String>() {
+                @Override
+                //一个处理方法,执行实际操作
+                public String synchronousProcessRequest(Internals internals, Hi request) throws Exception {
+                    //这个request,就是外部传入的Hi实例
+                	return "Hello world!"; //还有无返回值的形式
+                }
+            });
+    
+        }
+    }
+    
+
+
+
+
+    
+    
+    //忽略全部import
+    public class Main {
+    
+    	public static void main(String[] args) {
+    		JAMailboxFactory mailboxFactory = JAMailboxFactory.newMailboxFactory(1);
+    		try {
+    		    Mailbox mailbox = mailboxFactory.createAsyncMailbox();
+    		    JCActor a = new JCActor(mailbox);
+    		    (new Include(Greeter.class)).call(a); //登记一个调用
+    		    JAFuture future = new JAFuture();
+    		    String greeting = (new Hi()).send(future, a); // 不通过mailbox直接调用actor
+    		    System.out.println(greeting);
+    		} catch (Exception e) {
+    		    e.printStackTrace();
+    		} finally {
+    		    mailboxFactory.close(); //必须关闭哦, 以确保全部信息都已经安全完成
+    		}
+    	}
+    }
+    
+    
+
+
+
+官方教程地址: [JActor Synchronous-Programming](https://github.com/laforge49/JActor/wiki/Synchronous-Programming)

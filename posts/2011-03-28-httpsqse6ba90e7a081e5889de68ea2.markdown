@@ -1,0 +1,77 @@
+---
+comments: true
+date: 2011-03-28 21:34:39
+layout: post
+slug: httpsqs%e6%ba%90%e7%a0%81%e5%88%9d%e6%8e%a2
+title: HTTPSQS源码初探
+wordpress_id: 259
+categories:
+- VPS/Linux
+- 工作
+tags:
+- el
+- httpsqs
+- nginx
+---
+
+官网: [http://code.google.com/p/httpsqs/](http://code.google.com/p/httpsqs/)
+一句话介绍: HTTPSQS is a Simple Queue Service based on HTTP GET/POST protocol
+               HTTPSQS（HTTP Simple Queue Service）是一款基于 HTTP GET/POST 协议的轻量级开源简单消息队列服务
+
+其实以前就安装过这款队列实现,也简单测试过,但今天第一次看源码,呵呵
+
+源码就一个C文件 httpsqs.c , 外加一个MakeFile文件
+
+代码大概800行,原本以为是个很复杂的东西,最后才发现,真的如其中文介绍一样:
+使用 Tokyo Cabinet 的 B+Tree Key/Value 数据库来做数据的持久化存储
+
+我的理解就是一个Key/Value服务器的Http界面
+
+原本打算写点代码分析的,但源码上的注解太详细,算了,不写了,把方法列一下:
+
+    
+    
+    /* 全局设置 */
+    TCBDB *httpsqs_db_tcbdb; /* 数据表 */
+    int httpsqs_settings_syncinterval; /* 同步更新内容到磁盘的间隔时间 */
+    char *httpsqs_settings_pidfile; /* PID文件 */
+    
+    /* 创建多层目录的函数 */
+    void create_multilayer_dir( char *muldir ) ;
+    /* URL解码 */
+    char *urldecode(char *input_str) ;
+    /* 显示帮助信息 */
+    static void show_help(void);
+    
+    /* 读取队列写入点的值 */
+    static int httpsqs_read_putpos(const char* httpsqs_input_name);
+    /* 读取队列读取点的值 */
+    static int httpsqs_read_getpos(const char* httpsqs_input_name);
+    /* 读取用于设置的最大队列数 */
+    static int httpsqs_read_maxqueue(const char* httpsqs_input_name);
+    /* 设置最大的队列数量，返回值为设置的队列数量。如果返回值为0，则表示设置取消（取消原因为：设置的最大的队列数量小于”当前队列写入位置点“和”当前队列读取位置点“，或者”当前队列写入位置点“小于”当前队列的读取位置点） */
+    static int httpsqs_maxqueue(const char* httpsqs_input_name, int httpsqs_input_num);
+    /* 重置队列，0表示重置成功 */
+    static int httpsqs_reset(const char* httpsqs_input_name);
+    /* 查看单条队列内容 */
+    char *httpsqs_view(const char* httpsqs_input_name, int pos);
+    /* 修改定时更新内存内容到磁盘的间隔时间，返回间隔时间（秒） */
+    static int httpsqs_synctime(int httpsqs_input_num);
+    /* 获取本次“入队列”操作的队列写入点 */
+    static int httpsqs_now_putpos(const char* httpsqs_input_name);
+    /* 获取本次“出队列”操作的队列读取点，返回值为0时队列全部读取完成 */
+    static int httpsqs_now_getpos(const char* httpsqs_input_name);
+    /* 处理模块 */
+    void httpsqs_handler(struct evhttp_request *req, void *arg);
+    /* 信号处理,关闭信号,保存内存数据 */
+    static void kill_signal(const int sig);
+    /* 定时信号处理，定时将内存中的内容写入磁盘 */
+    static void sync_signal(const int sig);
+    
+    /* 入口方法 */
+    int main(int argc, char **argv);
+    
+
+
+功能就和一个Memcached服务器差不多.
+恩,考虑做个Nginx的模块,哈哈.

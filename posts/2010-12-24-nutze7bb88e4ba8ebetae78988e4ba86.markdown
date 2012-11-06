@@ -1,0 +1,26 @@
+---
+comments: true
+date: 2010-12-24 19:00:19
+layout: post
+slug: nutz%e7%bb%88%e4%ba%8ebeta%e7%89%88%e4%ba%86
+title: Nutz终于beta版了!!
+wordpress_id: 220
+categories:
+- Java
+- VPS/Linux
+tags:
+- gpg
+- Maven
+- Nutz
+---
+
+前前后后33版,我参与了 19(16~34)个版本,哈哈~~
+文件已经上传到Google Code, 非常鸡冻!!
+
+另外, 提交到Maven现在正在进行中,缓慢地上传... 我可是1M的小水管.
+顺便Mask一下生产asc签名的方法,copy自[GPG快速入门](http://www.madboa.com/geek/gpg-quickstart/):
+
+    
+    
+    gpg --armor --detach-sign your-file.zip
+    

@@ -1,0 +1,22 @@
+---
+comments: true
+date: 2011-01-03 10:19:25
+layout: post
+slug: '%e5%8f%91%e8%b5%b7%e4%b8%80%e4%b8%aa%e6%96%b0%e9%a1%b9%e7%9b%ae-nginxs'
+title: 发起一个新项目 - NginxS
+wordpress_id: 225
+categories:
+- Nginx
+tags:
+- nginx
+---
+
+为了更好地阅读/研究Nginx的源码,我奋斗了一个上午,终于把NginxS项目搭建起来了.
+NginxS,就是要研读Nginx的代码,暂时打算做以下两个用途:
+1. 在 [branches](http://code.google.com/p/nginxs/source/browse/#svn%2Fbranches) 中提交了0.7/0.8/0.9分支的源代码,便于分析不同版本之间的差异,如果官网有新版发布,就会及时跟进.
+2. 在 [trunk](http://code.google.com/p/nginxs/source/browse/#svn%2Ftrunk) 中,现在代码是当前最新稳定版0.8.54, 准备用于学习nginx的代码,并添加中文注释/笔记
+
+项目地址:
+[http://code.google.com/p/nginxs/](http://code.google.com/p/nginxs/)
+
+看看我能读出个啥东西来,哈哈!

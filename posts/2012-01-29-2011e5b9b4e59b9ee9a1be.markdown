@@ -1,0 +1,28 @@
+---
+comments: true
+date: 2012-01-29 13:32:36
+layout: post
+slug: 2011%e5%b9%b4%e5%9b%9e%e9%a1%be
+title: 2011年回顾
+wordpress_id: 363
+categories:
+- Java
+- mongodb
+- Nginx
+- Python
+- 工作
+tags:
+- rk2918
+- 回顾
+- 鸣鸣
+---
+
+2011年,[换了一家公司](http://wendal.net/224.html) -- 号称第5家公司
+2011年,接受了一份神奇的offer,神奇到我以为是去传销
+2011年,最大的事情,当然是[鸣鸣的出生](http://wendal.net/234.html),小家伙马上就要满一个太阳年了
+2011年,第一次接触到海外网购,才知道绕半个地球,价格反而便宜好多
+2011年,接触了好多[新的编程语言](http://wendal.net/292.html),严重扩宽了我对编程的理解
+2011年,[接触NoSQL](http://wendal.net/326.html),刷新我对数据库的理解
+2011年,我实现了[RK2918的System可写](http://wendal.net/320.html)及[公开了其源码地址](http://wendal.net/339.html),引起不小的反响
+
+新的一年,keep going!!

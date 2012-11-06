@@ -1,0 +1,77 @@
+---
+comments: true
+date: 2012-04-11 20:32:23
+layout: post
+slug: 'mapping-subfolder-in-nginx-by-rewrite'
+title: Nginx二级域名自动匹配到子文件夹(通过rewrite)
+wordpress_id: 413
+categories:
+- Nginx
+tags:
+- Dom
+- io
+- lua
+- nginx
+- Nutz
+---
+
+网站目录结构
+
+    
+    
+    html --
+           index.html
+           xxx.html
+           tuan --
+                  index.html
+                  tuan800.html
+           blog --
+                  index.html
+                  1.html
+                  19.html
+           news --
+                  index.html
+                  how_to_XX.html
+                  XX_XX_XX.html
+    
+
+
+分别对应主站(nutz.cn, www.nutz.cn), 团购子站(tuan.nutz.cn),博客子站(blog.nutz.cn),新闻子站(news.nutz.cn)
+
+[nginx.conf示例](https://gist.github.com/2359053):
+
+    
+    
+    events {
+        worker_connections  1024;
+    }
+    http {
+        include       mime.types;
+        default_type  application/octet-stream;
+        
+        server {
+            listen       80;
+            server_name  nutz.cn *.nutz.cn;
+            
+            set $sub_domain "";
+            if ($http_host ~ "(.+).nutz.cn$") {
+                set $sub_domain $1;
+            }
+            if ($http_host = "www.nutz.cn") {
+                set $sub_domain "";
+            }
+            if ($sub_domain != "") {
+                rewrite /(.+) /$sub_domain/$1 break;
+            }
+            
+            location / {
+                root   html;
+                index  index.html index.htm;
+            }
+        }
+    }
+    
+
+
+
+善用if/rewrite哦, 更好的方式,是通过lua来做,呵呵

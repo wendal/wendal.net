@@ -1,0 +1,82 @@
+---
+comments: true
+date: 2011-02-24 15:45:02
+layout: post
+slug: jdiff-%e4%bd%bf%e7%94%a8%e4%b8%8e%e6%94%b9%e8%bf%9b
+title: JDiff 使用与改进
+wordpress_id: 245
+categories:
+- Java
+tags:
+- el
+- Java
+- Javadoc
+- Nutz
+- Sunfarm
+- XML
+- 下载
+- 编码
+- 配置
+---
+
+不久前为Nutz的构建服务添加JDiff报告. 报告查看地址: [http://build.sunfarms.net/nutz/lastest/jdiff/](http://build.sunfarms.net/nutz/lastest/jdiff/) 以后都可以知道不同的nutz版本API有何不同了.
+
+JDiff报告,就是描述不同版本的代码之间的API差异, 如某某public类被删除了,某某接口改变了
+
+感兴趣的可以先访问[官网](http://www.jdiff.org),以了解基本使用.
+
+但,原本的JDiff有一个很大的问题,对中文支持不好.故,我改进了一下,放出一个版本(原版已经很久没用更新了)
+添加了一个配置,用于设置源码的编码encoding. 另外,我移除了对xerces.jar的依赖.
+
+现在可以在old或者new节点添加encoding="UTF-8"之类的设置. 实例配置,请查看Nutz项目的build2.xml文件,地址: [http://code.google.com/p/nutz/source/browse/trunk/build/build2.xml](http://code.google.com/p/nutz/source/browse/trunk/build/build2.xml)
+
+我已经上传到Google Doc,需要的童鞋就下载吧.
+地址: [jdiff-1.1.1-Modify-by-Wendal.zip](https://docs.google.com/leaf?id=0B8hUXYDeoy_hMjViMjBlMGEtMDlkMi00NjllLWE0MjctNmUxNWI3N2QzZjE2&hl=zh_CN)
+
+附上对原版的修改:
+1. 移除对xerces.jar的依赖,
+将XML2API中的代码:
+
+    
+    
+    String parserName = System.getProperty("org.xml.sax.driver");
+    if (parserName == null) {
+        parser = org.xml.sax.helpers.XMLReaderFactory.createXMLReader("org.apache.xerces.parsers.SAXParser");
+    } else {
+        parser = org.xml.sax.helpers.XMLReaderFactory.createXMLReader();
+    }
+    
+
+
+改为:
+
+    
+    
+        parser = org.xml.sax.helpers.XMLReaderFactory.createXMLReader();
+    
+
+
+2. 中文支持,为ProjectInfo类添加属性encoding,然后修改JDiff的generateJavadoc方法:
+
+    
+    
+    //在jd.perform();前面添加
+        		if(proj.getEncoding() != null) {
+    			jd.setEncoding(proj.getEncoding());
+    			jd.setDocencoding(proj.getEncoding());
+    			jd.setCharset(proj.getEncoding());
+    		}
+    
+
+
+生成XML的时候也设置一下,generateXML方法:
+
+    
+    
+    //添加一样的内容
+        		if(proj.getEncoding() != null) {
+    			jd.setEncoding(proj.getEncoding());
+    			jd.setDocencoding(proj.getEncoding());
+    			jd.setCharset(proj.getEncoding());
+    		}
+    

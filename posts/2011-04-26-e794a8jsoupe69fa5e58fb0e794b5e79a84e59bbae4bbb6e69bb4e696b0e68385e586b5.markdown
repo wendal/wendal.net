@@ -1,0 +1,58 @@
+---
+comments: true
+date: 2011-04-26 18:13:57
+layout: post
+slug: '%e7%94%a8jsoup%e6%9f%a5%e5%8f%b0%e7%94%b5%e7%9a%84%e5%9b%ba%e4%bb%b6%e6%9b%b4%e6%96%b0%e6%83%85%e5%86%b5'
+title: 用Jsoup查台电的固件更新情况
+wordpress_id: 275
+categories:
+- Java
+- 其他
+tags:
+- Android
+- el
+- js
+- 下载
+---
+
+最近入手台电T720 Wifi,便宜货,不要跟iPad比.
+
+T720用的是 Android 2.1 , 比较旧, 但官方已经说了很久会出2.2的固件,哎... 何年何月啊?!
+
+每次都上台电查,烦,决定用Jsoup写一个检查的,上代码:
+
+    
+    
+    import org.jsoup.Jsoup;
+    import org.jsoup.nodes.Document;
+    import org.jsoup.nodes.Element;
+    import org.jsoup.select.Elements;
+    
+    public class Main {
+    
+    	public static void main(String[] args) throws Throwable {
+    		Document doc = Jsoup.connect("http://www.teclast.com/topic.php?channelID=78&topicID;=148").get();
+    		Elements es = doc.select("font[color$=003399]");
+    		String type = "T720";//机器型号
+    		for (Element e : es) {
+    			if(!e.ownText().startsWith(type))
+    				continue;
+    			Element f = e.parent().parent().select("font[color$=0000CC]").first();
+    			if(f!= null)
+    				System.out.println(e.ownText() + " " + f.ownText());
+    		}
+    	}
+    }
+    
+
+
+打印出:
+
+    
+    
+    T720 WIFI平板电脑固件下载 2011/04/12
+    T720 3GE平板电脑固件下载 2011/04/12
+    
+
+
+最后一次更新依旧是 4月12号,郁闷, 继续等吧,不时运行一下,呜呜

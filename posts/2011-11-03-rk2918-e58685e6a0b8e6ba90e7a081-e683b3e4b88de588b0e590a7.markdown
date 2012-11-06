@@ -1,0 +1,27 @@
+---
+comments: true
+date: 2011-11-03 09:06:50
+layout: post
+slug: rk2918-%e5%86%85%e6%a0%b8%e6%ba%90%e7%a0%81-%e6%83%b3%e4%b8%8d%e5%88%b0%e5%90%a7
+title: RK2918 内核源码 -- 想不到吧?!
+wordpress_id: 339
+categories:
+- VPS/Linux
+tags:
+- el
+- 下载
+---
+
+想不到, 我竟然找到了, 这都要感谢一位外国友人的提示!!
+
+还是那句, 对国人保密,对外国人公开 -- 不能太"云南白药"啊!!
+
+下载地址:
+[http://www.odys.de/downloads/software/odys_xpress_GPLSourceCode.zip](http://www.odys.de/downloads/software/odys_xpress_GPLSourceCode.zip)
+
+包含:
+busybox源码
+e2fs源码
+kernel源码 -- 当然,这才是最关键的
+
+根据其日期,猜测是SDK 1.x的作品, 不过,一般来说,h文件都不会大改的,呵呵!!

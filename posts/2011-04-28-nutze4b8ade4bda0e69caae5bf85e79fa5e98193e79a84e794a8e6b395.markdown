@@ -1,0 +1,107 @@
+---
+comments: true
+date: 2011-04-28 10:30:11
+layout: post
+slug: nutz%e4%b8%ad%e4%bd%a0%e6%9c%aa%e5%bf%85%e7%9f%a5%e9%81%93%e7%9a%84%e7%94%a8%e6%b3%95
+title: Nutz中你未必知道的用法
+wordpress_id: 280
+categories:
+- Java
+tags:
+- el
+- io
+- Java
+- js
+- MVC
+- Nutz
+- 代理
+- 视图
+- 配置
+---
+
+========================================================================
+**Ioc篇**
+========================================================================
+**1. 使用properties文件**
+
+    
+    
+    var ioc = {
+    	config : {
+    		type : "org.nutz.ioc.impl.PropertiesProxy", /*1.b.37内置的一个代理类*/
+    		fields : {
+    			paths : ["conf/jdbc.properties"] /*可以写多个文件或文件夹*/
+    		}
+    	},
+    // Data source
+    	dataSource : {
+    		type :"org.apache.commons.dbcp.BasicDataSource",
+    		events : {
+    			depose :"close"
+    		},
+    		fields : {
+    			driverClassName : {
+    				java :"$config.get('driver')"
+    			},
+    			url : {
+    				java :"$config.get('url')"
+    			},
+    			username : {
+    				java :"$config.get('username')"
+    			},
+    			password : {
+    				java :"$config.get('password')"
+    			}
+    		}
+    }
+    
+
+
+结合Ioc的Java调用与PropertiesProxy,无需修改Ioc内部逻辑
+这个方法依赖于1.b.37新内置的PropertiesProxy,旧版本的用户可以直接拷贝其代码来使用.
+PropertiesProxy其实就是一个对Properties类的简单封装,以便于在Ioc中使用.
+
+**2. 使用JNDI获取指定资源**
+
+    
+    
+    var ioc = {
+    	dao : {
+    		type :"org.nutz.dao.impl.NutDao",
+    		args : [ {jndi :"jdbc/dataSource"} ]
+    	}
+    }
+    
+
+
+以上方法,仅需要在容器中配置好数据源,注入到NutDao即可.
+其他类型的JNDI资源也同样可以注入.
+
+
+========================================================================
+**MVC篇**
+========================================================================
+**1. 在@Ok和@Fail中使用EL表达式**
+
+    
+    
+    @Ok("jsp:${obj == null ? 'index' : 'user.home'}") 
+    //当返回值为null,相当于
+    @Ok("jsp:index")
+    //否则
+    @Ok("jsp:user.index")
+    
+
+
+@Ok和@Fail都支持完整的NutEL语法,功能强大而且灵活,不必为跳转到Fail视图而故意抛出异常了
+
+2. 在@Ok和@Fail中获取Request的属性值
+
+    
+    
+    @Ok("jsp:${a.preURL'}") 
+    
+
+
+
+待续

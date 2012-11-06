@@ -1,0 +1,51 @@
+---
+comments: true
+date: 2011-04-12 18:55:43
+layout: post
+slug: '%e5%86%8d%e4%b8%80%e6%ac%a1%e6%90%9e%e5%ae%9autf-8%e7%9a%84bom'
+title: 再一次搞定UTF-8的BOM
+wordpress_id: 266
+categories:
+- Java
+- Nginx
+tags:
+- io
+- Java
+- nginx
+- Nutz
+- zDoc
+---
+
+一年前的某天,我觉察到BOM的问题 -- 一个Java源文件死活无法编译
+今天,我狠狠地为 Nutz的Streams类添加了一个方法,用于自动过滤掉BOM头!!
+代码如下:
+
+    
+    
+    private static final byte[] UTF_BOM = new byte[]{(byte) 0xEF,(byte) 0xBB,(byte) 0xBF};
+    	
+    /**
+     * 判断并移除UTF-8的BOM头
+    */
+    public static InputStream utf8filte(InputStream in) {
+    	try {
+    		PushbackInputStream pis = new PushbackInputStream(in,3);
+    		byte[] header = new byte[3];
+    		pis.read(header,0,3);
+    		if(header[0] != UTF_BOM[0] || header[1] != UTF_BOM[1] || header[2] != UTF_BOM[2]) {
+    			pis.unread(header,0,3);
+    		}
+    		return pis;
+    	} catch (IOException e) {
+    		throw Lang.wrapThrow(e);
+    	}
+    }
+    
+
+
+希望以后能少遇到些
+
+原本是打算改NutzDoc的代码的,因为我写的一些文档包含了BOM头,读取的时候,NutzDoc无视第一行(标题行),直接认为是文本,导致没有标题!!!!
+后来,觉得这完全是共性问题,任何读取UTF8格式的代码都会遇到,故决定添加上述方法!!
+
+PS: Nginx 出 1.0.0了,神了!!! 版本号什么的都是浮云啊!!!!!!!!!!!!

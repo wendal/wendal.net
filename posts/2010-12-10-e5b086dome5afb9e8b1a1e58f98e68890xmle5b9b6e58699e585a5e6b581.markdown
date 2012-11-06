@@ -1,0 +1,40 @@
+---
+comments: true
+date: 2010-12-10 12:37:21
+layout: post
+slug: '%e5%b0%86dom%e5%af%b9%e8%b1%a1%e5%8f%98%e6%88%90xml%e5%b9%b6%e5%86%99%e5%85%a5%e6%b5%81'
+title: 将Dom对象变成XML并写入流
+wordpress_id: 210
+categories:
+- Java
+tags:
+- Dom
+- Java
+- XML
+- 下载
+---
+
+昨晚在Q群上,一位群友需要解决这样的需求:
+将一个Dom对象,变回XML文本,并写入流中,以便下载.
+
+我想,为啥不直接让Dom对象边转换,边写入流呢? 这样效率应该最高哦,内存占用也会低.
+故马上Google,查到[一篇文章相关的文章(Writing Out a DOM as an XML File)](http://download.oracle.com/javaee/1.4/tutorial/doc/JAXPXSLT4.html),感觉上是能够解决这个问题的.
+原文是英文,而且一大堆解释,我精简如下:
+
+    
+    
+    //先创建一个Dom
+    DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+    DocumentBuilder builder = factory.newDocumentBuilder();
+    Document document = builder.parse(new File("faces-config-beans.xml"));
+    //然后应用转换器
+    TransformerFactory tFactory = TransformerFactory.newInstance();
+    Transformer transformer = tFactory.newTransformer();
+    DOMSource source = new DOMSource(document);
+    StreamResult result = new StreamResult(os);//这里的os就是OutputStream对象.
+    transformer.transform(source, result);
+    
+
+
+
+手头没有更大的XML文件,故只拿了一个200k的XML,Dom-->Stream的时间,约60ms. 算是可以接受了.

@@ -1,0 +1,129 @@
+---
+comments: true
+date: 2012-05-06 23:12:24
+layout: post
+slug: 'success-build-openjdk-7u2'
+title: 成功编译OpenJDK 7u2 ! 哦也！
+wordpress_id: 420
+categories:
+- Java
+tags:
+- cmake
+- el
+- io
+- Java
+- js
+- MySQL
+- 下载
+- 工作
+---
+
+这个周末，连续编译了好几款开源程序：
+ffmpeg+x264 很传统的编译,./configure和make
+mongo+v8     使用scons进行编译，改为V8引擎的mongo，性能是否会大幅提速呢？ 打算出个报告哦！
+mysql5.5       使用cmake
+
+最后一个重头戏，本打算编译Chrome的，但发现其源码实在太大了，改为编译向往已久的OpenJDK 7u2
+
+编译环境，Ubuntu 12.04 x64桌面版, root用户下操作
+
+**准备工作**
+
+    
+    
+    apt-get build-dep openjdk-6
+    apt-get install openjdk-6-jdk
+    apt-get install libasound-dev build-essential
+    
+
+
+
+**下载OpenJDK 7 update 2 的源码**
+
+    
+    
+    cd /opt
+    wget http://www.java.net/download/openjdk/jdk7u2/promoted/b13/openjdk-7u2-fcs-src-b13-17_nov_2011.zip
+    unzip openjdk-7u2-fcs-src-b13-17_nov_2011.zip
+    cd /opt/openjdk
+    
+
+
+
+**开始编译，会经历多个错误zzZZ**
+
+    
+    
+    export ALT_BOOTDIR=/usr/lib/jvm/java-1.6.0-openjdk-amd64
+    export LANG=c
+    jdk/make/jdk_generic_profile.sh
+    make sanity
+    
+    #确认无错误后，执行
+    make ALLOW_DOWNLOADS=true
+    
+    #然后，就等吧，必然出错，需要编辑一个文件
+    vim hotspot/make/linux/makefiles/gcc.make
+    #将其中的 WARNINGS_ARE_ERRORS = -Werror 注释掉
+    
+    #OK，再启动make
+    make ALLOW_DOWNLOADS=true
+    
+    #然后，就到sound出错了
+    cd jdk/make/javax/sound/jsoundalsa
+    vim Makefile
+    #找到CPPFLAGS ，在其结尾，添加 -lasound
+    #如果再次make还是失败在这里，那么 ，先还原上一个修改， 并拷贝出错的最后一条gcc命令，添加-lasound后执行，应该无错误地pass
+    
+    #再次make
+    make ALLOW_DOWNLOADS=true
+    
+    #OK，你会遇到最后的错误， corba的什么什么类找不到？！
+    cp -r /opt/openjdk/build/linux-amd64/corba/classes/* /opt/openjdk/build/linux-amd64/classes/
+    
+    #好了，你最后一次跑make了，这次应该能够成功了！！
+    make ALLOW_DOWNLOADS=true
+    
+    
+    #漫长编译后，你终于能看到编译成功的提示：
+    ########################################################################
+    ##### Leaving jdk for target(s) sanity all docs images             #####
+    ########################################################################
+    ##### Build time 00:04:19 jdk for target(s) sanity all docs images #####
+    ########################################################################
+    
+    -- Build times ----------
+    Target all_product_build
+    Start 2012-05-06 23:07:41
+    End   2012-05-06 23:12:30
+    00:00:04 corba
+    00:00:14 hotspot
+    00:00:02 jaxp
+    00:00:06 jaxws
+    00:04:19 jdk
+    00:00:04 langtools
+    00:04:49 TOTAL
+    -------------------------
+    make[1]: Leaving directory `/opt/openjdk'
+    
+
+
+
+**大功告成，来玩玩吧！**
+
+    
+    
+    #现在，跑一下你的OpenJDK 7u2吧！！
+    /opt/openjdk/build/linux-amd64/bin/java -version
+    openjdk version "1.7.0-internal"
+    OpenJDK Runtime Environment (build 1.7.0-internal-root_2012_05_06_19_19-b00)
+    OpenJDK 64-Bit Server VM (build 22.0-b10, mixed mode)
+    
+    编译一个HelloWorld试试：
+    /opt/openjdk/build/linux-amd64/bin/javac /tmp/Hi.java
+    #################################
+    root@ubuntu:/opt/openjdk/build/linux-amd64# /opt/openjdk/build/linux-amd64/bin/java -cp /tmp Hi
+    Hi, this is my openJDK!
+    root@ubuntu:/opt/openjdk/build/linux-amd64# 
+    #################################
+    

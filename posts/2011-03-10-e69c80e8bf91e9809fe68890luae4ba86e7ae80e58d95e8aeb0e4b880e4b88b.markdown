@@ -1,0 +1,79 @@
+---
+comments: true
+date: 2011-03-10 19:56:26
+layout: post
+slug: '%e6%9c%80%e8%bf%91%e9%80%9f%e6%88%90lua%e4%ba%86%e7%ae%80%e5%8d%95%e8%ae%b0%e4%b8%80%e4%b8%8b'
+title: 最近速成Lua了,简单记一下
+wordpress_id: 252
+categories:
+- 其他
+- 工作
+tags:
+- el
+- io
+- Java
+- lua
+- 索引
+- 配置
+---
+
+最近速成Lua,写篇文章mark一下, 参考了 [Lua-Quick-Start-Guide-CN](http://luaforge.net/frs/download.php/4416/A_Quick_Start_Guide_On_Lua_For_C_C_Programmer_CN.pdf)
+
+Lua执行器, 官方当前最新5.1.4, 但我觉得LuaJIT 2.0 beta6 更好
+
+我的考虑是这样的:
+1. 为了性能,把固定的处理逻辑用C写
+2. 为了灵活,与配置紧密相关的用Lua写
+
+8种类型: 
+数字(double), 字符串, 布尔值(true/false)
+函数(function)
+表(相当于HashMap+List,唯一的数据结构)
+用户数据(userdata,C定义的,Lua对其只读,不能直接通过Lua语句修改) -- 对我基本无用处
+协程(thread) -- 其实就是Lua模拟的多线程,与Java的真线程差远了,基本无视之
+nil(空,啥都不是,一般就是标志物)
+
+语法:
+1. 变量无类型
+2. 无需;之类的语句终结符,最好一行一条语句, 语言本身对缩进不感冒.
+3. 函数可以返回多个值 (Java中我也想啊!)
+4. if语句, 除了false和nil外, 一律视为true (真的比较单纯的约定)
+5. 没有数组,只有table, 相当于HashMap+List
+6. 支持闭包,但我用不上,无视之
+7. 有假的多线程,直接无视
+
+好,上代码:
+
+    
+    
+    --这是注释
+    --定义一个本地变量
+    local myx = 1
+    --变量没类型,随便赋值
+    myx = "Wendal's LUA"
+    --定义一个方法
+    function abc()
+        -- 返回多个值,爽,最后一个是表
+        return 1,"2",{yyy=1.2,ab="z"}
+    end
+    --多个变量一起赋值
+    x,y,z = abc()
+    --z变量保存的是table类型,故:
+    --索引值以1开始
+    myx = z.yyy
+    myx = z[2]
+    --if语句, then和end都是必须的,因为返回值不是nil和false,故abc()相当于true
+    if abc() then
+        --内置方法,不是语法的一部分
+        print("cccccc")
+    elseif
+        print("aaaaa")
+    end
+    
+
+
+剩下的就是基础API了,没必要记,用用就知道了
+
+突然感觉到 编程语言就是 语法+API  ---> 有点废话
+
+另外提醒一下, Lua没有对象,不过可以通过table类型来模拟.

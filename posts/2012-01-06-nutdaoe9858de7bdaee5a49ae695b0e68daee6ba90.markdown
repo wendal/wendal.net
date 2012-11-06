@@ -1,0 +1,105 @@
+---
+comments: true
+date: 2012-01-06 22:20:11
+layout: post
+slug: nutdao%e9%85%8d%e7%bd%ae%e5%a4%9a%e6%95%b0%e6%8d%ae%e6%ba%90
+title: NutDao配置多数据源
+wordpress_id: 356
+categories:
+- Java
+tags:
+- el
+- io
+- Nutz
+- 连接池
+- 配置
+---
+
+首先,我必须声明,这是一个非常简单的方法,很多小菜没做出来,是因为把nutz想得太复杂
+
+数据源(或者是数据库连接池),在Nutz.Ioc看来,是一个普通的Bean,没任何特别之处. 再强调一点,除了$aop命名的bean用于配置Aop之外,其他所有的bean都是一视同仁的,没有任何特别关照!!
+
+先看看标准的单数据源配置方法:
+
+    
+    
+    var ioc = {
+    	dataSource : {
+                    type : "org.apache.commons.dbcp.BasicDataSource",
+                    events : {
+                            depose : 'close'
+                    },
+                    fields : {
+                            driverClassName : 'org.h2.Driver',
+                            url : 'jdbc:h2:quick3;AUTO_RECONNECT=TRUE;CACHE_SIZE=65536',
+                            username : 'sa',
+                            password : ''
+                    }
+            },
+            /*定义NutDao*/
+            dao : {
+            	type : "org.nutz.dao.impl.NutDao",
+            	fields : {
+            		dataSource : {refer : 'dataSource'}
+            	}
+            }
+    }
+    
+
+
+
+
+
+然后,扩展成多个数据源:
+
+    
+    
+    var ioc = {
+    /*定义第一个数据源*/
+    	dataSource : {
+                    type : "org.apache.commons.dbcp.BasicDataSource",
+                    events : {
+                            depose : 'close'
+                    },
+                    fields : {
+                            driverClassName : 'org.h2.Driver',
+                            url : 'jdbc:h2:quick_a;AUTO_RECONNECT=TRUE;CACHE_SIZE=65536',
+                            username : 'sa',
+                            password : ''
+                    }
+            },
+            /*定义NutDao*/
+            dao : {
+            	type : "org.nutz.dao.impl.NutDao",
+            	fields : {
+            		dataSource : {refer : 'dataSource'}
+            	}
+            },
+    /*定义第二个数据源*/
+    	dataSource2 : {
+                    type : "org.apache.commons.dbcp.BasicDataSource",
+                    events : {
+                            depose : 'close'
+                    },
+                    fields : {
+                            driverClassName : 'org.h2.Driver',
+                            url : 'jdbc:h2:quick_b;AUTO_RECONNECT=TRUE;CACHE_SIZE=65536',
+                            username : 'sa',
+                            password : ''
+                    }
+            },
+            /*定义第二个NutDao*/
+            dao2 : {
+            	type : "org.nutz.dao.impl.NutDao",
+            	fields : {
+            		dataSource : {refer : 'dataSource2'} /*这里引用第二个数据源*/
+            	}
+            }
+    }
+    
+
+
+
+明白了吗? 所谓多数据源的配置,其实就是几份单数据源的配置文件放在一起. 一个NutDao实例,对于一个数据源. 由于ioc里面的bean是不能重名的,所以,你需要做的,仅仅是为不同的数据源设定不同的名字,仅此而已.
+
+关于多数据源的事务管理问题,请看另外一篇博客: "[Nutz事务模板值得注意的细节](http://wendal.net/324.html)"

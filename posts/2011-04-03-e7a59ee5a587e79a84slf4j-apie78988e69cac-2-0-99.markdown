@@ -1,0 +1,67 @@
+---
+comments: true
+date: 2011-04-03 12:29:03
+layout: post
+slug: '%e7%a5%9e%e5%a5%87%e7%9a%84slf4j-api%e7%89%88%e6%9c%ac-2-0-99'
+title: 神奇的Slf4J-API版本 - 2.0.99
+wordpress_id: 262
+categories:
+- Java
+tags:
+- bug
+- el
+- io
+- Java
+- 下载
+- 兼容
+---
+
+今天,一位群友"我思",在组合使用slf4j和logback时报一下错误:
+
+    
+    
+    Exception in thread "main" java.lang.NoSuchMethodError: org.slf4j.helpers.MessageFormatter.arrayFormat(Ljava/lang/String;[Ljava/lang/Object;)Lorg/slf4j/helpers/FormattingTuple;
+    
+
+
+最后发现是slf4j的版本不对, 他使用的是slf4j-api-2.0.99.jar 
+
+但是,但是,官方正式版只有1.6.1,而且至今我都没发现有2.0.x系列的计划呢!!
+我的神啊,哪里来的版本? 经提醒,这个jar就在 1.6.1版的发行包中!!  slf4j-1.6.1.zip\slf4j-1.6.1\integration\lib
+
+神奇啊,为啥呢?? 找不到其源码jar,好吧,上JD-GUI,看看报错的类MessageFormatter.arrayFormat
+2.0.99版的方法声明:
+
+    
+    
+    public static final String arrayFormat(String messagePattern, Object[] argArray)
+    
+
+
+1.6.1版的方法声明:
+
+    
+    
+    public static final FormattingTuple arrayFormat(String messagePattern, Object[] argArray)
+    
+
+
+看到区别了吧,返回值的类型不同了!!! 同样的,还有一个1.6.99版的API,内容与2.0.99版一致
+
+继续追查, 看Slf4j源码仓库的一个提交:
+[https://github.com/ceki/slf4j/commit/581b20f8aaa140ce722669a2cf1d8582a963ff4e](https://github.com/ceki/slf4j/commit/581b20f8aaa140ce722669a2cf1d8582a963ff4e)
+里面的comments是:
+`
+- fixed bug 154
+
+- It is expected that all SLF4J releases in the 1.6.x and 2.0.x series
+will be mutually compatible. Note that the 2.0.x series is expected to
+require JDK 1.5 or later.
+`
+
+兼容旧版本?? 明显就是不兼容嘛!!! 但 bug 154 到底是什么内容呢?
+
+几经查找,终于找到其issue系统的地址,是个bugzilla呢 -- 天啊,官网一个网站,下载一个网站,源码管理一个网站,issue管理又是再一个网站?!!
+
+[http://bugzilla.slf4j.org/show_bug.cgi?id=154](http://bugzilla.slf4j.org/show_bug.cgi?id=154)
+但内容感觉与 2.0.x无关呢.

@@ -1,0 +1,24 @@
+---
+comments: true
+date: 2011-04-14 11:39:26
+layout: post
+slug: '%e5%90%af%e7%94%a8%e6%96%b0%e7%9a%84%e5%9f%9f%e5%90%8d-wendal-net'
+title: 启用新的域名 wendal.net
+wordpress_id: 268
+categories:
+- VPS/Linux
+- 其他
+tags:
+- Sunfarm
+- 工作
+---
+
+为了XXXXX
+为了XXXXX
+为了XXXXX
+
+我昨晚在godaddy购买了wendal.net,并指向我的博客,花了72.04元,还不错,呵呵
+
+另外,开始进行sunfarms.net的域名外迁工作,万网已经在审核
+
+呵呵,常出去走走,身体健康哦

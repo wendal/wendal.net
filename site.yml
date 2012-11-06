@@ -1,11 +1,11 @@
-title : Blog Title
-tagline: Blog Tagline
+title : Wendal随笔
+tagline: Ruhoh
 author :
-  name : Firstname Lastname
-  email : blah@email.test
-  github : username
-  twitter : username
-  feedburner : feedname
+  name : wendal chen
+  email : wendal1985@gmail.com
+  github : wendal
+  twitter : wendal_x
+  feedburner : wendal
 
 navigation :
   - archive.html

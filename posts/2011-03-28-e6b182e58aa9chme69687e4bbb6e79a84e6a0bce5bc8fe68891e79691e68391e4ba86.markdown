@@ -1,0 +1,28 @@
+---
+comments: true
+date: 2011-03-28 12:39:57
+layout: post
+slug: '%e6%b1%82%e5%8a%a9chm%e6%96%87%e4%bb%b6%e7%9a%84%e6%a0%bc%e5%bc%8f%e6%88%91%e7%96%91%e6%83%91%e4%ba%86'
+title: '[求助]CHM文件的格式,我疑惑了!!!'
+wordpress_id: 258
+categories:
+- Java
+tags:
+- Ant
+- el
+- Java
+---
+
+这几天想做一个CHM文件的Java读写库,困困研读这种非公开的文件格式.
+参考了一篇外国人写的文档 [Microsoft's HTML Help (.chm) format](http://www.russotto.net/chm/chmformat.html)
+
+按照其规律一步步构建POJO, 结果被一个ENCINT类型难住了,实在搞不懂如何解析,呜呜:
+
+原文:
+`
+Encoded Integers
+
+An ENCINT is a variable-length integer. The high bit of each byte indicates "continued to the next byte". Bytes are stored most significant to least significant. So, for example, $EA $15 is (((0xEA&0x7F)< <7)|0x15) = 0x3515. 
+`
+
+严重崩溃中, 求帮助啊!!`

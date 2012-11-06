@@ -1,0 +1,43 @@
+---
+comments: true
+date: 2010-11-30 08:36:52
+layout: post
+slug: '%e5%8d%87%e7%ba%a7%e5%88%b0nginx-0-9'
+title: 升级到Nginx 0.9.0
+wordpress_id: 186
+categories:
+- Nginx
+- VPS/Linux
+tags:
+- bug
+- js
+- nginx
+- Wiki
+- 下载
+- 优化
+- 升级
+- 新版本
+---
+
+今早一开邮箱,发现Nginx 0.9开发分支已经发布!!
+对于我这种喜欢尝鲜的人,怎么错过!!
+马上下载编译:
+
+    
+    
+    wget http://nginx.org/download/nginx-0.9.0.tar.gz
+    tar xvf nginx-0.9.0.tar.gz
+    cd nginx-0.9.0
+    vim auto/cc/gcc #将Debug去掉,优化改为o3
+    ./configure --with-cpu-opt=pentium4 --user=www --group=www --prefix=/usr/local/nginx --with-http_stub_status_module --with-http_gzip_static_module
+    make
+    /usr/local/nginx/sbin/nginx -s stop #停掉旧版本
+    cp objs/nginx /usr/local/nginx/sbin/
+    /usr/local/nginx/sbin/nginx #启动新版本
+    
+
+
+这里没有用热切换.
+顺便更新了[Nginx中文Wiki](http://wiki.nginx.org/NginxChs)主页上的版本信息.
+
+**最新更新： 已经发布 0.9.1 ，本blog也同步更新**

@@ -1,0 +1,54 @@
+---
+comments: true
+date: 2011-09-09 11:33:27
+layout: post
+slug: '%e5%ae%9e%e7%8e%b0rk2918%e7%9a%84system%e5%88%86%e5%8c%ba%e5%8f%af%e5%86%99'
+title: 实现Rk2918的System分区可写
+wordpress_id: 320
+categories:
+- 其他
+tags:
+- Android
+- git
+- 下载
+---
+
+这是2011-09-08,也就是前天顿悟出来的方法
+
+**核心原理**:在data分区下建一个文件夹/data/sysrw存放system原本的数据,启动时,软连接/data/sysrw为system分区
+
+**解释**:
+1. data分区,最终挂载为/data文件夹,默认情况下,这是ext3格式的分区,但禁用了suid
+2. system分区,为不可写的cramfs格式,默认挂载在/system文件夹
+
+**步骤**:
+1. 在原版系统可以正常启动的前提下,将/system下的全部文件,拷贝到/data/sysrw
+2. 传输su文件到/data/sysrw/下,使用我最近编译的简单版su,可跳过GUI确认
+3. 修改boot.img,移除system文件夹(否则无法建立通往/system的软链接),对init.rc文件做以下修改:
+..A. 不再挂载system分区 -- 注释掉 mount cramfs mtd@system /system -- 也就是前面加#号
+..B. 不再建立system文件夹 -- 注释掉 mkdir /system
+..C. 修改data分区的挂载方式,使其支持suid -- 挂载语句改为 mount ext3 mtd@userdata /data
+..D. 修改data分区的权限 -- chmod 0770 /data 改为 chmod 0777 /data
+..E. 修改su文件的权限,在D步骤所修改文件后面添加 chmod 6755 /system/bin/su -- 因为data分区启用了suid,故这个程序可以调用setgid(0)和setuid(0)了
+..F. 为了提供更大自由度,修改根分区的权限 -- 注释掉 mount rootfs rootfs / ro remount
+..G. 建立通往/system的软链接 --- 找到 mkdir /data ,在后面新起一行 symlink /data/sysrw /system
+
+**经验教训**
+1. symlink 语法,与ln一样,前面是真实地址,后面是虚拟地址
+2. 如果分区不支持suid,那么setuid/setgid将无法使用
+
+**关于su**
+我为此建立一个项目: [https://github.com/wendal/android_su](https://github.com/wendal/android_su)
+默认情况下,su是不允许其他用户使用的,而Superuser.apk附带的su又是与界面关联的.
+我这个su,只要你执行,就给你root权限,非常爽!!
+
+本文提及方法,理论上适用与一切Rk29系列的平板
+
+针对台电P71和T760的修改工具已经完成:
+[http://dl.dbank.com/c0xcsjwxsm](http://dl.dbank.com/c0xcsjwxsm)
+其他系统的可参考着修改
+
+再次感谢rk28小组的解包工具,你们成功解开了boot.img并顺利打包,为本方法的出现提供了可能性
+
+**最新更新,单单刷boot.img实现全部功能**,下载地址:
+[http://dl.dbank.com/c0vd0zds0v](http://dl.dbank.com/c0vd0zds0v)

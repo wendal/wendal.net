@@ -1,0 +1,33 @@
+---
+comments: true
+date: 2010-08-09 22:13:26
+layout: post
+slug: verycd%e7%9a%84%e6%a0%87%e9%a2%98-%e5%8f%98%e5%8c%96%e4%b8%ad%e7%9a%84%e8%ad%a6%e7%a4%ba%e8%af%ad
+title: VeryCD的标题–变化中的警示语
+wordpress_id: 43
+categories:
+- 其他
+tags:
+- Dom
+- js
+- VeryCD
+- 警示语
+---
+
+很久以前就留意到VeryCD主页的标题栏是一句警示语,而且,刷新一下就会变成新的. 算不上非常惊人的举动,但成为以前经常访问其网站的原因.
+
+实现的关键:
+[http://www.verycd.com/statics/title.saying](view-source:http://www.verycd.com/statics/title.saying)
+内容为一个js文件, 定义一个数组,包含几条警示语,然后产生一个随机数,抽取出一句警示语,与原有的标题成新标题,然后再设置为页面的标题.
+今天的内容:
+
+    
+    
+    _VC_DocumentTitles = new Array('每一天都是一个全新的开始', 
+    '你希望掌握永恒，那你必须控制现在',
+     '心是最大的骗子，别人能骗你一时，而它却能骗你一辈子',
+     '你的谦逊会使别人感到高兴', '自知不自见，自爱不自贵',
+     '最艰苦之时，便是胜利将到之日', '拳不离手，曲不离口', '百艺通，不如一艺精',
+     '只要功夫深，铁杵磨成绣花针', '如果一个人很慷慨，那他就必须把自己的慷慨表现得充满感情');
+     _VC_DocumentTitleIndex = Math.floor(Math.random() * _VC_DocumentTitles.length);
+    document.title = 'VeryCD - '+ _VC_DocumentTitles[_VC_DocumentTitleIndex];

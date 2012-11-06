@@ -1,0 +1,41 @@
+---
+comments: true
+date: 2011-04-26 09:23:12
+layout: post
+slug: everbox4j-%e5%bd%93%e5%89%8d%e8%bf%9b%e5%ba%a62011-04-26
+title: Everbox4j 当前进度(2011-04-26)
+wordpress_id: 274
+categories:
+- Java
+tags:
+- everbox
+- everbox4j
+- js
+- 下载
+---
+
+项目地址: [http://code.google.com/p/everbox4j/](http://code.google.com/p/everbox4j/)
+源码地址: [http://code.google.com/p/everbox4j/source/browse/](http://code.google.com/p/everbox4j/source/browse/)
+
+已经完成的功能:
+    **上传指定文件(不限大小)**
+    **下载指定文件(支持断点续传)**
+    新建文件夹(服务器端)
+    删除文件/文件夹(服务器端)
+    一个简单的管理UI界面,仅界面,功能还没做,呜呜
+
+学到不少东西:
+    上传的机制 -- 分段上传,由服务器决定上传哪几段
+    下载机制 -- 先发起一个下载请求,服务器分配一个下载地址
+
+Everbox用到的一些东西:
+    Json
+    Apache HttpClient
+    **OAuth**
+    SHA1
+
+计划:
+    完成管理UI的功能,现在只有界面,就一个壳
+    实现上传+下载的同步机制,现在只能处理单向的 -- 只上传 或 只下载
+
+争取劳动节前发布一个版本!!

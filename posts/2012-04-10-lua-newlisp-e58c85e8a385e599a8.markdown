@@ -1,0 +1,115 @@
+---
+comments: true
+date: 2012-04-10 22:48:51
+layout: post
+slug: 'lua-newLISP-wrapper'
+title: lua-newLISP 包装器
+wordpress_id: 412
+categories:
+- lisp
+tags:
+- cmake
+- io
+- lua
+- 配置
+---
+
+**更新: 新实现的eval只返回最后的表达式的值,并添加新的eval_file方法**
+
+今天第一次写lua模块,就做了一个lua-newLISP包装器,即在lua中执行newLISP脚本
+
+**首先遇到的是newLISP的编译:**
+1. 官方提供的configure智能化程度极低,估计是手写的
+2. 生成的Makefile,是Ubuntu下的配置, 在centos下编译无法通过
+虽然修改一下,还是顺利能pass,但还是觉得不爽
+故, 动手做了一个[cmake for newLISP](https://gist.github.com/2351735)的脚本.
+
+**生成so文件后,默认是newlisp.so,改名为libnewlisp.so,并放入/usr/lib中**
+
+由于newLISP的对外API仅2个(其中一个还不能用...),且自带的h文件比较混乱,**干脆自己写了一个h文件**[newlisp.h](https://github.com/wendal/lua-newlisp/blob/master/newLISP.h),就一行:
+
+    
+    
+    char * newlispEvalStr(char * cmd); //把传入的cmd当成newlisp脚本执行,并返回char*
+    
+
+
+
+然后,当然是主体c文件[newLISP.c](https://github.com/wendal/lua-newlisp/blob/master/newLISP.c)啦
+
+    
+    
+    //载入lua的头文件
+    #include "lua.h"
+    #include "lualib.h"
+    #include "lauxlib.h"
+    
+    //载入我自己写的newlisp头文件
+    #include "newLISP.h"
+    
+    //lua中require语法将调用这个方法  lisp = require "newLISP"
+    //最终生成的名字,必须全部一致,库的名字叫newLISP,文件叫newLISP.so,luaopen方法也得叫luaopen_newLISP
+    int luaopen_newLISP(lua_State *L);
+    
+    static int newLISP_eval(lua_State *L) {
+       char * str = lua_tostring(L, 1);     //获取第一个方法参数, lua中数组下标以1开始
+       char * result = newlispEvalStr(str); //调用newLISP库执行脚本
+       lua_pushstring(L, result); //将返回值压入堆栈
+       return 1; //返回值的数量; 因为lua支持同时返回多个值
+    }
+    
+    //定义lua中方法与方法名的映射表
+    static const luaL_reg newLISP_lib[] = {
+       {"eval", newLISP_eval},
+       {0,0}
+    };
+    
+    //模块注册入口方法
+    int luaopen_newLISP(lua_State *L) {
+       luaL_register(L, "newLISP", newLISP_lib);
+       return 1;
+    }
+    
+
+
+
+**编译:**
+
+    
+    
+    gcc -O3 -Wall -shared -o newLISP.so -lnewlisp -llua newLISP.c
+    
+
+
+
+**测试:**
+
+    
+    
+    $> lua
+    Lua 5.1.5  Copyright (C) 1994-2012 Lua.org, PUC-Rio
+    > lisp = require "newLISP"
+    > print(lisp.eval("(* 1 100)"))
+    100
+    
+    > print(lisp.eval("(setq lst '(1 2 3))"))
+    (1 2 3)
+    
+    > print(lisp.eval("(define (abc x y) (+ (* x x) (* y y)) )  (abc 3 4)"))
+    (lambda (x y) (+ (* x x) (* y y)))
+    25
+    
+    > 
+    
+
+
+
+
+<del>**可以看到, 这个方法有2个很明显的问题:**
+1. 总是多一个换行
+2. 会把执行过程中的所有output都作为返回值 .. 汗...</del>
+
+
+恩, 起码能用上了
+
+代码所在项目 [lua-newLISP](https://github.com/wendal/lua-newlisp)

@@ -1,0 +1,66 @@
+---
+comments: true
+date: 2010-12-16 13:53:13
+layout: post
+slug: '%e4%bb%8e%e6%ba%90%e7%a0%81%e7%bc%96%e8%af%91mysql-5-5-%e7%ae%80%e5%8d%95%e7%89%88'
+title: 从源码编译MySQL 5.5 -- 简单版
+wordpress_id: 217
+categories:
+- VPS/Linux
+tags:
+- cmake
+- el
+- MySQL
+- 下载
+- 配置
+---
+
+[MySQL 5.5](http://dev.mysql.com/downloads/mysql/)分支,今天[终于发布 5.5.8 GA](http://www.oschina.net/news/13830/mysql-5-5-final)了.
+
+一贯风格,尝鲜,马上编译之. 折腾了一段时间,发现需要用[cmake](http://www.cmake.org/)进行配置了
+1. 先安装cmake和ccmake
+
+    
+    
+    sudo apt-get install cmake cmake-curses-gui libncurses5-dev
+    
+
+
+2. 下载并解压mysql-5.5.8.tar.gz到mysql-5.5.8
+
+    
+    
+    wget -o mysql-5.5.8.tar.gz http://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.8.tar.gz/from/http://mirror.csclub.uwaterloo.ca/mysql/
+    tar xvf mysql-5.5.8.tar.gz
+    cd mysql-5.5.8
+    
+
+
+3. 然后执行ccmake进行配置,建议将CMAKE_BUILD_TYPE设置为Release
+
+    
+    
+    sudo ccmake .
+    #或者 cmake -i 对话式配置
+    
+
+
+4. 如果嫌第三步麻烦,那么直接执行
+
+    
+    
+    sudo cmake .
+    
+
+
+5. 剩下的就是常规操作了
+
+    
+    
+    #编译
+    sudo make
+    #跑一下测试,全部Pass
+    sudo make test
+    #安装
+    sudo make install
+    

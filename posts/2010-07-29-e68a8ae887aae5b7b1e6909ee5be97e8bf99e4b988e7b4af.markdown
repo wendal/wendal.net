@@ -1,0 +1,33 @@
+---
+comments: true
+date: 2010-07-29 23:51:57
+layout: post
+slug: 'too-tired-to-self'
+title: 把自己搞得这么累
+wordpress_id: 14
+categories:
+- 其他
+tags:
+- alfresco
+- Nutz
+- Sunfarm
+- 加班
+- 工作
+- 工作流
+- 生活
+- 配置
+---
+
+8点就已经回到家了,没休息,就对着电脑
+
+本可以休息一晚,喝杯茶,看看书...
+
+今晚基本上就是聊Q,SunFarm的用户提出来几个挺有效的改进建议,并发布了 3.33 很好玩的一个版本号
+
+Nutz最近比较安静,难道大家热情消退??
+
+今天继续磨工作流,总算有点眉目, 不过,周六日加班是必然的了
+
+非常认同Alfresco的强大,但同时感叹其复杂与难以琢磨... 学习曲线的确是高
+
+对Alfresco的基础配置,现在算是滚瓜烂熟了,可惜啊, 对其Workflow还是入门级别,继续奋斗吧,Wendal!

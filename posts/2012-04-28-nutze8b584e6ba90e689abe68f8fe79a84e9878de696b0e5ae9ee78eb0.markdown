@@ -1,0 +1,76 @@
+---
+comments: true
+date: 2012-04-28 08:44:50
+layout: post
+slug: 'rewrite-nutz-resource-scan'
+title: Nutz资源扫描的重新实现
+wordpress_id: 414
+categories:
+- Java
+tags:
+- Classpath
+- el
+- io
+- Java
+- Maven
+- Nutz
+- 索引
+- 路径
+---
+
+**Nutz.Resource包,是2010年4月创建的,至今2年了.当初的设计,就是为了 "资源扫描" 这个基础话题.**
+
+Spring中也有类似的基础设施,但复杂很多,例如classpath与classpath*等定义.
+
+**之前的实现,按以下思路完成:**
+1. 传入一个路径,通过Files.findFile尝试寻找是否有这个文件
+ --2. 路径是文件系统上的文件夹,将立马可以找到具体的File对象,可以直接扫描文件夹但
+ --2. 文件存在于jar包,则需要解析出其jar文件的路径,读取jar文件进行扫描
+3. 如果还没找到,搜索classpath和WEB-INF/lib,遍历里面的文件夹/jar文件
+
+一个突出的问题是,Files.findFile的返回值是File对象,这意味着,如果该路径存在于多个不同的classpath路径或jar中,只有第一个路径会被返回.
+而且,因为是File对象,对于Jar文件中的文件,读取比较麻烦(例如jarinjar打包的可执行jar文件).
+
+**解决复杂路径的jar文件读取问题**:
+
+    
+    
+    	public static ZipInputStream makeZipInputStream(String jarPath)
+    			throws MalformedURLException, IOException {
+    		ZipInputStream zis = null;
+    		try {
+    			zis = new ZipInputStream(new FileInputStream(jarPath));
+    		} catch (IOException e) {
+    			zis = new ZipInputStream(new URL(jarPath).openStream());
+    		}
+    		return zis;
+    	}
+    
+
+
+之前的实现,使用JarFile jar = new JarFile(jarPath)形式,未能正确识别嵌套jar(jarinjar)的读取.
+
+**解决Files.findFile导致的问题,则需要完全重写Scans.**
+-- 以前的实现,是无状态的,每次扫描都尝试所有可能的方式
+-- 新的实现,有状态,记录可以扫描的位置信息,直接查找
+
+**新版的实现思路:**
+1. 初始化Scans类时,记录可以进行扫描的路径
+-- 当前文件夹 new File(".")
+-- 通过查找META-INF/MANIFEST.MF文件(这是每个标准jar文件必有的文件),得到classpath中所有的jar文件路径
+-- 通过环境变量java.class.path遍历classpath中的路径
+2. 当处于Web环境下,额外调用Scans.init(ServletContext)
+-- 得到并遍历WEB-INF/lib文件夹中的jar文件
+-- 得到WEB-INF/classes文件夹的路径
+3. 以上得到的路径,都封装在ResourceLocation对象List中,分别处理具体路径与具体jar文件的扫描任务
+4. 基于性能的考虑,会对jar文件进行预先索引
+5. 查找将变得非常轻松,因为仅需要 将查询条件传递给各个ResourceLocation对象,并汇总他们的结果
+
+**可靠性,总体性能,内存占用:**
+1. 由于预先探知所有可能的资源路径,所以找到资源的可靠性明显增加, 再加上Scans.registerLocation方法允许用户自行登记路径,使扫描结果更可靠.
+2. Scans初始化的耗时增加,但scan操作性能明显提高
+3. 内存占用稍微增加
+
+**功能改进:**
+1. 支持按文件夹扫描,即使这个文件夹只存在于jar中,且jar文件并未加入目录实体
+2. 用户可自行添加额外路径,在maven下的生存能力明显提高

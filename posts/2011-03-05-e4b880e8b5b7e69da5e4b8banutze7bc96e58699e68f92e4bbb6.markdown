@@ -1,0 +1,57 @@
+---
+comments: true
+date: 2011-03-05 21:33:29
+layout: post
+slug: '%e4%b8%80%e8%b5%b7%e6%9d%a5%e4%b8%banutz%e7%bc%96%e5%86%99%e6%8f%92%e4%bb%b6'
+title: 一起来,为Nutz编写插件!
+wordpress_id: 247
+categories:
+- Java
+tags:
+- el
+- io
+- js
+- MVC
+- Nutz
+- plugin
+- 兼容
+- 视图
+- 集成
+---
+
+**随着Nutz代码的不断改进,为Nutz编写插件已经越来越容易.**
+
+早期我们编写的插件,很多都是为了兼容/集成XX框架而写的. 例如[SpringIocLoader](http://code.google.com/p/nutzmore/source/browse/trunk/src/org/nutz/ioc/impl/spring/SpringIocProvider.java)
+
+其实我们可以做更多更强大的插件,今天以当前扩展功能最好的MVC为例:
+1. 视图插件
+2. 适配器插件
+3. 处理器插件
+4. UrlMapping插件
+
+逐一讲解:
+**1. 视图插件**
+    要求: 实现View接口和ViewMarker接口
+    能做什么? 
+        -- 实现你的视图,例如用Freemaker/Velocity的模板文件替代jsp
+        -- Nutz本身的视图不符合你的口味? 改造一个视图吧!!
+
+**2. 适配器插件**
+    要求: 实现HttpAdaptor接口
+    能做什么? 
+        -- 你的请求的格式未被nutz识别? 例如WebService请求
+        -- 请求是加密的? 需要解码才能读取
+        -- 一个请求包含几种数据格式? 这年头啥需求都有,你懂的
+
+**3. 处理器插件 -- 新版的MVC使用动作链模型,你可以介入请求处理的任何阶段**
+    要求: 实现Processor接口
+    能做什么? 
+        -- 权限处理,过滤URL或者具体的方法调用
+        -- 数据校验
+**
+4. UrlMapping插件**
+    要求: 实现UrlMapping
+    能做什么?
+        -- REST控? 这个适合你!! 你会找到不少志同道合的童鞋
+
+简单介绍完, 看看有无时间写篇 "Nutz插件编写指南" 哈哈, 期待吧

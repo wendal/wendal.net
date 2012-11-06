@@ -1,0 +1,64 @@
+---
+comments: true
+date: 2012-03-10 22:46:33
+layout: post
+slug: 'get-method-paramter-name-in-java'
+title: 获得方法形参名称列表 -- 哦也,搞定!!
+wordpress_id: 394
+categories:
+- Java
+tags:
+- Ant
+- bug
+- io
+- Java
+- Nutz
+- Oracle
+- 兼容
+- 历史遗留
+- 总结
+---
+
+JAVA获取类的方法的参数名 -- 老话题,新方法!!
+
+折腾了一天,终于搞定了.测试了nutz所有的类,均读取正常!! 完美读取任何class的变量名信息! 呵呵,当前,前提是编译时含debug信息.
+
+**无任何依赖**,不需要asm,不要其他任何字节码工具,纯标准JDK API实现. 核心代码,仅一个方法,130行,哦也!!
+
+终于完成这个一直想做到的功能 -- 在Java中,获取方法的形参(参数)的名字.由于这个类只做需要做的事,所以,我非常确信它比asm的vistor更快,更可靠.
+
+    
+    
+    public void list(int page , int pageSize) { //这个类的作用,就是拿到page和pageSize这两个名字,是的,是名字.
+       //...
+    }
+    
+
+
+
+**实现关键点:**:
+1. 跳过一切不需要的数据结构,如版本号,接口信息,字段信息
+2. 只解析常量池中UTF8_String,因为只用到这个,其他都是多余的常量
+3. 实现方法到descriptor的转换函数,因为字节码中的方法签名,是descriptor格式的
+
+代码中含义泛型,直接贴这里的话,页面显示比较麻烦,就上个截图吧.
+[caption id="attachment_395" align="aligncenter" width="531" caption="获取方法形参名称(Java)"][![获取方法形参名称(Java)](http://wendal.net/wp-content/uploads/2012/03/获取方法形参.jpg)](http://wendal.net/wp-content/uploads/2012/03/获取方法形参.jpg)[/caption]
+
+代码已经提交到nutz,并添加了一个[gist](https://gist.github.com/2011728),欢迎使用,如果有任何解析失败的类,非常欢迎发送给我进行检测.
+
+**总结一下值得注意的写法**:
+1. DataInputStream.skip跟DataInputStream.skipBytes不是一回事,当较大的数值传入skip方法,这个方法实际跳过的字节数,往往小于预期.虽然skipBytes也并不保证完整跳过,但至今没发现非完整跳过的情况
+
+2. DataInputStream.readUnsignedShort()的返回值是int,而readShort的返回值是short,以前一直以为short是无符号的呢!! 好吧,还有readUnsignedByte方法
+
+3. 常量池中的CONSTANT_Long和CONSTANT_Double是8byte数据,其之后的一个常量池位置,是不可使用的,必须跳过. 贴一下JVM标准的中的描述:
+All 8-byte constants take up two entries in the constant_pool table of the class ﬁle. If a
+CONSTANT_Long_info or CONSTANT_Double_info structure is the item in the
+constant_pool table at index n, then the next usable item in the pool is located at index
+n +2. The constant_pool index n +1 must be valid but is considered unusable.
+有个小注释:** In retrospect, making 8-byte constants take two constant pool entries was a poor choice.** 好吧,愚蠢的选择,但这是历史遗留问题了...
+
+这个类,兼容到JDK7.
+Class Format : [http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html](http://docs.oracle.com/javase/specs/jvms/se7/html/jvms-4.html)
+
+提醒: 这个类无法获取接口的形参,因为接口的class文件并不保存变量名

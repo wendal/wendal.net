@@ -1,0 +1,57 @@
+---
+comments: true
+date: 2011-09-17 22:31:36
+layout: post
+slug: nutz%e4%ba%8b%e5%8a%a1%e6%a8%a1%e6%9d%bf%e5%80%bc%e5%be%97%e6%b3%a8%e6%84%8f%e7%9a%84%e7%bb%86%e8%8a%82
+title: Nutz事务模板值得注意的细节
+wordpress_id: 324
+categories:
+- Java
+tags:
+- io
+- Nutz
+- Wiki
+- 连接池
+---
+
+Nutz.Dao事务模板的官方文档: [http://code.google.com/p/nutz/wiki/dao_transaction](http://code.google.com/p/nutz/wiki/dao_transaction)
+
+需要注意的几个细节,文档还没提及:
+**1. 数据库连接池的AutoCommit属性**
+对于我见到的大部分连接池和数据库驱动,默认情况下AutoCommit=true,应该是为了性能
+这就导致如果用户不自行设置的话,Trans的大部分操作都是不可回滚的.故,如果使用Trans,那么务必设置AutoCommit
+
+**2. 多个数据源的事务**
+大部分情况下,用户都不是使用XA驱动,故,多数据源的事务提交,在最后的提交阶段出错的话,已经执行commit操作的数据源,是不可能回滚的
+
+**3. 子线程的事务**
+考虑下面的代码:
+
+    
+    
+    Trans.exec(new Atom(){
+       public void run() {
+           dao.insert(pet);
+           new MySuperPowerThread().start();
+           dao.count(Pet.class);
+       }
+    });
+    
+
+
+那么MySuperPowerThread的代码并不是在事务模板中执行的,因为这里的事务不会被子线程继承
+
+**4. 返回值问题(更新了)**
+使用Molecule
+
+    
+    
+    Molecule<object> mc = new Molecule<object>() {
+        public void run() {
+            dao.insert(pet);
+            setObj(dao.count(Pet.class));
+        }
+    };
+    Trans.exec(mc);
+    System.out.println(mc.getObj());
+    

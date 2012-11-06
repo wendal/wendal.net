@@ -1,0 +1,15 @@
+---
+comments: true
+date: 2012-06-01 10:19:17
+layout: post
+slug: 'beijing-journey-just-one-picture'
+title: 北京之行,就上一张图吧
+wordpress_id: 429
+categories:
+- 生活
+tags:
+- io
+- Nutz
+---
+
+[caption id="attachment_430" align="aligncenter" width="440" caption="Nutz的代码就是这么来滴~~~~"][![Nutz的代码就是这么来滴~~~~](http://wendal.net/wp-content/uploads/2012/06/6f91c323jw1dtdb6o9986j.jpg)](http://wendal.net/wp-content/uploads/2012/06/6f91c323jw1dtdb6o9986j.jpg)[/caption]

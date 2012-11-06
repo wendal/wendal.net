@@ -1,0 +1,14 @@
+---
+comments: true
+date: 2011-05-10 15:37:08
+layout: post
+slug: '%e4%b8%8d%e8%b7%9f%e4%bd%a0%e7%8e%a9%e7%8e%a9%e4%b8%8d%e8%b5%b7'
+title: 不跟你玩,玩不起!!
+wordpress_id: 287
+categories:
+- 其他
+---
+
+认认真真地把robot.txt写好了,国内的百度,Soso,搜狗,一概屏蔽!!
+
+不跟你们玩了!!

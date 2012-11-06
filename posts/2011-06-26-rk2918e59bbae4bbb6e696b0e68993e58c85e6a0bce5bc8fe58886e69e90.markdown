@@ -1,0 +1,37 @@
+---
+comments: true
+date: 2011-06-26 11:25:37
+layout: post
+slug: rk2918%e5%9b%ba%e4%bb%b6%e6%96%b0%e6%89%93%e5%8c%85%e6%a0%bc%e5%bc%8f%e5%88%86%e6%9e%90
+title: Rk2918固件新打包格式分析
+wordpress_id: 296
+categories:
+- 未分类
+tags:
+- everbox
+- git
+- 下载
+---
+
+本文针对 台电T760的2.x固件,原道N10,酷比1.0.5等RK2918方案的新固件打包格式
+
+文件总体结构:
+文件内容描述块 0x00 ~ 0x65
+Loader程序 0x66 ~ 0x66+Loader的长度
+update.img 0x66+Loader的长度+1 ~ 文件结束前32个字节
+MD5 文件的最后32个字节为文件其余部分的MD5码--ASCII形式
+
+文件内容描述块:
+文件头 0x00~0x04 共5个字节,固定为RKFWf
+固件版本号 0x05~0x09 共5个字节, 例如 00 03 00 02 00 代表 0.2.03, 00 09 00 02 08 代表 8.2.09
+芯片型号 0x15 一个字节, 50代表RK29,40代表RKCROWN,30代表RKNANO,20代表RK28,10代表RK27
+loader信息 0x19~0x20 共8个字节,前4个字节是偏移量,后4个字节是长度.例如66 00 00 00代表0x66,5A 55 02 00代表0x02555A
+update.img信息0x22~0x29 共8个字节,与loader信息含义一致
+
+附图片:
+[![](http://wendal.net/wp-content/uploads/2011/06/RK2918_IMG_Format.jpg)](http://wendal.net/wp-content/uploads/2011/06/RK2918_IMG_Format.jpg)
+
+我已经实现的版本:
+[https://github.com/wendal/teclast_tools](https://github.com/wendal/teclast_tools) 源码
+下载:
+[http://www.everbox.com/f/kl3FWPQ7W6yvCyVKWmsLCWcf2o](http://www.everbox.com/f/kl3FWPQ7W6yvCyVKWmsLCWcf2o)

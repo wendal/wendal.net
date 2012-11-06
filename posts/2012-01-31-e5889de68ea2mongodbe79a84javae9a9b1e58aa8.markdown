@@ -1,0 +1,180 @@
+---
+comments: true
+date: 2012-01-31 21:26:08
+layout: post
+slug: '%e5%88%9d%e6%8e%a2mongodb%e7%9a%84java%e9%a9%b1%e5%8a%a8'
+title: 初探Mongodb的Java驱动
+wordpress_id: 364
+categories:
+- Java
+- mongodb
+tags:
+- bug
+- Dom
+- el
+- io
+- Java
+- js
+- mongodb
+- 优化
+- 历史遗留
+- 连接池
+- 配置
+---
+
+**1. 数据格式传递**
+上个自己画的图
+[![](http://wendal.net/wp-content/uploads/2012/01/Mongodb-Java驱动基本流程-300x94.png)](http://wendal.net/wp-content/uploads/2012/01/Mongodb-Java驱动基本流程.png)
+
+驱动里面操作的,是DBObject(用户提供的和已经转为Command格式的DBObject),OutMessage(可以转为byte[]写入Socket),Response,WriteResult(用户真正拿到的返回值)
+
+层层封装,绕得我头都晕
+
+**2. 日志与Debug信息**
+日志采用JDK Logging,有1个比较关键的环境变量配置DB.TRACE,设置为true时,log的日志level会改变 ... 我汗啊....
+原本以为另外一个配置DEBUG.DB也控制了什么东西,后来才发现,这配置完全没人调用,应该是历史遗留下来的
+
+还有一些比较诡异的环境变量设置
+MONGO-TRACKLEAKS -- SimplePool里面的设置,同样作用于连接池
+DEBUG.MONGO
+DEBUG.DBPOINTER -- 已经废弃的类,直接无视吧
+com.mongodb.cleanerIntervalMS -- 定期轮询DB实例,执行 db.cleanCursors(true);
+
+**3. 切勿使用的类**
+com.mongodb.util.TestCase和com.mongodb.util.TestNGListener属于坑爹类,依赖TestNG,却不放在test文件夹中,MyAsserts也好不到哪里去
+com.mongodb.util和com.mongodb.io包里面的类也不要用,很多类连驱动本身也没有使用!!
+
+**4. 对象序列化/反序列化的规则**
+比较有趣的是内置的Json序列化/反序列化类,里面解释了一些类型映射方面的规则(序列化的代码在JSon类,反序列的代码在JSONCallback):
+ObjectId  --- {$oid : "具体的值"}
+java.util.Date --- {$date : "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"} 而且是UTC的,即不保存时区数据!!
+DBRefBase --- {$ref : "集合名", $id : 具体id的值}
+Pattern --- {$regex:"正则表达式原型", $options : "表达式的flag"}
+BSONTimestamp --- {$ts: 具体时间, $inc:具体毫秒数}
+UUID --- {$uuid : "uuid标准的toString()"}
+CodeWScope --- {$code: 具体的值, $scope : 具体的值}
+Code --- {$code: 具体的值}
+MinKey --- {$minKey : 1} 没错,是固定为1
+MaxKey --- {$maxKey : 1} 同样是1
+基本数据类型,封装类型,String,数组,List,Map当然都是支持的了,其他全部都是不可序列化的
+
+而,真正进行DBObject转换为byte[]的类,是org.bson.BasicBSONEncoder,摘录一段关键代码:
+
+    
+    
+            if ( name.equals( "_transientFields" ) )    //不会被序列化的东西,终于有藏身之所
+                return;
+            
+            if ( DEBUG ) System.out.println( "\t put thing : " + name ); //竟然是syso,我晕
+            
+            if ( name.equals( "$where") && val instanceof String ){   //特别吧? 呵呵
+                _put( CODE , name );
+                _putValueString( val.toString() );
+                return;
+            }
+            
+            val = BSON.applyEncodingHooks( val );
+    
+            if ( val == null )
+                putNull(name);
+            else if ( val instanceof Date )
+                putDate( name , (Date)val );
+            else if ( val instanceof Number )
+                putNumber(name, (Number)val );
+            else if ( val instanceof Character )
+                putString(name, val.toString() );
+            else if ( val instanceof String )
+                putString(name, val.toString() );
+            else if ( val instanceof ObjectId )
+                putObjectId(name, (ObjectId)val );
+            else if ( val instanceof BSONObject )
+                putObject(name, (BSONObject)val );
+            else if ( val instanceof Boolean )
+                putBoolean(name, (Boolean)val );
+            else if ( val instanceof Pattern )
+                putPattern(name, (Pattern)val );
+            else if ( val instanceof Map )
+                putMap( name , (Map)val );
+            else if ( val instanceof Iterable)
+                putIterable( name , (Iterable)val );
+            else if ( val instanceof byte[] )
+                putBinary( name , (byte[])val );
+            else if ( val instanceof Binary )
+                putBinary( name , (Binary)val );
+            else if ( val instanceof UUID )
+                putUUID( name , (UUID)val );
+            else if ( val.getClass().isArray() )
+            	putArray( name , val );
+    
+            else if (val instanceof Symbol) {   //这个比较特别,在Json序列化中是不存在的,实际上就是对String简单封装一层
+                putSymbol(name, (Symbol) val);
+            }
+            else if (val instanceof BSONTimestamp) {
+                putTimestamp( name , (BSONTimestamp)val );
+            }
+            else if (val instanceof CodeWScope) {
+                putCodeWScope( name , (CodeWScope)val );
+            }
+            else if (val instanceof Code) {
+                putCode( name , (Code)val );
+            }
+            else if (val instanceof DBRefBase) {
+                BSONObject temp = new BasicBSONObject();
+                temp.put("$ref", ((DBRefBase)val).getRef());
+                temp.put("$id", ((DBRefBase)val).getId());
+                putObject( name, temp );
+            }
+            else if ( val instanceof MinKey )
+                putMinKey( name );
+            else if ( val instanceof MaxKey )
+                putMaxKey( name );
+            else if ( putSpecial( name , val ) ){
+                // no-op
+            }
+            else {
+                // 全都不是? 那就只能抛错了哦
+                throw new IllegalArgumentException( "can't serialize " + val.getClass() ); 
+            }
+    
+
+
+ 
+没有特别针对Timestamp进行优化,只会按其父类java.util.Date进行处理咯,且BSONTimestamp是仅限内部使用的
+
+**5. 连接池的实现**
+SimplePool,一个对象池, 同时也是DBPortPool的基础 -- 即Mongodb的内建数据库连接池,使用synchronized进行实现
+
+**6. 内置的Java对象 -- DBObject映射支持**
+没看驱动源码之前,一直以为没这方面的支持,实际上还是有一个的,那就是ReflectionDBObject, 用法简介:
+
+    
+    
+    public class TestReflectionDBObject {
+    	
+    	public static void main(String[] args) throws Throwable {
+    	    Mongo mongo = new Mongo();
+    	    DB db = mongo.getDB("wendal_test");
+    	    Person p = new Person();
+    	    p.setId(UUID.randomUUID());
+    	    p.setName("wendal");
+    	    DBCollection ps = db.getCollection("person");
+    	    ps.insert(p);
+    
+    	    ps.setObjectClass(Person.class); //接受DBObject的子类
+    	    Person p_db = (Person) ps.findOne();
+    	    Assert.assertEquals("wendal", p_db.getName());
+    	    System.out.println(Json.toJson(p_db));
+    
+    	    mongo.close();
+    	}
+    	
+    	public static class Person extends ReflectionDBObject { //必须继承,呵呵
+    	    private UUID id; 
+    	    private String name; //省略getter/setter
+    	}
+    }
+    
+
+
+
+恩,这次就分享这么多吧.

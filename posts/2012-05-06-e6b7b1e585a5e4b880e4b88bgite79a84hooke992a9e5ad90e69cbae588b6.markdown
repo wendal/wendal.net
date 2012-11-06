@@ -1,0 +1,80 @@
+---
+comments: true
+date: 2012-05-06 13:35:16
+layout: post
+slug: 'deep-inside-git-hook'
+title: 深入一下Git的Hook(钩子)机制
+wordpress_id: 418
+categories:
+- VPS/Linux
+tags:
+- el
+- git
+- io
+- 总结
+---
+
+首先, 先来看看我刚刚翻译完成的[GitHooks.txt(官方文档的翻译)](https://github.com/wendal/wendal/blob/master/githooks/githooks.txt)
+
+接着,当然是俺的总结发言了(已经附在翻译稿后面):
+**1. hook列表**:
+
+    
+    
+    ------------------------------------------------------
+    |钩子名字          |触发命令    |参数|非0导致取消|备注|
+    |applypatch-msg    |git am      |1   |Yes||
+    |pre-applypatch    |git am      |0   |Yes||
+    |post-applypatch   |git am      |0   |No ||
+                                    
+    |pre-commit        |git commit  |0   |Yes||
+    |prepare-commit-msg|git commit  |1~3 |Yes||
+    |commit-msg        |git commit  |1   |Yes||
+    |post-commit       |git commit  |0   |No ||
+                                    
+    |pre-rebase        |git rebase  |2   |Yes||
+    
+    |post-checkout     |git checkout|3   |No ||
+    
+    |post-merge        |git merge   |1   |No ||
+    
+    |pre-receive       |git-receive-pack |0   |Yes|通过标准输入获取信息|
+    |update            |git-receive-pack |3   |Yes||
+    |post-receive      |git-receive-pack |0   |No |通过标准输入获取信息|
+    |post-update       |git-receive-pack |可变|No ||
+    ------------------------------------------------------
+    注: 最后4个才是远程资源库执行的hook,其他都是本地资源库的hook
+    
+
+
+
+**2. hook的示例**
+虽然示例中,hook都是perl脚本,但绝对不表示只能用perl.只要是可执行的东西,都可以作为钩子
+
+**3. 源码级别的hook信息**
+我非常神奇地发现, hook的名字,并没有独立写在某个h文件中,而是分布于几个具体的c文件中
+主执行入口: run_hook(const char *index_file, const char *name, ...) 定义于run-command.h,实现于run-command.c
+官方说明:
+
+    
+    
+    `run_hook`::
+    
+    	Run a hook.(执行一个hook)
+    	The first argument is a pathname to an index file, or NULL(第一个参数是index file,可能为NULL)
+    	if the hook uses the default index file or no index is needed.
+    	The second argument is the name of the hook.(第二个参数是hook的名字)
+    	The further arguments correspond to the hook arguments.(剩下的,就是hook自己需要的参数了)
+    	The last argument has to be NULL to terminate the arguments list.(最后一个参数必须是NULL,C的常识性用法)
+    	If the hook does not exist or is not executable, the return
+    	value will be zero.(当hook不存在或不可执行,则返回0 )
+    	If it is executable, the hook will be executed and the exit
+    	status of the hook is returned. (方法的返回值,就是hook的退出状态)
+    	On execution, .stdout_to_stderr and .no_stdin will be set.
+    	(See below.)
+    
+
+
+
+**最后说一句**:
+所谓远程,其实就是你push的目标, 也就是说,仅当push操作时,远程资源库才会有hook触发!!

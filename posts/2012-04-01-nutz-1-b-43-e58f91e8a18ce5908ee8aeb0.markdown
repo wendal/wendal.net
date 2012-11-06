@@ -1,0 +1,52 @@
+---
+comments: true
+date: 2012-04-01 22:43:22
+layout: post
+slug: 'after-nutz-1.b.43'
+title: Nutz 1.b.43 发行后记
+wordpress_id: 408
+categories:
+- Java
+tags:
+- bug
+- Eclipse
+- el
+- io
+- js
+- MVC
+- Nutz
+- Oracle
+- SSI
+- 连接池
+- 配置
+---
+
+折腾了半天,终于把1.b.43发布出去了.
+
+简单介绍修正的Bug及新功能,毕竟"发行注记"比较少涉及这些.
+
+Bug修正:
+1. #177 NutFilter关闭时,报NPE,原因是销毁NutFilter时,没有设置ThreadLocal的属性,导致获取IOC容器失败
+2. #177 PropertiesProxy只认最后一个配置文件,原因是加载新配置文件时,把旧数据clear了
+3. #170 高并发的情况下,当数据库连接池的连接耗尽,NutDao抛出NPE, 原因是处理连接池异常的代码,没有考虑到获取连接也会失败
+4. #155 入口方法如果包含Date参数,当页面不传值,会抛出NPE,原因是String2Datetime类没有把""当初null来处理
+5. #172 nutz + Oracle JDBC 10.1.0.2.0 分页会出错,原因是这驱动有BUG!! 
+6. #75  NutDao动态实体解析报错,原因是默认会以为动态实体也有主键,但实际上用户执行的是update,并不包含主键.
+7. Json.fromJson(Set.class, "[1,2,3]")会报错,原因是没对Set进行特别处理,直接当成List返回了
+
+需求:
+1. #187 支持JarInJar,即eclipse打包输出Runnable Jar的第二项.
+2. #130 自定义SQL也支持Pager分页
+3. #158 Dao支持Set存入数据库,字段类型为varchar
+4. #120 JSON循环引用的序列化与反序列化, 以及EL支持Json需求
+5. MVC中,如果入口方法的参数没有@Param注解,且不被适配器所识别,那么,按@Param("参数名")进行处理
+6. 添加内置的fetchBoolean回调函数
+7. 新增@SessionBy注解,允许自定义Session的获取方式
+8. 新增SimpleDataSource,内置的DataSource实现
+
+
+注意,我这里描述的是BUG导致的问题及原因,而非BUG的标题
+
+值得注意的是,由于对resource包的修改,扫描资源及Class的速度有所下降,但更准确更可靠,特别是对Class的扫描,对扫描到的文件,不再通过文件名等方式推断类名,而是改为直接读取类文件,从中解析出其真实类名.
+
+

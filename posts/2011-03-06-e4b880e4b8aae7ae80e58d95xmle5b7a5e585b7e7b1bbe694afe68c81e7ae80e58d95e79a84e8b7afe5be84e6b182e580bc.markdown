@@ -1,0 +1,148 @@
+---
+comments: true
+date: 2011-03-06 19:57:55
+layout: post
+slug: '%e4%b8%80%e4%b8%aa%e7%ae%80%e5%8d%95xml%e5%b7%a5%e5%85%b7%e7%b1%bb%e6%94%af%e6%8c%81%e7%ae%80%e5%8d%95%e7%9a%84%e8%b7%af%e5%be%84%e6%b1%82%e5%80%bc'
+title: 一个简单XML工具类,支持简单的路径求值
+wordpress_id: 248
+categories:
+- Java
+tags:
+- Demo
+- Dom
+- el
+- io
+- Java
+- Nutz
+- XML
+- 索引
+- 路径
+---
+
+估计是个轮子,因为一说起XML,自然想到的是JDom/dom4j等老牌/强大的工具.
+
+但我的需求如此简单: "支持简单的路径求值" ,就加一个N多垃圾的jar包,算了,一气之下,写了这个工具类.
+
+原本这个工具类包含 一个接口,一个实现类,一个工厂类,一个测试类 
+
+完成初版后,发现,为啥还分这么多东西,不就一个简单需求嘛!! 很不符合我的风格. 而且,我还特意建了一个工程叫NutzXML ....
+
+不行,这种需要扩展,不考虑效率的东西, 咋调用一下都这么麻烦? 改!!
+
+最后,整个XmlMap类,加上注释,150行, 这里展示的是无注释的版本:
+
+    
+    
+    package org.nutz.xml;
+    
+    import java.io.InputStream;
+    import java.util.ArrayList;
+    import java.util.List;
+    
+    import javax.xml.parsers.DocumentBuilder;
+    import javax.xml.parsers.DocumentBuilderFactory;
+    import javax.xml.parsers.ParserConfigurationException;
+    
+    import org.w3c.dom.Document;
+    import org.w3c.dom.Element;
+    import org.w3c.dom.NodeList;
+    
+    public class XmlMap{
+    	
+    	private Element element;
+    	
+    	public XmlMap(Element element) {
+    		this.element = element;
+    	}
+    
+    	public List getList(String name) { //这里去掉了泛型,请自行加上
+    		NodeList nList = element.getElementsByTagName(name);
+    		List list = new ArrayList(nList.getLength());//这里去掉了泛型,请自行加上
+    		for (int i = 0; i < nList.getLength(); i++) {
+    			list.add(new XmlMap((Element)nList.item(i)));
+    		}
+    		return list;
+    	}
+    	
+    	/**
+    	 * 获取一个属性的值
+    	 */
+    	protected String get(String name) {
+    		if (element.hasAttribute(name))
+    			return element.getAttribute(name);
+    		else if ("value".equals(name))
+    			return element.getTextContent();
+    		return null;
+    	}
+    
+    	
+    	static DocumentBuilder db;
+    	
+    	static {
+    		try {
+    			db = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+    		} catch (ParserConfigurationException e) {
+    			throw new RuntimeException(e);
+    		}
+    	}
+    
+    	/**
+    	 * 从输入流读取XML文件,构建XmlMap对象
+    	 * @param is 包含Xml文件的输入流
+    	 * @return XmlMap对象
+    	 */
+    	public static final XmlMap read(InputStream is) {
+    		try {
+    			Document doc = db.parse(is);
+    			doc.normalizeDocument();
+    			return new XmlMap((Element) doc.getDocumentElement());
+    		} catch (Exception e) {
+    			throw new RuntimeException(e);
+    		}
+    	}
+    
+    	public static final Object parse(XmlMap map,String path) {
+    		if (path.indexOf('.') > 0)
+    			return parse(get2(map, path.substring(0,path.indexOf('.'))), path.substring(path.indexOf('.')+1));
+    		//到这里的话,应该只剩下 abc#attr 或者abc[12]#attr 或者 abc[12] 或者abc
+    		if (path.indexOf('#') > -1) //需要获取具体的属性值
+    			if (path.indexOf('#') > 0)
+    				return get2(map, path.substring(0,path.indexOf('#'))).get(path.substring(path.indexOf('#')+1));
+    			else
+    				return map.get(path.substring(1));
+    		else
+    			//如果指定了索引则返回XmlMap,否则返回List
+    			return path.indexOf('[') > 0 ? get3(map, path) : map.getList(path);
+    	}
+    	
+    	private static final XmlMap get2(XmlMap map, String path) {
+    		return path.indexOf('[') > 0 ? get3(map, path) : map.getList(path).get(0);
+    	}
+    	
+    	private static final XmlMap get3(XmlMap map, String path) {
+    		return map.getList(path.substring(0,path.lastIndexOf('['))).get(Integer.parseInt(path.substring(path.lastIndexOf('[')+1,path.length()-1)));
+    	}
+    }
+    
+
+
+[点击查看完整版](http://code.google.com/p/nutzlab/source/browse/trunk/NutXML/src/org/nutz/xml/XmlMap.java) -- 在[Nutz Lab](http://code.google.com/p/nutzlab/)项目中
+
+使用示例:
+
+    
+    
+     XmlMap map = XmlMap.read(new FileInputStream("demo.xml"));获取XmlMap对象
+     map.get("authBy");                       //返回值为xxxUserSeriver
+     XmlMap.parse(map, "#authBy");            //返回值为xxxUserSeriver
+     XmlMap.parse(map, "other#value");        //other没有value属性,则返回其文本值abc
+     XmlMap.parse(map, "url[3]#pattern");     //获取第4个(索引值为3)url标签的pattern属性
+     XmlMap.parse(map, "levelA.levelB.levelC[1].levelD#key");//返回值为XX2X
+     XmlMap.parse(map, "levelA.levelB");      //返回值为一个包含全部levelB节点的List
+     XmlMap.parse(map, "levelA.levelB[1]");   //返回值为第2个levelB节点的XmlMap
+     XmlMap.parse(map, "levelA.levelB#myKey");//返回值为nutz
+    
+
+
+
+其实,我是打算做一个基于URL的权限控制, 考虑叫NutzSecurity 设想中,YY中

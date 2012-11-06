@@ -1,0 +1,186 @@
+---
+comments: true
+date: 2011-02-21 13:18:41
+layout: post
+slug: '%e4%b8%80%e4%b8%aa%e6%9e%81%e5%85%b6%e7%ae%80%e9%99%8b%e7%9a%84datasource%e8%bf%9e%e6%8e%a5%e6%b1%a0%e5%ae%9e%e7%8e%b0'
+title: 一个极其简陋的Datasource连接池实现
+wordpress_id: 243
+categories:
+- Java
+tags:
+- io
+- Java
+- js
+- Nutz
+- 技术
+- 连接池
+- 配置
+---
+
+写了一段时间了,一直没提交到Nutz,哈哈. 明显没有技术含量,提上去明显找抽!
+
+用来跑Nutz的测试,能够全部pass.
+
+直接上代码:
+
+    
+    
+    package org.nutz.dao.impl;
+    
+    import java.io.PrintWriter;
+    import java.lang.reflect.InvocationHandler;
+    import java.lang.reflect.Method;
+    import java.lang.reflect.Proxy;
+    import java.sql.Connection;
+    import java.sql.DriverManager;
+    import java.sql.SQLException;
+    import java.util.Iterator;
+    import java.util.Queue;
+    import java.util.concurrent.ConcurrentLinkedQueue;
+    
+    import javax.sql.DataSource;
+    
+    import org.nutz.lang.Lang;
+    
+    @SuppressWarnings("unchecked")
+    public class SimpleDataSource implements DataSource {
+    
+    	private String username;
+    	private String password;
+    	private String url;
+    
+    	/*保存已经建立的连接*/
+    	private ConcurrentLinkedQueue connQueue = new ConcurrentLinkedQueue();
+    
+    	public SimpleDataSource(String url, String driverClass, String username, String password)
+    			throws ClassNotFoundException {
+    		if (driverClass != null)
+    			Class.forName(driverClass);
+    		this.url = url;
+    		this.username = username;
+    		this.password = password;
+    	}
+    
+    	public Connection getConnection() throws SQLException {
+    		Connection conn = (Connection) connQueue.poll();
+    		if (conn != null)
+    			return conn;
+    		conn = DriverManager.getConnection(url, username, password);
+    		return (Connection) Proxy.newProxyInstance(	SimpleDataSource.class.getClassLoader(),
+    													new Class[]{Connection.class},
+    													new ConnectionInvocationHandler(conn, connQueue));
+    	}
+    
+    	public void close() throws Throwable {
+    		Iterator it = connQueue.iterator();
+    		while (it.hasNext()) {
+    			Connection conn = (Connection) it.next();
+    			synchronized (conn) {
+    				try {
+    					conn.close();
+    				}
+    				catch (Throwable e) {}
+    			}
+    		}
+    	}
+    
+    	protected void finalize() throws Throwable {
+    		close();
+    	}
+    
+    	static class ConnectionInvocationHandler implements InvocationHandler {
+    
+    		private Connection conn;
+    
+    		private Queue<connection> connQueue;
+    
+    		public ConnectionInvocationHandler(Connection conn, Queue</connection><connection> connQueue) {
+    			this.conn = conn;
+    			this.connQueue = connQueue;
+    		}
+    
+    		public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
+    			if (args == null
+    				&& "close".equals(method.getName())
+    				&& connQueue.size() < 20
+    				&& connQueue.offer((Connection) proxy))
+    				return null;
+    			try {
+    				return method.invoke(conn, args);
+    			}
+    			catch (Throwable e) {
+    				throw Lang.unwrapThrow(e);
+    			}
+    		}
+    	}
+    
+    	// -------------------------------------------------------------------------
+    	// 其他无需实现的方法
+    	// -------------------------------------------------------------------------
+    	public Connection getConnection(String username, String password) {
+    		throw Lang.noImplement();
+    	}
+    
+    	public PrintWriter getLogWriter() throws SQLException {
+    		throw Lang.noImplement();
+    	}
+    
+    	public int getLoginTimeout() throws SQLException {
+    		throw Lang.noImplement();
+    	}
+    
+    	public void setLogWriter(PrintWriter out) throws SQLException {
+    		throw Lang.noImplement();
+    	}
+    
+    	public void setLoginTimeout(int seconds) throws SQLException {
+    		throw Lang.noImplement();
+    	}
+    
+    	public boolean isWrapperFor(Class iface) throws SQLException {
+    		throw Lang.noImplement();
+    	}
+    
+    	public Object unwrap(Class iface) throws SQLException {
+    		throw Lang.noImplement();
+    	}
+    }
+
+
+
+用来跑Nutz的TestCase, 在我的机器耗时5.2秒,与DBCP相当(5.3秒).
+缺点:
+1. 高并发时,可能建立过多的连接
+2. 高并发时,部分连接可能没有被回收
+3. 限制死了最多保存20个连接(当然,这个很好改)
+4. XXX都没法配置
+
+调用方法:
+1. 直接创建:
+
+    
+    
+    DataSource dataSource = new SimpleDataSource("jdbc:h2:mem:~","org.h2.Driver","sa","sa");
+    //代码.....
+    
+    //最后记得关闭一下,或者等GC的时候自行关闭.
+    ((SimpleDataSource)dataSource).close();
+    
+
+
+2. NutIoc的json方式
+
+    
+    
+    	dataSource : {
+    		type :"org.nutz.dao.impl.SimpleDataSource",
+    		events : {
+    			depose :"close"
+    		},
+    		args : ["jdbc:h2:mem:~","org.h2.Driver","sa","sa"]
+    	}
+    
+
+
+
+哈哈,没啥技术含量,来拍我吧!!
