@@ -23,43 +23,44 @@ tags:
 
 前几天,我使用另外一种更简单的方法来实现(基于Nutz 1.a.33版新增的内部重定向视图),我使用的是Freemarker 2.3.16
 首先, 在web.xml添加Freemarker官方文档描述的FreemarkerServlet, <a href="http://freemarker.sourceforge.net/docs/pgui_misc_servlet.html">查看原文描述</a>.
-	```
+
+`
 <servlet>
-  </servlet><servlet -name>freemarker</servlet>
-  <servlet -class>freemarker.ext.servlet.FreemarkerServlet</servlet>
-  <init -param>
-    <param -name>TemplatePath</param>
-    <param -value>/</param>
-  </init>
-  <init -param>
-    <param -name>NoCache</param>
-    <param -value>true</param>
-  </init>
-  <init -param>
-    <param -name>ContentType</param>
-    <param -value>text/html; charset=UTF-8</param>
+  <servlet-name>freemarker</servlet-name>
+  <servlet-class>freemarker.ext.servlet.FreemarkerServlet</servlet-class>
+  <init-param>
+    <param-name>TemplatePath</param-name>
+    <param-value>/</param-value>
+  </init-param>
+  <init-param>
+    <param-name>NoCache</param-name>
+    <param-value>true</param-value>
+  </init-param>
+  <init-param>
+    <param-name>ContentType</param-name>
+    <param-value>text/html; charset=UTF-8</param-value>
     <!-- 我觉得不需要了,如果是内部重定向的话, nutz已经设置了编码 -->
   </init>
-  <init -param>
-    <param -name>template_update_delay</param>
-    <param -value>0</param><!-- 开发时才设置为0 -->
-  </init>
-  <init -param>
-    <param -name>default_encoding</param>
-    <param -value>UTF-8</param> <!-- 模板文件的编码 -->
-  </init>
-  <init -param>
-    <param -name>number_format</param>
-    <param -value>0.##########</param>
-  </init>
+  <init-param>
+    <param-name>template_update_delay</param-name>
+    <param-value>0</param-value><!-- 开发时才设置为0 -->
+  </init-param>
+  <init-param>
+    <param-name>default_encoding</param-name>
+    <param-value>UTF-8</param-value> <!-- 模板文件的编码 -->
+  </init-param>
+  <init-param>
+    <param-name>number_format</param-name>
+    <param-value>0.##########</param-value>
+  </init-param>
 
   <load -on-startup>1</load>
 
-<servlet -mapping>
-  </servlet><servlet -name>freemarker</servlet>
-  <url -pattern>*.ftl</url>
-
-```
+<servlet-mapping>
+  <servlet-name>freemarker</servlet-name>
+  <url-pattern>*.ftl</url-pattern>
+</servlet-mapping>
+`
 
 然后在需要Freemarker渲染的方法上,添加:
 
