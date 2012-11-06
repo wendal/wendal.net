@@ -1,6 +1,6 @@
 layout : disqus
 disqus :
-  short_name : webdalblog
+  short_name : wendalblog
 livefyre :
   site_id : 123
 intensedebate :
