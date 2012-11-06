@@ -4,6 +4,7 @@ date: 2011-09-18 14:41:17
 layout: post
 slug: '%e4%b8%8d%e8%b5%b0%e5%af%bb%e5%b8%b8%e8%b7%af-nutzcp%e5%88%9d%e7%89%88'
 title: 不走寻常路--NutzCP初版
+permalink: '/325.html'
 wordpress_id: 325
 categories:
 - Java

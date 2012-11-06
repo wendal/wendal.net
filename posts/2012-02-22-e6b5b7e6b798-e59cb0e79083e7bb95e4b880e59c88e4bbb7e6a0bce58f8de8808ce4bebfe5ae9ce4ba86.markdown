@@ -4,6 +4,7 @@ date: 2012-02-22 16:41:03
 layout: post
 slug: '%e6%b5%b7%e6%b7%98-%e5%9c%b0%e7%90%83%e7%bb%95%e4%b8%80%e5%9c%88%e4%bb%b7%e6%a0%bc%e5%8f%8d%e8%80%8c%e4%be%bf%e5%ae%9c%e4%ba%86'
 title: 海淘 -- 地球绕一圈,价格反而便宜了
+permalink: '/375.html'
 wordpress_id: 375
 categories:
 - 其他

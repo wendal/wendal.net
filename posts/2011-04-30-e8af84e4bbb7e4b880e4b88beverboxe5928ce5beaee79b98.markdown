@@ -4,6 +4,7 @@ date: 2011-04-30 20:38:53
 layout: post
 slug: '%e8%af%84%e4%bb%b7%e4%b8%80%e4%b8%8beverbox%e5%92%8c%e5%be%ae%e7%9b%98'
 title: 评价一下Everbox和微盘
+permalink: '/282.html'
 wordpress_id: 282
 categories:
 - Java

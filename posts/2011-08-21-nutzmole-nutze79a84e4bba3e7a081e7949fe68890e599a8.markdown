@@ -4,6 +4,7 @@ date: 2011-08-21 11:39:55
 layout: post
 slug: nutzmole-nutz%e7%9a%84%e4%bb%a3%e7%a0%81%e7%94%9f%e6%88%90%e5%99%a8
 title: NutzMole -- Nutz的代码生成器
+permalink: '/314.html'
 wordpress_id: 314
 categories:
 - Java

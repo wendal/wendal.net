@@ -4,6 +4,7 @@ date: 2012-02-02 22:11:36
 layout: post
 slug: '%e9%b8%a3%e9%b8%a3%e6%bb%a1%e4%b8%80%e4%b8%aa%e5%a4%aa%e9%98%b3%e5%b9%b4%e4%ba%86'
 title: 鸣鸣满一个太阳年了
+permalink: '/366.html'
 wordpress_id: 366
 categories:
 - 生活

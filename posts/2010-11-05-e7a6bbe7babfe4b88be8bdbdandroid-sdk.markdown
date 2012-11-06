@@ -4,6 +4,7 @@ date: 2010-11-05 23:04:22
 layout: post
 slug: '%e7%a6%bb%e7%ba%bf%e4%b8%8b%e8%bd%bdandroid-sdk'
 title: 离线下载Android SDK
+permalink: '/118.html'
 wordpress_id: 118
 categories:
 - Java

@@ -4,6 +4,7 @@ date: 2011-01-06 10:17:32
 layout: post
 slug: alfresco-virtual-tomcat%e9%bb%98%e8%ae%a4%e4%b8%8d%e8%a7%a3%e6%9e%90el
 title: Alfresco Virtual tomcat默认不解析EL
+permalink: '/226.html'
 wordpress_id: 226
 categories:
 - Alfresco

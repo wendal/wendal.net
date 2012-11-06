@@ -4,6 +4,7 @@ date: 2012-01-05 00:52:55
 layout: post
 slug: javapythonlualisp%e7%9a%84%e8%83%a1%e6%80%9d%e4%b9%b1%e6%83%b3
 title: Java/Python/Lua/Lisp的胡思乱想
+permalink: '/355.html'
 wordpress_id: 355
 categories:
 - Java

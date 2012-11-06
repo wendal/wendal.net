@@ -4,6 +4,7 @@ date: 2012-03-19 22:50:37
 layout: post
 slug: 'howto-read-source-of-nutz'
 title: 如何阅读Nutz的源码
+permalink: '/400.html'
 wordpress_id: 400
 categories:
 - Java

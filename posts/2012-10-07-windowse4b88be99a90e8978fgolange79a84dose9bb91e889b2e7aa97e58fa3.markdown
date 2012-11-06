@@ -4,6 +4,7 @@ date: 2012-10-07 09:45:59
 layout: post
 slug: "disable-blank-window-in-golang-windows"
 title: Windows下隐藏Golang的DOS黑色窗口
+permalink: '/460.html'
 wordpress_id: 460
 categories:
 - go

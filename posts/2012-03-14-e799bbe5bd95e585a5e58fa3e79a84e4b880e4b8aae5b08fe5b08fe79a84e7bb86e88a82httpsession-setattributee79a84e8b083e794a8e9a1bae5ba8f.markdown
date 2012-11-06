@@ -4,6 +4,7 @@ date: 2012-03-14 21:23:40
 layout: post
 slug: 'call-setAttr-at-end-of-login-action'
 title: 登录入口的一个小小的细节,HttpSession.setAttribute的调用顺序
+permalink: '/399.html'
 wordpress_id: 399
 categories:
 - Java

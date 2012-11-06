@@ -4,6 +4,7 @@ date: 2010-11-01 12:11:04
 layout: post
 slug: '%e6%83%b3%e4%b8%8d%e5%88%b0%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%b8%80%e4%b8%8b%e5%ad%90%e5%b0%b1%e8%a2%ab%e5%87%bb%e5%9e%ae%e4%ba%86'
 title: 想不到服务器一下子就被击垮了
+permalink: '/110.html'
 wordpress_id: 110
 categories:
 - Java

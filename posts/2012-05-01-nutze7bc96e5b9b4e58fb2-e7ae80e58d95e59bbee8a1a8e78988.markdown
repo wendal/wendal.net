@@ -4,6 +4,7 @@ date: 2012-05-01 00:14:01
 layout: post
 slug: 'nutz-history-chart'
 title: Nutz编年史--简单图表版
+permalink: '/417.html'
 wordpress_id: 417
 categories:
 - Java

@@ -4,6 +4,7 @@ date: 2012-07-21 21:29:48
 layout: post
 slug: 'nutz-t-shirt-and-my-littor-girl'
 title: Nutz T恤与小鸣鸣
+permalink: '/441.html'
 wordpress_id: 441
 categories:
 - Java

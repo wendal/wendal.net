@@ -4,6 +4,7 @@ date: 2012-05-09 10:33:34
 layout: post
 slug: 'enhand-proxypass-in-nginx'
 title: 增强型Proxy_Pass - 替换nginx内置的proxy_pass
+permalink: '/422.html'
 wordpress_id: 422
 categories:
 - Nginx

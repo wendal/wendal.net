@@ -4,6 +4,7 @@ date: 2011-07-24 08:54:14
 layout: post
 slug: autoproxy-forever
 title: Autoproxy Forever!!
+permalink: '/303.html'
 wordpress_id: 303
 categories:
 - 其他

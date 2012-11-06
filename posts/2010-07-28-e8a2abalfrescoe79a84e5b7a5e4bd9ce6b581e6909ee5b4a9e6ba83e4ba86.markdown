@@ -4,6 +4,7 @@ date: 2010-07-28 20:15:00
 layout: post
 slug: 'fuck-alfresco-workflow'
 title: 被Alfresco的工作流搞崩溃了
+permalink: '/11.html'
 wordpress_id: 11
 categories:
 - Alfresco

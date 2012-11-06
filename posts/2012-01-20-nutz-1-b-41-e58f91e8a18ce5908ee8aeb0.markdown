@@ -4,6 +4,7 @@ date: 2012-01-20 16:41:18
 layout: post
 slug: nutz-1-b-41-%e5%8f%91%e8%a1%8c%e5%90%8e%e8%ae%b0
 title: Nutz 1.b.41 发行后记
+permalink: '/359.html'
 wordpress_id: 359
 categories:
 - Java

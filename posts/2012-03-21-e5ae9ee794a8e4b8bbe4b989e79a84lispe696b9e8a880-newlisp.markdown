@@ -4,6 +4,7 @@ date: 2012-03-21 20:32:20
 layout: post
 slug: 'pragmatism-lisp-newlisp'
 title: 实用主义的Lisp方言 -- newLisp
+permalink: '/402.html'
 wordpress_id: 402
 categories:
 - lisp

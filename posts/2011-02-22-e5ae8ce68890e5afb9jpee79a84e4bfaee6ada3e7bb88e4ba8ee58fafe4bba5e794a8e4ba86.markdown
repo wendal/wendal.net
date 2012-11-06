@@ -4,6 +4,7 @@ date: 2011-02-22 16:08:20
 layout: post
 slug: '%e5%ae%8c%e6%88%90%e5%af%b9jpe%e7%9a%84%e4%bf%ae%e6%ad%a3%e7%bb%88%e4%ba%8e%e5%8f%af%e4%bb%a5%e7%94%a8%e4%ba%86'
 title: 完成对JBE的修正,终于可以用了.
+permalink: '/244.html'
 wordpress_id: 244
 categories:
 - Java

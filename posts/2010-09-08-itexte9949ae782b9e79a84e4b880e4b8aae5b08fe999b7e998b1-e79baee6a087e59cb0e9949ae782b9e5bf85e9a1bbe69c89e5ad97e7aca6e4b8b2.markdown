@@ -4,6 +4,7 @@ date: 2010-09-08 21:27:32
 layout: post
 slug: itext%e9%94%9a%e7%82%b9%e7%9a%84%e4%b8%80%e4%b8%aa%e5%b0%8f%e9%99%b7%e9%98%b1-%e7%9b%ae%e6%a0%87%e5%9c%b0%e9%94%9a%e7%82%b9%e5%bf%85%e9%a1%bb%e6%9c%89%e5%ad%97%e7%ac%a6%e4%b8%b2
 title: iText锚点的一个小陷阱 目标地锚点必须有字符串
+permalink: '/70.html'
 wordpress_id: 70
 categories:
 - Java

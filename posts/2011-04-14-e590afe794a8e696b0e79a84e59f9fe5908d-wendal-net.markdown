@@ -4,6 +4,7 @@ date: 2011-04-14 11:39:26
 layout: post
 slug: '%e5%90%af%e7%94%a8%e6%96%b0%e7%9a%84%e5%9f%9f%e5%90%8d-wendal-net'
 title: 启用新的域名 wendal.net
+permalink: '/268.html'
 wordpress_id: 268
 categories:
 - VPS/Linux

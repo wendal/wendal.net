@@ -4,6 +4,7 @@ date: 2010-09-08 21:18:44
 layout: post
 slug: eclipse%e8%83%bd%e5%a4%9f%e5%90%af%e5%8a%a8%e5%be%97%e5%bf%ab%e4%ba%9b
 title: Eclipse能够启动得快些
+permalink: '/68.html'
 wordpress_id: 68
 categories:
 - Java

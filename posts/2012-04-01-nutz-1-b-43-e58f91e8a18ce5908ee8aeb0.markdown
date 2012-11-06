@@ -4,6 +4,7 @@ date: 2012-04-01 22:43:22
 layout: post
 slug: 'after-nutz-1.b.43'
 title: Nutz 1.b.43 发行后记
+permalink: '/408.html'
 wordpress_id: 408
 categories:
 - Java

@@ -4,6 +4,7 @@ date: 2010-12-10 14:18:56
 layout: post
 slug: jxl%e4%b8%8ewps%e7%9a%84%e4%b8%80%e7%82%b9%e7%82%b9%e4%b8%8d%e5%85%bc%e5%ae%b9
 title: Jxl与WPS的一点点不兼容
+permalink: '/211.html'
 wordpress_id: 211
 categories:
 - Java

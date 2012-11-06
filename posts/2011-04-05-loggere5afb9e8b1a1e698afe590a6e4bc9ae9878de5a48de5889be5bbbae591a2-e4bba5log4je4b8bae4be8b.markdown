@@ -4,6 +4,7 @@ date: 2011-04-05 20:51:34
 layout: post
 slug: logger%e5%af%b9%e8%b1%a1%e6%98%af%e5%90%a6%e4%bc%9a%e9%87%8d%e5%a4%8d%e5%88%9b%e5%bb%ba%e5%91%a2-%e4%bb%a5log4j%e4%b8%ba%e4%be%8b
 title: Logger对象是否会重复创建呢? (以Log4j为例)
+permalink: '/263.html'
 wordpress_id: 263
 categories:
 - Java

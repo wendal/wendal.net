@@ -4,6 +4,7 @@ date: 2012-02-12 23:59:41
 layout: post
 slug: jactor%e6%9c%80%e7%ae%80%e5%8d%95%e8%af%95%e7%94%a8
 title: JActor最简单试用
+permalink: '/371.html'
 wordpress_id: 371
 categories:
 - Java

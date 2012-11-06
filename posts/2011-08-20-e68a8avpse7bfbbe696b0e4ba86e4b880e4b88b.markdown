@@ -4,6 +4,7 @@ date: 2011-08-20 11:34:53
 layout: post
 slug: '%e6%8a%8avps%e7%bf%bb%e6%96%b0%e4%ba%86%e4%b8%80%e4%b8%8b'
 title: 把VPS翻新了一下
+permalink: '/312.html'
 wordpress_id: 312
 categories:
 - VPS/Linux

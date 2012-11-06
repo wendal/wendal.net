@@ -4,6 +4,7 @@ date: 2011-02-24 15:45:02
 layout: post
 slug: jdiff-%e4%bd%bf%e7%94%a8%e4%b8%8e%e6%94%b9%e8%bf%9b
 title: JDiff 使用与改进
+permalink: '/245.html'
 wordpress_id: 245
 categories:
 - Java

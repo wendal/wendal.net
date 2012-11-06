@@ -4,6 +4,7 @@ date: 2010-11-11 12:57:33
 layout: post
 slug: '%e5%8f%96%e4%ba%9a%e8%bf%90%e9%97%a8%e7%a5%a8%e8%8a%b1%e4%ba%86%e4%b8%80%e4%b8%aa%e5%b0%8f%e6%97%b6'
 title: 取亚运门票,花了一个小时
+permalink: '/126.html'
 wordpress_id: 126
 categories:
 - 其他

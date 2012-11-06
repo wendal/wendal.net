@@ -4,6 +4,7 @@ date: 2010-12-14 14:04:24
 layout: post
 slug: '%e8%ae%a9nginx%e7%9a%84ssi%e6%94%af%e6%8c%81%e7%9b%b8%e5%af%b9%e8%b7%af%e5%be%84-%e6%9b%b4%e5%ae%89%e5%85%a8%e7%9a%84%e6%96%b9%e6%b3%95'
 title: 让Nginx的SSI支持相对路径--更安全的方法
+permalink: '/212.html'
 wordpress_id: 212
 categories:
 - Java

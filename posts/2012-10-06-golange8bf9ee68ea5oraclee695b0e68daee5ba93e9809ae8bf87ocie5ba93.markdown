@@ -4,6 +4,7 @@ date: 2012-10-06 11:17:54
 layout: post
 slug: "access-oracle-in-golang-by-oci"
 title: Golang连接Oracle数据库(通过OCI库)
+permalink: '/459.html'
 wordpress_id: 459
 categories:
 - go

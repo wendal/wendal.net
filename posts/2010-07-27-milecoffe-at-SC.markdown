@@ -4,6 +4,7 @@ date: 2010-07-27 16:19:53
 layout: post
 slug: 'milecoffe-at-SC'
 title: 科学城的办公室有奶茶!
+permalink: '/9.html'
 wordpress_id: 9
 categories:
 - 工作

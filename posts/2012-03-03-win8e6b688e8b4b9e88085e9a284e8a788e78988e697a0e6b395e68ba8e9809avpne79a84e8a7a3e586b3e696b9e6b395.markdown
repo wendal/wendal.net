@@ -4,6 +4,7 @@ date: 2012-03-03 14:56:47
 layout: post
 slug: win8%e6%b6%88%e8%b4%b9%e8%80%85%e9%a2%84%e8%a7%88%e7%89%88%e6%97%a0%e6%b3%95%e6%8b%a8%e9%80%9avpn%e7%9a%84%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95
 title: Win8消费者预览版无法拨通VPN的解决方法
+permalink: '/387.html'
 wordpress_id: 387
 categories:
 - 其他

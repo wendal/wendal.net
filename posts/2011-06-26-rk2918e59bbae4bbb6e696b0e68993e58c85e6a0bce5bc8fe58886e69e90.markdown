@@ -4,6 +4,7 @@ date: 2011-06-26 11:25:37
 layout: post
 slug: rk2918%e5%9b%ba%e4%bb%b6%e6%96%b0%e6%89%93%e5%8c%85%e6%a0%bc%e5%bc%8f%e5%88%86%e6%9e%90
 title: Rk2918固件新打包格式分析
+permalink: '/296.html'
 wordpress_id: 296
 categories:
 - 未分类

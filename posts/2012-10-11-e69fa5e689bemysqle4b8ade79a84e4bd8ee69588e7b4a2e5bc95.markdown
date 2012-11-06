@@ -4,6 +4,7 @@ date: 2012-10-11 09:39:38
 layout: post
 slug: 'search-low-use-index-in-mysql'
 title: 查找mysql中的低效索引
+permalink: '/461.html'
 wordpress_id: 461
 categories:
 - VPS/Linux

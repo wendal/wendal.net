@@ -4,6 +4,7 @@ date: 2011-02-08 20:38:16
 layout: post
 slug: '%e5%81%9a%e7%88%b8%e7%88%b8%e4%ba%86-%e8%bf%87%e5%b9%b4%e5%89%8d%e6%9c%89%e4%ba%86%e4%b8%aa%e8%99%8e%e5%ae%9d%e5%ae%9d-2'
 title: 做爸爸了!! 过年前有了个虎宝宝!!
+permalink: '/234.html'
 wordpress_id: 234
 categories:
 - 其他

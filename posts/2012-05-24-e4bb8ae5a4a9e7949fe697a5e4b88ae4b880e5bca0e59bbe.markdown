@@ -4,6 +4,7 @@ date: 2012-05-24 21:58:24
 layout: post
 slug: 'birthday-as-one-picture'
 title: 今天生日,上一张图!
+permalink: '/427.html'
 wordpress_id: 427
 categories:
 - 生活

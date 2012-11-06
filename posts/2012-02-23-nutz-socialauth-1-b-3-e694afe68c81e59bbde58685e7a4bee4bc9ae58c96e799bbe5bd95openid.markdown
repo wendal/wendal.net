@@ -4,6 +4,7 @@ date: 2012-02-23 10:08:55
 layout: post
 slug: nutz-socialauth-1-b-3-%e6%94%af%e6%8c%81%e5%9b%bd%e5%86%85%e7%a4%be%e4%bc%9a%e5%8c%96%e7%99%bb%e5%bd%95openid
 title: Nutz-Socialauth 1.b.3 -- 支持国内社会化登录(OpenId)
+permalink: '/376.html'
 wordpress_id: 376
 categories:
 - Java

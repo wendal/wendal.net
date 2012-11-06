@@ -4,6 +4,7 @@ date: 2011-04-28 10:30:11
 layout: post
 slug: nutz%e4%b8%ad%e4%bd%a0%e6%9c%aa%e5%bf%85%e7%9f%a5%e9%81%93%e7%9a%84%e7%94%a8%e6%b3%95
 title: Nutz中你未必知道的用法
+permalink: '/280.html'
 wordpress_id: 280
 categories:
 - Java

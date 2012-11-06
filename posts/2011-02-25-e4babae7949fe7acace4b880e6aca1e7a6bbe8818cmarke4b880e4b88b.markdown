@@ -4,6 +4,7 @@ date: 2011-02-25 21:18:59
 layout: post
 slug: '%e4%ba%ba%e7%94%9f%e7%ac%ac%e4%b8%80%e6%ac%a1%e7%a6%bb%e8%81%8cmark%e4%b8%80%e4%b8%8b'
 title: 人生第一次离职,Mark一下
+permalink: '/246.html'
 wordpress_id: 246
 categories:
 - 工作

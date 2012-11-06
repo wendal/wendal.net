@@ -4,6 +4,7 @@ date: 2012-04-30 16:10:55
 layout: post
 slug: 'using-ecj-in-ant-maven'
 title: 在Ant/Maven中使用ecj编译器(Eclipse内置的Java编译器)
+permalink: '/416.html'
 wordpress_id: 416
 categories:
 - Java

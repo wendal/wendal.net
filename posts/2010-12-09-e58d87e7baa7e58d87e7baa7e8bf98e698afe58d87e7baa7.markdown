@@ -4,6 +4,7 @@ date: 2010-12-09 12:56:44
 layout: post
 slug: '%e5%8d%87%e7%ba%a7%e5%8d%87%e7%ba%a7%e8%bf%98%e6%98%af%e5%8d%87%e7%ba%a7'
 title: 升级,升级,还是升级
+permalink: '/206.html'
 wordpress_id: 206
 categories:
 - Alfresco

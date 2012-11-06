@@ -4,6 +4,7 @@ date: 2011-10-16 22:22:36
 layout: post
 slug: nut-test-%e6%96%b9%e4%be%bf%e6%b5%8b%e8%af%95%e4%bd%bf%e7%94%a8nutz%e7%9a%84%e4%bb%a3%e7%a0%81%e8%bf%9b%e8%a1%8c%e5%8d%95%e5%85%83%e6%b5%8b%e8%af%95
 title: Nut.Test -- 使用Nutz一样能方便地进行单元测试
+permalink: '/332.html'
 wordpress_id: 332
 categories:
 - Java

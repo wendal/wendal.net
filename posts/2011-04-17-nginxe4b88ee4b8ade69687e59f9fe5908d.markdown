@@ -4,6 +4,7 @@ date: 2011-04-17 18:36:30
 layout: post
 slug: nginx%e4%b8%8e%e4%b8%ad%e6%96%87%e5%9f%9f%e5%90%8d
 title: Nginx与中文域名
+permalink: '/272.html'
 wordpress_id: 272
 categories:
 - Java

@@ -4,6 +4,7 @@ date: 2011-06-10 12:15:42
 layout: post
 slug: '%e5%9c%a8%e5%87%a0%e7%a7%8d%e7%bc%96%e7%a8%8b%e8%af%ad%e8%a8%80%e4%b8%ad%e6%8e%a2%e7%b4%a2javapythonluac'
 title: 在几种编程语言中探索(Java/Python/Lua/C)
+permalink: '/292.html'
 wordpress_id: 292
 categories:
 - Java

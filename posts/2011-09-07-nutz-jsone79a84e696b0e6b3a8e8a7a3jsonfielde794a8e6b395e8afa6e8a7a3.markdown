@@ -4,6 +4,7 @@ date: 2011-09-07 21:06:39
 layout: post
 slug: nutz-json%e7%9a%84%e6%96%b0%e6%b3%a8%e8%a7%a3jsonfield%e7%94%a8%e6%b3%95%e8%af%a6%e8%a7%a3
 title: Nutz.Json的新注解@JsonField用法详解
+permalink: '/319.html'
 wordpress_id: 319
 categories:
 - Java

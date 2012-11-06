@@ -4,6 +4,7 @@ date: 2011-03-17 15:32:15
 layout: post
 slug: '%e5%b7%b2%e7%bb%8f%e7%a1%ae%e8%ae%a4%e6%83%b3%e4%b8%8d%e5%88%b0%e7%9c%9f%e7%9a%84%e9%81%87%e5%88%b0lua-nginx-module%e7%9a%84bug'
 title: '[已经确认]想不到真的遇到Lua-nginx-module的bug'
+permalink: '/255.html'
 wordpress_id: 255
 categories:
 - Nginx

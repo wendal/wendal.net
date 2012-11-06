@@ -4,6 +4,7 @@ date: 2010-11-08 21:57:49
 layout: post
 slug: '%e6%8d%a2%e4%b8%8a1tb%e7%9a%84%e5%b8%8c%e6%8d%b7%e7%a1%ac%e7%9b%98%e8%99%9a%e6%83%8a%e4%b8%80%e5%9c%ba'
 title: 换上1TB的希捷硬盘,虚惊一场
+permalink: '/122.html'
 wordpress_id: 122
 categories:
 - 其他

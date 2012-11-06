@@ -4,6 +4,7 @@ date: 2011-09-17 22:31:36
 layout: post
 slug: nutz%e4%ba%8b%e5%8a%a1%e6%a8%a1%e6%9d%bf%e5%80%bc%e5%be%97%e6%b3%a8%e6%84%8f%e7%9a%84%e7%bb%86%e8%8a%82
 title: Nutz事务模板值得注意的细节
+permalink: '/324.html'
 wordpress_id: 324
 categories:
 - Java

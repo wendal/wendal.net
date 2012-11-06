@@ -4,6 +4,7 @@ date: 2011-04-12 18:55:43
 layout: post
 slug: '%e5%86%8d%e4%b8%80%e6%ac%a1%e6%90%9e%e5%ae%9autf-8%e7%9a%84bom'
 title: 再一次搞定UTF-8的BOM
+permalink: '/266.html'
 wordpress_id: 266
 categories:
 - Java

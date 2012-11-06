@@ -4,6 +4,7 @@ date: 2010-08-02 23:19:53
 layout: post
 slug: alfresco%e9%85%8d%e7%bd%ae-%e7%ac%ac%e4%b8%80%e8%af%9d
 title: Alfresco配置 — 第一节
+permalink: '/24.html'
 wordpress_id: 24
 categories:
 - Alfresco

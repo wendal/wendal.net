@@ -4,6 +4,7 @@ date: 2011-07-16 21:53:35
 layout: post
 slug: jgit%e5%88%9d%e8%af%95%e7%89%9b%e5%88%80
 title: JGit初试牛刀
+permalink: '/299.html'
 wordpress_id: 299
 categories:
 - Java

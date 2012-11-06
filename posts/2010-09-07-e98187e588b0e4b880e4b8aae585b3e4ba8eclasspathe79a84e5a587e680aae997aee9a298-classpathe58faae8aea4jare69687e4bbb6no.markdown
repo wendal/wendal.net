@@ -4,6 +4,7 @@ date: 2010-09-07 16:24:43
 layout: post
 slug: '%e9%81%87%e5%88%b0%e4%b8%80%e4%b8%aa%e5%85%b3%e4%ba%8eclasspath%e7%9a%84%e5%a5%87%e6%80%aa%e9%97%ae%e9%a2%98-classpath%e5%8f%aa%e8%ae%a4jar%e6%96%87%e4%bb%b6no'
 title: 遇到一个关于ClassPath的奇怪问题 Classpath只认jar文件?No!
+permalink: '/65.html'
 wordpress_id: 65
 categories:
 - Java

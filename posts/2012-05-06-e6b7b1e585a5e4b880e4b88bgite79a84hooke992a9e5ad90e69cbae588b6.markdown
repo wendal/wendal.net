@@ -4,6 +4,7 @@ date: 2012-05-06 13:35:16
 layout: post
 slug: 'deep-inside-git-hook'
 title: 深入一下Git的Hook(钩子)机制
+permalink: '/418.html'
 wordpress_id: 418
 categories:
 - VPS/Linux

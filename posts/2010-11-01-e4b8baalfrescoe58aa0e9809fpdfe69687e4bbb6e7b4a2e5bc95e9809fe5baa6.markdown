@@ -4,6 +4,7 @@ date: 2010-11-01 17:14:41
 layout: post
 slug: '%e4%b8%baalfresco%e5%8a%a0%e9%80%9fpdf%e6%96%87%e4%bb%b6%e7%b4%a2%e5%bc%95%e9%80%9f%e5%ba%a6'
 title: 为Alfresco加速PDF文件索引速度
+permalink: '/114.html'
 wordpress_id: 114
 categories:
 - Alfresco

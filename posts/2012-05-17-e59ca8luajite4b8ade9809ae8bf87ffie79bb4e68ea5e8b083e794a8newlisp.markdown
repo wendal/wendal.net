@@ -4,6 +4,7 @@ date: 2012-05-17 22:02:59
 layout: post
 slug: 'call-newlisp-in-luajit-by-ffi'
 title: 在LuaJIT中通过FFI直接调用newlisp
+permalink: '/424.html'
 wordpress_id: 424
 categories:
 - lisp

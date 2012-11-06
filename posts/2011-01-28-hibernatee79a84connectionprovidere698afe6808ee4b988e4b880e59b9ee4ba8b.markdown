@@ -4,6 +4,7 @@ date: 2011-01-28 14:28:12
 layout: post
 slug: hibernate%e7%9a%84connectionprovider%e6%98%af%e6%80%8e%e4%b9%88%e4%b8%80%e5%9b%9e%e4%ba%8b
 title: Hibernate的ConnectionProvider是怎么一回事?
+permalink: '/233.html'
 wordpress_id: 233
 categories:
 - Java

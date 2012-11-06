@@ -4,6 +4,7 @@ date: 2010-12-20 12:18:12
 layout: post
 slug: log4j-%e5%88%86%e7%ba%a7%e8%be%93%e5%87%ba
 title: Log4j 分级输出
+permalink: '/219.html'
 wordpress_id: 219
 categories:
 - Java

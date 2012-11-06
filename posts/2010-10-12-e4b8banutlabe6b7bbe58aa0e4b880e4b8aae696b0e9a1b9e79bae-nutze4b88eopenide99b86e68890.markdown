@@ -4,6 +4,7 @@ date: 2010-10-12 22:16:53
 layout: post
 slug: '%e4%b8%banutlab%e6%b7%bb%e5%8a%a0%e4%b8%80%e4%b8%aa%e6%96%b0%e9%a1%b9%e7%9b%ae-nutz%e4%b8%8eopenid%e9%9b%86%e6%88%90'
 title: 为NutLab添加一个新项目-Nutz与OpenID集成
+permalink: '/94.html'
 wordpress_id: 94
 categories:
 - Java

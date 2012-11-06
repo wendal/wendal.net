@@ -4,6 +4,7 @@ date: 2012-05-12 21:17:33
 layout: post
 slug: 'Genuine-Ghost'
 title: 将诺顿Ghost(诺顿克隆精灵)正版化了
+permalink: '/423.html'
 wordpress_id: 423
 categories:
 - 其他

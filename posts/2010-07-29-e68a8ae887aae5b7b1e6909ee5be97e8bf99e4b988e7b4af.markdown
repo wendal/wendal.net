@@ -4,6 +4,7 @@ date: 2010-07-29 23:51:57
 layout: post
 slug: 'too-tired-to-self'
 title: 把自己搞得这么累
+permalink: '/14.html'
 wordpress_id: 14
 categories:
 - 其他

@@ -4,6 +4,7 @@ date: 2012-09-26 08:52:25
 layout: post
 slug: 'mount-remote-path-by-sshfs'
 title: 简单好用的sshfs -- 通过ssh映射远程路径
+permalink: '/457.html'
 wordpress_id: 457
 categories:
 - VPS/Linux

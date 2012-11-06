@@ -4,6 +4,7 @@ date: 2010-07-27 00:37:29
 layout: post
 slug: 'try-jbpm'
 title: 开始尝试jBpm
+permalink: '/7.html'
 wordpress_id: 7
 categories:
 - Alfresco

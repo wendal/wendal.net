@@ -4,6 +4,7 @@ date: 2010-12-27 13:40:55
 layout: post
 slug: '%e5%a2%9e%e5%bc%ba%e5%9e%8bjavadoc-apiviz-%e7%ae%80%e6%b4%81%e5%ae%9e%e8%b7%b5'
 title: 增强型JavaDoc -- APIviz 简洁实践
+permalink: '/222.html'
 wordpress_id: 222
 categories:
 - Java

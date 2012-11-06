@@ -4,6 +4,7 @@ date: 2010-12-04 12:02:19
 layout: post
 slug: spket%e5%85%b6%e5%ae%9e%e6%98%af%e5%85%bc%e5%ae%b9-jquery-1-4-x%e7%9a%84
 title: Spket其实是兼容 jQuery 1.4.x的!
+permalink: '/197.html'
 wordpress_id: 197
 categories:
 - Java

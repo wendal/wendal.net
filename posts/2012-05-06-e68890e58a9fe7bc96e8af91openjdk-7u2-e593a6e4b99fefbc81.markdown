@@ -4,6 +4,7 @@ date: 2012-05-06 23:12:24
 layout: post
 slug: 'success-build-openjdk-7u2'
 title: 成功编译OpenJDK 7u2 ! 哦也！
+permalink: '/420.html'
 wordpress_id: 420
 categories:
 - Java

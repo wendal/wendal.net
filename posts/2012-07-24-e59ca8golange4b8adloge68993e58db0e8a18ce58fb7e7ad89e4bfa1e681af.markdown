@@ -4,6 +4,7 @@ date: 2012-07-24 19:11:08
 layout: post
 slug: 'show-linenumber-in-golang-log'
 title: 在Golang中,Log打印行号等信息
+permalink: '/446.html'
 wordpress_id: 446
 categories:
 - go

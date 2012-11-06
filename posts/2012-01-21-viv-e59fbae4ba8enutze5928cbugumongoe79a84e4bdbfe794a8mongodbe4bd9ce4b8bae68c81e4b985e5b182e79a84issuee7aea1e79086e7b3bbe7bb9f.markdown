@@ -4,6 +4,7 @@ date: 2012-01-21 15:44:09
 layout: post
 slug: viv-%e5%9f%ba%e4%ba%8enutz%e5%92%8cbugumongo%e7%9a%84%e4%bd%bf%e7%94%a8mongodb%e4%bd%9c%e4%b8%ba%e6%8c%81%e4%b9%85%e5%b1%82%e7%9a%84issue%e7%ae%a1%e7%90%86%e7%b3%bb%e7%bb%9f
 title: Viv -- 基于Nutz和BuguMongo的,使用Mongodb作为持久层的Issue管理系统
+permalink: '/360.html'
 wordpress_id: 360
 categories:
 - Java

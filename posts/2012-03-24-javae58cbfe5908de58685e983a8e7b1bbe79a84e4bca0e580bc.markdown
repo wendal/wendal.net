@@ -4,6 +4,7 @@ date: 2012-03-24 21:37:42
 layout: post
 slug: 'pass-args-or-result-in-java-inner-class'
 title: Java匿名内部类的传值
+permalink: '/404.html'
 wordpress_id: 404
 categories:
 - Java

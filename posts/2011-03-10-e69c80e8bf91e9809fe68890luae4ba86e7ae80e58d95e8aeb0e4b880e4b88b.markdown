@@ -4,6 +4,7 @@ date: 2011-03-10 19:56:26
 layout: post
 slug: '%e6%9c%80%e8%bf%91%e9%80%9f%e6%88%90lua%e4%ba%86%e7%ae%80%e5%8d%95%e8%ae%b0%e4%b8%80%e4%b8%8b'
 title: 最近速成Lua了,简单记一下
+permalink: '/252.html'
 wordpress_id: 252
 categories:
 - 其他

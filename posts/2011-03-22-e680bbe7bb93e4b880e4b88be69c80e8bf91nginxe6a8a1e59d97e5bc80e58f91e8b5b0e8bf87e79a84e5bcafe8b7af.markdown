@@ -4,6 +4,7 @@ date: 2011-03-22 20:42:00
 layout: post
 slug: '%e6%80%bb%e7%bb%93%e4%b8%80%e4%b8%8b%e6%9c%80%e8%bf%91nginx%e6%a8%a1%e5%9d%97%e5%bc%80%e5%8f%91%e8%b5%b0%e8%bf%87%e7%9a%84%e5%bc%af%e8%b7%af'
 title: 总结一下最近Nginx模块开发走过的弯路
+permalink: '/257.html'
 wordpress_id: 257
 categories:
 - Nginx

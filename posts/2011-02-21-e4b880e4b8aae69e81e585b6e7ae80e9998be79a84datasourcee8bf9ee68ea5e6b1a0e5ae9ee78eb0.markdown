@@ -4,6 +4,7 @@ date: 2011-02-21 13:18:41
 layout: post
 slug: '%e4%b8%80%e4%b8%aa%e6%9e%81%e5%85%b6%e7%ae%80%e9%99%8b%e7%9a%84datasource%e8%bf%9e%e6%8e%a5%e6%b1%a0%e5%ae%9e%e7%8e%b0'
 title: 一个极其简陋的Datasource连接池实现
+permalink: '/243.html'
 wordpress_id: 243
 categories:
 - Java

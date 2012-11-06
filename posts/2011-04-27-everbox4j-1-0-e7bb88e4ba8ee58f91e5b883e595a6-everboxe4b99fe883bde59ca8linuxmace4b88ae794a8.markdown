@@ -4,6 +4,7 @@ date: 2011-04-27 22:10:03
 layout: post
 slug: everbox4j-1-0-%e7%bb%88%e4%ba%8e%e5%8f%91%e5%b8%83%e5%95%a6-everbox%e4%b9%9f%e8%83%bd%e5%9c%a8linuxmac%e4%b8%8a%e7%94%a8
 title: Everbox4j 1.0 终于发布啦! Everbox也能在Linux/Mac上用!!
+permalink: '/276.html'
 wordpress_id: 276
 categories:
 - Java

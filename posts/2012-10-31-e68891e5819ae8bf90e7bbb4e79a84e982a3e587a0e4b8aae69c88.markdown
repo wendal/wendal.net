@@ -4,6 +4,7 @@ date: 2012-10-31 11:28:43
 layout: post
 slug: 'as-yunwen-three-month'
 title: 我做运维的那几个月
+permalink: '/465.html'
 wordpress_id: 465
 categories:
 - 其他

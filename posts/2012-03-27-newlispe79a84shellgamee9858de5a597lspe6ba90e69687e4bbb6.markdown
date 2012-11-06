@@ -4,6 +4,7 @@ date: 2012-03-27 22:08:44
 layout: post
 slug: 'source-file-for-newLISP-ShellGame'
 title: newLISP的ShellGame配套lsp源文件
+permalink: '/406.html'
 wordpress_id: 406
 categories:
 - lisp

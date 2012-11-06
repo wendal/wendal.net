@@ -4,6 +4,7 @@ date: 2010-12-01 22:17:45
 layout: post
 slug: '%e5%bd%92%e8%bf%98%e6%8a%80%e6%9c%af%e5%80%ba%e5%8a%a1-alfresco%e5%8d%87%e7%ba%a7%e8%ae%b0'
 title: 归还技术债务--Alfresco升级记
+permalink: '/191.html'
 wordpress_id: 191
 categories:
 - Alfresco

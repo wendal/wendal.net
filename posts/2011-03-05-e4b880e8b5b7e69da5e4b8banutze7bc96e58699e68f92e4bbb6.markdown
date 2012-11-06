@@ -4,6 +4,7 @@ date: 2011-03-05 21:33:29
 layout: post
 slug: '%e4%b8%80%e8%b5%b7%e6%9d%a5%e4%b8%banutz%e7%bc%96%e5%86%99%e6%8f%92%e4%bb%b6'
 title: 一起来,为Nutz编写插件!
+permalink: '/247.html'
 wordpress_id: 247
 categories:
 - Java

@@ -4,6 +4,7 @@ date: 2010-08-09 22:13:26
 layout: post
 slug: verycd%e7%9a%84%e6%a0%87%e9%a2%98-%e5%8f%98%e5%8c%96%e4%b8%ad%e7%9a%84%e8%ad%a6%e7%a4%ba%e8%af%ad
 title: VeryCD的标题–变化中的警示语
+permalink: '/43.html'
 wordpress_id: 43
 categories:
 - 其他

@@ -4,6 +4,7 @@ date: 2011-11-18 13:23:23
 layout: post
 slug: '%e7%bc%96%e8%af%91rk2918%e6%ba%90%e7%a0%81-%e7%ae%80%e5%8d%95%e8%af%b4%e6%98%8e'
 title: 编译RK2918源码 -- 简单说明
+permalink: '/350.html'
 wordpress_id: 350
 categories:
 - VPS/Linux

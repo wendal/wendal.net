@@ -4,6 +4,7 @@ date: 2011-03-22 18:56:44
 layout: post
 slug: '%e6%83%b3%e4%b8%8d%e5%88%b0%e8%bf%98%e6%9c%89%e8%bf%99%e7%a7%8dssh%e5%ae%a2%e6%88%b7%e7%ab%af-firessh'
 title: 想不到还有这种SSH客户端- FireSSH
+permalink: '/256.html'
 wordpress_id: 256
 categories:
 - 其他

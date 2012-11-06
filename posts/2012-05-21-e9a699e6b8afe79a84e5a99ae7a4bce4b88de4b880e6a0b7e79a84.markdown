@@ -4,6 +4,7 @@ date: 2012-05-21 10:32:38
 layout: post
 slug: 'wedding-in-hongkong'
 title: 香港的婚礼,不一样的
+permalink: '/426.html'
 wordpress_id: 426
 categories:
 - 生活

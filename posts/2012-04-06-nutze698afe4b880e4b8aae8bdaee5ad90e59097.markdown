@@ -4,6 +4,7 @@ date: 2012-04-06 22:59:30
 layout: post
 slug: 'is-nutz-a-wheel'
 title: Nutz是一个轮子吗?
+permalink: '/411.html'
 wordpress_id: 411
 categories:
 - Java

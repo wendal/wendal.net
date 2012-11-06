@@ -4,6 +4,7 @@ date: 2012-01-26 22:54:17
 layout: post
 slug: mongodb%e5%ad%a6%e4%b9%a0%e5%b0%8f%e8%ae%b0
 title: Mongodb学习小记
+permalink: '/361.html'
 wordpress_id: 361
 categories:
 - Java

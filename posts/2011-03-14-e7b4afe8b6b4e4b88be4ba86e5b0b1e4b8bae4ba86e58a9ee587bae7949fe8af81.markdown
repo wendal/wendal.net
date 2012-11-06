@@ -4,6 +4,7 @@ date: 2011-03-14 19:26:17
 layout: post
 slug: '%e7%b4%af%e8%b6%b4%e4%b8%8b%e4%ba%86%e5%b0%b1%e4%b8%ba%e4%ba%86%e5%8a%9e%e5%87%ba%e7%94%9f%e8%af%81'
 title: 累趴下了,就为了办出生证!!
+permalink: '/253.html'
 wordpress_id: 253
 categories:
 - 其他

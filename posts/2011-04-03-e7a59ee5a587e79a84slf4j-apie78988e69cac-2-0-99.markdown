@@ -4,6 +4,7 @@ date: 2011-04-03 12:29:03
 layout: post
 slug: '%e7%a5%9e%e5%a5%87%e7%9a%84slf4j-api%e7%89%88%e6%9c%ac-2-0-99'
 title: 神奇的Slf4J-API版本 - 2.0.99
+permalink: '/262.html'
 wordpress_id: 262
 categories:
 - Java

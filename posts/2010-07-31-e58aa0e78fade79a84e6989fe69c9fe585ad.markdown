@@ -4,6 +4,7 @@ date: 2010-07-31 21:40:11
 layout: post
 slug: '%e5%8a%a0%e7%8f%ad%e7%9a%84%e6%98%9f%e6%9c%9f%e5%85%ad'
 title: 加班的星期六
+permalink: '/18.html'
 wordpress_id: 18
 categories:
 - 工作

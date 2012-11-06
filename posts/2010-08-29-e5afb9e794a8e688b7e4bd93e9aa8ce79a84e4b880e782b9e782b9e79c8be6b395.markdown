@@ -4,6 +4,7 @@ date: 2010-08-29 20:16:30
 layout: post
 slug: '%e5%af%b9%e7%94%a8%e6%88%b7%e4%bd%93%e9%aa%8c%e7%9a%84%e4%b8%80%e7%82%b9%e7%82%b9%e7%9c%8b%e6%b3%95'
 title: 对用户体验的一点点看法
+permalink: '/56.html'
 wordpress_id: 56
 categories:
 - Java

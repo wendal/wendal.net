@@ -4,6 +4,7 @@ date: 2011-11-14 10:51:50
 layout: post
 slug: git%e7%9a%84%e5%87%a0%e4%b8%aa%e5%ae%9e%e7%94%a8%e5%b0%8f%e6%8a%80%e5%b7%a7
 title: Git的几个实用小技巧
+permalink: '/344.html'
 wordpress_id: 344
 categories:
 - VPS/Linux

@@ -4,6 +4,7 @@ date: 2011-04-13 07:07:47
 layout: post
 slug: json%e6%a0%bc%e5%bc%8f%e7%9a%84ngx_http_stub_status_module
 title: Json格式的ngx_http_stub_status_module
+permalink: '/267.html'
 wordpress_id: 267
 categories:
 - Nginx

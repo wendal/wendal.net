@@ -4,6 +4,7 @@ date: 2012-06-01 10:19:17
 layout: post
 slug: 'beijing-journey-just-one-picture'
 title: 北京之行,就上一张图吧
+permalink: '/429.html'
 wordpress_id: 429
 categories:
 - 生活

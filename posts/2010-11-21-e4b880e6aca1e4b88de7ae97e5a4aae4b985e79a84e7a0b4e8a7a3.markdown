@@ -4,6 +4,7 @@ date: 2010-11-21 15:47:46
 layout: post
 slug: '%e4%b8%80%e6%ac%a1%e4%b8%8d%e7%ae%97%e5%a4%aa%e4%b9%85%e7%9a%84%e7%a0%b4%e8%a7%a3'
 title: 一次不算太久的破解
+permalink: '/135.html'
 wordpress_id: 135
 categories:
 - Java

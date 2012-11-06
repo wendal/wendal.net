@@ -4,6 +4,7 @@ date: 2011-01-27 20:06:27
 layout: post
 slug: '%e7%b3%bb%e7%bb%9f%e5%8f%98%e9%87%8ffile-encoding%e5%af%b9java%e7%9a%84%e8%bf%90%e8%a1%8c%e5%bd%b1%e5%93%8d%e6%9c%89%e5%a4%9a%e5%a4%a7'
 title: 系统变量file.encoding对Java的运行影响有多大?
+permalink: '/232.html'
 wordpress_id: 232
 categories:
 - Java

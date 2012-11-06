@@ -4,6 +4,7 @@ date: 2011-10-01 08:37:57
 layout: post
 slug: '%e5%9c%a8linux%e4%b8%8b%e7%bc%96%e8%af%91qt-libs-%e8%83%bd%e4%b8%8d%e8%83%bd%e5%bf%ab%e7%82%b9%e5%91%a2'
 title: 在Linux下编译Qt Libs -- 能不能快点呢?!
+permalink: '/330.html'
 wordpress_id: 330
 categories:
 - 工作

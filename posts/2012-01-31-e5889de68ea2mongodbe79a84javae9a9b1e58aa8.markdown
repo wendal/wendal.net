@@ -4,6 +4,7 @@ date: 2012-01-31 21:26:08
 layout: post
 slug: '%e5%88%9d%e6%8e%a2mongodb%e7%9a%84java%e9%a9%b1%e5%8a%a8'
 title: 初探Mongodb的Java驱动
+permalink: '/364.html'
 wordpress_id: 364
 categories:
 - Java

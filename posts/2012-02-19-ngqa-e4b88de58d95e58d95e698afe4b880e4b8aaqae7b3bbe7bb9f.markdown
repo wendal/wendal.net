@@ -4,6 +4,7 @@ date: 2012-02-19 13:34:02
 layout: post
 slug: ngqa-%e4%b8%8d%e5%8d%95%e5%8d%95%e6%98%af%e4%b8%80%e4%b8%aaqa%e7%b3%bb%e7%bb%9f
 title: Ngqa -- 不单单是一个QA系统
+permalink: '/372.html'
 wordpress_id: 372
 categories:
 - Java

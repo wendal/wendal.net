@@ -4,6 +4,7 @@ date: 2012-02-26 15:46:35
 layout: post
 slug: '%e9%b8%a3%e9%b8%a3%e4%b8%8e%e6%9c%ac%e5%9c%b0%e6%a8%b1%e8%8a%b1'
 title: 鸣鸣与本地樱花
+permalink: '/379.html'
 wordpress_id: 379
 categories:
 - 生活

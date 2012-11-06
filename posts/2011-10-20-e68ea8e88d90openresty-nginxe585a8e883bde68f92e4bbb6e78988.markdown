@@ -4,6 +4,7 @@ date: 2011-10-20 22:39:40
 layout: post
 slug: '%e6%8e%a8%e8%8d%90openresty-nginx%e5%85%a8%e8%83%bd%e6%8f%92%e4%bb%b6%e7%89%88'
 title: 推荐OpenResty -- Nginx全能插件版
+permalink: '/338.html'
 wordpress_id: 338
 categories:
 - Nginx

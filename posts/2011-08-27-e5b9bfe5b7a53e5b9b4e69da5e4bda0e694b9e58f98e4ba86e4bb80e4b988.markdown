@@ -4,6 +4,7 @@ date: 2011-08-27 21:57:46
 layout: post
 slug: '%e5%b9%bf%e5%b7%a53%e5%b9%b4%e6%9d%a5%e4%bd%a0%e6%94%b9%e5%8f%98%e4%ba%86%e4%bb%80%e4%b9%88'
 title: 广工,3年来,你改变了什么?
+permalink: '/316.html'
 wordpress_id: 316
 categories:
 - 其他

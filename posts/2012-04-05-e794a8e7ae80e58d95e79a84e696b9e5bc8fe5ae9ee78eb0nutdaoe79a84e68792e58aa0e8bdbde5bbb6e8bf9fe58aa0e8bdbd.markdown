@@ -4,6 +4,7 @@ date: 2012-04-05 22:45:56
 layout: post
 slug: 'implements-nutz-dao-lazy-load-simple-way'
 title: 用简单的方式,实现NutDao的懒加载(延迟加载, Lazy Load)
+permalink: '/409.html'
 wordpress_id: 409
 categories:
 - Java

@@ -4,6 +4,7 @@ date: 2011-01-24 13:57:22
 layout: post
 slug: '%e5%8a%a8%e6%89%8b%e5%81%9a%e4%b8%80%e4%b8%aanginx-module-%e7%ae%80%e6%b4%81%e7%89%88'
 title: 动手做一个Nginx Module-简洁版
+permalink: '/230.html'
 wordpress_id: 230
 categories:
 - Nginx

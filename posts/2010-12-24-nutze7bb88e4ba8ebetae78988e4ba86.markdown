@@ -4,6 +4,7 @@ date: 2010-12-24 19:00:19
 layout: post
 slug: nutz%e7%bb%88%e4%ba%8ebeta%e7%89%88%e4%ba%86
 title: Nutz终于beta版了!!
+permalink: '/220.html'
 wordpress_id: 220
 categories:
 - Java

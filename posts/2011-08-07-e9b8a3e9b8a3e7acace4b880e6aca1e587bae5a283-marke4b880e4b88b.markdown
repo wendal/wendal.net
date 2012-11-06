@@ -4,6 +4,7 @@ date: 2011-08-07 19:44:14
 layout: post
 slug: '%e9%b8%a3%e9%b8%a3%e7%ac%ac%e4%b8%80%e6%ac%a1%e5%87%ba%e5%a2%83-mark%e4%b8%80%e4%b8%8b'
 title: 鸣鸣第一次出境, Mark一下
+permalink: '/308.html'
 wordpress_id: 308
 categories:
 - 其他

@@ -4,6 +4,7 @@ date: 2011-05-04 19:12:41
 layout: post
 slug: '%e5%ae%9d%e5%ae%9d%e5%bf%ab100%e5%a4%a9%e4%ba%86%e8%ae%b0%e5%bd%95%e4%b8%80%e4%b8%8b%e7%bb%8f%e9%aa%8c'
 title: 宝宝快100天了,记录一下经验
+permalink: '/285.html'
 wordpress_id: 285
 categories:
 - 其他

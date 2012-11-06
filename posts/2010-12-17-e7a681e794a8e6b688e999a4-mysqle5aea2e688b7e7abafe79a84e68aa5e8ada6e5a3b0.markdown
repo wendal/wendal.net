@@ -4,6 +4,7 @@ date: 2010-12-17 14:49:58
 layout: post
 slug: '%e7%a6%81%e7%94%a8%e6%b6%88%e9%99%a4-mysql%e5%ae%a2%e6%88%b7%e7%ab%af%e7%9a%84%e6%8a%a5%e8%ad%a6%e5%a3%b0'
 title: 禁用/消除 MySQL客户端的报警声
+permalink: '/218.html'
 wordpress_id: 218
 categories:
 - VPS/Linux

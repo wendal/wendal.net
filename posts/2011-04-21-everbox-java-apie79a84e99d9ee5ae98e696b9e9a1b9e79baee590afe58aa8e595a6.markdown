@@ -4,6 +4,7 @@ date: 2011-04-21 18:21:51
 layout: post
 slug: everbox-java-api%e7%9a%84%e9%9d%9e%e5%ae%98%e6%96%b9%e9%a1%b9%e7%9b%ae%e5%90%af%e5%8a%a8%e5%95%a6
 title: EverBox Java API的非官方项目启动啦!
+permalink: '/273.html'
 wordpress_id: 273
 categories:
 - Java

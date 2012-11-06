@@ -4,6 +4,7 @@ date: 2011-04-26 18:13:57
 layout: post
 slug: '%e7%94%a8jsoup%e6%9f%a5%e5%8f%b0%e7%94%b5%e7%9a%84%e5%9b%ba%e4%bb%b6%e6%9b%b4%e6%96%b0%e6%83%85%e5%86%b5'
 title: 用Jsoup查台电的固件更新情况
+permalink: '/275.html'
 wordpress_id: 275
 categories:
 - Java

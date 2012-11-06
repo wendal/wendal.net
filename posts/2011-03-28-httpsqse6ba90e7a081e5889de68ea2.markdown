@@ -4,6 +4,7 @@ date: 2011-03-28 21:34:39
 layout: post
 slug: httpsqs%e6%ba%90%e7%a0%81%e5%88%9d%e6%8e%a2
 title: HTTPSQS源码初探
+permalink: '/259.html'
 wordpress_id: 259
 categories:
 - VPS/Linux

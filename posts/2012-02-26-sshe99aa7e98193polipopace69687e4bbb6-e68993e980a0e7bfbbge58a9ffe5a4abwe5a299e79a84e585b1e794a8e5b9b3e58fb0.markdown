@@ -4,6 +4,7 @@ date: 2012-02-26 22:15:59
 layout: post
 slug: ssh%e9%9a%a7%e9%81%93polipopac%e6%96%87%e4%bb%b6-%e6%89%93%e9%80%a0%e7%bf%bbg%e5%8a%9ff%e5%a4%abw%e5%a2%99%e7%9a%84%e5%85%b1%e7%94%a8%e5%b9%b3%e5%8f%b0
 title: SSH隧道+Polipo+Pac文件--打造翻G功F夫W墙的共用平台
+permalink: '/383.html'
 wordpress_id: 383
 categories:
 - VPS/Linux

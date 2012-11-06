@@ -4,6 +4,7 @@ date: 2012-03-14 09:06:57
 layout: post
 slug: 'picture-as-I-want-to-say'
 title: 图,是一种表态
+permalink: '/397.html'
 wordpress_id: 397
 categories:
 - 未分类

@@ -4,6 +4,7 @@ date: 2012-02-10 20:31:19
 layout: post
 slug: '%e7%ba%afjava%e5%a4%84%e7%90%86cmyk%e6%a0%bc%e5%bc%8f%e7%9a%84jpeg%e6%96%87%e4%bb%b6'
 title: 纯Java处理CMYK格式(32位色深)的JPEG文件!!
+permalink: '/369.html'
 wordpress_id: 369
 categories:
 - Java

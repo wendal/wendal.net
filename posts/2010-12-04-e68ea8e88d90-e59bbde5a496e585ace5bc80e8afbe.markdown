@@ -4,6 +4,7 @@ date: 2010-12-04 17:32:04
 layout: post
 slug: '%e6%8e%a8%e8%8d%90-%e5%9b%bd%e5%a4%96%e5%85%ac%e5%bc%80%e8%af%be'
 title: '推荐: 国外公开课'
+permalink: '/201.html'
 wordpress_id: 201
 categories:
 - 其他

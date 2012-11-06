@@ -4,6 +4,7 @@ date: 2011-04-28 09:38:56
 layout: post
 slug: '%e5%a3%b0%e6%98%8e%e4%b8%80%e4%b8%8beverbox4j%e7%9a%84%e7%9b%b8%e5%85%b3%e4%ba%8b%e9%a1%b9'
 title: 声明一下Everbox4j的相关事项
+permalink: '/279.html'
 wordpress_id: 279
 categories:
 - Java

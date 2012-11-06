@@ -4,6 +4,7 @@ date: 2012-03-26 14:41:59
 layout: post
 slug: 'difference-bettwen-while-1-and-while-True-in-python'
 title: Python的while 1跟while True到底有什么区别?
+permalink: '/405.html'
 wordpress_id: 405
 categories:
 - Python

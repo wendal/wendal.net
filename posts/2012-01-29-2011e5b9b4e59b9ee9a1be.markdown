@@ -4,6 +4,7 @@ date: 2012-01-29 13:32:36
 layout: post
 slug: 2011%e5%b9%b4%e5%9b%9e%e9%a1%be
 title: 2011年回顾
+permalink: '/363.html'
 wordpress_id: 363
 categories:
 - Java

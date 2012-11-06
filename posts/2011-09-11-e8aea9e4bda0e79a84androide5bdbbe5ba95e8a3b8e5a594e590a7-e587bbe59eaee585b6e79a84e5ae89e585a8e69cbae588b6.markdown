@@ -4,6 +4,7 @@ date: 2011-09-11 08:51:23
 layout: post
 slug: '%e8%ae%a9%e4%bd%a0%e7%9a%84android%e5%bd%bb%e5%ba%95%e8%a3%b8%e5%a5%94%e5%90%a7-%e5%87%bb%e5%9e%ae%e5%85%b6%e7%9a%84%e5%ae%89%e5%85%a8%e6%9c%ba%e5%88%b6'
 title: 让你的Android彻底裸奔吧!! -- 瘫痪Android的安全机制
+permalink: '/321.html'
 wordpress_id: 321
 categories:
 - Java

@@ -4,6 +4,7 @@ date: 2010-12-16 13:53:13
 layout: post
 slug: '%e4%bb%8e%e6%ba%90%e7%a0%81%e7%bc%96%e8%af%91mysql-5-5-%e7%ae%80%e5%8d%95%e7%89%88'
 title: 从源码编译MySQL 5.5 -- 简单版
+permalink: '/217.html'
 wordpress_id: 217
 categories:
 - VPS/Linux

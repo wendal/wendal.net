@@ -4,6 +4,7 @@ date: 2011-04-01 21:04:15
 layout: post
 slug: '%e5%8f%91%e5%b8%83%e4%b8%80%e4%b8%aahttpsqs%e7%9a%84python%e5%ae%a2%e6%88%b7%e7%ab%af'
 title: 发布一个Httpsqs的Python客户端
+permalink: '/261.html'
 wordpress_id: 261
 categories:
 - VPS/Linux

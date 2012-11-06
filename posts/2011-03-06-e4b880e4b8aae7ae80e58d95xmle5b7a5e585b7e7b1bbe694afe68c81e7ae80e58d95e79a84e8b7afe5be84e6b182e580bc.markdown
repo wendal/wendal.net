@@ -4,6 +4,7 @@ date: 2011-03-06 19:57:55
 layout: post
 slug: '%e4%b8%80%e4%b8%aa%e7%ae%80%e5%8d%95xml%e5%b7%a5%e5%85%b7%e7%b1%bb%e6%94%af%e6%8c%81%e7%ae%80%e5%8d%95%e7%9a%84%e8%b7%af%e5%be%84%e6%b1%82%e5%80%bc'
 title: 一个简单XML工具类,支持简单的路径求值
+permalink: '/248.html'
 wordpress_id: 248
 categories:
 - Java

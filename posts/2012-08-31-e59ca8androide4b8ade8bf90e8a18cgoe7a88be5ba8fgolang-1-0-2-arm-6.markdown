@@ -4,6 +4,7 @@ date: 2012-08-31 22:14:37
 layout: post
 slug: 'run-golang-in-android'
 title: 在Android中运行go程序(Golang 1.0.2, ARM 6)
+permalink: '/454.html'
 wordpress_id: 454
 categories:
 - go

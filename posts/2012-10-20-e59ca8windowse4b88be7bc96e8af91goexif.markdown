@@ -4,6 +4,7 @@ date: 2012-10-20 11:28:21
 layout: post
 slug: 'build-goexif-under-windows'
 title: 在windows下编译goexif
+permalink: '/462.html'
 wordpress_id: 462
 categories:
 - go

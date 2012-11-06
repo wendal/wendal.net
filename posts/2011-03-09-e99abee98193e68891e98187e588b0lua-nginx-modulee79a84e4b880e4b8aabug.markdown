@@ -4,6 +4,7 @@ date: 2011-03-09 22:30:07
 layout: post
 slug: '%e9%9a%be%e9%81%93%e6%88%91%e9%81%87%e5%88%b0lua-nginx-module%e7%9a%84%e4%b8%80%e4%b8%aabug'
 title: '[误报]难道我遇到lua-nginx-module的一个bug?'
+permalink: '/251.html'
 wordpress_id: 251
 categories:
 - Nginx

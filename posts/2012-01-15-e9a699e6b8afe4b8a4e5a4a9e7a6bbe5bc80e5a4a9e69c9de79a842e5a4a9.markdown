@@ -4,6 +4,7 @@ date: 2012-01-15 21:53:44
 layout: post
 slug: '%e9%a6%99%e6%b8%af%e4%b8%a4%e5%a4%a9%e7%a6%bb%e5%bc%80%e5%a4%a9%e6%9c%9d%e7%9a%842%e5%a4%a9'
 title: 香港两天,离开天朝的2天!!
+permalink: '/357.html'
 wordpress_id: 357
 categories:
 - 其他

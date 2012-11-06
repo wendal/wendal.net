@@ -4,6 +4,7 @@ date: 2012-06-23 19:05:17
 layout: post
 slug: 'run-process-of-nutz-ioc'
 title: NutIoc的执行过程
+permalink: '/434.html'
 wordpress_id: 434
 categories:
 - Java

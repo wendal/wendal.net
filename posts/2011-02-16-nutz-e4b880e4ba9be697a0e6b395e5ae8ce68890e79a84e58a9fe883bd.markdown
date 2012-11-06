@@ -4,6 +4,7 @@ date: 2011-02-16 20:58:49
 layout: post
 slug: nutz-%e4%b8%80%e4%ba%9b%e6%97%a0%e6%b3%95%e5%ae%8c%e6%88%90%e7%9a%84%e5%8a%9f%e8%83%bd
 title: Nutz 一些无法完成的功能
+permalink: '/242.html'
 wordpress_id: 242
 categories:
 - Java

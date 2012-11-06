@@ -4,6 +4,7 @@ date: 2012-04-11 20:32:23
 layout: post
 slug: 'mapping-subfolder-in-nginx-by-rewrite'
 title: Nginx二级域名自动匹配到子文件夹(通过rewrite)
+permalink: '/413.html'
 wordpress_id: 413
 categories:
 - Nginx

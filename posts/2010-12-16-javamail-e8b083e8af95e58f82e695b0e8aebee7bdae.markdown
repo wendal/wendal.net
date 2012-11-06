@@ -4,6 +4,7 @@ date: 2010-12-16 09:17:24
 layout: post
 slug: javamail-%e8%b0%83%e8%af%95%e5%8f%82%e6%95%b0%e8%ae%be%e7%bd%ae
 title: JavaMail 调试参数设置
+permalink: '/214.html'
 wordpress_id: 214
 categories:
 - Alfresco

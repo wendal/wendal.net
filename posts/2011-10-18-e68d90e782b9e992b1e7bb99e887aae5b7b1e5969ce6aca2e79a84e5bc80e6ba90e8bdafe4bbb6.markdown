@@ -4,6 +4,7 @@ date: 2011-10-18 09:17:54
 layout: post
 slug: '%e6%8d%90%e7%82%b9%e9%92%b1%e7%bb%99%e8%87%aa%e5%b7%b1%e5%96%9c%e6%ac%a2%e7%9a%84%e5%bc%80%e6%ba%90%e8%bd%af%e4%bb%b6'
 title: 捐点钱给自己喜欢的开源软件
+permalink: '/335.html'
 wordpress_id: 335
 categories:
 - Java

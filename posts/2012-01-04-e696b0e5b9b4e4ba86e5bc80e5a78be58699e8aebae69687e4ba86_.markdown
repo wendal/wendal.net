@@ -4,6 +4,7 @@ date: 2012-01-04 12:45:48
 layout: post
 slug: '%e6%96%b0%e5%b9%b4%e4%ba%86%e5%bc%80%e5%a7%8b%e5%86%99%e8%ae%ba%e6%96%87%e4%ba%86_'
 title: 新年了,开始写论文了~_~
+permalink: '/353.html'
 wordpress_id: 353
 categories:
 - 其他

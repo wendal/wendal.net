@@ -4,6 +4,7 @@ date: 2011-09-06 23:33:16
 layout: post
 slug: nutdao%e5%ae%9e%e7%8e%b0lazy%e5%8a%a0%e8%bd%bd%e7%9a%84%e5%8f%af%e8%a1%8c%e6%80%a7
 title: NutDao实现Lazy加载的可行性
+permalink: '/317.html'
 wordpress_id: 317
 categories:
 - Java

@@ -4,6 +4,7 @@ date: 2012-05-07 23:34:03
 layout: post
 slug: 'bfr--big-buffer-pipe'
 title: bfr-非阻塞的管道缓存器,解决Linux管道缓冲区过小的问题!!
+permalink: '/421.html'
 wordpress_id: 421
 categories:
 - VPS/Linux

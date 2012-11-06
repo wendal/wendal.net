@@ -4,6 +4,7 @@ date: 2012-07-31 19:33:39
 layout: post
 slug: 'access-mysql-in-golang'
 title: Golang连接Mysql
+permalink: '/448.html'
 wordpress_id: 448
 categories:
 - go

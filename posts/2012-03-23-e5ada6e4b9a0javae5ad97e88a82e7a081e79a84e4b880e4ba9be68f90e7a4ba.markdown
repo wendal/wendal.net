@@ -4,6 +4,7 @@ date: 2012-03-23 20:49:14
 layout: post
 slug: 'tips-for-learning-java-arm-code'
 title: 学习Java字节码的一些提示
+permalink: '/403.html'
 wordpress_id: 403
 categories:
 - Java

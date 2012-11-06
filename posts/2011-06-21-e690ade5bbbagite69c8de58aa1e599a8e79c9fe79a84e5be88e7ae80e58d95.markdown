@@ -4,6 +4,7 @@ date: 2011-06-21 21:07:36
 layout: post
 slug: '%e6%90%ad%e5%bb%bagit%e6%9c%8d%e5%8a%a1%e5%99%a8%e7%9c%9f%e7%9a%84%e5%be%88%e7%ae%80%e5%8d%95'
 title: 搭建Git服务器,真的很简单
+permalink: '/295.html'
 wordpress_id: 295
 categories:
 - VPS/Linux

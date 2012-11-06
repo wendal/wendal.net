@@ -4,6 +4,7 @@ date: 2010-10-24 20:42:46
 layout: post
 slug: '%e4%bd%bf%e7%94%a8nginx%e6%90%ad%e5%bb%bahttp%e4%bb%a3%e7%90%86%e6%9c%8d%e5%8a%a1%e5%99%a8'
 title: 使用Nginx搭建Http代理服务器
+permalink: '/108.html'
 wordpress_id: 108
 categories:
 - Nginx

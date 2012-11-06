@@ -4,6 +4,7 @@ date: 2010-07-30 22:49:01
 layout: post
 slug: 'weekend-but-still-working'
 title: 本应该是周末,但是明天要加班
+permalink: '/16.html'
 wordpress_id: 16
 categories:
 - 工作

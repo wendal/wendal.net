@@ -4,6 +4,7 @@ date: 2011-09-09 11:33:27
 layout: post
 slug: '%e5%ae%9e%e7%8e%b0rk2918%e7%9a%84system%e5%88%86%e5%8c%ba%e5%8f%af%e5%86%99'
 title: 实现Rk2918的System分区可写
+permalink: '/320.html'
 wordpress_id: 320
 categories:
 - 其他

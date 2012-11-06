@@ -4,6 +4,7 @@ date: 2010-08-09 22:05:45
 layout: post
 slug: inputstream%e4%b8%8eoutputstream%e7%9a%84readwrite%e9%99%b7%e9%98%b1-%e5%ae%9e%e9%99%85%e6%98%afbyte
 title: InputStream与OutputStream的read/write陷阱–实际是byte
+permalink: '/41.html'
 wordpress_id: 41
 categories:
 - Java

@@ -4,6 +4,7 @@ date: 2011-03-28 12:39:57
 layout: post
 slug: '%e6%b1%82%e5%8a%a9chm%e6%96%87%e4%bb%b6%e7%9a%84%e6%a0%bc%e5%bc%8f%e6%88%91%e7%96%91%e6%83%91%e4%ba%86'
 title: '[求助]CHM文件的格式,我疑惑了!!!'
+permalink: '/258.html'
 wordpress_id: 258
 categories:
 - Java

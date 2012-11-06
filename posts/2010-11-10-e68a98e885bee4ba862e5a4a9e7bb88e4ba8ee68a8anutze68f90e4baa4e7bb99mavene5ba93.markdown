@@ -4,6 +4,7 @@ date: 2010-11-10 22:07:12
 layout: post
 slug: '%e6%8a%98%e8%85%be%e4%ba%862%e5%a4%a9%e7%bb%88%e4%ba%8e%e6%8a%8anutz%e6%8f%90%e4%ba%a4%e7%bb%99maven%e5%ba%93'
 title: 折腾了2天,终于把Nutz提交给Maven库
+permalink: '/124.html'
 wordpress_id: 124
 categories:
 - Java

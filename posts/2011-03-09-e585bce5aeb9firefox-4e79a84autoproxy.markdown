@@ -4,6 +4,7 @@ date: 2011-03-09 07:50:52
 layout: post
 slug: '%e5%85%bc%e5%ae%b9firefox-4%e7%9a%84autoproxy'
 title: 兼容FireFox 4的AutoProxy
+permalink: '/250.html'
 wordpress_id: 250
 categories:
 - 其他

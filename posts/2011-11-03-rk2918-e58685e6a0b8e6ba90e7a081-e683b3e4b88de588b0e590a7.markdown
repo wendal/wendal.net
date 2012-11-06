@@ -4,6 +4,7 @@ date: 2011-11-03 09:06:50
 layout: post
 slug: rk2918-%e5%86%85%e6%a0%b8%e6%ba%90%e7%a0%81-%e6%83%b3%e4%b8%8d%e5%88%b0%e5%90%a7
 title: RK2918 内核源码 -- 想不到吧?!
+permalink: '/339.html'
 wordpress_id: 339
 categories:
 - VPS/Linux

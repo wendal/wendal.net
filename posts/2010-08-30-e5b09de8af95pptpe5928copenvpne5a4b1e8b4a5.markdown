@@ -4,6 +4,7 @@ date: 2010-08-30 22:45:48
 layout: post
 slug: '%e5%b0%9d%e8%af%95pptp%e5%92%8copenvpn%e5%a4%b1%e8%b4%a5'
 title: 尝试PPTP和OpenVPN失败
+permalink: '/58.html'
 wordpress_id: 58
 categories:
 - VPS/Linux

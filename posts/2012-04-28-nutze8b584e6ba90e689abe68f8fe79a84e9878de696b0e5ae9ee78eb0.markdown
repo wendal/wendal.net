@@ -4,6 +4,7 @@ date: 2012-04-28 08:44:50
 layout: post
 slug: 'rewrite-nutz-resource-scan'
 title: Nutz资源扫描的重新实现
+permalink: '/414.html'
 wordpress_id: 414
 categories:
 - Java

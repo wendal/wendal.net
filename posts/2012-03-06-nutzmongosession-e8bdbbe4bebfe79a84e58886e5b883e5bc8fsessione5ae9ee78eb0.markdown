@@ -4,6 +4,7 @@ date: 2012-03-06 15:20:40
 layout: post
 slug: 'nutz-mongo-sessoion'
 title: NutzMongoSession -- 轻便的分布式Session实现
+permalink: '/393.html'
 wordpress_id: 393
 categories:
 - mongodb

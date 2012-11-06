@@ -4,6 +4,7 @@ date: 2010-08-27 22:47:53
 layout: post
 slug: '%e5%8f%91%e5%b8%83%e4%ba%86%e9%98%b3%e5%85%89%e7%89%a7%e5%9c%ba%e5%a4%96%e6%8c%82-3-34%e7%89%88'
 title: 发布了阳光牧场外挂 3.34版
+permalink: '/54.html'
 wordpress_id: 54
 categories:
 - Java

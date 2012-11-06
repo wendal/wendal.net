@@ -4,6 +4,7 @@ date: 2012-08-26 22:18:26
 layout: post
 slug: 'random-order-when-run-junit-testcase'
 title: 换种顺序来执行TestCase(Junit适用)
+permalink: '/453.html'
 wordpress_id: 453
 categories:
 - Java

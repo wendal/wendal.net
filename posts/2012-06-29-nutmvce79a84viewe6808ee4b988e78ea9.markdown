@@ -4,6 +4,7 @@ date: 2012-06-29 23:24:44
 layout: post
 slug: 'howto-play-nutz-view'
 title: NutMVC的View怎么玩?
+permalink: '/436.html'
 wordpress_id: 436
 categories:
 - Java

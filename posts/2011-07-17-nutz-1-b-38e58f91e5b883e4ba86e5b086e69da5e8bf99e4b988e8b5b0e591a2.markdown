@@ -4,6 +4,7 @@ date: 2011-07-17 19:17:19
 layout: post
 slug: nutz-1-b-38%e5%8f%91%e5%b8%83%e4%ba%86%e5%b0%86%e6%9d%a5%e8%bf%99%e4%b9%88%e8%b5%b0%e5%91%a2
 title: Nutz 1.b.38发布了,将来怎么走呢?
+permalink: '/302.html'
 wordpress_id: 302
 categories:
 - Java

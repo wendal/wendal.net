@@ -4,6 +4,7 @@ date: 2011-01-10 22:05:52
 layout: post
 slug: wp-codebox%e4%b9%b1%e7%a0%81%e9%97%ae%e9%a2%98
 title: WP-Codebox乱码问题
+permalink: '/227.html'
 wordpress_id: 227
 categories:
 - VPS/Linux
