@@ -12,7 +12,7 @@ tag : [java,nutz]
 访问网址
 --------
 
-* [http://nutz.cn](短点!)
+* [短点!](http://nutz.cn)
 
 动机
 --------
@@ -37,5 +37,5 @@ tag : [java,nutz]
 源码呢?
 -----------------------------
 
-* Wendal一向的风格, 猛击(https://github.com/wendal/shortit)[短点的源码]
+* Wendal一向的风格, 猛击 (短点的源码)[https://github.com/wendal/shortit]
 * 基于Nutz,并没有使用数据库,是文件系统来实现
