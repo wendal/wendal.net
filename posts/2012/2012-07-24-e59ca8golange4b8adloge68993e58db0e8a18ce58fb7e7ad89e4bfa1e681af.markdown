@@ -34,7 +34,7 @@ tags:
     
 其中, log.Lshortfile 还可以设置为log.Llongfile 即完整文件路径
 
-获取当前行数,文件名的方法:
+获取当前行数,文件名,函数名(方法名):
 
     package main
     
@@ -44,8 +44,9 @@ tags:
     )
     
     func main() {
-            _, file, line, ok := runtime.Caller(0)
+            funcName, file, line, ok := runtime.Caller(0)
             if ok {
+				fmt.Println("Func Name="+funcName)
                 fmt.Printf("file: %s    line=%d\n", file, line)
             }
     }
