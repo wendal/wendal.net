@@ -13,7 +13,7 @@ tag : [go,反射]
 * 官方的实现,就一个go源文件,几百行,蛋碎
 * 官方实现只返回一个string类型,出错就返回空字符串!!
 * 原本打算在上面改的,结果还是算了,重新实现一个更好,现在已经完成60%
-* (https://github.com/wendal/mustache)[mustache from wendal]
+* [mustache from wendal](https://github.com/wendal/mustache)
 
 访问Map
 ------
