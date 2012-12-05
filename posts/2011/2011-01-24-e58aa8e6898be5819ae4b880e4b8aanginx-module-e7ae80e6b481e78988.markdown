@@ -31,6 +31,7 @@ tags:
 2. 创建config文件,注意,切记要在Linux下创建这个文件!! 如果在Windows下写这个文件,换行符会不一样的.
 就是换行符 CTRL+M,我折腾了一天!!:
 ------------------------------
+
 	vim config
 	#敲入以下内容
 	ngx_addon_name=ngx_http_hello_module
