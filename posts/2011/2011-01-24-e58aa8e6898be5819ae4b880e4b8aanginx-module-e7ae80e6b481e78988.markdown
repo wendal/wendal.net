@@ -43,9 +43,9 @@ tags:
 	//通过vim ngx_http_hello_module.c 创建文件并录入下面的内容
 
 	//这3个文件必须导入,很多有用的方法都定义在里面.
-	#include <ngx_config .h>
-	#include <ngx_core .h>
-	#include <ngx_http .h>
+	#include <ngx_config.h>
+	#include <ngx_core.h>
+	#include <ngx_http.h>
 
 	//声明配置方法
 	static char *ngx_http_hello(ngx_conf_t *cf, ngx_command_t *cmd, void *conf);
