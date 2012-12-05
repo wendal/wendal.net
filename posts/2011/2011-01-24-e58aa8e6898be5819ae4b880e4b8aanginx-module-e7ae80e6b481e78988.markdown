@@ -154,4 +154,4 @@ tags:
 6. 通过浏览器访问 http://your_ip/hello 就能看到 It is OK! 
 -------------------------------------------------------
 
-本文用的的文件: <a href="{urls.media}}/2011/01/nginx_http_hello_module.zip">nginx_http_hello_module.zip</a>
+本文用的的文件: <a href="{{urls.media}}/2011/01/nginx_http_hello_module.zip">nginx_http_hello_module.zip</a>
