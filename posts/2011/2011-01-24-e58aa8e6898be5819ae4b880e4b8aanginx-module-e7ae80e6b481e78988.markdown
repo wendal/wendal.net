@@ -32,14 +32,17 @@ tags:
 2. 创建config文件,注意,切记要在Linux下创建这个文件!! 如果在Windows下写这个文件,换行符会不一样的.
 就是换行符 CTRL+M,我折腾了一天!!:
 
+	`
 	vim config
 	#敲入以下内容
 	ngx_addon_name=ngx_http_hello_module
 	HTTP_MODULES="$HTTP_MODULES ngx_http_hello_module"
 	NGX_ADDON_SRCS="$NGX_ADDON_SRCS $ngx_addon_dir/ngx_http_hello_module.c"
-
+	`
+	
 3. 创建ngx_http_hello_module.c文件(请使用本文结尾提供的附件中的文件):
 	
+	`
 	//通过vim ngx_http_hello_module.c 创建文件并录入下面的内容
 
 	//这3个文件必须导入,很多有用的方法都定义在里面.
@@ -128,18 +131,22 @@ tags:
 
     	return NGX_CONF_OK;
 	};
+	`
 
 4. 开始编译:
 
+	`
 	#返回到 ~/nginx-0.9.4
 	cd ..
 	#执行configure
 	./configure --add-module=ngx_http_hello_module
 	#编译 & 安装
 	make & make install
+	`
 
 5. 测试:
 
+	`
 	vim /etc/nginx/nginx.conf
 	#在server中键入:
 	location =/hello {
@@ -148,6 +155,7 @@ tags:
 
 	#启动nginx
 	/usr/local/nginx/sbin/nginx
+	`
 
 6. 通过浏览器访问 http://your_ip/hello 就能看到 It is OK! 
 
