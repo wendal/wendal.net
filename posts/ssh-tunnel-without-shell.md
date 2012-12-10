@@ -1,5 +1,5 @@
 ---
-title: 快速搭建一个ssh隧道
+title: ssh tunnel without shell
 date: '2012-12-10'
 description:
 categories: [linux]
