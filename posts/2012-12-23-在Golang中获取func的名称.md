@@ -42,3 +42,7 @@ stackoverflow上的方法
 	runtime.FuncForPC(funcPc).Name()
 
 只能在func被调用时才能获取到自身的名字
+
+	reflect.ValueOf(i).Pointer()
+
+就是绕过了执行过程,直接通过PC值来获取Func对象,从而得到名字
