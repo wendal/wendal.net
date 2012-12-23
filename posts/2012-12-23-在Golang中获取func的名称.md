@@ -22,7 +22,7 @@ permalink: '/2012/1223.html'
 stackoverflow上的方法
 ---------------------
 
-(链接)[http://stackoverflow.com/questions/7052693/how-to-get-the-name-of-a-function-in-go]
+[链接](http://stackoverflow.com/questions/7052693/how-to-get-the-name-of-a-function-in-go)
 
 	
 	func GetFunctionName(i interface{}) string {
