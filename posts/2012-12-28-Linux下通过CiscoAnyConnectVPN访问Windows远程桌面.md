@@ -11,6 +11,10 @@ Cisco的AnyConnect产品,好多大公司都在用,但貌似木有官方的Linux�
 
 首先,需要一个开源的客户端openconnect
 ----------------------------------
+
+	#部分Linux发行版中有预编译版,但毕竟老
+	#应该也能用,没试过  yum install openconnect
+
 	wget ftp://ftp.infradead.org/pub/openconnect/openconnect-4.07.tar.gz
 	tar xvf openconnect-4.07.tar.gz
 	cd openconnect-4.07
