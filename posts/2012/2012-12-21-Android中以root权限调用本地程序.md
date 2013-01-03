@@ -3,7 +3,7 @@ title: Android中以root权限调用本地程序
 date: '2012-12-21'
 description:
 categories: [linux]
-tag : [android]
+tags : [android]
 permalink: '/2012/1221.html'
 ---
 

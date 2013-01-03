@@ -3,7 +3,7 @@ title: 从WordPress迁移到Ruhoh的经验
 date: '2012-11-07'
 description:
 categories: 'linux'
-tags: 迁移
+tags : 迁移
 ---
 
 预备工作

@@ -3,7 +3,7 @@ title: Way of VPS
 date: '2012-11-25'
 description:
 categories: [linux]
-tag : [vps]
+tags : [vps]
 ---
 
 VPS之路

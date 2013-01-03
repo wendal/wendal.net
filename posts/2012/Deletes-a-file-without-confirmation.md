@@ -3,7 +3,7 @@ title: rm文件不再需要按y了,解脱啊
 date: '2012-12-14'
 description:
 categories: [linux]
-tag : [vps]
+tags : [vps]
 permalink: '/2012/1214.html'
 ---
 

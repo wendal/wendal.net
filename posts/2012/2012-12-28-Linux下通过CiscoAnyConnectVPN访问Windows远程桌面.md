@@ -3,7 +3,7 @@ title: Linux下通过CiscoAnyConnectVPN访问Windows远程桌面
 date: '2012-12-24'
 description:
 categories: [linux]
-tag : [AnyConnect]
+tags : [AnyConnect]
 permalink: '/2012/1228.html'
 ---
 

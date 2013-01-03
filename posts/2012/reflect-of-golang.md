@@ -3,7 +3,7 @@ title: Reflect Of Golang
 date: '2012-11-30'
 description: 玩玩Golang的反射
 categories: [go]
-tag : [go,反射]
+tags : [go,反射]
 ---
 
 正在重新实现mustache for golang

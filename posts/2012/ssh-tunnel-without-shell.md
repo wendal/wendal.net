@@ -3,7 +3,7 @@ title: ssh tunnel without shell
 date: '2012-12-10'
 description:
 categories: [linux]
-tag : [vps]
+tags : [vps]
 ---
 
 IT人士,必备翻墙梯

@@ -3,7 +3,7 @@ title: 低调发布"短点"
 date: '2012-11-15'
 description:
 categories: [java]
-tag : [java,nutz]
+tags : [java,nutz]
 ---
 
 庆祝SB大的结束

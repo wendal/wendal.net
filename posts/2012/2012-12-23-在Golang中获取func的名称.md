@@ -3,7 +3,7 @@ title: 在Golang中获取func的名称
 date: '2012-12-23'
 description:
 categories: [go]
-tag : [go, reflect]
+tags : [go, reflect]
 permalink: '/2012/1223.html'
 ---
 

@@ -3,7 +3,7 @@ title: Ruhoh,Now!
 date: '2012-11-06'
 description:
 categories: [linux]
-tag : [blog]
+tags : [blog]
 ---
 
 正式转用Ruhoh静态博客引擎

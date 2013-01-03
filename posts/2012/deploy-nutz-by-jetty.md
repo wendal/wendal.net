@@ -3,7 +3,7 @@ title: Deploy Nutz as HttpAPI by Jetty 7
 date: '2012-12-13'
 description:
 categories: [linux]
-tag : [vps]
+tags : [vps]
 permalink: '/2012/1213.html'
 ---
 
