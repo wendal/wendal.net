@@ -12,13 +12,13 @@ tags:
 作为挨踢人士,翻过伟大的强,总是那么频繁,Nutz新年福利之轻功,提供给大家一个免费的途径,方便大家访问讨论组,查找技术文章...
 ----------------------------------
 
-首先,连接服务器(Linux下)
+连接服务器(Linux下)
 ----------------------
 
 	ssh -C -N -D 7070 nutz_xxxx@ci.wendal.net
 	#输入密码即可, nutz_xxxx即为你的账号
 
-首先,连接服务器(Windows下)
+连接服务器(Windows下)
 -------------------------
 
 1. [下载putty](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html), 请使用官网地址,切勿使用所谓汉化版
