@@ -4,6 +4,7 @@ date: '2012-11-30'
 description: 玩玩Golang的反射
 categories: [go]
 tags : [go,反射]
+permalink: '/2012/1130.html'
 ---
 
 正在重新实现mustache for golang
@@ -100,13 +101,14 @@ tags : [go,反射]
 			return
 		}
 		
-		//输入的参数必须为1,也就是当前value,当然,如果你是知道其他参数,也可以是传参的
+		//输入的参数必须为1,也就是当前value,当然,如果你知道其他参数,也可以是传参的,也就一个数组嘛
 		//输出的参数不为0就好了,我们只需要取第一个
 		if method.Func.Type().NumIn() != 1 || method.Func.Type().NumOut() == 0 {
 			return	
 		}
 		//调用之
-		return method.Func.Call([]reflect.Value{value})[0] //最后的[0]就是取第一个参数
+		rs = method.Func.Call([]reflect.Value{value})[0] //最后的[0]就是取第一个返回值
+		return
 	}
 	
 总结一下

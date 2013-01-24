@@ -4,6 +4,7 @@ date: '2012-11-15'
 description:
 categories: [java]
 tags : [java,nutz]
+permalink: '/2012/1115.html'
 ---
 
 庆祝SB大的结束
