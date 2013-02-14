@@ -13,6 +13,6 @@ tags:
 - 鸣鸣
 ---
 
-<img src="{{urls.media}}/uploads/2012/05/psb.jpg">鸣鸣玩电脑</img>
+<img src="{{urls.media}}/2012/05/psb.jpg">鸣鸣玩电脑</img>
 
 明天去帝都: 机票OK,酒店OK,保险OK
