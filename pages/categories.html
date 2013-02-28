@@ -9,7 +9,7 @@ description:
 </ul>
 
 {{# categories }}
-  <h2>{{ name }} ({{ count }})</h2>
+  <h2 id="{{name}}-ref">>{{ name }} ({{ count }})</h2>
   <ul>
     {{# posts?to_posts }}
       {{> posts_list }}
