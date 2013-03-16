@@ -40,6 +40,7 @@ func main() {
 http包默认会重用连接,重用连接就需要先把前一个连接的数据读完
 
 代码片段(net/http/transfer.go)
+
 ```
 func (b *body) Close() error {
 	if b.closed {
