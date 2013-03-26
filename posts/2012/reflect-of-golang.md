@@ -95,7 +95,7 @@ permalink: '/2012/1130.html'
 		//注意,如果是*T,那么全部方法都能拿到
 		//如果是T,那么只能获取那些非指针的方法哦
 		//我也很纠结这个,尝试突破但没有成功
-		t := ctx.value.Type()
+		t := value.Type()
 		method, ok := t.MethodByName(key)
 		if !ok { //没找到
 			return
