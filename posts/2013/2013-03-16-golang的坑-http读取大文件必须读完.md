@@ -131,3 +131,16 @@ func main() {
 
 
 一个月没写blog了, 心情欠佳+身体抱恙 ~_~ 哎,多事的3月
+
+
+2013年4月5号更新
+----------------
+
+coocood提醒到, go1.1有个新的API来完成这个蛋碎的东西
+
+
+```
+http.DefaultTransport.CancelRequest(req)
+```
+
+如果不是默认的DefaultTransport,就找你自己set的Transport吧
