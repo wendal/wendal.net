@@ -140,7 +140,7 @@ coocood提醒到, go1.1有个新的API来完成这个蛋碎的东西
 
 
 ```
-http.DefaultTransport.CancelRequest(req)
+http.DefaultTransport.(*http.Transport).CancelRequest(req)
 ```
 
 如果不是默认的DefaultTransport,就找你自己set的Transport吧
