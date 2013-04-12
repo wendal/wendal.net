@@ -125,3 +125,15 @@ nmake -f objs/Makefile
 好吧,祝你好运!!
 ---------------
 
+```
+C:\MSYS\home\Administrator\release-1.3.15>nginx.exe -V
+nginx version: nginx/1.3.15-http://wendal.net
+TLS SNI support enabled
+configure arguments: --with-cc=cl --builddir=objs --prefix= --conf-path=conf/ng
+nx.conf --pid-path=logs/nginx.pid --http-log-path=logs/access.log --error-log-p
+th=logs/error.log --sbin-path=nginx.exe --http-client-body-temp-path=temp/clien
+_body_temp --http-proxy-temp-path=temp/proxy_temp --http-fastcgi-temp-path=temp
+fastcgi_temp --with-cc-opt=-DFD_SETSIZE=1024 --with-pcre=objs/lib/pcre-8.32 --w
+th-zlib=objs/lib/zlib-1.2.7 --with-openssl=objs/lib/openssl-1.0.1e --with-selec
+_module --with-http_ssl_module
+```
