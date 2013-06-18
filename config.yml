@@ -12,3 +12,9 @@ posts:
 
 pages:
   permalink: 'pretty'
+  
+paginator:
+  namespace: "/posts/"
+  per_page: 10
+  root_page: "/"
+  layout: "paginator"
