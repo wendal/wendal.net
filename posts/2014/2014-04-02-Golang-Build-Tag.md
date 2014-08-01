@@ -36,7 +36,7 @@ func main() {
 
 ```
 export TAG=v1.b.50
-go build -ldflags "-X main._VERSION '$TAG'"
+go build -ldflags "-X main._VERSION_ '$TAG'"
 ```
 
 运行结果:
