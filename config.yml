@@ -8,7 +8,7 @@ production_url : http://wendal.net
 posts:
   permalink: /:categories/:title/
   summary_lines: 20
-  latest: 10
+  latest: 30
 
 pages:
   permalink: 'pretty'

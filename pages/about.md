@@ -1,6 +1,7 @@
 ---
 title : Wendal在此
 description: Wendal,纯种Coder
+permalink: /about.html
 ---
 
 纯种Coder一枚
