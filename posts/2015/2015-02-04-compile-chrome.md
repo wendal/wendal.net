@@ -23,6 +23,13 @@ http://www.chromium.org/developers/how-tos/build-instructions-windows
 2. Chrome编译的教程,网上太多太多了,但各种错误(也许对他们当时的版本来说并不是错误)
 3. 好多博客没有把问题说清楚
 
+源码打包下载(vbox的系统镜像文件)
+-------------------------------
+
+http://pan.baidu.com/s/1ntCHH1Z 密码：nbrm
+
+如果失效请留言
+
 第一步,修改系统语言
 ------------------------------------
 
@@ -108,61 +115,15 @@ cd W:\chrome_build
 fetch chromium #会很久很久
 ```
 
-省流量的方法
+省流量的方法, 只下载最新的代码,没有历史记录
 
 ```
-fetch chromium # 出现sync字样后, 终止(ctrl+c)
-
-gclient sync --no-history --force # 需要比较长的时间了
-# 如果断开了,重新执行gclient语句就可以了,不需要再执行fetch.
+fetch --nohooks --no-history chromium
 ```
 
-别以为sync只是下载源码, 最后还会下载nacl的sdk的!!
+或者下载我的打包好的源码镜像文件
 
-第6步补充说明, 关于下载Webkit
-----------------------------------
-
-正常下载的话, 下载webkit会很久很久,因为是整个历史都下载下来.
-
-下面介绍的做法,需要修改DEPS文件, 比较折腾, 自行想象吧.
-
-
-看到
-
-```
-[0:13:08]   src/third_party/WebKit
-```
-
-的时候,可以终止gclient
-
-然后,执行:
-
-```
-# 用notepad++ 打开src/DEPS,找到webkit_revision的配置
-cd src/third_party/
-git clone --depth=10 https://chromium.googlesource.com/chromium/blink.git WebKit
-#大概下载360mb
-
-Cloning into 'WebKit'...
-remote: Sending approximately 5.08 GiB ...
-remote: Counting objects: 123641, done
-remote: Finding sources: 100% (123641/123641)
-remote: Total 123641 (delta 37772), reused 78823 (delta 37772)
-Receiving objects: 100% (123641/123641), 360.61 MiB | 444.00 KiB/s, done.
-Resolving deltas: 100% (37772/37772), done.
-Checking connectivity... done.
-Checking out files: 100% (144812/144812), done.
-
-# 执行git rev-list找个可用的rev
-git rev-list  HEAD
-# 然后找出倒数第二个commit的sha1, 修改webkit_revision的值
-# 回到根目录,重新开始gclient
-gclient sync --no-history --force
-```
-
-继续长时间的等待, 真的很久很久, 洗洗睡觉吧.
-
-PS: v8也很慢, 见仁见智吧.
+PS: 20151126,正在下载最新的,完成后打包上传. windows下的压缩包
 
 第七步, 编译
 --------------------------------------

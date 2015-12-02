@@ -9,6 +9,11 @@ tags:
 - memcache
 ---
 
+成品下载地址
+===================
+
+http://wendal.net/dw/memcached/memcached-1.4.24-x86-cgywin.zip
+
 编译环境
 ===========================
 
