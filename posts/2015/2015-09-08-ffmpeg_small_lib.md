@@ -21,7 +21,7 @@ tags:
 ```
 ./configure --enable-nonfree --enable-vdpau --enable-gpl --enable-static \
 	--disable-everything --enable-decoder=h264 --enable-decoder=aac  --enable-decoder=h264_vdpau \
-	--prefix=/home/wendal/build --enable-parser=aac --enable-parser=h264 --enable-protocol=rstp \
+	--prefix=/home/wendal/build --enable-parser=aac --enable-parser=h264 --enable-protocol=rtsp \
 	--enable-demuxer=h264 --enable-demuxer=aac --enable-vdpau --enable-protocol=file --enable-outdevs
 ```
 
